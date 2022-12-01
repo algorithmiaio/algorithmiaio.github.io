@@ -303,8 +303,8 @@ th {
 
 @font-face {
   font-family: Glyphicons Halflings;
-  src: url(/algorithmiaio.github.io//fonts/glyphicons-halflings-regular.eot);
-  src: url(/algorithmiaio.github.io//fonts/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"), url(/algorithmiaio.github.io//fonts/glyphicons-halflings-regular.woff2) format("woff2"), url(/algorithmiaio.github.io//fonts/glyphicons-halflings-regular.woff) format("woff"), url(/algorithmiaio.github.io//fonts/glyphicons-halflings-regular.ttf) format("truetype"), url(/algorithmiaio.github.io//fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg")
+  src: url(//fonts/glyphicons-halflings-regular.eot);
+  src: url(//fonts/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"), url(//fonts/glyphicons-halflings-regular.woff2) format("woff2"), url(//fonts/glyphicons-halflings-regular.woff) format("woff"), url(//fonts/glyphicons-halflings-regular.ttf) format("truetype"), url(//fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg")
 }
 
 .glyphicon {
@@ -8146,8 +8146,8 @@ button.close {
  */
 @font-face {
   font-family: FontAwesome;
-  src: url(/algorithmiaio.github.io//fonts/fontawesome-webfont.eot);
-  src: url(/algorithmiaio.github.io//fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"), url(/algorithmiaio.github.io//fonts/fontawesome-webfont.woff2) format("woff2"), url(/algorithmiaio.github.io//fonts/fontawesome-webfont.woff) format("woff"), url(/algorithmiaio.github.io//fonts/fontawesome-webfont.ttf) format("truetype"), url(/static/images/fontawesome-webfont.svg#fontawesomeregular) format("svg");
+  src: url(//fonts/fontawesome-webfont.eot);
+  src: url(//fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"), url(//fonts/fontawesome-webfont.woff2) format("woff2"), url(//fonts/fontawesome-webfont.woff) format("woff"), url(//fonts/fontawesome-webfont.ttf) format("truetype"), url(/static/images/fontawesome-webfont.svg#fontawesomeregular) format("svg");
   font-weight: 400;
   font-style: normal
 }
@@ -11542,33 +11542,33 @@ button.toast-close-button {
 @font-face {
   font-family: "Nunito Sans";
   font-weight: 300;
-  src: url(/algorithmiaio.github.io//fonts/Nunito_Sans/NunitoSans-Light.ttf) format("tff")
+  src: url(//fonts/Nunito_Sans/NunitoSans-Light.ttf) format("tff")
 }
 
 @font-face {
   font-family: "Nunito Sans";
   font-weight: 400;
-  src: url(/algorithmiaio.github.io//fonts/Nunito_Sans/NunitoSans-Regular.ttf) format("tff")
+  src: url(//fonts/Nunito_Sans/NunitoSans-Regular.ttf) format("tff")
 }
 
 @font-face {
   font-family: "Nunito Sans";
   font-style: italic;
   font-weight: 400;
-  src: url(/algorithmiaio.github.io//fonts/Nunito_Sans/NunitoSans-Italic.ttf) format("tff")
+  src: url(//fonts/Nunito_Sans/NunitoSans-Italic.ttf) format("tff")
 }
 
 @font-face {
   font-family: "Nunito Sans";
   font-weight: 500;
 
-  src: url(/algorithmiaio.github.io//fonts/Nunito_Sans/NunitoSans-Medium.ttf) format("tff")
+  src: url(//fonts/Nunito_Sans/NunitoSans-Medium.ttf) format("tff")
 }
 
 @font-face {
   font-family: "Nunito Sans";
   font-weight: 700;
-  src: url(/algorithmiaio.github.io//fonts/Nunito_Sans/NunitoSans-Bold.ttf) format("tff")
+  src: url(//fonts/Nunito_Sans/NunitoSans-Bold.ttf) format("tff")
 }
 
 body,
@@ -12507,19 +12507,19 @@ fieldset[disabled] .btn-flat:hover {
 }
 
 .icon-check-gray {
-  background-image: url(/algorithmiaio.github.io//images/icons/check_simple_gray.svg)
+  background-image: url(//images/icons/check_simple_gray.svg)
 }
 
 .icon-check-purple {
-  background-image: url(/algorithmiaio.github.io//images/icons/check_simple_purple.svg)
+  background-image: url(//images/icons/check_simple_purple.svg)
 }
 
 .icon-check-accent {
-  background-image: url(/algorithmiaio.github.io//images/icons/check_simple_accent.svg)
+  background-image: url(//images/icons/check_simple_accent.svg)
 }
 
 .icon-check-enterprise {
-  background-image: url(/algorithmiaio.github.io//images/icons/check_simple_enterprise.svg)
+  background-image: url(//images/icons/check_simple_enterprise.svg)
 }
 
 .icon-social {
@@ -15317,107 +15317,107 @@ input#search-query {
 }
 
 #content .lang-logo.color-logo.python {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/python.svg)
+  background-image: url(//images/languages/color/python.svg)
 }
 
 #content .lang-logo.color-logo.java {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/java.svg)
+  background-image: url(//images/languages/color/java.svg)
 }
 
 #content .lang-logo.color-logo.rlang {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/rlang.svg)
+  background-image: url(//images/languages/color/rlang.svg)
 }
 
 #content .lang-logo.color-logo.javascript {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/js.svg)
+  background-image: url(//images/languages/color/js.svg)
 }
 
 #content .lang-logo.color-logo.node {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/node.svg)
+  background-image: url(//images/languages/color/node.svg)
 }
 
 #content .lang-logo.color-logo.ruby {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/ruby.svg)
+  background-image: url(//images/languages/color/ruby.svg)
 }
 
 #content .lang-logo.color-logo.rust {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/rust.svg)
+  background-image: url(//images/languages/color/rust.svg)
 }
 
 #content .lang-logo.color-logo.scala {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/scala.svg)
+  background-image: url(//images/languages/color/scala.svg)
 }
 
 #content .lang-logo.color-logo.swift {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/swift.svg)
+  background-image: url(//images/languages/color/swift.svg)
 }
 
 #content .lang-logo.color-logo.go {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/go.svg)
+  background-image: url(//images/languages/color/go.svg)
 }
 
 #content .lang-logo.color-logo.c-sharp {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/csharp.svg)
+  background-image: url(//images/languages/color/csharp.svg)
 }
 
 #content .lang-logo.color-logo.perl {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/perl.svg)
+  background-image: url(//images/languages/color/perl.svg)
 }
 
 #content .lang-logo.color-logo.php {
-  background-image: url(/algorithmiaio.github.io//images/languages/color/php.svg)
+  background-image: url(//images/languages/color/php.svg)
 }
 
 #content .lang-logo.white-logo.python {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/python.svg)
+  background-image: url(//images/languages/white/python.svg)
 }
 
 #content .lang-logo.white-logo.java {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/java.svg)
+  background-image: url(//images/languages/white/java.svg)
 }
 
 #content .lang-logo.white-logo.rlang {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/rlang.svg)
+  background-image: url(//images/languages/white/rlang.svg)
 }
 
 #content .lang-logo.white-logo.javascript {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/js.svg)
+  background-image: url(//images/languages/white/js.svg)
 }
 
 #content .lang-logo.white-logo.node {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/node.svg)
+  background-image: url(//images/languages/white/node.svg)
 }
 
 #content .lang-logo.white-logo.ruby {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/ruby.svg)
+  background-image: url(//images/languages/white/ruby.svg)
 }
 
 #content .lang-logo.white-logo.rust {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/rust.svg)
+  background-image: url(//images/languages/white/rust.svg)
 }
 
 #content .lang-logo.white-logo.scala {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/scala.svg)
+  background-image: url(//images/languages/white/scala.svg)
 }
 
 #content .lang-logo.white-logo.swift {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/swift.svg)
+  background-image: url(//images/languages/white/swift.svg)
 }
 
 #content .lang-logo.white-logo.go {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/go.svg)
+  background-image: url(//images/languages/white/go.svg)
 }
 
 #content .lang-logo.white-logo.c-sharp {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/csharp.svg)
+  background-image: url(//images/languages/white/csharp.svg)
 }
 
 #content .lang-logo.white-logo.perl {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/perl.svg)
+  background-image: url(//images/languages/white/perl.svg)
 }
 
 #content .lang-logo.white-logo.php {
-  background-image: url(/algorithmiaio.github.io//images/languages/white/php.svg)
+  background-image: url(//images/languages/white/php.svg)
 }
 
 #content .gs-languages {

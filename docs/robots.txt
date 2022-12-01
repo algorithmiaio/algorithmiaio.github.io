@@ -1,1 +1,1 @@
-Sitemap: https://algorithmiaio.github.io/algorithmiaio.github.io/sitemap.xml
+Sitemap: https://algorithmiaio.github.io/sitemap.xml
