@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Azure Event Hubs - Algorithmia Developer Center</title>
+    <meta name="description" content="This guide will walk you through setting up an algorithm to send messages to Azure Event Hubs (EH), Azure’s high-throughput data-streaming and event-ingestion service. Once configured, you can create workflows in which your algorithms publish data to an event hub, unlocking downstream storage, processing, and analytics capabilities on Azure.
+">
+    <meta name="keywords" content="integrations, event-flows">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Azure Event Hubs">
+<meta name="twitter:description" content="This guide will walk you through setting up an algorithm to send messages to Azure Event Hubs (EH), Azure’s high-throughput data-streaming and event-ingestion service. Once configured, you can create workflows in which your algorithms publish data to an event hub, unlocking downstream storage, processing, and analytics capabilities on Azure.
+">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure Event Hubs">
+<meta property="og:description" content="This guide will walk you through setting up an algorithm to send messages to Azure Event Hubs (EH), Azure’s high-throughput data-streaming and event-ingestion service. Once configured, you can create workflows in which your algorithms publish data to an event hub, unlocking downstream storage, processing, and analytics capabilities on Azure.
+">
+<meta property="og:url" content="https://algorithmia.com/developers/event-flows/azure-eh/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Event flows</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/icons/azure-event-hubs.png" alt="" itemprop="image" class="title-icon">
+
+Azure Event Hubs<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/event-flows/azure-eh.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-08-25T16:47:27Z" itemprop="dateModified">August 25, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p>This guide will walk you through setting up an algorithm to send messages to <a href="https://azure.microsoft.com/services/event-hubs/">Azure Event Hubs (EH)</a>, Azure’s high-throughput data-streaming and event-ingestion service. Once configured, you can create workflows in which your algorithms publish data to an event hub, unlocking downstream storage, processing, and analytics capabilities on Azure.</p>
+
+<p>Because Algorithmia doesn’t currently have a native Event Flows integration with Azure Event Hubs, you can use one of Microsoft’s official SDKs, for example the <code class="language-plaintext highlighter-rouge">azure-eventhub</code> <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-python-get-started-send">Python client library</a> or the <code class="language-plaintext highlighter-rouge">azure-messaging-eventhubs</code> <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-java-get-started-send">Java client library</a> to send and receive messages from within your algorithms. The workflow demonstrated here uses the Python SDK, which is <a href="https://pypi.org/project/azure-eventhub/">available on PyPI</a>, to send messages. To see our other message broker integrations, see <a href="/developers/event-flows">Event Flows</a>.</p>
+
+<p class="notice-info"><strong>NOTE:</strong> Although we currently don’t support Azure Event Hubs natively for Event Flows, beginning in Algorithmia version 20.5.57 you can use Event Hubs as a message broker for <a href="/developers/monitoring-and-observability/insights">Algorithmia Insights</a>.</p>
+
+<h2 id="event-flow-configuration-overview">Event Flow configuration overview</h2>
+
+<p>The process of configuring Event Flows with an EH message broker involves multiple steps, some of which are to be completed on the Azure side and some of which are to be completed on the Algorithmia side. At a high level, the configuration steps are:</p>
+
+<ol>
+  <li><a href="#1-configuring-resources-in-the-azure-portal">On Azure, create an Event Hubs namespace and an event hub within it.</a></li>
+  <li><a href="#2-creating-an-event-hubs-publisher-algorithm-in-algorithmia">On Algorithmia, create an algorithm to publish messages to the event hub</a> and add the event hub’s secret connection string to the algorithm’s Secret Store.</li>
+  <li><a href="#3-sending-messages-to-the-broker">Test the connection by calling the algorithm with sample input.</a></li>
+</ol>
+
+<h2 id="1-configuring-resources-in-the-azure-portal">1. Configuring resources in the Azure Portal</h2>
+
+<p class="notice-info"><strong>NOTE:</strong> The steps in this section are to be completed within the <a href="https://portal.azure.com/" target="_blank" rel="noreferrer noopener">Azure Portal</a>.</p>
+
+<h3 id="creating-an-event-hubs-namespace-and-an-event-hub">Creating an Event Hubs namespace and an event hub</h3>
+
+<p class="notice-info"><strong>NOTE:</strong> If you’re familiar with the <a href="/developers/event-flows/apache-kafka">Apache Kafka</a> platform, it can be helpful to understand the name mapping between Kafka and Event Hubs. In simple terms, an Event Hubs namespace is analogous to a Kafka cluster, and an event hub is analogous to a Kafka topic.</p>
+
+<p>To begin, create an event hub <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create">using the Azure portal</a> or <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-quickstart-cli">using the Azure CLI</a>. This will entail first deploying an Event Hubs namespace and then creating an event hub within the namespace. Because we’ll be sending messages using the Python SDK directly from an algorithm and not natively through Algorithmia’s internal infrastructure, the event hub can exist in any Azure account to which you have access. In other words, the Azure account in which the event hub is created doesn’t need to be the account running the Algorithmia platform, and no additional permission-configuration steps are required.</p>
+
+<h3 id="gathering-required-parameters">Gathering required parameters</h3>
+
+<p>When the resource deployment described in the links <a href="#creating-an-event-hubs-namespace-and-an-event-hub">above</a> is complete, click on the name of the resource group into which the namespace was deployed. You can filter by <strong>event hubs namespace</strong> to see the newly created namespace resource.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/azure-portal-resourcs-event-hubs-namespace.png" /></p>
+
+<p>If you click into the namespace, you’ll see the event hub listed at the bottom. In the algorithm code below, you’ll replace this event hub name as the <code class="language-plaintext highlighter-rouge">EVENTHUB_NAME</code> value.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/azure-portal-event-hubs-hub-list.png" /></p>
+
+<p>On the namespace page, from the left-hand navigation submenu under <strong>Settings</strong>, select <strong>Shared access policies</strong> and click on the <strong>RootManageSharedAccessKey</strong> policy.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/azure-portal-event-hubs-namespace.png" /></p>
+
+<p>In the fly-out menu at right, copy the <strong>Connection string–primary key</strong>. This connection string enables your algorithm to communicate with Event Hubs. In the next step, you’ll save this string value in your algorithm’s Secret Store and access it from the code below as the <code class="language-plaintext highlighter-rouge">CONNECTION_STR</code> environment variable. Note that this is the connection string associated with the Event Hubs <em>namespace</em>, not the event hub itself. The value will look something like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Endpoint=sb://test-azure-eh-namespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=+FehbdIzXYc6Hk2sckMuX0iTfLV4wWuZMkCGeNImi6s=
+</code></pre></div></div>
+
+<h2 id="2-creating-an-event-hubs-publisher-algorithm-in-algorithmia">2. Creating an Event Hubs publisher algorithm in Algorithmia</h2>
+
+<p class="notice-info"><strong>NOTE:</strong> The steps in this section are to be completed on Algorithmia, from within the browser user interface (UI) or through the API.</p>
+
+<p>As noted above, in this workflow we’re using Microsoft’s <code class="language-plaintext highlighter-rouge">azure-eventhub</code> Python SDK to send messages to EH from within an algorithm. For more information on how to use this library to send and receive messages, see Microsoft’s <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-python-get-started-send">Quickstart Guide</a>.</p>
+
+<h3 id="create-an-algorithm">Create an algorithm</h3>
+
+<p>To begin create a Python 3.x algorithm with a generic Python 3.7 algorithm environment and default settings. If you’re new to Algorithmia or need a quick refresher on how to create and modify algorithms, see our <a href="/algorithm-development/your-first-algo">Getting Started Guide</a>.</p>
+
+<h4 id="store-the-connection-string-in-the-secret-store">Store the connection string in the Secret Store</h4>
+
+<p>On the newly created algorithm’s profile, click the <strong>Settings</strong> tab and find the <strong>Secret Store</strong> section. Add a new secret called <code class="language-plaintext highlighter-rouge">CONNECTION_STR</code> with the contents of the connection string from <a href="#gathering-required-parameters">above</a>. For more information on how to use the secret store, see the <a href="/developers/platform/secret-store/">Secret Store</a> docs.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/secret-event-hubs-namespace-connection-string.png" /></p>
+
+<h4 id="modify-build-and-publish-the-algorithm">Modify, build, and publish the algorithm</h4>
+
+<p>Click the <strong>Dependencies</strong> button and add the Azure Event Hubs package, which Algorithmia will pull down automatically from PyPI when the algorithm is built. (If developing locally, you’ll add this to the <code class="language-plaintext highlighter-rouge">requirements.txt</code> file.)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>algorithmia&gt;=1.0.0,&lt;2.0
+azure-eventhub==5.6.0
+</code></pre></div></div>
+
+<p>In the body of your algorithm, paste the source code below, replacing the <code class="language-plaintext highlighter-rouge">EVENTHUB_NAME</code> value as described <a href="#gathering-required-parameters">above</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">Algorithmia</span>
+<span class="kn">from</span> <span class="nn">azure.eventhub.aio</span> <span class="kn">import</span> <span class="n">EventHubProducerClient</span>
+<span class="kn">from</span> <span class="nn">azure.eventhub</span> <span class="kn">import</span> <span class="n">EventData</span>
+
+<span class="c1"># Event Hubs *namespace* connection string
+</span><span class="n">CONNECTION_STR</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"CONNECTION_STR"</span><span class="p">)</span>
+<span class="n">EVENTHUB_NAME</span> <span class="o">=</span> <span class="s">"EVENTHUB_NAME"</span>
+
+<span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="s">"""Send messages to Azure Event Hubs.
+
+    input format: {"events": ["first event", "second event", "..."]}
+    """</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="p">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+    <span class="n">loop</span><span class="p">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">run</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s">"Sent event batch to Azure event hub '</span><span class="si">{</span><span class="n">EVENTHUB_NAME</span><span class="si">}</span><span class="s">'"</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="c1"># Create a producer client to send messages to the event hub.
+</span>    <span class="c1"># Specify a connection string to your event hubs namespace and
+</span>    <span class="c1"># the event hub name.
+</span>    <span class="n">producer</span> <span class="o">=</span> <span class="n">EventHubProducerClient</span><span class="p">.</span><span class="n">from_connection_string</span><span class="p">(</span>
+        <span class="n">conn_str</span><span class="o">=</span><span class="n">CONNECTION_STR</span><span class="p">,</span>
+        <span class="n">eventhub_name</span><span class="o">=</span><span class="n">EVENTHUB_NAME</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">producer</span><span class="p">:</span>
+        <span class="c1"># Create a batch.
+</span>        <span class="n">event_data_batch</span> <span class="o">=</span> <span class="k">await</span> <span class="n">producer</span><span class="p">.</span><span class="n">create_batch</span><span class="p">()</span>
+
+        <span class="c1"># Add events to the batch.
+</span>        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"events"</span><span class="p">):</span>
+            <span class="n">event_data_batch</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">EventData</span><span class="p">(</span><span class="n">event</span><span class="p">))</span>
+
+        <span class="c1"># Send the batch of events to the event hub.
+</span>        <span class="k">await</span> <span class="n">producer</span><span class="p">.</span><span class="n">send_batch</span><span class="p">(</span><span class="n">event_data_batch</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Click the <strong>Save</strong> and <strong>Build</strong> buttons, and then <strong>Publish</strong> the algorithm.</p>
+
+<h2 id="3-sending-messages-to-the-broker">3. Sending messages to the broker</h2>
+
+<p>To send a test message, call the algorithm with input in the following format.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"first event"</span><span class="p">,</span><span class="w"> </span><span class="s2">"second event"</span><span class="p">,</span><span class="w"> </span><span class="s2">"..."</span><span class="p">]}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>If you now click into the event hub in the Azure Portal, you’ll be able to see that it’s receiving messages from the algorithm.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/azure-portal-event-hubs-incoming-requests.png" /></p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li class="active">
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

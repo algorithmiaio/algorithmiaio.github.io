@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>PyTorch - Algorithmia Developer Center</title>
+    <meta name="description" content="Deploying your PyTorch model to Algorithmia.">
+    <meta name="keywords" content="algo-model-guide">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="PyTorch">
+<meta name="twitter:description" content="Deploying your PyTorch model to Algorithmia.">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyTorch">
+<meta property="og:description" content="Deploying your PyTorch model to Algorithmia.">
+<meta property="og:url" content="https://algorithmia.com/developers/model-deployment/pytorch/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Model guides</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/language_logos/pytorch.png" alt="" itemprop="image" class="title-icon">
+
+PyTorch<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/model-deployment/pytorch.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2020-06-22T23:56:26Z" itemprop="dateModified">June 22, 2020</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p>Welcome to deploying your <a href="http://pytorch.org/">PyTorch</a> model on Algorithmia!</p>
+
+<p>This guide is designed as an introduction to deploying a PyTorch model and publishing an algorithm even if you’ve never used Algorithmia before.</p>
+
+<p class="notice-info">Note: this guide uses the web UI to create and deploy your Algorithm. If you prefer a code-only approach to deployment, review <a href="/developers/algorithm-development/algorithm-management">Algorithm Management</a> after reading this guide.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+  <li><a href="#prerequisites">Prerequisites</a>
+    <ul>
+      <li><a href="#save-your-pre-trained-model">Save your Pre-Trained Model</a></li>
+      <li><a href="#create-a-data-collection">Create a Data Collection</a></li>
+      <li><a href="#host-your-model-file">Host Your Model File</a></li>
+    </ul>
+  </li>
+  <li><a href="#create-your-algorithm">Create your Algorithm</a></li>
+  <li><a href="#set-your-dependencies">Set your Dependencies</a></li>
+  <li><a href="#load-your-model">Load your Model</a></li>
+  <li><a href="#publish-your-algorithm">Publish your Algorithm</a></li>
+</ul>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you get started deploying your Pytorch model on Algorithmia there are a few things you’ll want to do first:</p>
+
+<h3 id="save-your-pre-trained-model">Save your Pre-Trained Model</h3>
+
+<p>You’ll want to do the training and saving of your model on your local machine, or the platform you’re using for training, before you deploy it to production on the Algorithmia platform.</p>
+
+<h3 id="create-a-data-collection">Create a Data Collection</h3>
+<p>Host your data where you want and serve it to your model with Algorithmia’s <a href="http://docs.algorithmia.com/">Data API</a>.</p>
+
+<p>In this guide we’ll use Algorithmia’s <a href="/developers/data/hosted">Hosted Data Collection</a>, but you can host it in <a href="/developers/data/s3">S3</a> or <a href="/developers/data/dropbox">Dropbox</a> as well. Alternatively, if your data lies in a database, <a href="/developers/data/dynamodb">check out</a> how we connected to a DynamoDB database.</p>
+
+<p>First, you’ll want to create a data collection to host your pre-trained model.</p>
+
+<ul>
+  <li>
+    <p>Log into your Algorithmia account and create a data collection via the <a href="/developers/data/hosted">Data Collections</a> page.</p>
+  </li>
+  <li>
+    <p>Click on <strong>“Add Collection”</strong> under the “My Collections” section.</p>
+  </li>
+  <li>
+    <p>After you create your collection you can set the read and write access on your data collection.</p>
+  </li>
+</ul>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/model_hosting/add_collection.png" alt="Create a data collection" class="screenshot img-sm" /></p>
+
+<p>For more information check out: <a href="/developers/data/hosted">Data Collection Types</a>.</p>
+
+<p>Note, that you can also use the <a href="https://docs.algorithmia.com/#data-uri">Data API</a> to create data collections and upload files.</p>
+
+<h3 id="host-your-model-file">Host Your Model File</h3>
+<p>Next, upload your pickled model to your newly created data collection.</p>
+
+<ul>
+  <li>
+    <p>Load model by clicking box <strong>“Drop files here to upload”</strong></p>
+  </li>
+  <li>
+    <p>Note the path to your files: data://username/collections_name/file_name.zip</p>
+  </li>
+</ul>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/model_hosting/pytorch_add_collection.png" alt="Create a data collection" class="screenshot img-md" /></p>
+
+<h2 id="create-your-algorithm">Create your Algorithm</h2>
+<p>Hopefully you’ve already followed along with the <a href="/developers/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a> for algorithm development. If not, you might want to check it out in order to understand the various permission types, how to enable a GPU environment, and use the CLI.</p>
+
+<p>Once you’ve gone through the <a href="/developers/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a>, you’ll notice that when you’ve created your algorithm, there is boilerplate code in the editor. If you’ve chosen the Python 3.X beta PyTorch version when you created your algorithm, then you’ll see more verbose boilerplate code. Otherwise it will be a simple “Hello World” algorithm.</p>
+
+<p>The main thing to note about the algorithm is that it’s wrapped in the <code class="language-plaintext highlighter-rouge">apply()</code> function.</p>
+
+<p>The apply() function defines the input point of the algorithm. We use the apply() function in order to make different algorithms standardized. This makes them easily chained and helps authors think about designing their algorithms in a way that makes them easy to leverage and predictable for end users.</p>
+
+<p>Go ahead and remove the boilerplate code below that’s inside the <code class="language-plaintext highlighter-rouge">apply()</code> function at bottom of page, but leave the <code class="language-plaintext highlighter-rouge">apply()</code> function intact:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/model_hosting/algorithm_console_pytorch.png" alt="Algorithm console Python" class="screenshot" /></p>
+
+<h3 id="set-your-dependencies">Set your Dependencies</h3>
+<p>Now is the time to set your dependencies that your model relies on.</p>
+
+<ul>
+  <li>Click on the <strong>“Dependencies”</strong> button at the top right of the UI and list your packages under the required ones already listed and click <strong>“Save Dependencies”</strong> on the bottom right corner.</li>
+</ul>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/model_hosting/pytorch_dependencies.png" alt="Set your dependencies" class="screenshot img-md" /></p>
+
+<h2 id="load-your-model">Load your Model</h2>
+<p>Here is where you load and run your model which will be called by the apply() function.</p>
+
+<p>When you load your model, our recommendation is to preload your model in a separate function external to the apply() function.</p>
+
+<p>This is because when a model is first loaded it can take time to load depending on the file size.</p>
+
+<p>Then, with all subsequent calls only the apply() function gets called which will be much faster since your model is already loaded.</p>
+
+<p class="notice-warning">If you are authoring an algorithm, avoid using the ‘.my’ pseudonym in the source code. When the algorithm is executed, ‘.my’ will be interpreted as the user name of the user who called the algorithm, rather than the author’s user name.</p>
+
+<p>Note that you always want to create valid JSON input and output in your algorithm. For examples see the <a href="https://algorithmia.com/developers/algorithm-development/languages/python/#io-for-your-algorithms">Algorithm Development Guides</a>.</p>
+
+<h3 id="example-hosted-model-main">Example Hosted Model (Main):</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+    An example of how to load a trained model and use it
+    to predict labels for labels in the CIFAR-10 dataset.
+
+"""</span>
+
+<span class="kn">import</span> <span class="nn">Algorithmia</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="n">transforms</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Algorithmia</span><span class="p">.</span><span class="n">client</span><span class="p">()</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">(</span><span class="s">'plane'</span><span class="p">,</span> <span class="s">'car'</span><span class="p">,</span> <span class="s">'bird'</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">,</span>
+           <span class="s">'deer'</span><span class="p">,</span> <span class="s">'dog'</span><span class="p">,</span> <span class="s">'frog'</span><span class="p">,</span> <span class="s">'horse'</span><span class="p">,</span> <span class="s">'ship'</span><span class="p">,</span> <span class="s">'truck'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">preprocessing</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
+    <span class="n">image_file</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nb">file</span><span class="p">(</span><span class="n">image_path</span><span class="p">).</span><span class="n">getFile</span><span class="p">().</span><span class="n">name</span>
+    <span class="c1"># Normalize and resize image
+</span>    <span class="n">normalize</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+    <span class="n">preprocess</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">Compose</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">transforms</span><span class="p">.</span><span class="n">Resize</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)),</span>
+         <span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span> <span class="n">normalize</span><span class="p">])</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">image_file</span><span class="p">)</span>
+    <span class="n">img</span><span class="p">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load_model</span><span class="p">():</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="s">"data://YOUR_USERNAME/YOUR_DATACOLLECTION/demo_model.t7"</span>
+    <span class="n">model_file</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nb">file</span><span class="p">(</span><span class="n">file_path</span><span class="p">).</span><span class="n">getFile</span><span class="p">().</span><span class="n">name</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="p">.</span><span class="n">jit</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_file</span><span class="p">).</span><span class="n">cuda</span><span class="p">()</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="n">image_tensor</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">unsqueeze_</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nb">float</span><span class="p">().</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="c1"># Predict the class of the image
+</span>    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">image_tensor</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">predicted</span>
+
+<span class="c1"># API calls will begin at the apply() method, with the request body passed as 'input'
+# For more details, see https://algorithmia.com/developers/algorithm-development/languages
+</span><span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="c1"># data://YOUR_USERNAME/YOUR_DATACOLLECTION/sample_animal1.jpg
+</span>    <span class="n">processed_data</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">processed_data</span><span class="p">)</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="p">[</span><span class="n">classes</span><span class="p">[</span><span class="n">prediction</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="s">"Predicted class is:  {0}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span></code></pre></figure>
+
+<p>Where it return the predicted class of the image such as: “Plane”</p>
+
+<p>If you run into any problems or need help, don’t hesitate to reach out to our team!</p>
+
+<h2 id="publish-your-algorithm">Publish your Algorithm</h2>
+<p>Last is publishing your algorithm. The best part of deploying your model on Algorithmia is that users can access it via an API that takes only a few lines of code to use! Here is what you can set when publishing your algorithm:</p>
+
+<p>On the upper right hand side of the algorithm page you’ll see a purple button “Publish” which will bring up a modal:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/publish_algorithm.png" alt="Publish an algorithm" class="screenshot img-sm" /></p>
+
+<p>In this modal, you’ll see a Changes tab, a Sample I/O tab, and one called Versioning.</p>
+
+<p>If you don’t recall from the <a href="/developers/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a> how to go through the process of publishing your model, check that out before you finish publishing.</p>
+
+<h2 id="working-demo">Working Demo</h2>
+<p>If you would like to check a demo out on the platform you can find it here: <a href="https://algorithmia.com/algorithms/stephanie/pytorchjitgpu">PyTorchJitGPU</a></p>
+
+<p>That’s it for hosting your <a href="http://pytorch.org/">Pytorch</a> model on Algorithmia!</p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

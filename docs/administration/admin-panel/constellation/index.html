@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Constellation Distributed Serving - Algorithmia Developer Center</title>
+    <meta name="description" content="This feature (and its associated documentation) is currently in beta and requires a separate license and fee. To learn more and to get set up using Constellation with your Algorithmia installation, please contact your customer success manager.
+">
+    <meta name="keywords" content="">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Constellation Distributed Serving">
+<meta name="twitter:description" content="This feature (and its associated documentation) is currently in beta and requires a separate license and fee. To learn more and to get set up using Constellation with your Algorithmia installation, please contact your customer success manager.
+">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Constellation Distributed Serving">
+<meta property="og:description" content="This feature (and its associated documentation) is currently in beta and requires a separate license and fee. To learn more and to get set up using Constellation with your Algorithmia installation, please contact your customer success manager.
+">
+<meta property="og:url" content="https://algorithmia.com/developers/administration/admin-panel/constellation/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Admin panel</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+Constellation Distributed Serving<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/administration/admin-panel/constellation.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-11-09T19:34:20Z" itemprop="dateModified">November 09, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p class="notice-enterprise">This feature (and its associated documentation) is currently in <strong>beta</strong> and requires a separate license and fee. To learn more and to get set up using Constellation with your Algorithmia installation, please contact your customer success manager.</p>
+
+<p class="notice-enterprise">This feature is only available in Algorithmia Enterprise installations.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#satellite-configuration">Satellite configuration</a>
+    <ul>
+      <li><a href="#creating-a-satellite-deployment">Creating a satellite deployment</a>
+        <ul>
+          <li><a href="#adding-algorithms-to-a-satellite">Adding algorithms to a satellite</a></li>
+        </ul>
+      </li>
+      <li><a href="#configuring-a-satellite-deployment">Configuring a satellite deployment</a>
+        <ul>
+          <li><a href="#editing-a-satellites-algorithms">Editing a satellite’s algorithms</a></li>
+          <li><a href="#creating-a-new-launch-instance">Creating a new launch instance</a></li>
+        </ul>
+      </li>
+      <li><a href="#editing-a-launch-instance">Editing a launch instance</a></li>
+      <li><a href="#removing-a-launch-instance">Removing a launch instance</a></li>
+    </ul>
+  </li>
+  <li><a href="#satellite-deployment">Satellite deployment</a></li>
+  <li><a href="#kubernetes-configuration">Kubernetes configuration</a></li>
+  <li><a href="#faq">FAQ</a></li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>Our Constellation Distributed Serving feature provides a flexible deployment option in which an Algorithmia “mothership” development cluster has “satellite” production runtime environments, thereby decoupling the Algorithmia development experience from runtime execution.</p>
+
+<p>This architecture provides for the ability to develop algorithms in a centralized location and then distribute the runtime, unlocking additional workload possibilities relative to a standard Algorithmia installation. With Constellation, you can do the following:</p>
+
+<ul>
+  <li>Deploy and execute algorithms behind a firewall to support high-security workloads.</li>
+  <li>Execute algorithms in close geographic proximity to your data to adhere to data regulatory compliance standards and to support low-latency SLAs.</li>
+  <li>Meet robust disaster recovery, high-availability, and business continuity requirements.</li>
+  <li>Create Development-to-Production algorithm promotion workflows to ensure that algorithms are tested thoroughly before supporting production workloads.</li>
+  <li>Execute algorithms on the edge, where and when you need them.</li>
+  <li>Execute algorithms periodically and in batch for workloads that don’t require an entire standard Algorithmia cluster or that are only run infrequently on demand.</li>
+  <li>Increase operational efficiency and reduce overhead by leveraging existing infrastructure (e.g., Kubernetes).</li>
+</ul>
+
+<h2 id="satellite-configuration">Satellite configuration</h2>
+
+<p>The <strong>Constellation</strong> page in the admin panel provides functionality for selecting algorithms from which to create a satellite cluster.</p>
+
+<h3 id="creating-a-satellite-deployment">Creating a satellite deployment</h3>
+
+<p>On the <strong>Constellation</strong> page you’ll see a list of existing satellites.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1626914678968.png" alt="" /></p>
+
+<p>To configure a new satellite of algorithms, click on the <strong>New satellite</strong> button. In the modal, provide a <strong>Satellite name</strong>.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1624479366286.png" alt="" /></p>
+
+<h4 id="adding-algorithms-to-a-satellite">Adding algorithms to a satellite</h4>
+
+<p>Next, you can add algorithms by clicking the <strong>Add an algorithm</strong> button, and another modal will pop up for adding your algorithm information.</p>
+
+<p><strong>Note that you’ll need to have an <a href="f/developers/platform/customizing-api-keys#admin-api-keys">Admin API key</a> configured in your account in order to add algorithms.</strong></p>
+
+<p>In the <strong>Algorithm</strong> field you’ll provide the name of the account or organization that owns the algorithm, the name of the algorithm, and the algorithm version hash (SHA-1), in the format <code class="language-plaintext highlighter-rouge">ALGO_OWNER/ALGO_NAME/ALGO_VERSION_HASH</code>.</p>
+
+<p>In the <strong>Algorithm vanity URL</strong> field, supply a unique URL to associate with your algorithm; this enables you to specify a concise endpoint at which the algorithm can be called. For example, if you specify a vanity URL of foo/bar, the algorithm will be callable at <code class="language-plaintext highlighter-rouge">https://CLUSTER_DOMAIN/v1/algo/foo/bar</code>.</p>
+
+<p>In the <strong>Replica count</strong> field, configure the number of algorithm replicas for the satellite.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1626914547827.png" alt="" /></p>
+
+<p>Click <strong>Add algorithm</strong> and you’ll see the algorithm added to the <strong>Algorithms</strong> section.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1626914629869.png" alt="" /></p>
+
+<p>Once you’ve filled out the <strong>Satellite name</strong> and added the algorithms that’ll be connected to the satellite, click <strong>Create satellite</strong>. You’ll be sent back to the <strong>Constellation</strong> admin page, where your newly created satellite should now be visible.</p>
+
+<h3 id="configuring-a-satellite-deployment">Configuring a satellite deployment</h3>
+
+<p>Click on the name of an existing satellite from the Constellation admin page. On the satellite details page, you’ll have the ability to <a href="#editing-a-satellites-algorithms">edit the algorithms in the satellite</a>, <a href="#creating-a-new-launch-instance">create a new launch instance</a>, and <a href="#deleting-a-launch-instance">remove a launch instance</a>.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1624484478899.png" alt="" /></p>
+
+<h4 id="editing-a-satellites-algorithms">Editing a satellite’s algorithms</h4>
+
+<p>To edit the list of algorithms associated with an existing satellite, click on the <strong>gear icon</strong> at the upper-right corner of the screen or click on the <strong>Algorithms</strong> tab and then the <strong>Edit algorithms</strong> button.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1624485460383.png" alt="" /></p>
+
+<p>A form titled <strong>Edit satellite</strong> will open. The satellite’s current algorithms will be listed. You can remove existing algorithms from the satellite using the <strong>X</strong> button to the right of an algorithm. You can add algorithms by clicking the <strong>Add an algorithm</strong> button and a new window will pop up for you to specify which algorithm you’d like to add. The fields to fill out are identical to those described in the <a href="#adding-algorithms-to-a-satellite">Adding algorithms to a satellite</a> section above.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1624479893421.png" alt="" /></p>
+
+<p>Click the <strong>Save changes</strong> button, and your satellite will be updated. Back in the satellite details page, you’ll be able to view the new algorithms under the <strong>Algorithms</strong> tab.</p>
+
+<p>Note that editing algorithms for a satellite will increment the latest satellite version.</p>
+
+<h4 id="creating-a-new-launch-instance">Creating a new launch instance</h4>
+
+<p>To create a new launch instance, click on the <strong>New launch instance</strong> button.
+Select the <strong>Satellite version</strong> for your new launch instance, and provide an <strong>Instance name</strong> and <strong>Description</strong>. Click <strong>Create launch instance</strong> and you should see your new launch instance under the <strong>Launch instances</strong> tab.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1624485185460.png" alt="" /></p>
+
+<h3 id="editing-a-launch-instance">Editing a launch instance</h3>
+
+<p>Click on the name of the launch instance you’d like to edit, and a sidesheet will open with details about your launch instance. You can also use the search functionality to find your launch instance.</p>
+
+<p>Click <strong>Edit Launch Instance</strong> and a window will pop up that’ll allow you to edit the <strong>Satellite version</strong>, <strong>Instance name</strong>, and <strong>Description</strong>. Click <strong>Save changes</strong> and you’ll return to the satellite details page.</p>
+
+<p>Note that updating launch instance configuration details won’t automatically update any deployed instances. To do this, you’ll need to re-launch those instances with the new configuration. The command to do this is provided in the upper-right corner of the sidesheet, and its usage is demonstrated in the <a href="#satellite-deployment">Satellite deployment</a> section below.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1624480231841.png" alt="" /></p>
+
+<h3 id="removing-a-launch-instance">Removing a launch instance</h3>
+
+<p>To remove a launch instance, click on the instance name you’d like to remove. You can also use the search functionality to find the specific launch instance.</p>
+
+<p>A sidesheet will open with details about your launch instance. Click the <strong>Remove launch instance</strong> button and a window will pop up that’ll confirm your action to remove the launch instance. Click the <strong>Remove launch instance</strong> button and you’ll return to the satellite details page.</p>
+
+<p>Note that removing a launch instance will not delete the launched instance; it’ll only remove the configuration from the satellite’s launch instance list.</p>
+
+<h2 id="satellite-deployment">Satellite deployment</h2>
+
+<p>Once a satellite has been <a href="#configuring-a-satellite-deployment">configured in the mothership UI</a> as indicated above, it must be deployed to a Kubernetes cluster. See <a href="/developers/administration/admin-config/configure-aks/">Configuring Azure Kubernetes Service (AKS)</a> or <a href="/developers/administration/admin-config/configure-eks/">Configuring Amazon Elastic Kubernetes Service (EKS)</a> for provider-specific Kubernetes configuration details. To summarize, the following are required:</p>
+
+<ul>
+  <li>A <strong>target</strong> <span style="font-family: inherit; font-size: 1em;"><strong>Kubernetes cluster</strong>, where you must:</span>
+    <ul>
+      <li>Be running Kubernetes 1.18.x</li>
+      <li>Have an <code class="language-plaintext highlighter-rouge">IngressController</code> created</li>
+      <li>Use Calico network policies, or ensure all inter-pod traffic is enabled</li>
+      <li>Provision adequate pod space to run all pods for the satellite (5 pods for the system + N pods for your algorithms based on the number of replicas)</li>
+      <li><a href="#kubernetes-configuration">Enable application ingress</a> for the environment as described below</li>
+    </ul>
+  </li>
+  <li>A <strong>target kubernetes namespace</strong> within that cluster, in which objects will be created; this references below as <code class="language-plaintext highlighter-rouge">NAMESPACE</code></li>
+  <li>A <strong>kubeconfig</strong> <span style="font-family: inherit; font-size: 1em;">file that can be used to access and create resources within that cluster; see <a href="/developers/administration/admin-config/configure-aks/#connecting-to-an-aks-cluster">Connecting to an AKS cluster</a> for instructions on how to obtain this using the</span> Azure CLI</li>
+  <li>A private <strong>docker container registry</strong> (and <strong>login credentials</strong>) to which images needed for the satellite can be pushed during installation, and from which images will be pulled during cluster operation</li>
+</ul>
+
+<p>Once the above configuration is in place, you must launch a codex-install container (version &gt;= 1.10.4).</p>
+
+<ul>
+  <li>Note that when<span style="font-weight: 400;">starting this container you must also bind-mount the Docker socket from the host with</span> <code class="language-plaintext highlighter-rouge">-v /var/run/docker.sock:/var/run/docker.sock</code></li>
+  <li>
+    <p>Perform a <code class="language-plaintext highlighter-rouge">docker login</code> to ensure that images can be pulled from Docker Hub</p>
+  </li>
+  <li>
+    <p><span style="font-weight: 400;">Images will be pulled from the registry where system images are stored</span></p>
+  </li>
+  <li><span style="font-weight: 400;">Perform a <code class="language-plaintext highlighter-rouge">docker login CONTAINER_REGISTRY_NAME</code> to ensure images can be pushed to the needed container registry</span></li>
+</ul>
+
+<p><span style="font-weight: 400;">Then perform the following:</span></p>
+
+<ul>
+  <li><span style="font-weight: 400;">Identify the <strong>Satellite ID</strong> and <strong>Launch ID</strong> you want to deploy using the <a href="#satellite-configuration">Constellation admin page</a></span><span style="font-weight: 400;">. Click on the name of an existing satellite; the values are displayed as in the screenshot below.</span></li>
+</ul>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1624487644396.png" alt="" /></p>
+
+<ul>
+  <li><span style="font-weight: 400;">Using the ID values from above, run the command below. This will download artifacts like Docker images and a plan file that’ll be needed later, and store them in </span>the directory <code class="language-plaintext highlighter-rouge">/home/algo/deployment/current/satellite/SATELLITE_ID/LAUNCH_ID</code>. These files can be quite large, so the download process may take some time. Note that you’ll need to run this and subsequent commands from a machine that has network access to the target Kubernetes cluster, so you may need to copy these files onto a machine that has such network access.</li>
+</ul>
+
+<div class="syn-code-block">
+
+<pre class="code_snippet">$ algo-install satellite SATELLITE_ID LAUNCH_ID get ADMIN_API_KEY
+</pre>
+
+</div>
+
+<ul>
+  <li>Next, you’ll need to configure the following variables, which are specific to your deployment target:
+    <ul>
+      <li><span style="font-weight: 400;">The destination container registry where images should be pushed; note that you</span> <span style="font-weight: 400;">should also perform a</span> <code class="language-plaintext highlighter-rouge">docker login</code> <span style="font-weight: 400;">to this registry</span></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="syn-code-block">
+
+<pre class="code_snippet">$ algo-install satellite SATELLITE_ID LAUNCH_ID \
+    configure stage.container_registry=&lt;some.customer.foo:1234/registry&gt;
+</pre>
+
+</div>
+
+<ul>
+  <li>
+    <ul>
+      <li><span style="font-weight: 400;">Path to the kubeconfig file that has permission to create and read resources from the destination cluster:</span></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="syn-code-block">
+
+<pre class="code_snippet">$ algo-install satellite SATELLITE_ID LAUNCH_ID \
+    configure .stage.kubernetes.kubeconfig_path=/home/algo/cust8s.conf
+</pre>
+
+</div>
+
+<ul>
+  <li>
+    <ul>
+      <li>The namespace into which to deploy:</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="syn-code-block">
+
+<pre class="code_snippet">$ algo-install satellite SATELLITE_ID LAUNCH_ID \
+    configure .stage.kubernetes.namespace=NAMESPACE_NAME
+</pre>
+
+</div>
+
+<ul>
+  <li>
+    <ul>
+      <li><span style="font-weight: 400;">The fully qualified domain name of the mothership cluster</span></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="syn-code-block">
+
+<pre class="code_snippet">$ algo-install satellite SATELLITE_ID LAUNCH_ID \
+    configure .stage.fqdn=&lt;foo.customer.com&gt;
+</pre>
+
+</div>
+
+<ul>
+  <li><span style="font-weight: 400;">Finally, launch the satellite!</span></li>
+</ul>
+
+<div class="syn-code-block">
+
+<pre class="code_snippet">$ algo-install satellite SATELLITE_ID LAUNCH_ID deploy
+</pre>
+
+</div>
+
+<p>At this point, Kubernetes resources should be created, but you may need to configure the <strong>Kubernetes ingress</strong> based on the requirements of your Kubernetes cluster, cloud provider, or <code class="language-plaintext highlighter-rouge">IngressController</code>.</p>
+
+<h2 id="kubernetes-configuration">Kubernetes configuration</h2>
+
+<p>For detailed guides on how to configure Kubernetes with appropriate network access for use with Constellation Distributed Serving, please see the respective pages for <a href="/developers/administration/admin-config/configure-aks">Azure Kubernetes Service (AKS)</a> and <a href="/developers/administration/admin-config/configure-eks/">Amazon Elastic Kubernetes Service (EKS)</a>.</p>
+
+<h2 id="faq">FAQ</h2>
+
+<p><strong>Q</strong>: Can I use different cloud platforms for the mothership cluster and the satellite clusters? For example, can I create a satellite in my mothership Algorithmia cluster that’s deployed on AWS infrastructure and then deploy that satellite into an AKS environment?</p>
+
+<p><strong>A</strong>: Yes. There’s no tie between mothership and satellite, and there’s nothing cloud provider-specific about satellites at this point in time.</p>
+
+<p>****</p>
+
+<p><strong>Q</strong>: Where are the logs written from my satellite cluster?</p>
+
+<p><strong>A</strong>: It’s up to you to configure your Kubernetes cluster with a log-forwarding agent if desired. Our applications log to <code class="language-plaintext highlighter-rouge">stdout</code>.</p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="active category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li class="active">
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

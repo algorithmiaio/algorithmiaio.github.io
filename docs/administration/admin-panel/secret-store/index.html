@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Secret Store - Algorithmia Developer Center</title>
+    <meta name="description" content="Algorithmia’s Secret Store enables you to securely store sensitive data like credentials and access tokens to be accessed from within your algorithms. To learn how to set and modify secrets and how to then retrieve them from within your algorithms, see docs for using the Secret Store. Note that the Secret Store is first available in Algorithmia version 20.5.52.
+">
+    <meta name="keywords" content="">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Secret Store">
+<meta name="twitter:description" content="Algorithmia’s Secret Store enables you to securely store sensitive data like credentials and access tokens to be accessed from within your algorithms. To learn how to set and modify secrets and how to then retrieve them from within your algorithms, see docs for using the Secret Store. Note that the Secret Store is first available in Algorithmia version 20.5.52.
+">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Secret Store">
+<meta property="og:description" content="Algorithmia’s Secret Store enables you to securely store sensitive data like credentials and access tokens to be accessed from within your algorithms. To learn how to set and modify secrets and how to then retrieve them from within your algorithms, see docs for using the Secret Store. Note that the Secret Store is first available in Algorithmia version 20.5.52.
+">
+<meta property="og:url" content="https://algorithmia.com/developers/administration/admin-panel/secret-store/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Admin panel</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+Secret Store<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/administration/admin-panel/secret-store.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-11-09T19:34:20Z" itemprop="dateModified">November 09, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p>Algorithmia’s Secret Store enables you to securely store sensitive data like credentials and access tokens to be accessed from within your algorithms. To learn how to set and modify secrets and how to then retrieve them from within your algorithms, see <a href="https://algorithmia.com/developers/platform/algorithm-secrets">docs for using the Secret Store</a>. Note that the Secret Store is first available in Algorithmia version 20.5.52.</p>
+
+<p>The <strong>Secret Store</strong> page in the admin panel contains information on how to create plugins so that you can add external secret providers.</p>
+
+<h2 id="security">Security</h2>
+
+<p>We take security seriously at Algorithmia, and this is especially true with our Secret Store. We employ the following strategies on our platform to protect your sensitive data:</p>
+
+<ul>
+  <li>Secret values are only decrypted on the target worker node.</li>
+  <li>Secret values are encrypted by the provider plugin on the web-server. Note that it’s the plugin author’s job to ensure encryption happens before the value is sent to the underlying storage mechanism, via encryption within the plugin and/or via secure transport (e.g., HTTPS).</li>
+  <li>All internal network traffic (including secret metadata) is secured via IPsec at the network level.</li>
+</ul>
+
+<h2 id="internal-secret-store">Internal Secret Store</h2>
+
+<p>We provide an internal Secret Store plugin that’s loaded by default in every cluster. This plugin stores secrets in the internal database that backs the Algorithmia application, and in our implementation, secret values are encrypted before being written to that database. Depending on your cluster settings, the entire database may also be encrypted on disk. The default internal plugin appears as <strong>Internal Secret Provider</strong> in the UI, as shown below.</p>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1623877064419.png" alt="" /></p>
+
+<h2 id="secret-provider-plugins">Secret provider plugins</h2>
+
+<h3 id="how-to-write-a-secret-provider-plugin">How to write a secret provider plugin</h3>
+
+<p>To use an external secret provider, you must write a Java plugin; this <a href="https://github.com/algorithmiaio/plugin-sdk">GitHub repository</a> has the implementation details. Below, we also provide example plugin implementations for <a href="#hashicorp-vault">Hashicorp Vault</a> and <a href="#azure-key-vault">Azure Key Vault</a>.</p>
+
+<p>The general steps to create a plugin are as follows:</p>
+
+<ol>
+  <li>Create a new Java project.</li>
+  <li>Add the algorithmia <code class="language-plaintext highlighter-rouge">plugin-sdk</code> maven package as specified in the README.</li>
+  <li>Implement the “secrets” interfaces found <a href="https://github.com/algorithmiaio/plugin-sdk/tree/master/src/main/java/com/algorithmia/sdk/plugin/secrets">here</a>, noting that:
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">SecretProviderFactory</code> is the entry point that will be used to instantiate your provider by calling the <code class="language-plaintext highlighter-rouge">create</code> method.</li>
+      <li><code class="language-plaintext highlighter-rouge">SecretProvider</code> will do the heavy lifting.</li>
+      <li>We provide a <code class="language-plaintext highlighter-rouge">SimpleSecret</code> class to wrap basic secret values/TTL. It implements the <code class="language-plaintext highlighter-rouge">Secret</code> interface, so you may choose to use your own implementation instead of a <code class="language-plaintext highlighter-rouge">SimpleSecret</code>.</li>
+      <li>Follow the JavaDoc for the interface methods to determine how each method should behave.</li>
+    </ol>
+  </li>
+  <li>Export your project as a JAR file with your classes.</li>
+</ol>
+
+<h3 id="how-to-import-a-secret-store-provider-plugin">How to import a Secret Store provider plugin</h3>
+
+<p>To use a secret provider plugin on your Algorithmia cluster, you must import it. You can do this either through the browser UI or through the admin API; both processes are described below.</p>
+
+<h4 id="importing-a-secret-provider-plugin-through-the-browser-ui">Importing a secret provider plugin through the browser UI</h4>
+
+<p>Within the Algorithmia browser UI, navigate to the <strong>Secret Store</strong> page on the admin panel, accessible at <code class="language-plaintext highlighter-rouge">/admin/secret-store</code>.</p>
+
+<p>In the upper-right corner, click the <strong>New Provider</strong> button and fill out the form as follows:</p>
+
+<ul>
+  <li><strong>Name</strong> and <strong>Description</strong> are used in the UI when creating a new secret for an algorithm. These values should be meaningful, so that users creating secrets can use them to differentiate between the providers.</li>
+  <li><strong>Upload module</strong> is where you upload the JAR file created from your provider plugin.</li>
+  <li><strong>Provider factory classname</strong> is the name of the class that implements the <code class="language-plaintext highlighter-rouge">SecretProviderFactory</code> interface, e.g., <code class="language-plaintext highlighter-rouge">com.algorithmia.plugin.vault.VaultSecretProviderFactory</code>. Key-value pairs are passed as a <code class="language-plaintext highlighter-rouge">Map&lt;String, String&gt;</code> to the <code class="language-plaintext highlighter-rouge">SecretProviderFactory.create</code> method and are encrypted before being stored in the Algorithmia application’s database. For details on which key-value pairs are required, see the <strong>Key-value</strong> pairs section for your provider of interest in the examples below.</li>
+  <li>Click the <strong>Add Secret Provider</strong> button to add the provider.</li>
+</ul>
+
+<p><img src="https://algorithmia.com/developers/images/post_images/algo-images-admin/algo-1624998443467.png" alt="" /></p>
+
+<h4 id="importing-a-secret-store-provider-plugin-through-the-admin-api">Importing a Secret Store provider plugin through the admin API</h4>
+
+<p>To upload a JAR file via the API, you can use the <code class="language-plaintext highlighter-rouge">/v1/admin/secret-provider</code> endpoint.</p>
+
+<p>The code sample below shows how you can create a secret provider with cURL. Note that you’ll need to substitute <code class="language-plaintext highlighter-rouge">ADMIN_API_KEY</code> with a valid <a href="/developers/platform/customizing-api-keys#admin-api-keys">admin API key</a>, and <code class="language-plaintext highlighter-rouge">CLUSTER_DOMAIN</code> with your specific cluster’s domain name. The remaining parameters match the field names from the section above, where <code class="language-plaintext highlighter-rouge">moduleName</code> is the name of the JAR file that you uploaded, and the key-value pairs specified under <code class="language-plaintext highlighter-rouge">configuration</code> are plugin-specific required parameters that depend on the secret provider (the specifics are listed in the READMEs for each respective <a href="#example-plugin-implementations">plugin example</a>).</p>
+
+<div class="syn-code-block">
+
+<pre class="code_snippet">$ curl https://api.CLUSTER_DOMAIN/v1/admin/secret-provider \
+    -X POST \
+    -H 'Authorization: Simple ADMIN_API_KEY' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "name": "string",
+      "description": "string",
+      "moduleName": "string",
+      "factoryClassName": "string",
+      "interfaceVersion": "string",
+      "configuration": {
+        "key_1": "value_1"
+      },
+      "isEnabled": true,
+      "isDefault": true
+    }'
+</pre>
+
+</div>
+
+<p>When you run the command above you’ll receive a response payload with the <code class="language-plaintext highlighter-rouge">providerID</code> value that’s been assigned to the new provider. To upload the JAR file, run the following command, substituting this <code class="language-plaintext highlighter-rouge">providerID</code> value for <code class="language-plaintext highlighter-rouge">PROVIDER_ID</code> in the URI, as well as the values for your admin API key and local file path.</p>
+
+<div class="syn-code-block">
+
+<pre class="code_snippet">$ curl https://api.CLUSTER_DOMAIN/v1/admin/plugins/secret-provider/PROVIDER_ID
+    -X POST
+    -H 'Authorization: Simple ADMIN_API_KEY' \
+    -F 'provider=@/LOCAL/PATH/TO/YOUR/MODULE.jar'
+</pre>
+
+</div>
+
+<h3 id="example-secret-store-provider-plugins">Example Secret Store provider plugins</h3>
+
+<p>By writing a Secret Store provider plugin, you can integrate external vault systems, such as Azure Key Vault and Hashicorp Vault, with Algorithmia. <strong>The following are provided as example plugin implementations, but note that they’re included to provide guidance only and aren’t supported or included in the scope of <a href="https://algorithmia.com/developers/support">Algorithmia Support</a>.</strong></p>
+
+<h4 id="hashicorp-vault">Hashicorp Vault</h4>
+
+<h5 id="example-plugin-implementation">Example plugin implementation</h5>
+
+<p>An example implementation of a Hashicorp Vault plugin is available in <a href="https://github.com/algorithmiaio/secret-store-provider-vault">this GitHub repository</a>, the README of which contains instructions for implementing and configuring the plugin. <strong>Note that this is unsupported and provided as an example only.</strong></p>
+
+<h5 id="key-value-pairs">Key-value pairs</h5>
+
+<p>When you <a href="#how-to-import-a-secret-provider-plugin">create a new provider</a> and upload the plugin module, you’ll need to specify the following key-value pairs.</p>
+
+<ul>
+  <li><strong>vault_addr</strong>: the address to reach the vault API</li>
+  <li><strong>vault_token</strong>: the token used to access the vault</li>
+  <li><strong>vault_secret_path</strong>: the path that will be prefixed to all secrets managed by this plugin</li>
+</ul>
+
+<h4 id="azure-key-vault">Azure Key Vault</h4>
+
+<h5 id="example-plugin-implementation-1">Example plugin implementation</h5>
+
+<p>An example implementation of an Azure Key Vault plugin is available in <a href="https://github.com/algorithmiaio/secret-store-provider-azure-key-vault">this GitHub repository</a>, the README of which contains instructions for implementing and configuring the plugin. <strong>Note that this is unsupported and provided as an example only.</strong></p>
+
+<h5 id="key-value-pairs-1">Key-value pairs</h5>
+
+<p>When you <a href="#how-to-import-a-secret-store-provider-plugin">create a new provider</a> and upload the plugin module, you’ll need to specify the following key-value pairs. These are passed directly to the corresponding options of the <a href="https://docs.microsoft.com/en-us/azure/key-vault/secrets/quick-create-java?tabs=azure-cli#authenticate-and-create-a-clientr">Azure KeyVault java SDK</a> <code class="language-plaintext highlighter-rouge">SecretClientBuilder</code> class via the <code class="language-plaintext highlighter-rouge">ClientSecretCredentialBuilder.</code></p>
+
+<ul>
+  <li><strong>vault_url</strong>: the Azure Key Vault URL</li>
+  <li><strong>client_id</strong>: the Azure Client ID (UUID)</li>
+  <li><strong>client_secret</strong>: the Azure token to authenticate to Azure</li>
+  <li><strong>tenant_id</strong>: the Azure tenant ID (UUID)
+*</li>
+</ul>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="active category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li class="active">
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

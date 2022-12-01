@@ -1,0 +1,170 @@
+/* Temporary styles until we can switch all of devcenter to use synapse */
+
+body {
+  min-height: 100vh;
+}
+
+/* Ensures the :target element doesn't render underneath the fixed position header. */
+:target::before {
+  content: '';
+  display: block;
+  height: 57px;
+  margin: -57px 0 0;
+}
+
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#wrapper,
+.dev-center-content-container {
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+#wrapper {
+  margin-top: 2rem;
+}
+
+.syn-header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+}
+
+.show-unauth,
+.show-auth {
+  display: none !important;
+}
+
+.show-auth-nav .show-auth,
+.show-unauth-nav .show-unauth {
+  display: initial !important;
+}
+
+.edit-link {
+  padding-left: 0.25rem;
+  vertical-align: top;
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+/* For Enterprise-only notice */
+#content .notice-enterprise {
+  position: relative;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  line-height: 2;
+  background-color: #fafafa;
+  border: 0.0625rem solid #b0b0b0;
+}
+
+#content .notice-enterprise::before {
+  content: 'Enterprise';
+  margin-right: 0.5rem;
+  background-color: #e56967;
+  color: #ffffff;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  font-size: 80%;
+}
+
+/* New header css */
+
+.syn-page-header {
+  position: relative;
+}
+
+.syn-page-header-nav.mobile-nav-container {
+  height: calc(100vh - 100%);
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  top: 100%;
+  transform: translateX(0);
+  -webkit-transform: translateY(-100vh);
+  transform: translateY(-100vh);
+  width: 100%;
+}
+
+header.syn-page-header.nav-open .syn-page-header-nav.mobile-nav-container {
+  transform: translateX(0);
+}
+
+.open-break {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  top: calc(100% + 2px); /* 2px removes overlap of break bar */
+}
+
+.syn-dropdown.open .open-break {
+  display: block;
+}
+
+.syn-dropdown.open .syn-dropdown-list {
+  margin-top: 14px;
+  right: -50px;
+}
+
+.syn-page-header-content {
+  background-color: white;
+}
+
+.syn-styles-supported .display-inline {
+  display: inline !important;
+}
+
+.syn-styles-supported .display-block {
+  display: block !important;
+}
+
+.syn-styles-supported .display-inline-flex {
+  display: inline-flex !important;
+}
+
+.learn-accordion {
+  max-height: 0;
+  transition: 0.3s ease-out;
+  overflow: hidden;
+}
+
+.accordion-button.accordion-open .learn-accordion {
+  max-height: 500px;
+  padding: 16px 0;
+}
+
+.accordion-caret {
+  transition: 0.4s;
+}
+
+.link-description {
+  text-transform: none;
+}
+
+.accordion-button.accordion-open .accordion-caret {
+  transform: rotate(180deg);
+}
+
+.syn-page-header.nav-open .open-button {
+  display: none;
+}
+
+.syn-page-header.nav-open .close-button {
+  display: block;
+}
+
+.syn-page-header .close-button {
+  display: none;
+}
+
+.syn-page-header .open-button {
+  display: block;
+}
+
+.utility-header {
+  border-bottom: 1px solid #eef0f2;
+}

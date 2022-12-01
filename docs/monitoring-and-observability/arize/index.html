@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Arize - Algorithmia Developer Center</title>
+    <meta name="description" content="Integrating with an ML observability platform">
+    <meta name="keywords" content="integrations, monitoring-observability">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Arize">
+<meta name="twitter:description" content="Integrating with an ML observability platform">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arize">
+<meta property="og:description" content="Integrating with an ML observability platform">
+<meta property="og:url" content="https://algorithmia.com/developers/monitoring-and-observability/arize/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Monitoring and observability</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/language_logos/arize.png" alt="" itemprop="image" class="title-icon">
+
+Arize<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/monitoring-and-observability/arize.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-08-25T16:47:51Z" itemprop="dateModified">August 25, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p>Arize AI is an <a href="https://arize.com/model-monitoring">ML observability</a> platform that helps ML practitioners successfully take models from research to production, with ease. Arize’s automated <a href="https://arize.com/ml-monitoring">model monitoring</a> and analytics platform helps ML teams quickly detect issues the moment they emerge, troubleshoot why they happened, and improve overall model performance. By connecting offline training and validation datasets to online production data in a central inference store, ML teams are able to streamline <a href="https://arize.com/ml-model-failure-modes">model validation</a>, <a href="https://arize.com/take-my-drift-away">drift detection</a>, <a href="https://arize.com/data-quality-monitoring/">data quality checks</a>, and <a href="https://arize.com/monitor-your-model-in-production/">model performance management</a>.</p>
+
+<p>Arize AI acts as the guardrail on deployed AI, providing transparency and introspection into historically black-box systems to ensure more effective and <a href="https://www.forbes.com/sites/aparnadhinakaran/?sh=5d7691024958">responsible AI</a>. To learn more about Arize or ML observability and monitoring, visit their <a href="https://arize.com/blog">blog</a> and <a href="https://arize.com/resource-hub/">resource hub</a></p>
+
+<p>In this guide, we’ll show you how to integrate Arize with Algorithmia so you can bring their real-time monitoring capabilities to your algorithms. To make use of this integration, you’ll need to have an <a href="https://arize.com/request-access/">Arize account</a> configured.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>The workflow documented below contains steps that you’ll complete in a model training environment (e.g., a Jupyter notebook) outside of the Algorithmia platform, steps that you’ll need to complete within Algorithmia, and steps that you’ll complete from an external application once the algorithm is built on Algorithmia. At a high level, the workflow looks like this:</p>
+
+<ol>
+  <li>Train and serialize a model.</li>
+  <li>Upload the model file to a data collection hotsed on Algorithmia or to some other data repository to make it available to be loaded into an algorithm.</li>
+  <li>Create an algorithm to load your model. Within the body of the algorithm, log metrics to Arize using the Arize client.</li>
+  <li>From some external application, call the algorithm for inference. In this guide, we show this step from a Jupyter notebook, but it could be from any external client or application.</li>
+</ol>
+
+<p class="notice-info">The following code is intended to be executed on some training platform external to Algorithmia (e.g., in a Jupyter notebook).</p>
+
+<h2 id="training-and-serializing-your-model">Training and serializing your model</h2>
+
+<p>To demonstrate the end-to-end workflow, we’ll first walk through training a simple scikit-learn model, and then we’ll show how to deploy that model on Algorithmia and send metrics to Arize from within your algorithm.</p>
+
+<p>As with any Algorithmia algorithm, you can use the platform and tools of your choice for training your model. The code below represents one possible training workflow in a Jupyter notebook. To work with this code, see the <a href="https://github.com/algorithmiaio/demo-arize">GitHub repo</a>.</p>
+
+<p>In your training environment, you’ll first need to install these third-party libraries using pip or the tool of your choice.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>algorithmia&gt;=1.0.0,&lt;2.0
+joblib==1.0.1
+numpy&gt;=1.0
+pandas&lt;2.0,&gt;=0.25.3
+scikit-learn&lt;1.0
+shap==0.39.0
+</code></pre></div></div>
+
+<p>Train your model, generate some predictions, and then serialize the trained model.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">Algorithmia</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Load and split data.
+</span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">load_breast_cancer</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s">"feature_names"</span><span class="p">]),</span>
+    <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Fit a simple logistic regression model.
+</span><span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Generate predictions from the model.
+</span><span class="n">y_train_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Create a directory to save serialized model files.
+</span><span class="n">model_dir</span> <span class="o">=</span> <span class="s">"models/"</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">model_dir</span><span class="p">)</span>
+
+<span class="c1"># Serialize the model, adding a unique timestamp for versioning.
+</span><span class="n">model_file</span> <span class="o">=</span> <span class="s">"Algorithmia_Tutorial_Model_{}.joblib"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()))</span>
+<span class="n">model_file_path</span> <span class="o">=</span> <span class="n">model_dir</span><span class="o">+</span><span class="n">model_file</span>
+<span class="n">joblib</span><span class="p">.</span><span class="n">dump</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">model_file_path</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="generating-explainability-values-using-shap">Generating explainability values using SHAP</h2>
+
+<p>SHAP (SHapley Additive exPlanations) is a game theoretic approach to explain the output of any ML model. For in-depth details on how to use the shap library, visit <a href="https://shap-lrjball.readthedocs.io/en/docs_update/generated/shap.Explainer.html#shap-explainer">SHAP Core Explainers</a>. The code below creates a visual to verify that SHAP values are being properly generated for explainability (to generate the plot, you’ll need to install <code class="language-plaintext highlighter-rouge">matplotlib</code>).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">shap</span>
+<span class="k">def</span> <span class="nf">get_shap_values</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_data</span><span class="p">,</span> <span class="n">ExplainerType</span><span class="o">=</span><span class="n">shap</span><span class="p">.</span><span class="n">Explainer</span><span class="p">,</span> <span class="n">show_graph</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="c1"># NOTE: If there are errors, you'll need to manually select the explainer class.
+</span>    <span class="n">explainer</span> <span class="o">=</span> <span class="n">ExplainerType</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_data</span><span class="p">)</span>
+    <span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_data</span><span class="p">)</span>
+
+    <span class="c1"># In development, it can be valuable to check graphs for feature explainability.
+</span>    <span class="k">if</span> <span class="n">show_graph</span><span class="p">:</span>
+        <span class="n">shap</span><span class="p">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">X_data</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s">'feature_names'</span><span class="p">])</span>
+
+    <span class="c1"># NOTE: The Arize API expects a pandas DataFrame of the same shape and with
+</span>    <span class="c1">#       the same column names as the model features.
+</span>    <span class="k">return</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s">"feature_names"</span><span class="p">])</span>
+
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">get_shap_values</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">show_graph</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/arize/shap_values.png" alt="Shap values plot in Jupyter notebook" class="screenshot" /></p>
+
+<h2 id="uploading-your-serialized-model-to-algorithmia">Uploading your serialized model to Algorithmia</h2>
+
+<p>You can use the following code to upload your model to a hosted data collection on Algorithmia, without ever leaving your training environment. Note that if you’re running <a href="/enterprise">Algorithmia Enterprise</a>, you’ll need to specify the API endpoint <code class="language-plaintext highlighter-rouge">CLUSTER_DOMAIN</code> when you create the Algorithmia <code class="language-plaintext highlighter-rouge">client</code> object; if not, delete the references to this variable.</p>
+
+<p>You’ll need to replace the <code class="language-plaintext highlighter-rouge">COLLECTION_OWNER</code> string with the name of the user or org account that owns the data collection. You’ll upload your model to that data collection and in your algorithm source code you’ll replace the <code class="language-plaintext highlighter-rouge">COLLECTION_NAME</code> string with the name of that data collection. The Algorithmia API key you’re using must have write access to this data collection. See our <a href="/developers/data/hosted">Hosted Data</a> docs for information about how to use hosted data collections.</p>
+
+<p>Finally, this code assumes that you’ve set the <code class="language-plaintext highlighter-rouge">ALGORITHMIA_API_KEY</code> environment variable to the value of your Algorithmia API key.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Define where model and sample data will live.
+</span><span class="n">CLUSTER_DOMAIN</span> <span class="o">=</span> <span class="s">"CLUSTER_DOMAIN"</span>
+<span class="n">COLLECTION_OWNER</span> <span class="o">=</span> <span class="s">"COLLECTION_OWNER"</span>
+<span class="n">COLLECTION_NAME</span> <span class="o">=</span> <span class="s">"COLLECTION_NAME"</span>
+
+<span class="n">ALGORITHMIA_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"ALGORITHMIA_API_KEY"</span><span class="p">)</span>
+
+<span class="c1"># Create a hosted data collection if it doesn't already exist.
+</span><span class="n">client</span> <span class="o">=</span> <span class="n">Algorithmia</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="n">ALGORITHMIA_API_KEY</span><span class="p">,</span> <span class="s">"https://"</span><span class="n">CLUSTER_DOMAIN</span><span class="p">)</span>
+<span class="n">collection_uri</span> <span class="o">=</span> <span class="s">"data://"</span><span class="o">+</span><span class="n">COLLECTION_OWNER</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">COLLECTION_NAME</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nb">dir</span><span class="p">(</span><span class="n">collection_uri</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">collection</span><span class="p">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">collection</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
+
+<span class="c1"># Upload model file and test data to data collection.
+</span><span class="n">client</span><span class="p">.</span><span class="nb">file</span><span class="p">(</span><span class="n">collection_uri</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">model_file</span><span class="p">).</span><span class="n">putFile</span><span class="p">(</span><span class="n">model_file_path</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="notice-info">The following represents the algorithm code that you would deploy on Algorithmia, not the training platform used above.</p>
+
+<h2 id="setting-up-your-algorithmia-environment-for-model-deployment">Setting up your Algorithmia environment for model deployment</h2>
+
+<h3 id="create-an-algorithm">Create an algorithm</h3>
+
+<p>To begin, on Algorithmia you’ll need to <a href="/developers/algorithm-development/your-first-algo">create an algorithm</a> using an environment with Python 3.6 or later.</p>
+
+<h3 id="set-arize-secrets-in-the-secret-store">Set Arize secrets in the Secret Store</h3>
+
+<p>In order to log metrics to Arize, you’ll need a pair of Arize API keys, which are accessible through the <a href="https://app.arize.com/admin">Arize Settings</a> page. In your newly create algorithm profile’s <strong>Settings</strong> tab, set <code class="language-plaintext highlighter-rouge">ARIZE_API_KEY</code> and <code class="language-plaintext highlighter-rouge">ARIZE_ORG_KEY</code> as secrets so that they’ll be made accessible to the algorithm as environment variables. For more information on how to set secret values, see our <a href="/developers/platform/secret-store">Secret Store</a> documentation.</p>
+
+<h3 id="define-the-algorithms-requirements">Define the algorithm’s requirements</h3>
+
+<p>In your algorithm’s <code class="language-plaintext highlighter-rouge">requirements.txt</code> file, add the Arize Python library to add the monitoring capabilities provided by Arize, as well as the <code class="language-plaintext highlighter-rouge">shap</code> library and the standard ML dependencies <code class="language-plaintext highlighter-rouge">joblib</code> and <code class="language-plaintext highlighter-rouge">pandas</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>algorithmia&gt;=1.0.0,&lt;2.0
+arize&gt;=2.1.6
+joblib==1.0.1
+pandas&lt;2.0,&gt;=0.25.3
+shap==0.39.0
+</code></pre></div></div>
+
+<p>If you’re using the Web IDE, the requirements file can be accessed through the <strong>Dependencies</strong> button.</p>
+
+<p>Recall from the code samples above that if you’ll be interacting with Algorithmia from outside of the Web IDE, you must also set the <code class="language-plaintext highlighter-rouge">ALGORITHMIA_API_KEY</code> environment variable with the value of your Algorithmia API key. This API key only needs to have read access.</p>
+
+<h3 id="write-the-algorithms-source-code-build-and-then-publish">Write the algorithm’s source code, build, and then publish</h3>
+
+<p>This algorithm establishes a connection with Arize using the Arize <code class="language-plaintext highlighter-rouge">Client</code>, and then uses the <code class="language-plaintext highlighter-rouge">Client</code>’s <code class="language-plaintext highlighter-rouge">log_bulk_predictions()</code> and <code class="language-plaintext highlighter-rouge">log_bulk_shap_values()</code> methods to send Arize the predictions and SHAP values for monitoring. Note that in the code below you must replace the <code class="language-plaintext highlighter-rouge">COLLECTION_OWNER</code> and <code class="language-plaintext highlighter-rouge">COLLECTION_NAME</code> strings with the name of the account that owns the collection where the mode is stored, and the collection name.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+
+<span class="kn">import</span> <span class="nn">Algorithmia</span>
+<span class="kn">from</span> <span class="nn">arize.api</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">arize.types</span> <span class="kn">import</span> <span class="n">ModelTypes</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">shap</span>
+
+<span class="c1"># Define where model and sample data live.
+</span><span class="n">COLLECTION_OWNER</span> <span class="o">=</span> <span class="s">"COLLECTION_OWNER"</span>
+<span class="n">COLLECTION_NAME</span> <span class="o">=</span> <span class="s">"COLLECTION_NAME"</span>
+
+<span class="c1"># Specify the exact model version your algorithm will be calling.
+# The timestamp (`1617923983`) will be different for your model.
+</span><span class="n">MODEL_NAME</span> <span class="o">=</span> <span class="s">"Algorithmia_Tutorial_Model_1617923983.joblib"</span>
+
+<span class="c1"># Load keys from environment variables and instantiate clients.
+</span><span class="n">ARIZE_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"ARIZE_API_KEY"</span><span class="p">)</span>
+<span class="n">ARIZE_ORG_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"ARIZE_ORG_KEY"</span><span class="p">)</span>
+<span class="n">ALGORITHMIA_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"ALGORITHMIA_API_KEY"</span><span class="p">)</span>
+
+<span class="n">arize_client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">organization_key</span><span class="o">=</span><span class="n">ARIZE_ORG_KEY</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">ARIZE_API_KEY</span><span class="p">)</span>
+<span class="n">algo_client</span> <span class="o">=</span> <span class="n">Algorithmia</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="n">ALGORITHMIA_API_KEY</span><span class="p">,</span> <span class="n">CLUSTER_DOMAIN</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load_model</span><span class="p">(</span><span class="n">data_uri</span><span class="p">):</span>
+    <span class="s">"""Load sklearn model from data collection and return model object."""</span>
+    <span class="n">model_path</span> <span class="o">=</span> <span class="n">algo_client</span><span class="p">.</span><span class="nb">file</span><span class="p">(</span><span class="n">data_uri</span><span class="p">).</span><span class="n">getFile</span><span class="p">().</span><span class="n">name</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="c1"># Load model.
+</span><span class="n">model_file_path</span> <span class="o">=</span> <span class="s">"data://"</span><span class="o">+</span><span class="n">COLLECTION_OWNER</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">COLLECTION_NAME</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">MODEL_NAME</span> 
+<span class="n">clf</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="n">model_file_path</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="c1"># Read JSON input to pd.DataFrame.
+</span>    <span class="n">X_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_json</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+    <span class="c1"># Generate new predictions in production.
+</span>    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_data</span><span class="p">)</span>
+
+    <span class="n">shap_values</span> <span class="o">=</span> <span class="n">shap</span><span class="p">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_data</span><span class="p">).</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_data</span><span class="p">)</span>
+    <span class="n">shap_values</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">X_data</span><span class="p">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="n">ids</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="p">.</span><span class="n">uuid4</span><span class="p">())</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_data</span><span class="p">))])</span>
+
+    <span class="c1"># Log prediction data to Arize, passing prediction IDs to match with actuals.
+</span>    <span class="n">log_responses</span> <span class="o">=</span> <span class="n">arize_client</span><span class="p">.</span><span class="n">bulk_log</span><span class="p">(</span>
+        <span class="n">model_id</span><span class="o">=</span><span class="s">"Algorithmia_Tutorial_Model"</span><span class="p">,</span>
+        <span class="n">model_version</span><span class="o">=</span><span class="s">"1.0"</span><span class="p">,</span>
+        <span class="n">model_type</span><span class="o">=</span><span class="n">ModelTypes</span><span class="p">.</span><span class="n">BINARY</span><span class="p">,</span>
+        <span class="n">features</span><span class="o">=</span><span class="n">X_data</span><span class="p">,</span>
+        <span class="n">prediction_ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
+        <span class="n">prediction_labels</span><span class="o">=</span><span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_pred</span><span class="p">),</span>
+        <span class="n">shap_values</span><span class="o">=</span><span class="n">shap_values</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Return prediction data.
+</span>    <span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">ids</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="s">"pred_id"</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">to_json</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="notice-info">The following code is intended to show how you’d call the algorithm for inference from an external application. Here, we’re demonstrating calling the algorithm from the same external environment (in our case a Jupyter notebook) that was used above. This code implies that the algorithm has been built on Algorithmia and that the same objects are available in the global namespace from above.</p>
+
+<h2 id="calling-your-model-for-inference-from-an-external-application">Calling your model for inference from an external application</h2>
+
+<p>Once you’ve built your algorithm, you can call it using its hash version to test it out; this will be a value like <code class="language-plaintext highlighter-rouge">f35025657bdc37eb0d6ffeed62b0539ee21c8b4e</code>. If you build your algorithm in the Algorithmia Web IDE, this hash is displayed in the test console output upon successful build completion, but it’s also available in the “Builds” tab on the algorithm’s homepage. You can also publish the algorithm, in which case you’ll be able to call the algorithm using a semantic version such as <code class="language-plaintext highlighter-rouge">1.0.0</code>.</p>
+
+<p>In the code below, substitute the appropriate strings for <code class="language-plaintext highlighter-rouge">ALGO_OWNER</code> (the user or org account under which the algorithm was created), <code class="language-plaintext highlighter-rouge">ALGO_NAME</code> (the name of the algorithm), and <code class="language-plaintext highlighter-rouge">ALGO_VERSION</code> (the hash version or semantic version described above). As in the code above when you originally uploaded your model to Algorithmia, the <code class="language-plaintext highlighter-rouge">CLUSTER_DOMAIN</code> variable should be deleted if you aren’t using an Enterprise cluster. The optional <code class="language-plaintext highlighter-rouge">timeout</code> parameter can be used to specify the <a href="/developers/api/?python#invoke-an-algorithm">timeout</a> for the call, in seconds.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">Algorithmia</span>
+
+<span class="c1"># Define variables to uniquely identify algorithm.
+</span><span class="n">ALGO_OWNER</span> <span class="o">=</span> <span class="s">"ALGO_OWNER"</span>
+<span class="n">ALGO_NAME</span> <span class="o">=</span> <span class="s">"ALGO_NAME"</span>
+<span class="n">ALGO_VERSION</span> <span class="o">=</span> <span class="s">"ALGO_VERSION"</span>
+
+<span class="c1"># Build algorithm identifier and instantiate client.
+</span><span class="n">ALGO_ENDPOINT</span> <span class="o">=</span> <span class="n">ALGO_OWNER</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">ALGO_NAME</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">ALGO_VERSION</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Algorithmia</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="n">ALGORITHMIA_API_KEY</span><span class="p">,</span> <span class="s">"https://"</span><span class="o">+</span><span class="n">CLUSTER_DOMAIN</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">algo</span><span class="p">(</span><span class="n">ALGO_ENDPOINT</span><span class="p">)</span>
+
+<span class="c1"># Optionally set timeout parameters for testing purposes.
+</span><span class="n">algo</span><span class="p">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="c1"># Create demo data, serialize to JSON, and pipe into algorithm.
+</span><span class="n">_</span><span class="p">,</span> <span class="n">X_test_2</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">y_test_2</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">.</span><span class="n">to_json</span><span class="p">()</span>
+<span class="n">result_json</span> <span class="o">=</span> <span class="n">algo</span><span class="p">.</span><span class="n">pipe</span><span class="p">(</span><span class="nb">input</span><span class="p">).</span><span class="n">result</span>
+
+<span class="c1"># Just like input, output is JSON object, so convert back into pd.DataFrame.
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">result_json</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Once you’ve incorporated these Arize logging methods and published your algorithm, every execution of your algorithm will send data to Arize.</p>
+
+<p>In addition to this integration with Arize, we integrate with other platforms, including training platforms and other monitoring and observability platforms; see our <a href="/developers/integrations#monitoring-and-observability">Integrations</a> page for information.</p>
+
+<p>If you’re using Algorithmia Enterprise, you have access to an admin panel where you can view usage metrics at the cluster, user account, and algorithm level. See the <a href="/developers/platform/advanced-governance-reporting">Advanced Governance Reporting</a> docs for more information. You can also opt in to our Insights feature in your algorithms, which enables you to publish your inference data to a Kafka topic which you can then subscribe to from external observability platforms. See <a href="/developers/integrations/insights">Algorithmia Insights</a> for more information.</p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li class="active">
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

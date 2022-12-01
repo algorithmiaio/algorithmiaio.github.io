@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Algorithmia Developer Center</title>
+  <generator uri="https://github.com/jekyll/jekyll">Jekyll v4.2.1</generator>
+    <icon>https://algorithmia.com/apple-touch-icon-precomposed.png</icon>
+  <subtitle>Resources tutorials and guides for Algorithmia.</subtitle>
+  <link href="https://algorithmia.com/atom.xml" rel="self"/>
+  <link href="https://algorithmia.com/" rel="alternate" type="text/html"/>
+  <updated>2022-02-05T02:31:38+00:00</updated>
+  <id>https://algorithmia.com/</id>
+  <author>
+    <name>Algorithmia</name>
+    <uri>https://algorithmia.com/</uri>
+    <email>mia@algorithmia.com</email>
+  </author>
+
+  
+  
+</feed>

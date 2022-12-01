@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Release Notes - Algorithmia Developer Center</title>
+    <meta name="description" content="Find out what's changed in recent versions of Algorithmia.">
+    <meta name="keywords" content="alg-dev-getting-started, app-dev-getting-started">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Release Notes">
+<meta name="twitter:description" content="Find out what's changed in recent versions of Algorithmia.">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Release Notes">
+<meta property="og:description" content="Find out what's changed in recent versions of Algorithmia.">
+<meta property="og:url" content="https://algorithmia.com/developers/release-notes/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/icons/algo.svg" alt="" itemprop="image" class="title-icon">
+
+Release Notes<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/release-notes.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-11-09T19:34:20Z" itemprop="dateModified">November 09, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<h2 id="q3-2021-release-notes">Q3 2021 Release Notes</h2>
+
+<p class="notice-info">The following features are available in Algorithmia LTS version 21.1.13.</p>
+
+<h3 id="new-api-documentation">New API Documentation</h3>
+
+<p>We’ve migrated our static API documentation to a framework based on the open-source tool <a href="https://github.com/Redocly/redoc">Redoc</a>. The new API docs are rendered dynamically from your cluster-specific API spec file at <code class="language-plaintext highlighter-rouge">https://CLUSTER_DOMAIN/v1/openapispec</code>. When you view your cluster-specific API docs at <code class="language-plaintext highlighter-rouge">https://CLUSTER_DOMAIN/developers/api</code>, you’ll now be viewing only the functionality available in your deployed version of Algorithmia. As before, cURL and Python code samples are shown for select endpoints.</p>
+
+<p>The new docs are available beginning in Algorithmia version 21.1.13 and immediately at our <a href="https://algorithmia.com/developers/api">public API docs site</a>. Note that the public API docs include only a subset of endpoints available to enterprise customers, as not all features are included in our multi-tenant offering.</p>
+
+<h2 id="q2-2021-release-notes">Q2 2021 Release Notes</h2>
+
+<p class="notice-info">The following features are available in Algorithmia LTS version 21.0.</p>
+
+<h3 id="new-platform-guides">New Platform Guides</h3>
+
+<h4 id="glossary">Glossary</h4>
+
+<p>We’ve created a brand new <a href="/developers/glossary">Glossary</a> page to help explain the technical terminology we use across our platform. In addition to describing various Algorithmia-specific features, the glossary provides definitions for some common terms used more generally in the industry, so that you can better understand the language of MLOps. Where appropriate, glossary terms also define string placeholders that we’ll be incorporating into code samples across our documentation and user interface in order to provide a clear mapping between the glossary terms and the code you use to interact with resources on our platform.</p>
+
+<h4 id="integrations">Integrations</h4>
+
+<p>Our brand new <a href="/developers/integrations">Integrations</a> page contains descriptions of Algorithmia’s many documented integrations with third-party tools, services, and frameworks. The page serves as a starting point for understanding the natively integrated features that are available to you on the Algorithmia platform, as well as some of the patterns we’ve documented for using services and tools that don’t have built-in integrations. From this page you can quickly access relevant documentation and assess which services might be most suitable for your Algorithmia workflows based on your current tooling and IT considerations.</p>
+
+<hr />
+
+<h3 id="third-party-secret-provider-plugins">Third-Party Secret Provider Plugins</h3>
+
+<p>We’re excited to announce that we now have documented example implementations of <a href="/developers/administration/admin-panel/secret-store#secret-provider-plugins">secret provider plugins</a> for Hashicorp Vault and Azure Key Vault. This enables Algorithmia Enterprise customers to use their existing accounts in these third-party vaulting systems to store and manage their sensitive data, and for their Algorithmia algorithms to access those secrets at run time. To use this feature, a cluster administrator must first configure the new secret provider by uploading the secret provider plugin module through the Secret Store page in the admin panel.</p>
+
+<hr />
+
+<h3 id="algorithm-execution-errors">Algorithm Execution Errors</h3>
+
+<p>Non-admin users can now view algorithm execution errors from the last seven days for specific algorithms or from all algorithms they’ve called. These error logs can also be retrieved through the Algorithmia API.</p>
+
+<p>All errors are captured and included in the error log, allowing users to debug with a single glance. Errors from algorithms called in a pipeline are bubbled up to the top-level calling algorithm. Error details include timestamp, error type, execution metadata, stacktrace, and partial algorithm input.</p>
+
+<p>This feature is disabled by default and can be enabled globally on an Algorithmia cluster by a cluster administrator.</p>
+
+<h4 id="algorithm-specific-errors">Algorithm-specific errors</h4>
+
+<p>Each algorithm’s execution errors are displayed on the <a href="/developers/platform/algorithm-profile#errors">algorithm’s profile page</a> in a dedicated tab. Errors are only visible to users who are viewing an algorithm they own or that’s owned by an organization of which they’re a member.</p>
+
+<h4 id="account-level-errors">Account-level errors</h4>
+
+<p>Algorithm execution errors are displayed on each user’s <a href="/developers/platform/account-profile#errors">account profile page</a> in a dedicated tab. These errors are only visible to users viewing their own profile page (i.e., the profile page for the account into which they’re authenticated), and are only shown for algorithms that they’ve called using an API key they own.</p>
+
+<hr />
+
+<h3 id="advanced-reporting-for-governance">Advanced Reporting for Governance</h3>
+
+<p>The Advanced Reporting for Governance feature provides administrators the ability to view resource usage on the platform. Usage can be viewed at four different levels depending on your access permissions. If you’re an organization administrator, you can explore reporting at the organization and account level, and even down to the individual algorithm level. Cluster administrators are granted all of the above permissions, as well as being able to view reporting at the cluster level. We’ll start at the top level of the cluster roll-up.</p>
+
+<h4 id="cluster-level-reporting">Cluster-level reporting</h4>
+
+<p>Only cluster administrators have access to <a href="/developers/administration/admin-panel/governance-reporting">cluster-level reporting</a>. To use this feature, navigate to the “Governance Reporting” page in the administrator panel.</p>
+
+<p>As a first step, we recommend you add your hardware cost rate estimates to ensure you get accurate cost estimates based on your resource usage. To do this, click the “Resource Cost Rates” button in the top-right corner to view the values. To add or modify existing values, click the “Edit Values” button and input your values in the form. Submit your changes when you’re done and you’ll see cost estimates displayed in the report. Once you’re satisfied with the cost estimates, you can dive into the data. Note that only cluster administrators have access to set or modify cost rates, which are set at the cluster level.</p>
+
+<p>On the Advanced Reporting page, you’ll notice dropdowns to specify exactly which data you want to see. The first dropdown determines the date range, the next two determine how to group and filter the data, and the final dropdown determines the direction of ordering. These dropdowns determine which data are displayed in the plot as well as how those data are ordered in the table below. You’ll notice many grouping and filtering options available to help you determine the “who”, “what”, “when”, “how much”, and “how long” of platform resource usage. Finally, if you need to save, distribute, or export these metrics for use in another application, there’s a button to download a CSV of all data for the selected time period.</p>
+
+<h4 id="organization-level-reporting">Organization-level reporting</h4>
+
+<p>Organization administrators have a subset of the permissions granted to cluster administrators. Namely, they can view resource usage data for the organizations for which they’re an administrator, the accounts that are members of those organizations, and the algorithms owned by those organizations.</p>
+
+<p>To <a href="/developers/platform/advanced-governance-reporting">view Advanced Reporting at the organization level</a>, navigate to the organization’s profile page and click on the “Reporting” tab, which is only visible to administrators. Here you’ll see the same options for filtering and displaying data as listed above for cluster-level reporting, but it’ll be pre-filtered to only show data for that specific organization.</p>
+
+<p>To view Advanced Reporting at the account level, navigate to the account’s profile page and click on the “Reporting” tab, which is only visible to administrators. Here, you’ll see the same options for filtering and displaying data but it’ll be pre-filtered to only show data for that specific account.</p>
+
+<p>To view Advanced Reporting at the algorithm level, navigate to the algorithm’s overview page and click on the “Reporting” tab, which is only visible to administrators. Here, you’ll see the same options for filtering and displaying data but it’ll be pre-filtered to only show data for that specific algorithm.</p>
+
+<hr />
+
+<h3 id="gitlab-bitbucket-cloud-and-bitbucket-server-source-code-management-integrations">GitLab, Bitbucket Cloud, and Bitbucket Server Source Code Management Integrations</h3>
+
+<p>We’ve added three new source code management (SCM) integrations: GitLab, Bitbucket Cloud, and Bitbucket Server. These new integrations expand on our current SCM integration with GitHub Enterprise. By using a single source of truth for your machine learning codebase, you can now take advantage of all the enhanced governance and management features that GitLab and Bitbucket Cloud’s CI/CD workflows offer, and with the Bitbucket Server integration, you can do your development work in the SCM system that you’re most comfortable using.</p>
+
+<p>Once your cluster administrator <a href="/developers/administration/admin-panel/source-code-management#creating-scm-configurations">configures a connection to an SCM provider</a>, you can immediately create algorithms backed by a Git repository on that provider.</p>
+
+<p>With the implementation of GitLab, Bitbucket Cloud, and Bitbucket Server SCM integrations, users can now easily connect their hosted repositories to their Algorithmia accounts, which provides a seamless workflow from development to production. Customers that use these third-party SCM providers can leverage engineering best practices such as code reviews and dependency audits to ensure consistencies between development and production code, and CI/CD workflows to increase automation and testing of MLOps pipelines.</p>
+
+<hr />
+
+<h3 id="algorithmia-event-flows-with-kafka">Algorithmia Event Flows with Kafka</h3>
+
+<p>We’ve just released a new way to create event-driven algorithm workflows using Apache Kafka, a cloud-agnostic open-source message broker. Now your team’s data scientists and application developers can easily enable Kafka event-driven jobs in a user-friendly workflow while providing your cluster administrators with more granular control over who has access to connect to your Kafka broker. Among other things, Algorithmia Event Flows enable automation of workflows from model monitoring to retraining, enabling you to optimize the performance of your models in production. If you don’t already use Kafka, contact us to learn more about your options for getting started.</p>
+
+<p>To enable event-driven workflows using Kafka, a cluster administrator must first configure a connection to a Kafka broker—this can be any externally hosted Kafka cluster. Once that step is completed, any member of an organization can create dynamic event-driven algorithm workflows. For instance, if you have a pipeline that requires data pre-processing, you can use Algorithmia Event Flows to run a data transformation algorithm on new data as it streams into your Kafka topic. That same algorithm can then publish the processed data to a completely different Kafka topic. Further down the pipeline, you can set up another algorithm to subscribe to that second topic, and it will ingest the cleaned data as its payload.</p>
+
+<p>Application developers and data scientists can now easily enable Kafka event-driven algorithm workflows to create rich data and inference pipelines. Using our streamlined user interface, they can view the available event workflows that their Algorithmia cluster administrator has configured for their organization-owned algorithms.</p>
+
+<p>Information security teams can be confident that the credentials used to connect to their Kafka brokers are only used by their Algorithmia cluster administrators, and that no other user can connect to or configure that broker.</p>
+
+<p>Cluster administrators will also have a rich user interface to view the available organization-owned algorithms that are on the cluster and restrict the ability of specific algorithms to subscribe or publish data to a Kafka Topic to enhance the ability to control and audit data and machine learning pipelines.</p>
+
+<hr />
+
+<h2 id="q1-2021-release-notes">Q1 2021 Release Notes</h2>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>Our latest release includes a variety of new features that primarily focus on improving the governance and security of machine learning operations (MLOps) in a wide range of enterprise environments. These features further bolster our commitment to providing enterprise-grade security and governance across all data, models, and infrastructure. With the new features, enterprise customers will also get expanded capabilities to help them monitor and optimize the performance of their ML models in production. These new features are available to all Algorithmia Enterprise customers.</p>
+
+<h3 id="enhanced-security-features">Enhanced security features</h3>
+
+<p>We’re proud to share that we’ve expanded our security features to provide even greater protection for your business.</p>
+
+<h4 id="secret-store-for-external-resources">Secret Store for external resources</h4>
+
+<p>We’ve created a vault-based Secret Store, enabling you to create and manage credentials in a central location for access to data sources and web services. This will allow you to provide access to resources without the need to expose credentials or share them amongst the users that require access to sensitive information. Additionally, integrations with third-party vault tools to integrate with your internal vault implementation are being added.</p>
+
+<h4 id="sso-upgrades">SSO upgrades</h4>
+
+<p>We now offer support for single sign-on (SSO) and Security Assertion Markup Language (SAML), allowing for a user’s login credentials to provide them access to multiple resources. This makes it possible for identity providers to securely pass authenticated identities and their attributes to service providers.</p>
+
+<p>We’ve also added Active Directory (AD) group synchronization to enable a centralized location for administering a user’s permissions and providing access to shared resources. This simplifies identity and access management, allowing for synchronization of organization membership, and granting of permission to resources on the cluster, based solely on the tags present in a user’s SAML assertion.</p>
+
+<p>Lastly, new JSON Web Tokens (JWT) now provide verification through JSON Web Key Sets (JWKS) to support transmitting data between parties as a JSON object. This will provide users with the ability to authenticate via single sign-on, and then use a JWT to make authenticated requests to resources on the cluster.</p>
+
+<hr />
+
+<h2 id="q3-2020-release-notes">Q3 2020 Release Notes</h2>
+
+<h3 id="introduction-1">Introduction</h3>
+
+<p>This is an exciting release for Algorithmia Enterprise as we continue to deliver new and significant capabilities for our customers. Notably, this release focuses on advanced model governance and operational management with Algorithmia Insights. Additionally, customers can reach even higher scale, performance, and infrastructure efficiency with our new autoscaler and scheduler technology.</p>
+
+<h3 id="algorithmia-insights">Algorithmia Insights</h3>
+
+<p>Algorithmia Insights is a flexible integration solution for ML model performance monitoring. It provides access to algorithm inference and operational metrics, making it easy to integrate into any monitoring, reporting, and alerting tool.</p>
+
+<p>Algorithmia Insights allows customers to emit a rich metrics payload from every prediction, including model operational metrics (execution time, timestamp, request ID) and customized model inference metrics such as data inputs and prediction outputs. Customers can then integrate those metrics via Kafka into nearly any external logging, monitoring, or data visualization system.</p>
+
+<h4 id="enabling-algorithmia-insights">Enabling Algorithmia Insights</h4>
+
+<p>Algorithmia Insights is available to Enterprise customers for deployments scheduled after the feature release date of October 30 and will be included in Enterprise subscriptions.</p>
+
+<p>To enable Algorithmia Insights, your cluster administrator can follow the <a href="/developers/algorithmia-enterprise/algorithmia-insights">administrator docs</a> to learn how to configure the connection to Kafka. After your cluster administrator has connected to Kafka, algorithm creators can enable Algorithmia Insights with a click of a checkbox when publishing their algorithm. It’s that easy to then view all the algorithm metrics that have been enabled in monitoring and alerting tools such as DataDog, InfluxDB, New Relic, Grafana, Kibana, and more.</p>
+
+<h4 id="monitoring-alerting-and-taking-action-based-on-algorithmia-insights">Monitoring, alerting, and taking action based on Algorithmia Insights</h4>
+
+<p>Many organizations today don’t have the ability to monitor model performance, and those that do use a patchwork of disparate tools and manual processes for monitoring and reporting on ML model performance in production often without critical data required to satisfy stakeholder requirements. Algorithmia Insights enables you to:</p>
+
+<ul>
+  <li>Identify and correct model drift, data skews, and negative feedback loops</li>
+  <li>Quickly detect underperforming models and mitigate model decay</li>
+  <li>Identify and alert when models need to be retrained</li>
+  <li>Comply with internal and external audits and regulations</li>
+  <li>Reduce risk of model failure</li>
+</ul>
+
+<p>With Algorithmia Insights, you can use the monitoring and alerting tools of your choice, with no vendor lock-in. You have control over the data you choose to emit, and the system you connect to. You can access your metrics via Kafka and connect it to a real-time monitoring or alerting tool, or check out <a href="https://docs.confluent.io/3.0.1/connect/intro.html#:~:text=Kafka%20Connect%20is%20a%20tool,into%20and%20out%20of%20Kafka.">Kafka Connect</a> to learn how to export your metrics offline to do analysis later.</p>
+
+<h3 id="new-autoscaler-and-scheduler">New autoscaler and scheduler</h3>
+
+<p>What has set us apart from other ML platforms in the market today is our ability to manage algorithm execution at scale. With this release, we have taken scaling to a whole new level by providing more robust worker management and algorithm execution pipelining, resulting in dramatically higher throughput and efficient worker utilization. Along with these performance and operational improvements comes new administrator pages, Grafana dashboards, and alerts.</p>
+
+<p>Administrators will now be able to:</p>
+
+<ul>
+  <li>View workloads to optimize performance</li>
+  <li>View execution details in the new Algorithm Execution admin page</li>
+  <li>Filter and sort workers</li>
+  <li>View GPU memory usage for an algorithm</li>
+  <li>Utilize new alerts to ensure thresholds are being enforced</li>
+  <li>Configure GPU limits</li>
+</ul>
+
+<p>This release will provide more insight into algorithm execution as well as the controls to fine-tune the platform to meet performance needs. This will result in higher throughputs with existing hardware, as well as decreases in cold start latency.</p>
+
+<hr />
+
+<h2 id="q2-2020-release-notes">Q2 2020 Release Notes</h2>
+
+<h3 id="introduction-2">Introduction</h3>
+
+<p>We are pleased to present several new features and upgrades this quarter, most notably around security and governance of machine learning systems. This release showcases advanced security options that enable customers to operate Algorithmia in restrictive environments, including AWS C2S, AWS GovCloud, VMware, authenticated proxies, customer-provided OS images, private Docker registries, private dependency mirrors, and private certificate authorities.</p>
+
+<p>This new version of Algorithmia Enterprise also includes support for the latest AWS and Azure GPU hardware, user local debugging improvements, and integration to PyCharm.</p>
+
+<p>Algorithmia now allows local debugging in the desktop tools developers use today. We want our users’ workflows to be seamless: they can write and run local tests for algorithms, pass local data files as input to algorithms, and integrate with development environments like PyCharm. Integrations like these allow developers to use flexible tooling and develop faster with fewer defects.</p>
+
+<h3 id="azure-event-listeners">Azure event listeners</h3>
+
+<p>This feature enables event listeners on Azure clusters that listen to Azure Service Bus queues and is designed for enterprise customers using Azure who are looking to integrate Service Bus queue triggered execution capabilities into their ecosystem. Event listeners allow the user to trigger algorithm executions with payloads from messages in an Azure Service Bus queue.</p>
+
+<p>Enterprise customers will see the feature enabled with their quarterly update. All necessary configurations are documented in the Azure Listeners section in our dev center.</p>
+
+<p>The feature is in the main algorithm dashboard under tab event listeners, and listeners can be created from the “Create New” dropdown menu at top right. An event listener is created for a published version of the algorithm. The listener is listening to a specified queue and whenever a message is received from the queue, the listener executes the algorithm with the message payload as the input.</p>
+
+<h3 id="algorithm-environments">Algorithm environments</h3>
+
+<p>We have improved the way algorithm runtime environments are built, tested, and provided to users, by creating a new system to deliver environments and languages that can be executed within an Algorithmia cluster; we’ve ensured that these environments can be executed in any enterprise cluster.</p>
+
+<h4 id="using-the-feature">Using the feature</h4>
+
+<h5 id="for-admins">For admins</h5>
+
+<p>Algorithm Environments are maintained by Algorithmia, and can be imported into a given cluster through the admin panel. Cluster administrators can choose to import any environment available in the list to their cluster based on the needs of their users and security concerns for the operator.</p>
+
+<p>Admins will see a new page for Algorithm Environments, which will allow them to import these new languages.</p>
+
+<p>Once logged into Algorithmia, navigate to the Admin Panel and click on “Add Environment” to see the list of available environments; then click on the desired environment(s) to add, and then click “Add Environment” to import it.</p>
+
+<p>By selecting and adding the environment, your users will be able to create algorithms using that installed environment. If you have not added the environment from the list, your users will not be able to view that environment or create an algorithm using that environment.</p>
+
+<p>The specified environment will now be available in the list of environments, and details can be viewed by clicking on a specific one.</p>
+
+<h5 id="non-admins">Non admins</h5>
+
+<p>When making new algorithms, users will see language options that are now called Environments.</p>
+
+<h3 id="improved-debugging-of-algorithms-local-and-ui">Improved debugging of algorithms (local and UI)</h3>
+
+<p>This feature improves users’ local debugging experience by updating error messages, enabling users to write and run local tests for cloned algorithms, and passing in local data files as input to the algorithms. Our new integration with PyCharm means users can also use an effective and familiar debugging tool for algorithm development.</p>
+
+<p>Enabling users to pass in their local data file into the Python Client will make it faster to test algorithms locally before production.</p>
+
+<h4 id="using-the-feature-1">Using the feature</h4>
+
+<p>Set up a local development environment, including installing the Algorithmia Python Client in PyCharm. Full directions for integrating Algorithmia with PyCharm is in the Developer Center <a href="/developers/algorithm-development/advanced-algorithm-development/pycharm">under Advanced Algorithm Development.</a></p>
+
+<p>Clone an algorithm from GitHub or Algorithmia in PyCharm, pass in the local file path when running it for testing, then write and run the unit test file.</p>
+
+<h3 id="latest-hardware-support">Latest hardware support</h3>
+
+<p>With advances in machine learning, we need to provide our enterprise customers with the latest hardware to take advantage of their cutting-edge capabilities. We are proud to have an initiative that evaluates and supports the latest hardware to meet the demands and performance our customers have come to expect. We are excited to announce the next generation of hardware support with even more to come very soon.</p>
+
+<p>Below comprises the list of new instances:</p>
+
+<ul>
+  <li>AWS general purpose EC2 M5 instance designed for the most demanding workloads. M5’s provide a 14-percent better price/performance over the M4 instances on a per-core basis.</li>
+  <li>AWS EC2 P3 instances provide high-performance GPUs explicitly designed to accelerate machine learning, using up to one petaflop of performance per instance.</li>
+  <li>AWS EC2 G4 instances provide the most cost-effective AWS instance for deploying machine learning models in production. G4 instances utilize NVIDIA T4 GPUs and Cascade Lake CPUs optimized for machine learning inference to reduce latency.</li>
+  <li>Azure NCsv2-series virtual machines are a new addition to offered GPUs (NVIDIA Tesla P100), providing more than 2 times the current NC-series in computational performance.</li>
+  <li>Azure’s NCsv3-series virtual machines provide the next generation GPUs (NVIDIA Tesla V100) of the NCsv2-series GPUs (NVIDIA Tesla P100), with 1.5 times faster computational performance.</li>
+  <li>Azure’s NDs-series virtual machine is a new GPU addition, specially designed for AI and deep learning workloads with larger memory sizes (24gb) powered by NVIDIA Tesla P40 GPUs.</li>
+</ul>
+
+<h3 id="sso-enhancements">SSO enhancements</h3>
+
+<p>Algorithmia supports several authentication options for Enterprise customers. Additional configuration options are now available for integration with Single Sign On solutions via OpenID Connect and LDAP.</p>
+
+<p>Enterprise customers who integrate with a Single Sign On solution via OpenID Connect or LDAP can now also choose whether to restrict browsing of the platform only to authenticated users, and whether to disable local username/password authentication.</p>
+
+<h3 id="unilog">UNILOG</h3>
+
+<p>Want to know what’s going on in your cluster? Need access to raw information for debugging incidents? Is proactive alerting of errors to your cluster admins important? Ever wish as a cluster admin that you could hook into your existing tools for collecting and aggregating log data? Have you ever hoped you could see product usage and trends?</p>
+
+<p>UNILOG is an administration tool for easily accessing debug log information (or flowing into an external log collection system) for the Algorithmia platform and compute infrastructure. Not only will UNILOG give you a deeper understanding of what is happening in the Algorithmia platform, but it will also provide our on-call staff the ability to assist our enterprise customers in fine-tuning or resolving any issue that may arise. Another part of it is a saved query system that provides an automated way to execute queries on log data to generate metrics and alerts. UNILOG has a web-based user interface for viewing and searching debug log information for the Algorithmia platform.</p>
+
+<p>Additionally, cluster administrators can configure their Algorithmia installation to send debug logs to the log collection tool of their choice (any with a syslog integration).</p>
+
+<h4 id="using-the-feature-2">Using the feature</h4>
+
+<p>Cluster administrators can access the UNILOG interface from the left sidebar of the web user interface, under the “Admin” heading. Additionally, the Administrator Manual has instructions for connecting the Algorithmia platform to an external log collection system via syslog.</p>
+
+<p>Collecting debug log information is significantly faster and easier for cluster administrators, saving them much time and effort when debugging issues.</p>
+
+<h3 id="entity-model-update">Entity model update</h3>
+
+<p>We have taken a different approach to how we store and access algorithms. The Entity Model Update project provides UUID for algorithms, users, and hosted collections to decouple the algorithm from entity owners and entity names. Hosted data collections can now be assigned to the algorithm as default and accessed via <code class="language-plaintext highlighter-rouge">data://.algo/default</code>.</p>
+
+<p>Calling algorithms, performing builds, and other CRUD operations that were previously only available through a combination of owner/algorithm name will now be accessed by the algorithms UUID as well as the ability to assign algorithms to hosted collections by default.</p>
+
+<h3 id="on-premises-infosec-compliance">On Premises InfoSec Compliance</h3>
+
+<p>For On-premises VMware enterprise customers, we have enhanced our offering to meet the increasing InfoSec expectations. Algorithmia Enterprise can now be installed using our own hardened CentOS or RHEL host images. Additionally, the installation can be performed from an environment that does not allow internet access enabling Algorithmia Enterprise to run in highly restricted on-premises environments. Learn more from your account representative.</p>
+
+<h3 id="administrative-updates">Administrative updates</h3>
+
+<p>We have several new monitoring dashboards for cluster databases, cluster services, and request access is added for administrators. These new dashboards allow cluster administrators to have clearer insight into how their clusters are functioning to help with resource management, cluster activity, capacity planning, and troubleshooting or debugging.</p>
+
+<h4 id="using-the-features">Using the features</h4>
+
+<p>The administrator Grafana panel now contains four new dashboards, Service Proxy, MySQL, Pyrometer, Web Server, and API Server, that show these new metrics.</p>
+
+<p>The new MySQL database dashboard allows cluster administrators to see detailed metrics about usage of the internal MySQL database that stores information for the Algorithmia cluster’s operations.</p>
+
+<p>The new Service Proxy dashboard allows cluster administrators to see detailed metrics about inbound requests to the cluster and their response times.</p>
+
+<p>The new Pyrometer, Web Server, and API Server dashboards allow cluster administrators to see detailed metrics about database resource usage, JVMs, and infrastructure.</p>
+
+<hr />
+
+<h2 id="q1-2020-release-notes">Q1 2020 Release Notes</h2>
+
+<h3 id="introduction-3">Introduction</h3>
+<p>2020 is going to be a big year at Algorithmia. We are working on features that empower our customers in tooling flexibility, connectivity, security, and ML management so they can focus on extracting value from ML.</p>
+
+<p>Our first release of 2020 comprises a diverse feature set that increases the options our customers have for frictionless ML deployment and model auditing. Several of these features are iterations on previously released features because we want to continuously strive for more for our customers.</p>
+
+<h3 id="q1-features">Q1 Features</h3>
+<ul>
+  <li>Source Code Management – GitHub Integration</li>
+  <li>Newest on-premises offering – VMWare</li>
+  <li>Platform Usage Reports</li>
+</ul>
+
+<h3 id="source-code-management">Source Code Management</h3>
+<p>We are pleased to announce that we have expanded our source code management offering to include <a href="/developers/algorithm-development/source-code-management">GitHub,</a> adding to the benefits of a centralized code repository and increasing ML portability! By connecting your Algorithmia and GitHub accounts, you can store your source code on GitHub and deploy it directly to Algorithmia. It’s that simple.</p>
+
+<p>Once enabled by your administrator, you will be able to select a GitHub (or GitHub Enterprise) instance when creating an algorithm, which will create a new GitHub repository for your algorithm.</p>
+
+<p>All updates to the repository’s default branch will automatically precipitate new builds for your algorithm. By leveraging GitHub with Algorithmia, algorithm developers can leverage existing GitHub workflows they already have and access the entire suite of GitHub features, including <a href="https://github.com/features/actions">GitHub Actions,</a> and still ensure that source code visibility is restricted to those with proper GitHub permissions.</p>
+
+<h4 id="where-to-learn-more">Where to learn more</h4>
+<p>Algorithmia administrators can learn more about integrating GitHub with Algorithmia <a href="/developers/algorithmia-enterprise/scms">here.</a> Once configured, users need simply select the GitHub repository host when creating an algorithm:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/Source_Code_Manage.png" alt="Source code management" class="screenshot" /></p>
+
+<p>This feature is available now in our
+deployment and will ship to users during this release.</p>
+
+<h3 id="newest-on-premises-offering-algorithmia-on-vmware">Newest on-premises offering: Algorithmia on VMWare</h3>
+<p>Algorithmia’s newest on-premises offering, VMWare, means multi-cloud ML deployment across public and private clouds is a reality. Algorithmia Enterprise for VMWare allows customers to run Algorithmia in their own VMWare infrastructure.</p>
+
+<p>Enterprise customers can benefit from serving and running models in their data centers for compliance, regulatory, IT policy, or security use cases where AE for AWS or Azure are not viable. Our VMWare edition of Algorithmia Enterprise is deployable on either existing or new VMWare compute and storage infrastructure. Customers bring their VMs, raw storage, and network connectivity, and we provide the rest.</p>
+
+<p>This feature is ideal for customers who want to use Algorithmia Enterprise in their own datacenter, especially if they are existing VMWare users.</p>
+
+<p>Talk to us about how AE for VMWare fits into your organization’s data center strategy!</p>
+
+<p>Algorithmia Enterprise for VMWare is available to all enterprise customers now.</p>
+
+<h3 id="platform-usage-reports">Platform Usage Reports</h3>
+
+<p>Given a customizable date range (which defaults to the past 7 days), users can now view platform usage from three different perspectives: all usage, algorithms, and users.</p>
+
+<p>You asked and we delivered.</p>
+
+<p>We are now empowering our customers with increased model auditing tools. Usage Reports provide clear visibility into how the ML platform is used.</p>
+
+<p>Select a preset date range or input a custom date range to display all activities/usage of the platform, including:</p>
+<ul>
+  <li>model consumption</li>
+  <li>compute duration</li>
+  <li>caller information</li>
+  <li>hardware (CPU/GPU) use</li>
+</ul>
+
+<p>Reports are presented in the UI, and selecting a metric provides a detailed list of the model execution results. Administrators can also download the reports as a CSV file.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/Platform_Usage_Date range.png" alt="Platform usage date range" class="screenshot" /></p>
+
+<h4 id="all-usage">All Usage</h4>
+<p>This tab shows information grouped by the username/algorithm tuple. That is, it shows which users called which algorithms and the number of times they did so (along with hardware, computer time, and other metrics).</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/Platform_Usage_All usage.png" alt="Platform usage all usage view" class="screenshot" /></p>
+
+<p>When you click on a row in the all usage table, you will see the complete set of columns:</p>
+<ul>
+  <li>algorithm: algorithm display name</li>
+  <li>version: hash version of the exact algorithm called</li>
+  <li>caller: which user called the algorithm</li>
+  <li>owner: user who created and owns the algorithm</li>
+  <li>total calls: total number of calls the calling user made to this algorithm in the date range</li>
+  <li>total duration: total number of seconds the algorithm ran for caller in the date range</li>
+  <li>total errors: total number of failed calls to this algorithm the caller made in the date range</li>
+  <li>error duration: total number of seconds the algorithm ran for calls in which it returned an error (for this caller)</li>
+  <li>hardware: whether the algorithm runs on a CPU or GPU instance</li>
+</ul>
+
+<p>One caveat to the total compute time: each call is rounded up to the nearest second. For instance, if in the given date range, a user calls a certain algorithm twice, and the first call took 2.04 seconds and the second call took 2.08 seconds, the total time for those two calls is 4.12 seconds, which the table will round up and display as 5 seconds.</p>
+
+<p>Also note that if a call takes less than one second, the call’s duration will be rounded up to a full second. So calling Hello World 23 times would most likely result in a total duration of 23 seconds being displayed. The motivation for this is that in the <a href="https://algorithmia.com/algorithms">public version of Algorithmia</a> we only charge by credits. One credit = one second, so if a user makes a call that lasts less than a second we still charge for the full second.</p>
+
+<h4 id="algorithms">Algorithms</h4>
+<p>This tab shows usage information grouped at the algorithm level. That is, it shows which algorithms were called and how many times (total across all users) they were called.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/Platform_Usage_Algos.png" alt="Platform usage algorithm view" class="screenshot" /></p>
+
+<p>When you click on a row in the algorithms table, you will see this complete set of columns:</p>
+<ul>
+  <li>algorithm: algorithm display name</li>
+  <li>version: hash version of the exact algorithm called</li>
+  <li>owner: user who created and owns the algorithm</li>
+  <li>total calls: total number of calls that users of the platform made to this algorithm</li>
+  <li>total duration: total number of seconds the algorithm ran summed up across all users</li>
+  <li>total errors: total number of errors this algorithm returned summed up across all users</li>
+  <li>error duration: total number of seconds the algorithm ran calls in which it returned an error (summed up across all users)</li>
+  <li>hardware: whether the algorithm runs on a CPU or GPU instance</li>
+</ul>
+
+<h4 id="users">Users</h4>
+
+<p>This tab shows usage information grouped at the user level, so you can see how many total calls each user made (across all algorithms).</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/Platform_Usage_Users.png" alt="Platform users view" class="screenshot" /></p>
+
+<p>When you click on a row in the users table, you will see this complete set of columns:</p>
+<ul>
+  <li>caller: the username of the user this row represents</li>
+  <li>total calls: total number of calls the user made summed up across all algorithms</li>
+  <li>total duration: total number of seconds the user’s calls spent computing summed up across all algorithms</li>
+  <li>total errors: total number of errors returned to the user summed up across all algorithms</li>
+  <li>error duration: total number of seconds computed by calls that returned errors to the user</li>
+</ul>
+
+<p>Users wanting to perform more advanced operations on the tables (like sorting, customized grouping and summing) can download the full tables as CSV files.</p>
+
+<h3 id="other-quarterly-update">Other quarterly update</h3>
+
+<h4 id="api-key-terminology">API Key Terminology</h4>
+<p>There are two updates to API key terminology this release.</p>
+
+<p>First, we no longer refer to our standard API keys as “Simple API Keys.” They are now simply “API Keys.”</p>
+
+<p>Second, “Management API Keys” has been changed to “Admin API Keys.” This naming better fits the purpose for which these keys were designed, and is intended to minimize confusion for our enterprise administrators.</p>
+
+<hr />
+
+<h2 id="enterprise-release-notes-1910">Enterprise Release Notes 19.10</h2>
+
+<p>Algorithmia’s 19.10 release featured a platform performance update and bug fixes for specific enterprise users. For more information, contact your Customer Success Manager.</p>
+
+<hr />
+
+<h2 id="enterprise-release-notes-1908">Enterprise Release Notes 19.08</h2>
+
+<p>Algorithmia’s 19.08 release featured security updates for enterprise users. For more information, contact your Customer Success Manager.</p>
+
+<hr />
+
+<h2 id="enterprise-release-notes-1905">Enterprise Release Notes 19.05</h2>
+
+<h5 id="new-this-quarter">New this quarter:</h5>
+<ul>
+  <li>Jupyter Notebook integration</li>
+  <li>Event-driven algorithm runs</li>
+  <li>Additional APIs</li>
+  <li>Additional IPA package sets</li>
+  <li>Organization-hosted data</li>
+  <li>Enterprise UI customization</li>
+</ul>
+
+<h3 id="jupyter-notebook-integration">Jupyter Notebook Integration</h3>
+
+<p>Data scientists can now <a href="https://github.com/algorithmiaio/model-deployment/blob/master/tensorflow_classify_text_deploy_algorithmia/tensorflow_classify_text_deploy_algorithmia.ipynb">deploy to the AI Layer directly from a Jupyter Notebook</a> completing the entire data science life cycle—model training, visualization, and deployment—without ever leaving their Notebook.</p>
+
+<p>Our updated APIs enable easier integrations like this and <a href="/developers/integrations/zapier">Zapier</a> (from the last release), and we will be offering more endpoints moving forward. Please don’t hesitate to suggest tools you’d like to integrate.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oSOlbenfFaI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<hr />
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/1904_Release_Notes_Deploy.png" alt="Release Notes" class="screenshot" /></p>
+
+<h3 id="event-driven-algorithm-runs">Event-Driven Algorithm Runs</h3>
+
+<p>Event listeners allow external services to trigger actions such as model runs within the AI Layer. The first of our supported event sources is <strong>Amazon SQS</strong>, with a <a href="/developers/integrations/event_listeners">tutorial available</a> in our Developer Center.</p>
+
+<h3 id="additional-apis">Additional APIs</h3>
+<p>New APIs allow you to create, recompile, and publish models directly from CI/CD pipelines, without using the Web API.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/1904_Release_Notes_Create_Algorithm.png" alt="Release Notes" class="screenshot" /></p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/1904_Release_Notes_Publish_Algorithm.png" alt="Release Notes" class="screenshot" /></p>
+
+<h3 id="additional-ipa-package-sets">Additional IPA Package Sets</h3>
+
+<p>As introduced in the 19.01 release, We now enable more flexible instances and support new machine learning frameworks with many different combinations. New package sets execute faster and support a wider range of developer choices.</p>
+
+<p>Our shift towards package sets allows the platform to iterate faster and increases the performance of algorithm runtimes.
+This allows the Algorithmia cluster to target package sets toward tailored scenarios.</p>
+
+<p>We’re delivering a continuous stream of new sets, so check back for the latest versions often.</p>
+
+<h3 id="organization-hosted-data">Organization-Hosted Data</h3>
+
+<p>A new data-browsing UX makes it even easier to browse and share data and models within your organization.</p>
+
+<p>Organizations allow teams of customers to work in a private subset of models, moderate model publishing, and organize models into logical groups based on teams. This feature makes an organization more powerful by coupling the algorithms with the data necessary for models.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/1904_Release_Notes_Left_Nav_Bar.png" alt="Release Notes" class="screenshot" /></p>
+
+<p>To view your hosted data, click on Data Sources in the main toolbar, then select an organiation. From here, browse the organization’s collections as you would your own data collections.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/1904_Release_Notes_Data_Portal.png" alt="Release Notes" class="screenshot" /></p>
+
+<p>Organization data collections have the same permissions as user data collections, including:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Private Read</code>: Only members of the organization may access the data, either directly or via an algorithm.</p>
+
+<p><code class="language-plaintext highlighter-rouge">My Algorithms Read</code>: Any caller may access the data of organization-owned algorithms, but only organization members may directly view the data.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Public Read</code>: Anyone may interact with the data.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Private Write</code>: Only members of the organization may write to the collection. This is the only available write setting.</p>
+
+<h3 id="enterprise-ui-customization">Enterprise UI Customization</h3>
+
+<p>Enterprise customers now have the ability to tailor the UI of their AI Layer instances to their corporate brands.</p>
+
+<p>What can now be customized:</p>
+<ul>
+  <li>Brand Color</li>
+  <li>Logo</li>
+  <li>Favicon</li>
+  <li>Navigation Title (Title that appears in browser tab)</li>
+  <li>Header Title (Title that appears beneath logo)</li>
+  <li>Title Of Sidenav Buttons</li>
+</ul>
+
+<hr />
+
+<h2 id="for-questions-and-requests-please-contact-us-at-supportalgorithmiacom">For questions and requests, please contact us at support@algorithmia.com.</h2>
+
+<h2 id="enterprise-release-notes-1901">Enterprise Release Notes 19.01</h2>
+
+<p>Algorithmia is moving into the new year with a lot of great improvements to the platform. We are always looking to increase performance in production model serving and infrastructure efficiency in every release while making the day-to-day developer and data scientist experience even more seamless.</p>
+
+<p>Projects for this release focused on providing greater flexibility and data connectivity options and enabling queuing for user calls. These updates are part of our dedication to continuously improve our platform for our users. We’ve made a number of changes under the hood that will provide tangible boosts to speed, flexibility, and supportability.</p>
+
+<h5 id="new-this-quarter-1">New this quarter:</h5>
+<ul>
+  <li>Image per algorithm</li>
+  <li>Algorithm APIs</li>
+  <li>Support for .NET Core and .NET Standard</li>
+  <li>Update algorithm settings</li>
+  <li>New data storage connectors</li>
+  <li>User work limits and queuing</li>
+</ul>
+
+<h3 id="image-per-algorithm">Image Per Algorithm</h3>
+
+<p>We are really happy to announce the release of a major evolution to the architecture of how algorithm containers are created and loaded when requested on the Algorithmia platform.
+We now enable more flexible instances and support new machine learning frameworks with many different combinations.</p>
+
+<p>New framework releases will be quickly added to allow data scientists and developers to take advantage of the latest technologies available to them.</p>
+
+<p>Image Per Algorithm changes how algorithm version container images are created and shifts the creation of containers to when the algorithm changes instead of when a request comes in for the algorithm and a slot needs to be loaded. This shift towards package sets enables the platform to iterate faster and support emerging technology, and it increases the performance of algorithm runtimes.</p>
+
+<p>This allows the Algorithmia cluster to target package sets toward tailored scenarios, like running a specific version of Tensorflow with Python 3.7. There is a package set available that is pre-configured for that scenario that will work in GPU and CPU environments.</p>
+
+<p>The Algorithmia team will be creating new package sets in future releases and over time will transition all class algorithm base templates to new Image Per Algorithm-based package sets.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/19.01_create_algo_ipa.png" alt="Release Notes IPA" class="screenshot" /></p>
+
+<p>New package sets will be released to the Hosted Service on Algorithmia first and then rolled up together in future quarterly releases for Algorithmia Enterprise.</p>
+
+<p>If you are interested in any package sets that have been released to the Hosted Service, please let your <strong>Deployment Architect</strong> know to work on getting it imported before your next upgrade.</p>
+
+<h3 id="initial-package-sets-for-this-release">Initial Package Sets for This Release</h3>
+
+<p>This release includes the following package sets that can be used for newly created algorithms going forward. New package sets will be created and shipped to the Algorithmia Hosted Service and bundled into future releases of Algorithmia Enterprise.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/19.01_CPU_GPU_table.png" alt="Release Notes CPU, GPU python table" class="screenshot" /></p>
+
+<p>We will enable Enterprise Admins to create custom package sets to help provide best practices and templates for their data science teams specific to their organization.</p>
+
+<h3 id="algorithm-management">Algorithm Management</h3>
+
+<p>Building on the previous release, we are expanding the available set of <strong>APIs</strong> that developers and system administrators can use to interact with the Algorithmia platform through automation. The main scenarios we heard customers want to automate with these newly available APIs are to enable continuous integration and continuous delivery pipelines.</p>
+
+<p>We’re happy to say that the last two steps in an automated pipeline are no longer exclusive to the Algorithmia UI.</p>
+
+<p>The additional APIs that have been added in this release are:</p>
+
+<ul>
+  <li><strong>Create</strong> algorithm</li>
+  <li><strong>Get</strong> algorithm information</li>
+  <li><strong>Update</strong> algorithm</li>
+  <li><strong>Publish</strong> algorithm</li>
+</ul>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/19.01_release_notes_algorithm_actions.png" alt="Release Notes algorithmia management APIs" class="screenshot" /></p>
+
+<p>These algorithm APIs do not require admin API keys to use. Non-administrator users of an Algorithmia platform will be able to use their <a href="/developers/basics/customizing-api-keys">API keys</a> to interact with algorithms they have permissions to work with. The use of admin API keys will not be supported
+by these algorithm APIs.</p>
+
+<p>You can find the details for each of these APIs available in the <a href="https://algorithmia.com/v1/openapispec">OpenAPI spec.</a></p>
+
+<p>The OpenAPI spec allows developers to generate language-specific clients through code generators, test APIs, interact with APIs more easily. It can even generate a <a href="https://algorithmia.com/algorithms/OpenAPI/openapi2postman">Postman collection</a> that can be imported into your <a href="https://documenter.getpostman.com/view/6515899/Rztiuqao">Postman</a> workspace. You can find many of these tools on the <a href="https://openapi.tools/">OpenAPI website.</a></p>
+
+<h3 id="update-algorithm-settings">Update Algorithm Settings</h3>
+
+<p>Administrators and data scientists asked for a way to be able to update an algorithm’s settings without going through a full publish. For example, many users wanted to update their algorithm’s network access permissions or change the source code visibility after creating it.</p>
+
+<p>Each of these settings and more is now available on the Manage tab of each algorithm. Most of the settings will apply immediately so data scientists can test private, unpublished versions.</p>
+
+<p>However, to make settings changes available to developers consuming your algorithm, you’ll need to go through a full publish.</p>
+
+<p>The two immediate settings that don’t require a publish are Source Visibility and License:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/19.01_algo_settings.png" alt="Release Notes algorithm settings" class="screenshot" /></p>
+
+<h3 id="how-to-update-algorithm-settings">How to Update Algorithm Settings</h3>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/19.01_how_to_update_settings.png" alt="Release Notes how to update algorithm settings" class="screenshot" /></p>
+
+<p>During the publishing process, we’ll detect which settings will be changed for the next published version and inform the publisher the type of Semantic Versioning increase that will be required.</p>
+
+<p>Note: All previous versions of a published algorithm are immutable and unable to be changed in order to help developers who are already using a specific version in their production apps.</p>
+
+<h3 id="new-data-storage-connectors">New Data Storage Connectors</h3>
+
+<p>This release includes two new data storage connectors to allow data scientists and
+developers to leverage additional input and output locations for algorithms.</p>
+
+<p>The <a href="/developers/data">data connector system</a> allows an Algorithmia instance to securely handle brokering connections between an algorithm and a data source provided by the developers without needing to provide connection credentials.</p>
+
+<p>Additionally, since it’s a single data API for the algorithm developer, access to an underlying data source is abstracted, allowing for algorithm developers to support many types of data sources without needing to implement provider-specific logic.</p>
+
+<p>The two data connectors that are included in this release are:</p>
+
+<ul>
+  <li><a href="/developers/data/azureblob">Azure Blob storage</a></li>
+  <li><a href="/developers/data/googlecloudstorage">Google Cloud storage</a></li>
+</ul>
+
+<p>To find out more information about the Data API available in each Algorithmia instance, including
+the <a href="/developers/data/hosted">Hosted Data Service,</a> you can visit the <a href="/developers/data">overview topic</a> in the Developer Center.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/19.01_data_portal_guides.png" alt="Release Notes how to update algorithm settings" class="screenshot" /></p>
+
+<h3 id="algorithmia-net-sdk-supports-net-core-and-net-standard">Algorithmia .NET SDK Supports .NET Core and .NET Standard</h3>
+<p>Customers have been adopting and transitioning to .NET Core and have been asking us to transition from only supporting the .NET framework. We’re happy to now include support for the Algorithmia .NET Client in all of the frameworks supported by <strong>.NET Standard 2.0, which includes .NET Core.</strong> This means that many more application types can run across Windows, Linux, MacOS, and mobile, and other devices will be able to directly make calls to algorithms.</p>
+
+<p>Supporting .NET Standard 2.0 provides support for the following frameworks:</p>
+
+<ul>
+  <li>.NET Core</li>
+  <li>ASP.NET Core</li>
+  <li>.NET Framework (&gt;4.6.1)</li>
+  <li>Mono</li>
+  <li>Xamarin.iOS</li>
+  <li>Xamarin.Mac</li>
+  <li>Xamarin.Android</li>
+  <li>Universal Windows Platform Apps</li>
+  <li>Unity</li>
+</ul>
+
+<p>All of the Algorithmia Clients are open-sourced on GitHub. You can follow the .NET Client on the <a href="https://github.com/algorithmiaio/algorithmia-c-sharp">GitHub website.</a></p>
+
+<p>To get going, you can install the updated NuGet package for the Algorithmia .NET Client and follow the <a href="/developers/clients/c_sharp_net">walkthrough</a> available in the Developer Center.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Install-Package Algorithmia.Client</code></p>
+
+<h3 id="flexibility-to-enable-user-work-limits-and-queuing">Flexibility to Enable User Work Limits and Queuing</h3>
+
+<p>Administrators need the flexibility to tune an algorithm’s usage of infrastructure while still running in production. Algorithmia has had the ability to provide “sticky slots” as one such flexibility example. This release introduces a new flexibility option to specify work limits for a particular user running production workloads.</p>
+
+<p>This option will set limits to accept calls from a user but will begin <strong>queueing</strong> requests that are above the maximum active jobs limit until the maximum concurrent sessions are reached. The setting is available on the Advanced options page of the Admin Panel by clicking the <strong>“Update User’s Work Limits”</strong> button.</p>
+
+<p>Administrators now have the flexibility to manage an algorithm’s use of their cluster. In one Algorithmia cluster, administrators were able to see a 30-percent decrease in monthly infrastructure costs by being able to finely tune production algorithms.</p>
+
+<h3 id="how-to-update-a-users-work-limits">How to Update a User’s Work Limits</h3>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/19.01_update_work_limits.png" alt="Release Notes set work limits" class="screenshot" /></p>
+
+<p><strong><em>User to Update:</em></strong> Enter the username of the user you want to limit.
+<strong><em>Max Concurrent Sessions:</em></strong> Input a max number of concurrent requests a user can make at one time to ensure resources are not being over allocated.
+<strong><em>Max Active Jobs:</em></strong> Insert a max number of active jobs a user can have before requests begin queueing to ensure other users have resources available to them.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/release_notes/19.01_update_max_work_limits.png" alt="Release Notes max work limits" class="screenshot" /></p>
+
+<h2 id="for-questions-and-requests-please-contact-us-at-supportalgorithmiacom-1">For questions and requests, please contact us at support@algorithmia.com.</h2>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li class="active">
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

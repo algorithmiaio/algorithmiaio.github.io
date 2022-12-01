@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Source Code Management - Algorithmia Developer Center</title>
+    <meta name="description" content="Controlling where the source code for your algorithm resides">
+    <meta name="keywords" content="algo-dev">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Source Code Management">
+<meta name="twitter:description" content="Controlling where the source code for your algorithm resides">
+<meta name="twitter:site" content="@algorithmia">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Source Code Management">
+<meta property="og:description" content="Controlling where the source code for your algorithm resides">
+<meta property="og:url" content="https://algorithmia.com/developers/algorithm-development/source-code-management/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Algorithm development</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/icons/algo.svg" alt="" itemprop="image" class="title-icon">
+
+Source Code Management<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/algorithm-development/source-code-management.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-11-09T19:34:20Z" itemprop="dateModified">November 09, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p>When you create an algorithm, a <a href="https://git-scm.com/">Git</a> repository is initialized to store its source code. Algorithmia supports hosting that repository within the Algorithmia platform itself or using one of a number of external source code management (SCM) providers, listed below. In this guide, we’ll walk through the following:</p>
+
+<ul>
+  <li><a href="#choosing-a-repository-host">Choosing a repository host</a></li>
+</ul>
+
+<p>Using an OAuth-based SCM provider</p>
+
+<ul>
+  <li><a href="#hosting-source-code-on-algorithmia">Hosting source code on Algorithmia</a></li>
+  <li><a href="#hosting-source-code-on-github">Hosting source code on GitHub</a></li>
+  <li><a href="#hosting-source-code-on-bitbucket-cloud">Hosting source code on Bitbucket Cloud</a></li>
+  <li><a href="#hosting-source-code-on-gitlab">Hosting source code on GitLab</a></li>
+</ul>
+
+<p>Using a non-OAuth based SCM provider</p>
+
+<ul>
+  <li><a href="#hosting-source-code-on-bitbucket-server">Hosting source code on Bitbucket Server</a></li>
+</ul>
+
+<p class="notice-info"><strong>Enterprise Users:</strong> By default, on new Algorithmia clusters algorithm source code can only be hosted internally within the Algorithmia platform. Please consult your cluster administrator to have them <a href="/developers/administration/admin-panel/source-code-management#creating-scm-configurations">create an external SCM configuration</a>.</p>
+
+<p>If you haven’t used Git before, we recommend <a href="https://try.github.io/">this Git tutorial series</a> by GitHub. You don’t need to know how to use Git to get started on Algorithmia. However, we recommend having at least a basic familiarity with it, as it’s a powerful and widely used collaboration tool and is required to use some of our more advanced functionality.</p>
+
+<h3 id="choosing-a-repository-host">Choosing a repository host</h3>
+
+<p>Before we dive into the repository hosts Algorithmia supports, let’s discuss the various use cases that best fit each type.</p>
+
+<p>If you’re just getting started with Algorithmia, or you want to leverage Algorithmia’s <a href="#editing-your-algorithm-source-in-the-algorithmia-web-app">built-in Web IDE</a>, you should choose Algorithmia as your repository host. This is the simplest way to get started with the platform, but presents limitations when it comes to using external collaboration tools.</p>
+
+<p>If you want to easily share source code with your colleagues and to use best practices like code reviews, we recommend an external repository host. This does mean that our browser-based Web IDE won’t be available for use, but the configuration will allow you to more flexibly manage access to your source code and integrate with any existing SCM workflows you may use.</p>
+
+<p class="notice-info"><strong>Algorithm Migration:</strong> At this time, Algorithmia does not have built-in support for migrating algorithms between repository hosts. However, to achieve the same end result, you can create a new algorithm with its code hosted by the target SCM provider and then <a href="/developers/administration/admin-config/migration-scripts">migrate your algorithm source code</a> from the original algorithm to the new one.</p>
+
+<h3 id="hosting-source-code-on-algorithmia">Hosting source code on Algorithmia</h3>
+
+<p>Hosting your algorithm’s source code within the Algorithmia platform is simple, and no special configuration is required. When creating your algorithm, simply select “Algorithmia” as the “repository host” within the source code configuration section.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/create_algorithm_algorithmia_internal.png" alt="Creating an algorithm with the Algorithmia repository host" class="screenshot img-sm" /></p>
+
+<p>The “source visibility” setting determines whether the source code for your algorithm will be viewable from other accounts on the cluster. Select “restricted” if you’d only like algorithm owners to have access to the algorithm’s source code.</p>
+
+<h4 id="editing-source-code-locally">Editing source code locally</h4>
+
+<p>When your algorithm is created, our platform generates a unique HTTPS URL you can use to clone your algorithm’s Git repository.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://git.CLUSTER_DOMAIN/git/ALGO_OWNER/ALGO_NAME.git</code></pre></figure>
+
+<p>For your algorithm, you’ll replace the <code class="language-plaintext highlighter-rouge">ALGO_OWNER</code> and <code class="language-plaintext highlighter-rouge">ALGO_NAME</code> values with the name of your account and the name of the algorithm, respectively. For non-enterprise customers, <code class="language-plaintext highlighter-rouge">CLUSTER_DOMAIN</code> will be <code class="language-plaintext highlighter-rouge">algorithmia.com</code>; enterprise customers must replace this value with their cluster-specific domain name string.</p>
+
+<p>If you’ve never cloned algorithm code before, you’ll be asked to provide your Algorithmia account name and password to authenticate to the platform.</p>
+
+<p class="notice-info"><strong>Enterprise Users:</strong> If your Algorithmia instance is configured to use OIDC, you won’t have a password. To obtain a password, navigate to your account settings page and click “Regenerate Account Password”. Follow the instructions to obtain a password you can use to authenticate with your Algorithmia-hosted Git repositories.</p>
+
+<p>Make any source code modifications you’d like and commit them to your repository’s <code class="language-plaintext highlighter-rouge">master</code> branch.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git add FILE_TO_COMMIT
+git commit <span class="nt">-m</span> <span class="s2">"Message about commit changes"</span></code></pre></figure>
+
+<p>Finally, push your changes to Algorithmia; this will trigger a new algorithm build. Note that Algorithmia will only compile the head of the master branch on each push. It won’t compile intermediate commits, so they’ll all be squashed together into the one build.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git push origin master</code></pre></figure>
+
+<p>Note that attempts to rewrite the history of an algorithm’s source code repository will be rejected, as doing so could potentially break prior versions of the algorithm.</p>
+
+<p class="notice-info"><strong>SSH Support:</strong> Algorithmia doesn’t currently support SSH as a means of cloning algorithm repositories.</p>
+
+<h4 id="editing-source-code-in-the-algorithmia-web-ide">Editing source code in the Algorithmia Web IDE</h4>
+
+<p>Algorithms whose source code is hosted within Algorithmia can be edited directly through our Web IDE. To access the Web IDE for algorithms you own or have access to through membership in the algorithm-owning organization, click on the “Source Code” tab on an algorithm’s homepage.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/algorithm_source_code_tab.png" alt="Algorithm Page Source Code Tab" class="screenshot img-sm" /></p>
+
+<p>In the Web IDE, you can create, modify, and delete algorithm files.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/algorithm_web_ide.png" alt="Algorithm Page Source Code Tab" class="screenshot img-sm" /></p>
+
+<p>Once you’re satisfied with your changes, click the “Build” button, optionally test your changes in the test console at the bottom, and click “Publish” to create a new version of the algorithm.</p>
+
+<h3 id="hosting-source-code-on-github">Hosting source code on GitHub</h3>
+
+<p>By hosting your algorithm’s source code on GitHub, you can take advantage of GitHub’s rich set of developer features, such as pull requests and GitHub Actions, and also ensure that access to your source code is carefully mediated. We support both GitHub and GitHub Enterprise; we use the term “GitHub” to refer to both products, as the configuration and usage is the same.</p>
+
+<p>If you haven’t used Git before, we recommend <a href="https://try.github.io/">this Git tutorial series</a> by GitHub.</p>
+
+<p class="notice-info"><strong>Web IDE Support:</strong> At this time we don’t support editing source code in our Web IDE for GitHub-hosted algorithms.</p>
+
+<p class="notice-info"><strong>Enterprise Users:</strong> By default, on new Algorithmia clusters algorithm source code can only be hosted internally within the Algorithmia platform. As such, you won’t see GitHub listed as a repository host for new algorithms until your cluster administrator <a href="/developers/administration/scm-config/source-code-management-github">creates a GitHub configuration</a>.</p>
+
+<h4 id="creating-github-hosted-algorithms">Creating GitHub-hosted algorithms</h4>
+
+<p>To create an algorithm with its source code hosted on GitHub, simply select any available GitHub SCM configuration for “repository host” in the modal.</p>
+
+<p>The first time you create a GitHub-hosted algorithm, you’ll be prompted to connect your GitHub account. Click “Authorize” and follow the instructions in the pop-op window to give Algorithmia permission to create and manage Git repositories on your behalf. Once you’ve connected your GitHub account to Algorithmia, you’ll be able to select any available GitHub configuration to host your source code repository when you create a new algorithm.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/create_algorithm_github_unauthorized.png" alt="Authorization prompt for GitHub repository host" class="screenshot img-sm" /></p>
+
+<p>You can customize two aspects of any GitHub repository that’s created for an algorithm: the repository’s owner, and its name.</p>
+
+<p>By default, all GitHub repositories are created under your personal GitHub account. However, you may optionally choose to host your code under any GitHub organizations of which you’re a member, as long as they’ve been configured by your cluster administrator. The available organizations are listed in the “repository owner” drop-down.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/create_algorithm_github_repo_owner.png" alt="Customizing your repository owner" class="screenshot img-sm" /></p>
+
+<p>You may also customize the name of the repository that’s created. By default, it’ll be the name of your algorithm.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/create_algorithm_github_repo_name.png" alt="Customizing your repository name" class="screenshot img-sm" /></p>
+
+<p>If you decide to use an alternative name, we recommend you use only letters, numbers, hyphens, and/or underscores. While GitHub will accept characters outside this range, it will replace any unsupported characters with an underscore, potentially resulting in an undesired repository name.</p>
+
+<p>When we create your repository, we associate the following with it:</p>
+
+<ul>
+  <li><strong>A deploy key</strong>: <a href="https://github.blog/2015-06-16-read-only-deploy-keys/">GitHub deploy keys</a> allow read-only access to specific repositories, and are GitHub’s prescribed means by which external services can fetch code for building and deploying. These keys are not tied to individual permissions, and as such will allow Algorithmia to continue building an algorithm even if the permissions of the creating user change. We also use deploy keys to obtain your repository’s commit log (to display changes when publishing versions) and README.md (for use as algorithm documentation).</li>
+  <li><strong>Webhooks</strong>: We set up webhooks to receive notifications about changes to your repository, such as when there’s a change to its default branch.</li>
+</ul>
+
+<h4 id="updating-github-hosted-algorithms">Updating GitHub-hosted algorithms</h4>
+
+<p>Once you’ve created your algorithm, any commits to your GitHub repository’s <em>default</em> branch will result in a build on Algorithmia. At creation, your repository’s default branch will be the <code class="language-plaintext highlighter-rouge">main</code> branch, but you can change this at any time within GitHub. In your repository, click “Settings” and then “Branches” on the left side.</p>
+
+<p>For algorithms you own and for those owned by organizations of which you’re a member, you can view builds on the algorithm homepage under the “Builds” tab.</p>
+
+<h4 id="publishing-github-hosted-algorithms">Publishing GitHub-hosted Algorithms</h4>
+
+<p>When you’re ready to create a new version of your algorithm, visit the algorithm’s homepage and select the “Builds” tab. Locate the build corresponding to the specific commit SHA you wish to use, and then click “Publish” on the right side of the row.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/builds_page.png" alt="Algorithm build page" class="screenshot img-sm" /></p>
+
+<p>This will open a modal where you can enter release notes and version information before publishing your algorithm.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/publish_modal.png" alt="Publish algorithm modal" class="screenshot img-sm" /></p>
+
+<p>If you don’t see any builds listed, make sure that you’re pushing commits to your repository’s <em>default</em> branch, because builds are only triggered for commits to this branch.</p>
+
+<p>To learn more about algorithm builds, <a href="https://cdn.algorithmia.com/developers/platform/algorithm-profiles#algorithm-builds">click here</a>.</p>
+
+<h4 id="deleting-github-hosted-algorithms">Deleting GitHub-hosted algorithms</h4>
+
+<p>If you wish to delete an algorithm whose source code is hosted on GitHub, have no fear—the repository will be left unharmed. If you do wish to destroy your algorithm’s source code, you can follow <a href="https://help.github.com/en/github/administering-a-repository/deleting-a-repository">these instructions</a>.</p>
+
+<h4 id="managing-your-github-authorization">Managing your GitHub authorization</h4>
+
+<p>If you want to review your GitHub authorization status, you can visit your account settings page. Simply scroll to the “Source Code Management” section to view any prior GitHub authorizations, or to connect your account.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/scm_user_settings.png" alt="User source code management settings" class="screenshot img-sm" /></p>
+
+<h4 id="troubleshooting-github-hosted-algorithms">Troubleshooting GitHub-hosted algorithms</h4>
+
+<p>If we experience a temporary disruption in connectivity with GitHub, your source code will be unavailable for modification during the duration of that disruption. The following are some additional scenarios under which algorithm source code won’t be available, to help you troubleshoot.</p>
+
+<h5 id="your-repositorys-deploy-key-was-removed">Your repository’s deploy key was removed</h5>
+
+<p>We depend on <a href="https://github.blog/2015-06-16-read-only-deploy-keys/">deploy keys</a> to pull source code from your algorithm for building. A deploy key is simply an SSH keypair with read-only access to a specific repository. Algorithmia securely stores the private key while the public key is shared with GitHub.</p>
+
+<p>You can obtain the public key for your repository by navigating to your algorithm’s settings page and clicking “View Key”:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/algorithm_settings_select_deploy_key_3.png" alt="Algorithm Page Source Code Tab" class="screenshot img-sm" /></p>
+
+<p>You’ll be presented with a modal, from which you can copy the public key.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/algorithm_settings_view_deploy_key_2.png" alt="Algorithm Page Source Code Tab" class="screenshot img-sm" /></p>
+
+<p>With the deploy key in hand, simply follow <a href="https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys">instructions outlined here</a> to restore the public key to your repository.</p>
+
+<h5 id="your-repository-was-deleted">Your repository was deleted</h5>
+
+<p>If your algorithm’s GitHub repository was deleted, you may attempt to <a href="https://help.github.com/en/github/administering-a-repository/restoring-a-deleted-repository">restore the relevant repository</a>. It’s essential that both the repository’s deploy key and webhooks remain in place after restoration, otherwise we won’t be able to pull your source code, or know when you make changes.</p>
+
+<h5 id="your-repositorys-webhook-needs-to-be-restored">Your repository’s webhook needs to be restored</h5>
+
+<p>We depend on webhooks to notify us when changes have occurred to your algorithm’s repository. To restore your webhook within GitHub, first locate the webhook URL and secret. This can be found under “Settings” on your algorithm’s homepage in Algorithmia. Just click “View Details” under “GitHub Webhook”.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/algorithm_settings_select_webhook_2.png" alt="Algorithm Page WebHook Modal Button" class="screenshot img-sm" /></p>
+
+<p>You’ll then be presented with a modal, from which you can copy the webhook URL and secret.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/webhook_modal.png" alt="Algorithm Page WebHook Modal" class="screenshot img-sm" /></p>
+
+<p>Once you’ve located these values, visit your algorithm’s repository on GitHub and click on the “Settings” tab. Click “Webhooks” on the left side, and you’ll be able to restore your webhook by entering the webhook URL and secret.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/github_webhooks.png" alt="GitHub Algorithm Webhook Settings" class="screenshot img-sm" /></p>
+
+<h4 id="faq">FAQ</h4>
+
+<p><strong>I’d like to reuse an existing GitHub repository for my algorithm. Is this possible?</strong></p>
+
+<p>At this time we’re only able to use new, purpose-created repositories for GitHub-backed algorithms, which Algorithmia itself creates and provisions.</p>
+
+<p><strong>Can I rename or move the GitHub repository that backs my algorithm?</strong></p>
+
+<p>Yes! Upon any change to your repository’s name or owner we receive a webhook which we use to update our system to point to the new repository address.</p>
+
+<p><strong>I’m a member of a GitHub organization, but I don’t see that organization listed as a possible owner when creating an algorithm. What’s wrong?</strong></p>
+
+<p>On the Algorithmia side, a cluster administrator must first <a href="/developers/administration/scm-config/source-code-management-github">create a configuration</a> to the GitHub account. If this has been done and the issue persists, an administrator of your GitHub organization likely needs to approve the OAuth application that’s being used to authorize Algorithmia users. You can request approval by following the instructions in <a href="https://help.github.com/en/github/setting-up-and-managing-your-github-user-account/requesting-organization-approval-for-oauth-apps#:~:targetText=Click%20the%20Authorized%20OAuth%20Apps,click%20Request%20approval%20from%20owners.">this GitHub documentation</a>.</p>
+
+<p><strong>I revoked access to the Algorithmia’s Github OAuth application, and now none of the repositories I created can build!</strong></p>
+
+<p>When you revoke access to an OAuth app, Github automatically revokes both your token and any deploy keys you may have created via the OAuth app. To fix your algorithms, simply follow the instructions above on <a href="#your-repositorys-deploy-key-was-removed">restoring a deploy key to a repository</a>.</p>
+
+<h3 id="hosting-source-code-on-bitbucket-cloud">Hosting source code on Bitbucket Cloud</h3>
+
+<p>By hosting your algorithm’s source code on Bitbucket Cloud, you can take advantage of Bitbucket Cloud’s rich set of developer features, such as pull requests, and also ensure that access to your source code is carefully mediated.</p>
+
+<p>If you haven’t used Git before, we recommend <a href="https://try.github.io/">this Git tutorial series</a> by GitHub.</p>
+
+<p class="notice-info"><strong>Web IDE Support:</strong> At this time we don’t support editing source code in our Web IDE for BitBucket Cloud-hosted algorithms.</p>
+
+<p class="notice-info"><strong>Enterprise Users:</strong> By default, on new Algorithmia clusters algorithm source code can only be hosted internally within the Algorithmia platform. As such, you won’t see Bitbucket Cloud listed as a repository host for new algorithms until your cluster administrator <a href="/developers/administration/scm-config/source-code-management-bitbucket-cloud">creates a Bitbucket Cloud configuration</a>.</p>
+
+<h4 id="creating-bitbucket-cloud-hosted-algorithms">Creating Bitbucket Cloud-hosted algorithms</h4>
+
+<p>To create an algorithm with its source code hosted on Bitbucket Cloud, simply select any available Bitbucket Cloud SCM configuration for “repository host” in the modal.</p>
+
+<p>The first time you create a Bitbucket Cloud-hosted algorithm, you’ll be prompted to connect your Bitbucket Cloud account. Click “Authorize” and follow the instructions in the pop-op window to give Algorithmia permission to create and manage Git repositories on your behalf. Once you’ve connected your Bitbucket Cloud account to Algorithmia, you’ll be able to select any available Bitbucket Cloud configuration to host your source code repository when you create a new algorithm.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/scm_create_bitbucket_algorithm_unauthorized_2.png" alt="Authorization prompt for Bitbucket Cloud repository host" class="screenshot img-sm" /></p>
+
+<p>You can customize two aspects of any Bitbucket Cloud repository that’s created for an algorithm: the repository’s owner, and its name.</p>
+
+<p>By default, all Bitbucket Cloud repositories are created under your personal Bitbucket Cloud account. However, you may optionally choose to create repositories under any Bitbucket Cloud organizations of which you’re a member, as long as they’ve been configured by your cluster administrator. The available organizations are listed in the “repository owner” drop-down:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/scm_create_bitbucket_algorithm_org_2.png" alt="Customizing your repository owner" class="screenshot img-sm" /></p>
+
+<p>You may also customize the name of the repository that’s created. By default, it’ll be the name of your algorithm.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/scm_create_bitbucket_algorithm_name_2.png" alt="Customizing your repository name" class="screenshot img-sm" /></p>
+
+<p>If you decide to use an alternative name, we recommend that you use only letters, numbers, hyphens, and/or underscores. While Bitbucket Cloud will accept characters outside this range, it will replace any unsupported characters with an underscore, potentially resulting in an undesired repository name.</p>
+
+<p>When we create your repository, we associate the following with it:</p>
+
+<ul>
+  <li><strong>An access key</strong>: Bitbucket Cloud access keys allow read-only access to specific repositories, and are Bitbucket Cloud’s prescribed means by which external services can fetch code for building and deploying. These keys are not tied to individual permissions, and as such will allow Algorithmia to continue building an algorithm even if the permissions of the creating user change. We also use access keys to obtain your repository’s commit log (to display changes when publishing versions) and README.md (for use as algorithm documentation).</li>
+  <li><strong>Webhooks</strong>: We set up webhooks to receive notifications about changes to your repo, such as when there’s a change to its default branch.</li>
+</ul>
+
+<h4 id="updating-bitbucket-cloud-hosted-algorithms">Updating Bitbucket Cloud-hosted algorithms</h4>
+
+<p>Once you’ve created your algorithm, any commits to your Bitbucket Cloud repository’s <em>default</em> branch will result in a build on Algorithmia. At creation, your repository’s default branch will be your <code class="language-plaintext highlighter-rouge">master</code> branch, but you can change this at any time in your repository’s settings.</p>
+
+<p>You can view your algorithm’s builds by heading to its landing page and clicking the “Builds” tab if you are the algorithm’s owner.</p>
+
+<h4 id="publishing-bitbucket-cloud-hosted-algorithms">Publishing Bitbucket Cloud-hosted algorithms</h4>
+
+<p>When you’re ready to create a new version of your algorithm, visit that algorithm’s page and select the “Builds” tab. Locate the build corresponding to specific commit SHA you wish to use, and then click “Publish” on the right side of the row.</p>
+
+<p>This will open a publish modal that will let you publish your algorithm.</p>
+
+<p>If you don’t see any builds listed, make sure that you’re pushing commits to your repository’s <em>default</em> branch. Builds are only triggered for commits pushed to the default branch.</p>
+
+<p>To learn more about algorithm builds, <a href="https://cdn.algorithmia.com/developers/platform/algorithm-profiles#algorithm-builds">click here</a>.</p>
+
+<h4 id="deleting-bitbucket-cloud-hosted-algorithms">Deleting Bitbucket Cloud-hosted algorithms</h4>
+
+<p>If you wish to delete an algorithm that hosts its source code on Bitbucket Cloud, have no fear—the repository will be left unharmed. If you do wish to destroy your algorithm’s source code, you can follow <a href="https://support.atlassian.com/bitbucket-cloud/docs/delete-a-repository/">these instructions</a>.</p>
+
+<h4 id="managing-your-bitbucket-cloud-authorization">Managing your Bitbucket Cloud authorization</h4>
+
+<p>If you want to review your Bitbucket Cloud authorization status, you can visit your account settings page. Simply scroll to the “Source Code Management” section to view any prior Bitbucket Cloud authorizations, or to connect your account.</p>
+
+<h4 id="troubleshooting-bitbucket-cloud-hosted-algorithms">Troubleshooting Bitbucket Cloud-hosted algorithms</h4>
+
+<p>If we experience a temporary disruption in connectivity with Bitbucket Cloud, your source code will be unavailable for modification during the duration of that disruption. The following are some additional scenarios under which algorithm source code won’t be available, to help you troubleshoot.</p>
+
+<h5 id="your-repositorys-access-key-was-removed">Your repository’s access key was removed</h5>
+
+<p>We depend on access keys to pull source code from your algorithm for building. An access key is simply an SSH keypair with read-only access to a specific repository. Algorithmia securely stores the private key while the public key is shared with Bitbucket Cloud.</p>
+
+<p>You can obtain the public key for your repository by navigating to your algorithm’s settings page and clicking “View Key”. You’ll then be presented with a modal, from which you can copy the public key.</p>
+
+<p>With the access key in hand, simply follow <a href="https://support.atlassian.com/bitbucket-cloud/docs/add-access-keys/">instructions outlined here</a> to restore the public key to your repository.</p>
+
+<h5 id="your-repository-was-deleted-1">Your repository was deleted</h5>
+
+<p>If your algorithm’s Bitbucket Cloud repository was deleted, Bitbucket Cloud does not have a mechanism for restoring. It is essential that both the repository’s access key and webhooks remain in place, otherwise we will not be able to pull your source code, or know when you make changes.</p>
+
+<h5 id="your-repositorys-webhook-needs-to-be-restored-1">Your repository’s webhook needs to be restored</h5>
+
+<p>We depend on webhooks to notify us of changes to your algorithm’s repository. To restore your webhook within Bitbucket Cloud, first locate the webhook URL. This can be found under the “Settings” tab on your algorithm’s homepage in Algorithmia. Just click “View Details” under “Bitbucket Cloud Webhook”.</p>
+
+<p>You’ll then be presented with a modal, from which you can copy the webhook URL.</p>
+
+<p>Once you’ve found this value, visit your algorithm’s repository on Bitbucket Cloud and click on the Settings tab. Click ‘Webhooks’ on the left side, and you’ll be able to restore your webhook by entering the webhook URL.</p>
+
+<h4 id="faq-1">FAQ</h4>
+
+<p><strong>I’d like to reuse an existing Bitbucket Cloud repository for my algorithm. Is this possible?</strong></p>
+
+<p>At this time we are only able to use new, purpose-created repositories for Bitbucket Cloud-backed algorithms, which Algorithmia itself creates and provisions.</p>
+
+<p><strong>Can I rename or move the Bitbucket Cloud repository that backs my algorithm?</strong></p>
+
+<p>Yes! Upon any change to your repository’s name or owner we receive a webhook which we will use to update our system to point to the new repository address.</p>
+
+<p><strong>I revoked access to the Algorithmia’s Bitbucket Cloud OAuth application, and now none of the repositories I created can build!</strong></p>
+
+<p>When you revoke access to an OAuth app, Bitbucket Cloud automatically revokes both your token and any access keys you may have created via the OAuth app. To fix your algorithms, simply <a href="#your-repositorys-access-key-was-removed">follow the instructions above</a> on restoring access keys to a repository.</p>
+
+<h3 id="hosting-source-code-on-gitlab">Hosting source code on GitLab</h3>
+
+<p>By hosting your algorithm’s source code on GitLab, you can take advantage of GitLab’s rich set of developer features, such as pull requests and GitLab CI/CD, and also ensure that access to your source code is carefully mediated.</p>
+
+<p>If you haven’t used Git before, we recommend <a href="https://try.github.io/">this Git tutorial series</a> by GitHub.</p>
+
+<p class="notice-info"><strong>Web IDE Support:</strong> At this time we don’t support editing source code in our Web IDE for GitLab-hosted algorithms.</p>
+
+<p class="notice-info"><strong>Enterprise Users:</strong> By default, on new Algorithmia clusters algorithm source code can only be hosted internally within the Algorithmia platform. As such, you won’t see GitLab listed as a repository host for new algorithms until your cluster administrator <a href="/developers/administration/scm-config/source-code-management-gitlab">creates a GitLab configuration</a>.</p>
+
+<h4 id="creating-gitlab-hosted-algorithms">Creating GitLab-hosted algorithms</h4>
+
+<p>To create an algorithm with its source code hosted on GitLab, simply select any available GitLab SCM configuration for “repository host” in the modal.</p>
+
+<p>The first time you create a GitLab-hosted algorithm, you’ll be prompted to connect your GitLab account. Click “Authorize” and follow the instructions in the pop-op window to give Algorithmia permission to create and manage Git repositories on your behalf. Once you’ve connected your GitLab account to Algorithmia, you’ll be able to select any available GitLab configuration to host your source code repository when you create a new algorithm.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/scm_create_gitlab_algorithm_unauthorized.png" alt="Authorization prompt for GitLab repository host" class="screenshot img-sm" /></p>
+
+<p>You can customize two aspects of the GitLab repositories that are created for your algorithms: the repository’s owner, and its name.</p>
+
+<p>By default, all GitLab respositories are created under your personal GitLab account. However, you may optionally choose any GitLab organizations of which you’re a member, as long as they’ve been configured by your cluster administrator. The available organizations are listed in the “repository owner” drop-down:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/scm_create_gitlab_algorithm_org_2.png" alt="Customizing your repository owner" class="screenshot img-sm" /></p>
+
+<p>You may also customize the name of the repository that’s created. By default, it’ll be the name of your algorithm.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/source_code_management/scm_create_gitlab_algorithm_name_2.png" alt="Customizing your repository name" class="screenshot img-sm" /></p>
+
+<p>If you decide to use an alternative name, we recommend that you use only letters, numbers, hyphens, and/or underscores. While GitLab will accept characters outside this range, it will replace any unsupported characters with an underscore, potentially resulting in an undesired repository name.</p>
+
+<p>When we create your repository, we associate the following with it:</p>
+
+<ul>
+  <li><strong>A Deploy Key</strong>: GitLab deploy keys allow read-only access to specific repositories, and are GitLabs’s prescribed means by which external services can fetch code for building and deploying. These keys are not tied to individual permissions, and as such will allow Algorithmia to continue building an algorithm even if the permissions of the creating user change. We also use deploy keys to obtain your repository’s commit log (to display changes when publishing versions) and README.md (for use as algorithm documentation).</li>
+  <li><strong>Webhooks</strong>: We set up webhooks to receive notifications about changes to your repo, such as when there’s a change to its default branch.</li>
+</ul>
+
+<h4 id="updating-gitlab-hosted-algorithms">Updating GitLab-hosted algorithms</h4>
+
+<p>Once you’ve created your algorithm, any commits to your GitLab repository’s <em>default</em> branch will result in a build on Algorithmia. At creation, your repository’s default branch will be your <code class="language-plaintext highlighter-rouge">master</code> branch, but you can change this at any time in your repository’s settings.</p>
+
+<p>You can view your algorithm’s builds by heading to its landing page and clicking the “Builds” tab if you are the algorithm’s owner.</p>
+
+<h4 id="publishing-gitlab-hosted-algorithms">Publishing GitLab-hosted algorithms</h4>
+
+<p>When you’re ready to create a new version of your algorithm, visit that algorithm’s page and select the “Builds” tab. Locate the build corresponding to specific commit SHA you wish to use, and then click “Publish” on the right side of the row.</p>
+
+<p>This will open a publish modal that will let you publish your algorithm.</p>
+
+<p>If you don’t see any builds listed, make sure that you’re pushing commits to your repository’s <em>default</em> branch. Builds are only triggered for commits pushed to the default branch.</p>
+
+<p>To learn more about algorithm builds, <a href="https://cdn.algorithmia.com/developers/platform/algorithm-profiles#algorithm-builds">click here</a>.</p>
+
+<h4 id="deleting-gitlab-hosted-algorithms">Deleting GitLab-hosted algorithms</h4>
+
+<p>If you wish to delete an algorithm that hosts its source code on GitLab, have no fear—the repository will be left unharmed. If you do wish to destroy your algorithm’s source code, you can follow <a href="https://docs.gitlab.com/ee/user/project/settings/#delete-a-project">these instructions</a>.</p>
+
+<h4 id="managing-your-gitlab-authorization">Managing your GitLab authorization</h4>
+
+<p>If you want to review your GitLab authorization status, you can visit your account settings page. Simply scroll to the “Source Code Management” section to view any prior GitLab authorizations, or to connect your account.</p>
+
+<h4 id="troubleshooting-gitlab-hosted-algorithms">Troubleshooting GitLab-hosted algorithms</h4>
+
+<p>If we experience a temporary disruption in connectivity with GitLab, your source code will be unavailable for modification during the duration of that disruption. The following are some additional scenarios under which algorithm source code won’t be available, to help you troubleshoot.</p>
+
+<h5 id="your-repositorys-deploy-key-was-removed-1">Your repository’s deploy key was removed</h5>
+
+<p>We depend on deploy keys to pull source code from your algorithm for building. A deploy key is simply an SSH keypair with read-only access to a specific repository. Algorithmia securely stores the private key while the public key is shared with GitLab.</p>
+
+<p>You can obtain the public key for your repository by navigating to your algorithm’s settings page and clicking “View Key”. You’ll be presented with a modal, from which you can copy the public key.</p>
+
+<p>With the deploy key in hand, simply follow <a href="https://docs.gitlab.com/ee/user/project/deploy_keys/#deploy-keys">instructions outlined here</a> to restore the public key to your repository.</p>
+
+<h5 id="your-repository-was-deleted-2">Your repository was deleted</h5>
+
+<p>If your algorithm’s GitLab repository was deleted, GitLab does not have a mechanism for restoring easily without backups. It is essential that both the repository’s deploy key and webhooks remain in place, otherwise we will not be able to pull your source code, or know when you make changes.</p>
+
+<h5 id="your-repositorys-webhook-needs-to-be-restored-2">Your repository’s webhook needs to be restored</h5>
+
+<p>We depend on webhooks to notify us of changes to your algorithm’s repository. To restore your webhook within GitLab, first locate the webhook URL and secret. This can be found under the “Settings” tab on your algorithm’s homepage in Algorithmia. Just click “View Details” under “GitLab Webhook”.</p>
+
+<p>You’ll then be presented with a modal, from which you can copy the webhook URL and secret.</p>
+
+<p>Once you’ve found these values, visit your algorithm’s repository on GitLab and click on the Settings tab. Click ‘Webhooks’ on the left side, and you’ll be able to restore your webhook by entering the webhook URL and secret.</p>
+
+<h4 id="faq-2">FAQ</h4>
+
+<p><strong>I’d like to reuse an existing GitLab repository for my algorithm. Is this possible?</strong></p>
+
+<p>At this time we are only able to use new, purpose-created repositories for GitLab-backed algorithms, which Algorithmia itself creates and provisions.</p>
+
+<p><strong>Can I rename or move the GitLab repository that backs my algorithm?</strong></p>
+
+<p>Yes! Upon any change to your repository’s name or owner we receive a webhook which we will use to update our system to point to the new repository address.</p>
+
+<p><strong>I revoked access to the Algorithmia’s GitLab OAuth application, and now none of the repositories I created can build!</strong></p>
+
+<p>When you revoke access to an OAuth app, GitLab automatically revokes both your token and any deploy keys you may have created via the OAuth app. To fix your algorithms, simply <a href="#your-repositorys-deploy-key-was-removed">follow the instructions above</a> on restoring deploy keys to a repository.</p>
+
+<h3 id="hosting-source-code-on-bitbucket-server">Hosting source code on Bitbucket Server</h3>
+
+<p>By hosting your algorithm’s source code on Bitbucket Server, you can take advantage of Bitbucket Server’s rich set of developer features, such as pull requests, and also ensure that access to your source code is carefully mediated.</p>
+
+<p>If you haven’t used Git before, we recommend <a href="https://try.github.io/">this Git tutorial series</a> by GitHub.</p>
+
+<p class="notice-info"><strong>Web IDE Support:</strong> At this time we don’t support editing source code in our Web IDE for BitBucket Server-hosted algorithms.</p>
+
+<p class="notice-info"><strong>No OAuth Support:</strong> Bitbucket Server does not support OAuth, so a token-based flow is implemented to connect Bitbucket Server-hosted algorithms.</p>
+
+<p class="notice-info"><strong>Enterprise Users:</strong> By default, on new Algorithmia clusters algorithm source code can only be hosted internally within the Algorithmia platform. As such, you won’t see Bitbucket Server listed as a repository host for new algorithms until your administrator <a href="/developers/administration/scm-config/source-code-management-bitbucket-server-checkin">creates a Bitbucket Server configuration</a>.</p>
+
+<h4 id="creating-bitbucket-server-hosted-algorithms">Creating Bitbucket Server-hosted algorithms</h4>
+
+<p>To create an algorithm with its source code hosted on Bitbucket Server, simply select any available Bitbucket Server SCM configuration for “repository host” in the modal.</p>
+
+<p>You can customize two aspects of any Bitbucket Server repository that’s created for an algorithm: the repository’s owner, and its name.</p>
+
+<p>By default, all Bitbucket Server repositories are under a project configured by your cluster administrator. These projects are listed in the “repository owner” drop-down.</p>
+
+<p>If you decide to use an alternative name, we recommend that you use only letters, numbers, hyphens, and/or underscores. While Bitbucket Server will accept characters outside this range, it will replace any unsupported characters with an underscore, potentially resulting in an undesired repository name.</p>
+
+<p>When we create your repository, we associate the following with it:</p>
+
+<ul>
+  <li><strong>A personal access token</strong>: Bitbucket Server personal access tokens allow appropriate access to specific repositories, and are Bitbucket Server’s prescribed means by which external services can fetch code for building and deploying. These tokens are tied to individual permissions, and as such will not allow Algorithmia to continue building an algorithm if the permissions of the personal access token changes. We also use the personal access token to obtain your repository’s commit log (to display changes when publishing versions) and README.md (for use as algorithm documentation).</li>
+  <li><strong>Webhooks</strong>: We set up webhooks to receive notifications about changes to your repo, such as when there’s a change to its default branch.</li>
+</ul>
+
+<h4 id="updating-bitbucket-server-hosted-algorithms">Updating Bitbucket Server-hosted algorithms</h4>
+
+<p>Once you’ve created your algorithm, any commits to your Bitbucket Server repository’s <em>default</em> branch will result in a build on Algorithmia. At creation, your repository’s default branch will be your <code class="language-plaintext highlighter-rouge">master</code> branch, but you can change this at any time in your repository’s settings.</p>
+
+<p>You can view your algorithm’s builds by heading to its homepage and clicking the “Builds” tab if you are the algorithm’s owner.</p>
+
+<h4 id="publishing-bitbucket-server-hosted-algorithms">Publishing Bitbucket Server-hosted algorithms</h4>
+
+<p>When you’re ready to create a new version of your algorithm, visit that algorithm’s page and select the “Builds” tab. Locate the build corresponding to specific commit SHA you wish to use, and then click “Publish” on the right side of the row.</p>
+
+<p>This will open a publish modal that will let you publish your algorithm.</p>
+
+<p>If you don’t see any builds listed, make sure that you’re pushing commits to your repository’s <em>default</em> branch. Builds are only triggered for commits pushed to the default branch.</p>
+
+<p>To learn more about algorithm builds, <a href="https://cdn.algorithmia.com/developers/platform/algorithm-profiles#algorithm-builds">click here</a>.</p>
+
+<h4 id="deleting-bitbucket-server-hosted-algorithms">Deleting Bitbucket Server-hosted algorithms</h4>
+
+<p>If you wish to delete an algorithm whose source code is hosted on Bitbucket Server, have no fear—the repository will be left unharmed.</p>
+
+<h4 id="managing-your-bitbucket-server-authorization">Managing your Bitbucket Server authorization</h4>
+
+<p>If you want to review your Bitbucket Server authorization status, you can visit your account settings page. Simply scroll to the “Source Code Management” section to view any prior Bitbucket Server authorizations.</p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li class="active">
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

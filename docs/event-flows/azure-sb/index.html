@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Azure Service Bus - Algorithmia Developer Center</title>
+    <meta name="description" content="This feature is only available in Algorithmia Enterprise installations.
+">
+    <meta name="keywords" content="integrations, event-flows">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Azure Service Bus">
+<meta name="twitter:description" content="This feature is only available in Algorithmia Enterprise installations.
+">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure Service Bus">
+<meta property="og:description" content="This feature is only available in Algorithmia Enterprise installations.
+">
+<meta property="og:url" content="https://algorithmia.com/developers/event-flows/azure-sb/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Event flows</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/icons/azure-service-bus.png" alt="" itemprop="image" class="title-icon">
+
+Azure Service Bus<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/event-flows/azure-sb.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-12-14T17:31:56Z" itemprop="dateModified">December 14, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p class="notice-enterprise">This feature is only available in Algorithmia Enterprise installations.</p>
+
+<p>This guide will walk you through setting up Algorithmia Event Flows using an <a href="https://azure.microsoft.com/services/service-bus/">Azure Service Bus (SB)</a> message broker. Once configured, you can create event-driven workflows in which your algorithms subscribe to an SB queue and are automatically invoked with the contents of messages published to the queue.</p>
+
+<h2 id="event-flow-configuration-overview">Event Flow configuration overview</h2>
+
+<p>The process of configuring Event Flows with an SB message broker involves multiple steps, some of which are to be completed on the Azure side and some of which are to be completed on the Algorithmia side. At a high level, the configuration steps are:</p>
+
+<ol>
+  <li><a href="#1-gathering-required-information-from-algorithmia">Gather required information from Algorithmia</a>.</li>
+  <li><a href="#2-configuring-resources-in-the-azure-portal">On Azure, create a group of resources</a> (including an SB queue) using an Azure Resource Manager (ARM) template or manually as the situation dictates.</li>
+  <li><a href="#3-creating-an-event-flow-in-algorithmia">On Algorithmia, create an algorithm and connect it to the SB queue</a> to subscribe to messages published there.</li>
+  <li><a href="#4-sending-messages-to-the-broker">Test the connection by sending messages</a> to the SB queue to be consumed by the subscriber algorithm.</li>
+</ol>
+
+<h2 id="1-gathering-required-information-from-algorithmia">1. Gathering required information from Algorithmia</h2>
+
+<p>Contact <a href="mailto:support@algorithmia.com">support@algorithmia.com</a> to obtain the email address of the Azure account running your Algorithmia cluster.</p>
+
+<h2 id="2-configuring-resources-in-the-azure-portal">2. Configuring resources in the Azure portal</h2>
+
+<p class="notice-info"><strong>NOTE:</strong> The steps in this section are to be completed within the <a href="https://portal.azure.com/" target="_blank" rel="noreferrer noopener">Azure Portal</a>.</p>
+
+<h3 id="configure-permissions">Configure permissions</h3>
+<p class="notice-info"><strong>NOTE</strong>: You only need to complete these permission configuration steps if you’re creating a queue in a <strong>different</strong> Azure account than the one running your Algorithmia instance.</p>
+
+<h4 id="create-a-custom-role-in-your-account">Create a custom role in your account</h4>
+
+<p>To begin, save the following JSON custom role definition as a local file <code class="language-plaintext highlighter-rouge">GuestRole.json</code>. You’ll need to replace <code class="language-plaintext highlighter-rouge">SUBSCRIPTION_ID</code> with your Azure account’s unique <strong>Subscription ID</strong> value. This can be found under the <strong>Subscriptions</strong> service in the Azure portal, and it will be a UUID of the format <code class="language-plaintext highlighter-rouge">51a70446-0c61-4017-577a-9327a28bcb73</code>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QueueReceiver"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSCRIPTION_ID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"IsCustom"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can receive messages and get connection string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Microsoft.ServiceBus/namespaces/queues/authorizationRules/listkeys/action"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Microsoft.ServiceBus/namespaces/queues/read"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Microsoft.ServiceBus/namespaces/read"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"NotActions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"DataActions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Microsoft.ServiceBus/namespaces/messages/receive/action"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"NotDataActions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"AssignableScopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"/subscriptions/SUBSCRIPTION_ID"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>With this file in place, authenticate with the Azure CLI and then create a custom QueueReceiver role in your account with the command below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ az role definition create --role-definition GuestRole.json
+</code></pre></div></div>
+
+<p>For more information on how to work with the Azure CLI to complete this step, <a href="https://docs.microsoft.com/en-us/azure/role-based-access-control/custom-roles-cli" target="_blank" rel="noopener noreferrer">visit the Azure Docs</a>. Note that this step can also be completed via PowerShell or REST API.</p>
+
+<h4 id="invite-the-algorithmia-account-as-a-guest-account-in-your-accounts-active-directory">Invite the Algorithmia account as a guest account in your account’s Active Directory</h4>
+
+<p>Create a new guest user account with the Algorithmia account’s email address using the following steps:</p>
+<ul>
+  <li>Sign in to the Azure portal as an Azure AD administrator.</li>
+  <li>In the left-hand navigation menu, select <strong>Azure Active Directory</strong> (or search for the service in the search bar).</li>
+  <li>In the left-hand navigation submenu under <strong>Manage</strong>, select <strong>Users</strong>.</li>
+  <li>Select <strong>+ New guest user</strong> from the options along the top.<img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_33.png" /></li>
+  <li>On the <strong>New user</strong> page, select <strong>Invite user</strong> and then add the guest user’s information as follows:
+    <ul>
+      <li><strong>Identity</strong> → <strong>Name</strong>: first and last name of the guest user</li>
+      <li><strong>Identity</strong> → <strong>Email address</strong>: email address obtained in <a href="#1-gathering-required-information-from-algorithmia">step 1</a></li>
+      <li><strong>Groups and roles</strong> → <strong>Groups</strong>: add the guest user to one or more existing groups, or do it later</li>
+      <li><strong>Groups and roles</strong> → <strong>Roles</strong>: select the QueueReceiver role you created <a href="#creating-a-custom-role-in-your-account">above</a><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_34.png" /></li>
+      <li>Click <strong>Invite</strong> to automatically send the invitation to the guest user. A “Successfully invited user” notification will appear in the upper-right corner. The user account is now added to the directory as a guest account with the custom role.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="create-a-service-bus-namespace-and-queue-using-an-arm-template">Create a Service Bus namespace and queue using an ARM template</h3>
+
+<p>To begin using Azure SB, you must create a namespace with a name that’s globally unique across Azure, and a queue to serve as a message broker. We provide the ARM template below to create these resources. See <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview" target="_blank" rel="noopener noreferrer">What is Azure Resource Manager?</a> and <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview" target="_blank" rel="noopener noreferrer">What are ARM templates?</a> for general information about Azure resource management.</p>
+
+<p>To use this ARM template, search for the <strong>Templates</strong> service in the portal and click <strong>+ Create</strong>.</p>
+
+<p>In the <strong>General</strong> page, provide a <strong>Name</strong> and <strong>Description</strong> for and click <strong>OK</strong>.</p>
+
+<p>Now paste the JSON template below into the text field on the <strong>ARM template</strong> page and click <strong>OK</strong> and then <strong>Add</strong>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contentVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"serviceBusNamespaceName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name of the Service Bus namespace"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"serviceBusQueueName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name of the Queue"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"westus2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Location for all resources."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"QueueAPName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccessPolicyQueue"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[parameters('serviceBusNamespaceName')]"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft.ServiceBus/namespaces"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[parameters('location')]"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[parameters('serviceBusQueueName')]"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Queues"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"dependsOn"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"lockDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PT5M"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"maxSizeInMegabytes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1024"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"requiresDuplicateDetection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"requiresSession"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"defaultMessageTimeToLive"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P10675199DT2H48M5.4775807S"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deadLetteringOnMessageExpiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"duplicateDetectionHistoryTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PT10M"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"maxDeliveryCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"autoDeleteOnIdle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P10675199DT2H48M5.4775807S"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"enablePartitioning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"enableExpress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[variables('QueueAPName')]"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authorizationRules"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"dependsOn"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"[parameters('serviceBusQueueName')]"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"Rights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Listen"</span><span class="p">,</span><span class="s2">"Send"</span><span class="p">,</span><span class="s2">"Manage"</span><span class="p">]</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"QueueConnectionString"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[listkeys(variables('QueueAPName'), '2017-04-01').primaryConnectionString]"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The newly created template will now appear in the list on the <strong>Templates</strong> page. If it doesn’t appear immediately, try clicking the gray refresh wheel (<img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_11.png" />). Once the template appears, click <strong>Deploy</strong> from the action menu at right.</p>
+
+<p>In the <strong>Custom deployment</strong> page, select the name of the <strong>Resource group</strong> containing the target Algorithmia cluster’s resources.</p>
+
+<p>Fill in the <strong>Service Bus Namespace Name</strong> field in adherence with the <a href="https://docs.microsoft.com/en-us/rest/api/servicebus/create-namespace" target="_blank" rel="noreferrer noopener">namespace naming rules</a>; this namespace name must be unique across Azure.</p>
+
+<p>Fill in the <strong>Service Bus Queue Name</strong> field; this will be the name you use to identify your queue from the Algorithmia side.</p>
+
+<p>Fill in the <strong>Location</strong> field with an appropriate Azure region in which to create this deployment.</p>
+
+<p>Review your selections and click <strong>Purchase</strong> to deploy the resources. You can view the deployment status in the notifications area (the bell icon) at the upper-right corner.</p>
+
+<p class="notice-info"><strong>NOTE</strong>: If the deployment fails, it’s possible that there’s already an existing namespace in the same region with the same name that you chose. If the deployment error message indicates that this is the issue, you’ll need to try redeploying with a different name until the deployment is successful.</p>
+
+<p>When the deployment is complete, click on the name of the resource group into which the namespace was deployed. You can filter by <strong>service bus namespace</strong> to see the newly created resource.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/azure-portal-resource-namespace.png" /></p>
+
+<p>If you click into the namespace, you’ll see the queue listed at the bottom.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/azure-portal-resource-queue.png" /></p>
+
+<p>In the left-hand navigation submenu under <strong>Settings</strong>, click <strong>Shared access policies</strong> and click on the <strong>RootManageSharedAccessKey</strong> policy, which should have the <strong>Manage, Send, Listen</strong> claims associated with it. Copy the <strong>Primary Connection String</strong> from the fly-out menu at right. You’ll use this as the <strong>Connection String</strong> value when connecting to the queue from Algorithmia, and it will look something like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Endpoint=sb://test-azure-sb-namespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=oq4/9pt9miVFgFWVaPO9ARYyKSro8qfVMzGFMvQzYX8=
+</code></pre></div></div>
+
+<h4 id="create-resources-manually">Create resources manually</h4>
+
+<p>If you aren’t able to use the ARM template and need to create the SB resources manually, follow the steps in the Azure documentation to <a href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-portal">create a Service Bus namespace and queue</a>.</p>
+
+<h2 id="3-creating-an-event-flow-in-algorithmia">3. Creating an Event Flow in Algorithmia</h2>
+
+<p class="notice-info"><strong>NOTE:</strong> The steps in this section are to be completed on Algorithmia, from within the browser user interface (UI) or through the API. In this guide, we’ll demonstrate what the workflow looks like in the UI.</p>
+
+<p>Note that you can set up <em>any</em> algorithm to subscribe to an SB message broker so that the algorithm is executed when a message is published to that specific queue. On our platform we refer to this type of event-driven configuration as an Event Flow, and the following demonstrates one possible example of how to set one up.</p>
+
+<h3 id="create-an-algorithm">Create an algorithm</h3>
+
+<p>Create a Python 3.x algorithm with a generic Python 3.7 algorithm environment and default settings. If you’re new to Algorithmia or need a quick refresher on how to create and modify algorithms, see our <a href="/algorithm-development/your-first-algo">Getting Started Guide</a>.</p>
+
+<p>On the newly created algorithm’s profile, click the <strong>Source</strong> tab to access the source code in the Web IDE.</p>
+
+<p>In the body of your algorithm, paste the source code below, replacing the <code class="language-plaintext highlighter-rouge">COLLECTION_OWNER</code> and <code class="language-plaintext highlighter-rouge">COLLECTION_NAME</code> with your Algorithmia account name and the name of a data collection (which you’ll create in a subsequent step), respectively. In the screenshot below the sample code, these values are <code class="language-plaintext highlighter-rouge">Ezra</code> and <code class="language-plaintext highlighter-rouge">TestingSQSEventFlow</code>, respectively.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">Algorithmia</span>
+<span class="kn">from</span> <span class="nn">Algorithmia</span> <span class="kn">import</span> <span class="n">ADK</span>
+
+<span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="n">Algorithmia</span><span class="p">.</span><span class="n">client</span><span class="p">().</span><span class="nb">file</span><span class="p">(</span><span class="s">"data://COLLECTION_OWNER/COLLECTION_NAME/"</span> <span class="o">+</span> <span class="nb">input</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"filename"</span><span class="p">)).</span><span class="n">put</span><span class="p">(</span><span class="nb">input</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"data"</span><span class="p">))</span>
+
+<span class="n">algorithm</span> <span class="o">=</span> <span class="n">ADK</span><span class="p">(</span><span class="nb">apply</span><span class="p">)</span>
+<span class="n">algorithm</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">"Algorithmia"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/algorithmia-web-ide-azure-sb-subscriber.png" /></p>
+
+<p>Click the <strong>Save</strong> and <strong>Build</strong> buttons and then click <strong>Publish</strong> when the build completes.</p>
+
+<p>On the newly published algorithm’s profile, copy the algorithm endpoint, which will be in the form <code class="language-plaintext highlighter-rouge">ALGO_OWNER/ALGO_NAME/ALGO_VERSION</code>; in the screenshot below, this is <code class="language-plaintext highlighter-rouge">ezra/testAzureSB/0.1.0</code>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/algorithm-profile-algorithm-endpoint-sb-subscriber.png" alt="algorithm profile algorithm endpoint" /></p>
+
+<h3 id="create-a-hosted-data-collection">Create a hosted data collection</h3>
+
+<p>Now create a hosted data collection to which the algorithm above will write the records read from the message broker. To begin, click the <strong>Data Sources</strong> menu item in the left-hand navigation bar. Click <strong>New Data Source</strong> and then <strong>Hosted Data Collection</strong>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/create-hosted-data-collection.png" alt="Create Algorithmia hosted data collection" /></p>
+
+<p>In the dialog box that appears, enter the <code class="language-plaintext highlighter-rouge">COLLECTION_NAME</code> value from above (in this case, <code class="language-plaintext highlighter-rouge">TestingSBEventFlow</code>) and click <strong>Create Collection</strong>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/new-collection-sb-event-flow.png" alt="New hosted data collection dialog" /></p>
+
+<h3 id="connect-to-an-sb-message-broker">Connect to an SB message broker</h3>
+
+<p class="notice-info">This section documents the workflow in Algorithmia versions &gt;=20.5.53. See the section <a href="#create-an-event-listener">below</a> for the previous event listeners-based workflow.</p>
+
+<p>Navigate to your new algorithm’s profile and click the <strong>Events</strong> tab and then the <strong>Connect broker</strong> button.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/connect_sb_broker_button.png" /></p>
+
+<p>In the modal, enter the <strong>Queue Name</strong> and <strong>Connection String</strong> values from <a href="#create-a-service-bus-namespace-and-queue-using-an-arm-template">above</a>.</p>
+
+<p>The <strong>Algorithm</strong> endpoint field is auto-populated, and the full algorithm path is shown below the text input field. The version number is optional.</p>
+
+<p>Optionally, enter a value for <strong>Algorithm timeout in seconds</strong>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/connect_sb_broker_modal.png" /></p>
+
+<p>Click <strong>Connect to Azure SB broker</strong>. The <strong>Events</strong> tab on the algorithm profile will now list your newly created connection.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/connect_sb_broker_events_tab.png" /></p>
+
+<p>Click <a href="#4-sending-messages-to-the-broker">here</a> to skip to the next step to learn how to send messages to the newly connected broker.</p>
+
+<h3 id="create-an-event-listener">Create an Event Listener</h3>
+
+<p class="notice-info">This section documents the workflow in Algorithmia versions &lt;20.5.53, where Event Flows were called event listeners.</p>
+
+<p>Navigate to the <strong>Home</strong> tab on the left-hand navigation menu. Click on the <strong>Create New</strong> button and select <strong>Event Listener</strong>. Select <strong>Azure SB</strong> from the dropdown.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_38.png" /></p>
+
+<p>In the modal, enter the <strong>Queue Name</strong> and <strong>Connection String</strong>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_27.png" /></p>
+
+<p>Enter the full path to the algorithm you created above and click <strong>Create New Event Listener</strong>. The <strong>Listeners</strong> tab on the algorithm profile will now list your newly created event listener.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_28.png" /></p>
+
+<h2 id="4-sending-messages-to-the-broker">4. Sending messages to the broker</h2>
+
+<p>Many methods exist for sending messages to Azure SB queues. For the purposes of this demonstration, here we show how to do it using <a href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-python-how-to-use-queues" target="_blank" rel="noreferrer noopener">Azure’s Python SDK for Service Bus queues</a>.</p>
+
+<h3 id="create-an-algorithm-1">Create an algorithm</h3>
+
+<p>To begin, create another Python 3.x algorithm with a generic Python 3.7 algorithm environment and default settings.</p>
+
+<h4 id="store-the-connection-string-in-the-secret-store">Store the connection string in the Secret Store</h4>
+
+<p>On the newly created algorithm’s profile, click the <strong>Settings</strong> tab and find the <strong>Secret Store</strong> section. Add a new secret called <code class="language-plaintext highlighter-rouge">CONNECTION_STR</code> with the contents of the connection string from the <a href="#connect-to-an-sb-broker">SB message broker connection</a> step above. For more information on how to use the secret store, see the <a href="/developers/platform/secret-store/">Secret Store</a> docs.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/secret-service-bus-namespace-connection-string.png" /></p>
+
+<h4 id="modify-build-and-publish-the-algorithm">Modify, build, and publish the algorithm</h4>
+
+<p>Click the <strong>Dependencies</strong> button and add the <a href="https://pypi.org/project/azure-servicebus/" target="_blank" rel="noreferrer noopener">Azure Service Bus package</a>, which Algorithmia will pull down automatically from PyPI when the algorithm is built. (If developing locally, you’ll add this to the <code class="language-plaintext highlighter-rouge">requirements.txt</code> file.)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>algorithmia&gt;=1.0.0,&lt;2.0
+azure-servicebus==7.3.1
+</code></pre></div></div>
+
+<p>In the body of your algorithm, paste the source code below, replacing the <code class="language-plaintext highlighter-rouge">QUEUE_NAME</code> value with the <strong>Queue Name</strong> string from the <a href="#connect-to-an-sb-broker">SB message broker connection</a> step above. For more details on how to use this SDK, including how to send messages in batches, see <a href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-python-how-to-use-queues" target="_blank" rel="noreferrer noopener">Azure’s Service Bus SDK documentation</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">Algorithmia</span>
+<span class="kn">from</span> <span class="nn">Algorithmia</span> <span class="kn">import</span> <span class="n">ADK</span>
+<span class="kn">from</span> <span class="nn">azure.servicebus</span> <span class="kn">import</span> <span class="n">ServiceBusClient</span><span class="p">,</span> <span class="n">ServiceBusMessage</span>
+
+<span class="n">CONNECTION_STR</span> <span class="o">=</span> <span class="s">"CONNECTION_STR"</span>
+<span class="n">QUEUE_NAME</span> <span class="o">=</span> <span class="s">"QUEUE_NAME"</span>
+
+<span class="k">def</span> <span class="nf">send_single_message</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+    <span class="c1"># Send the message to the queue
+</span>    <span class="n">sender</span><span class="p">.</span><span class="n">send_messages</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Sent a single message."</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="s">"""Send a message to the queue.
+
+    input format:
+      {"filename": "some-new-file.txt", "data": "file contents to store"}
+    """</span>
+
+    <span class="c1"># Create a Service Bus message
+</span>    <span class="n">message</span> <span class="o">=</span> <span class="n">ServiceBusMessage</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
+    <span class="c1"># Create a Service Bus client using the connection string
+</span>    <span class="n">servicebus_client</span> <span class="o">=</span> <span class="n">ServiceBusClient</span><span class="p">.</span><span class="n">from_connection_string</span><span class="p">(</span>
+      <span class="n">conn_str</span><span class="o">=</span><span class="n">CONNECTION_STR</span><span class="p">,</span>
+      <span class="n">logging_enable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">servicebus_client</span><span class="p">:</span>
+        <span class="c1"># Get a Queue Sender object to send messages to the queue
+</span>        <span class="n">sender</span> <span class="o">=</span> <span class="n">servicebus_client</span><span class="p">.</span><span class="n">get_queue_sender</span><span class="p">(</span><span class="n">queue_name</span><span class="o">=</span><span class="n">QUEUE_NAME</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">sender</span><span class="p">:</span>
+            <span class="c1"># Send one message
+</span>            <span class="n">send_single_message</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s">"Sent a message to the queue."</span>
+    
+<span class="n">algorithm</span> <span class="o">=</span> <span class="n">ADK</span><span class="p">(</span><span class="nb">apply</span><span class="p">)</span>
+<span class="n">algorithm</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">"Algorithmia"</span><span class="p">)</span>    
+</code></pre></div></div>
+
+<p>Click the <strong>Save</strong> and <strong>Build</strong> buttons, and then <strong>Publish</strong> the algorithm.</p>
+
+<h2 id="3-sending-messages-to-the-sb-queue">3. Sending messages to the SB queue</h2>
+
+<p>To send a test message, call the algorithm with input in the following format.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-new-file.txt"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file contents to store"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>To verify, open the <strong>Data Sources</strong> menu item in the left sidebar and navigate to the <code class="language-plaintext highlighter-rouge">COLLECTION_NAME</code> data collection that you configured above as the destination for your algorithm to write data. Based on the payload shown above in the <strong>Message body</strong> section, the collection should contain the file <code class="language-plaintext highlighter-rouge">some-new-file</code>, with contents equal to the string <code class="language-plaintext highlighter-rouge">file contents to store</code>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/azure-sb-file-contents.png" /></p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li class="active">
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

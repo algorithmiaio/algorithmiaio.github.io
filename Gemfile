@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
-# gem 'jekyll', '4.2.1'
-gem 'github-pages', '227' , group: :jekyll_plugins
+gem 'jekyll', '3.9.2'
+# gem 'github-pages', '227' , group: :jekyll_plugins
 gem 'jekyll-sitemap', '1.4.0'
 gem 'jekyll-redirect-from', '0.16.0'
 gem 'jekyll-last-modified-at'
@@ -13,3 +13,4 @@ gem 'therubyracer'
 gem 'nokogiri', '1.13.7'
 gem 'git'
 gem 'metainspector'
+gem 'kramdown-parser-gfm',	'1.1.0'

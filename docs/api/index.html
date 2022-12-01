@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>API - Algorithmia Developer Center</title>
+    <meta name="description" content="
+
+
+">
+    <meta name="keywords" content="">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="API">
+<meta name="twitter:description" content="
+
+
+">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="API">
+<meta property="og:description" content="
+
+
+">
+<meta property="og:url" content="https://algorithmia.com/developers/api/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div id="main-content">
+      
+<redoc spec-url="/v1/openapispec"></redoc>
+
+    </div>
+ <!-- END_BODY_EMBED -->
+
+ 
+
+ <!-- BEGIN_SCRIPTS_EMBED -->
+ 
+   <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+   <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+   <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+   <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+ 
+ <script src="/developers/js/core.cat.js"></script>
+ <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+ <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+ <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+ <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+ <script type="text/javascript">
+ $(function() {
+   $('#search-query').lunrSearch({
+     indexUrl: '/developers/js/index.json',
+     results:  '#search-results',
+     template: '#search-results-template',
+     titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+     emptyMsg: '<p>No results found...</p>'
+   });
+
+   $('#search-query').on('input', function(evt) {
+     if(evt.target.value.length < 3) {
+       $('#main-content').show();
+     } else {
+       $('#main-content').hide();
+     }
+   });
+
+   $('.sidebar .category > a').on('click', function(evt) {
+     evt.preventDefault();
+     evt.currentTarget.parentNode.classList.toggle('active');
+   });
+
+   // If there is a query string that will get picked up by lunrSearch
+   //   then hide the page content by default
+   // Note: the search input field doesn't get set by lunrSearch until index.json loads
+   var uri = new URI(window.location.search.toString());
+   var queryString = uri.search(true);
+   if (queryString.hasOwnProperty('q')) {
+     if(queryString.q.length >= 3) {
+       $('#main-content').hide();
+       $('#search-query').focus();
+     }
+   }
+ });
+ </script>
+ <!-- END_SCRIPTS_EMBED -->
+</body>
+</html>

@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Algorithm Environments - Algorithmia Developer Center</title>
+    <meta name="description" content="Matrix of supported algorithm runtime environments">
+    <meta name="keywords" content="algo-model-guide">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Algorithm Environments">
+<meta name="twitter:description" content="Matrix of supported algorithm runtime environments">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm Environments">
+<meta property="og:description" content="Matrix of supported algorithm runtime environments">
+<meta property="og:url" content="https://algorithmia.com/developers/algorithm-development/environments/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Algorithm development</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+Algorithm Environments<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/model-deployment/environments.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-11-19T22:32:33Z" itemprop="dateModified">November 19, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<ul>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#why-use-a-predefined-environment">Why use a predefined environment?</a></li>
+  <li><a href="#view-currently-available-environments">View currently available environments</a>
+    <ul>
+      <li><a href="#environments-available-on-all-clusters">Environments available on all clusters</a></li>
+      <li><a href="#environments-available-by-request">Environments available by request</a></li>
+    </ul>
+  </li>
+  <li><a href="#list-languages-and-environments-and-download-algorithm-template-files">List languages and environments and download algorithm template files</a>
+    <ul>
+      <li><a href="#overview-of-steps">Overview of steps</a></li>
+      <li><a href="#option-a-using-the-algo-cli">Option A: using the algo CLI</a>
+        <ul>
+          <li><a href="#upgrading-the-algo-cli">Upgrading the algo CLI</a></li>
+          <li><a href="#listing-algorithm-languages-cli">Listing algorithm languages (CLI)</a></li>
+          <li><a href="#listing-algorithm-environments-cli">Listing algorithm environments (CLI)</a></li>
+          <li><a href="#downloading-template-files-cli">Downloading template files (CLI)</a></li>
+        </ul>
+      </li>
+      <li><a href="#option-b-using-rest-requests-directly">Option B: Using REST requests directly</a>
+        <ul>
+          <li><a href="#listing-algorithm-languages-rest">Listing algorithm languages (REST)</a></li>
+          <li><a href="#listing-algorithm-environments-rest">Listing algorithm environments (REST)</a></li>
+          <li><a href="#downloading-template-files-rest">Downloading template files (REST)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>Algorithmia supports seven languages for writing algorithms: Python, R, Java, Scala, Ruby, Rust, and JavaScript. When you create an algorithm, you must select one of these languages.</p>
+
+<p>For several of these languages, we’ve also created predefined, customized algorithm runtime environments to support various ML frameworks and hardware requirements. These environments are available to both our Enterprise and Teams customers.</p>
+
+<p>An algorithm environment is similar to a virtual environment that you might create outside of Algorithmia, where you might choose a specific language version and optionally install specific library packages beyond whatever comes packaged standard in your language’s base library.</p>
+
+<h2 id="why-use-a-predefined-environment">Why use a predefined environment?</h2>
+
+<p>In an Algorithmia algorithm, you have the ability to specify external library dependencies using whatever syntax is standard for your language (e.g., in a <code class="language-plaintext highlighter-rouge">requirements.txt</code> file for Python). Therefore, you can technically choose a generic base algorithm environment and then build a more customized ML environment on top of that. For example, you can choose a generic Python 3.7 environment and then require PyTorch as a dependency if you’re using that specific framework.</p>
+
+<p>However, we recommend not doing this, and instead choosing the appropriate predefined framework-specific algorithm environment from the matrix below, for the following reasons:</p>
+
+<ol>
+  <li>
+    <p>Our predefined environments have been optimized for fast algorithm builds at compile time, and for fast algorithm loads when algorithms are called cold. This enhances the performance of algorithms you create using custom environments relative to the approach of using a vanilla base environment and specifying your own dependencies.</p>
+  </li>
+  <li>
+    <p>Many of our predefined environments have built-in CUDA/GPU support and access to ML-optimized hardware such as Nvidia drivers. If your algorithm requires such specialized hardware, it’s essential to use the correct predefined runtime environment, so that it’s configured correctly from the ground up to support your model.</p>
+  </li>
+  <li>
+    <p>Predefined environments come with template code to make getting started easier.</p>
+  </li>
+</ol>
+
+<p>The algorithm runtime environment you select should match up as closely as possible with your code dependencies, in order to provide the most streamlined development experience and the best algorithm performance. With the base environment selected, you can then add any other required dependencies in whichever way is standard for your language.</p>
+
+<h2 id="view-currently-available-environments">View currently available environments</h2>
+
+<p>Below is a list of available environments that we’ve created and that can be made available to you to upon request. Once we provide you with the requested environment, you’ll be able to <a href="/developers/administration/admin-panel/algorithm-environments/#installing-environments">install it on your cluster</a> so that your users can select it when they create new algorithms. For steps on how to list the environments available on your cluster for each particular language, see <a href="#list-languages-and-environments-and-download-algorithm-template-files">List languages and environments and download algorithm template files</a>.</p>
+
+<h3 id="environments-available-on-all-clusters">Environments available on all clusters</h3>
+
+<p>The matrix below lists the algorithm environments that are currently available on every Algorithmia cluster by default. To create an algorithm with a predefined environment through the API, see <a href="/developing-python-algorithms-in-a-local-ide/698050#predefined-environment">Using a Predefined Language Environment</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Environment</th>
+      <th>Language</th>
+      <th>Framework</th>
+      <th>Pinned Dependencies</th>
+      <th>CUDA/cuDNN</th>
+      <th>Base Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>python37</td>
+      <td>Python 3.7</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>algorithmiahq/ubuntu:18.04</td>
+    </tr>
+    <tr>
+      <td>python37-gpu</td>
+      <td>Python 3.7</td>
+      <td>–</td>
+      <td>–</td>
+      <td>9.0 / 7</td>
+      <td>nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>pytorch-1.4.x</td>
+      <td>Python 3.7.1</td>
+      <td>PyTorch 1.4</td>
+      <td>numpy==1.16.0</td>
+      <td>10.1 / 7</td>
+      <td>nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>pytorch-1.5.x</td>
+      <td>Python 3.7.1</td>
+      <td>PyTorch 1.5</td>
+      <td>numpy==1.16.0</td>
+      <td>10.2 / 7</td>
+      <td>nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04</td>
+    </tr>
+    <tr>
+      <td>pytorch-1.6.x</td>
+      <td>Python 3.7.1</td>
+      <td>PyTorch 1.6</td>
+      <td>numpy==1.16.0</td>
+      <td>10.2 / 7</td>
+      <td>nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04</td>
+    </tr>
+    <tr>
+      <td>spacy-2.0.18</td>
+      <td>Python 3.7.1</td>
+      <td>Spacy 2.0.18</td>
+      <td>–</td>
+      <td>–</td>
+      <td>ubuntu:16.04</td>
+    </tr>
+    <tr>
+      <td>tensorflow-gpu-1.14</td>
+      <td>Python 3.7</td>
+      <td>Tensorflow 1.14</td>
+      <td>keras==2.1.4</td>
+      <td>10.0 / 7</td>
+      <td>nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>tensorflow-gpu-2.1</td>
+      <td>Python 3.7</td>
+      <td>Tensorflow 2.1</td>
+      <td>keras==2.3.1</td>
+      <td>10.1 / 7</td>
+      <td>nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>tensorflow-gpu-2.3</td>
+      <td>Python 3.7</td>
+      <td>Tensorflow 2.3</td>
+      <td>–</td>
+      <td>10.1 / 7</td>
+      <td>nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04</td>
+    </tr>
+    <tr>
+      <td>selenium3.141.x-python</td>
+      <td>Python 3.7.1</td>
+      <td>Selenium 3.141.0</td>
+      <td>phantomjs2.1.1, chromedriver2.41, geckodriver==0.26.0</td>
+      <td>–</td>
+      <td>ubuntu:16.04</td>
+    </tr>
+    <tr>
+      <td>python27</td>
+      <td>Python 2.7.15</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>ubuntu:16.04</td>
+    </tr>
+    <tr>
+      <td>python27-cuda90-cudnn7</td>
+      <td>Python 2.7.15</td>
+      <td>–</td>
+      <td>–</td>
+      <td>9.0 / 7</td>
+      <td>nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="environments-available-by-request">Environments available by request</h3>
+
+<p>We’re always adding new optimized runtime environments to support our customers using the latest language and framework versions. Therefore, in addition to those listed above, we also have the following environments available to our Enterprise customers. <strong>If there’s a specific environment listed below that you’d like to use, or if you need a custom environment that isn’t available, please ask your customer success manager</strong> so that we can get it built and installed on your cluster.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Environment</th>
+      <th>Language</th>
+      <th>Framework</th>
+      <th>Pinned Dependencies</th>
+      <th>CUDA/cuDNN</th>
+      <th>Base Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>allennlp-0.8</td>
+      <td>Python 3.7</td>
+      <td>AllenNLP 0.8</td>
+      <td>spacy2.0.18, pytorch1.0.0</td>
+      <td> </td>
+      <td>ubuntu:16.04</td>
+    </tr>
+    <tr>
+      <td>apex-0.1</td>
+      <td>Python 3.7</td>
+      <td>Apex 0.1</td>
+      <td>pytorch==1.3</td>
+      <td>10.1 / 7</td>
+      <td>nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>mxnet-cu90-1.3.1</td>
+      <td>Python 3.7</td>
+      <td>MXNet 1.3.1</td>
+      <td>–</td>
+      <td>9.0 / 7</td>
+      <td>nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>pytorch-1.0.0</td>
+      <td>Python 3.7</td>
+      <td>PyTorch 1.0.0</td>
+      <td>–</td>
+      <td>9.0 / 7</td>
+      <td>nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>tensorrt-6.0-cuda10.0</td>
+      <td>Python 3.7</td>
+      <td>TensorRT 6.0.x</td>
+      <td> </td>
+      <td>10.0 / 7</td>
+      <td>nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>python36</td>
+      <td>Python 3.6</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>algorithmiahq/ubuntu:16.04</td>
+    </tr>
+    <tr>
+      <td>python36-gpu</td>
+      <td>Python 3.6</td>
+      <td>–</td>
+      <td>–</td>
+      <td>9.0 / 7</td>
+      <td>nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>tensorflow-gpu-1.12</td>
+      <td>Python 3.6</td>
+      <td>TensorFlow 1.12</td>
+      <td>keras==2.1.4</td>
+      <td>9.0 / 7</td>
+      <td>nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04</td>
+    </tr>
+    <tr>
+      <td>r36</td>
+      <td>R 3.6</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>algorithmiahq/ubuntu:16.04</td>
+    </tr>
+    <tr>
+      <td>scala-2-sbt-1.3.3</td>
+      <td>Scala 2.x</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>algorithmiahq/ubuntu:16.04</td>
+    </tr>
+    <tr>
+      <td>java11</td>
+      <td>Java 11.0</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>algorithmiahq/ubuntu:20.04</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="list-languages-and-environments-and-download-algorithm-template-files">List languages and environments and download algorithm template files</h2>
+
+<p>Algorithm template files provide a unified starting point for developing algorithms using a specific algorithm language and environment. This page provides instructions for how to download template files for a specific language and environment using both the algo CLI and REST requests directly. The algo CLI is recommended if you’re working at the command line, while we recommend using REST requests directly for automating your workflow.</p>
+
+<h3 id="overview-of-steps">Overview of steps</h3>
+
+<p>Template files are specific to each algorithm environment, and algorithm environments are specific to each algorithm language. Therefore, to download template files, you’ll first need to know what languages and environments are available on your cluster. The general steps are:</p>
+
+<ol>
+  <li>List the available algorithm languages on your cluster.</li>
+  <li>List the available environments on your cluster for a language chosen from (1).</li>
+  <li>Download the template files for an environment chosen from (2).</li>
+</ol>
+
+<h3 id="option-a-using-the-algo-cli">Option A: using the algo CLI</h3>
+
+<h4 id="upgrading-the-algo-cli">Upgrading the algo CLI</h4>
+
+<p>To use the CLI functionality below, you’ll need algo CLI version 1.9.0 or greater. To see what version you currently have installed, you can run <code class="language-plaintext highlighter-rouge">pip list | grep algorithmia</code>. If you have <code class="language-plaintext highlighter-rouge">algorithmia&lt;1.9.0</code>, update by running <code class="language-plaintext highlighter-rouge">pip install algorithmia --upgrade</code>.</p>
+
+<h4 id="listing-algorithm-languages-cli">Listing algorithm languages (CLI)</h4>
+
+<p>To list the languages available on your cluster, run the command below, which will list the details for each language.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>algo languages
+Name                      Display Name                      
+anaconda3                 Conda <span class="o">(</span>Environments<span class="o">)</span> - beta        
+csharp-dotnet-core2       C# .NET Core 2.x+ <span class="o">(</span>Environments<span class="o">)</span>   
+java11                    Java OpenJDK 11.0 <span class="o">(</span>Environments<span class="o">)</span>   
+python2                   Python 2.x <span class="o">(</span>Environments<span class="o">)</span>          
+python3                   Python 3.x <span class="o">(</span>Environments<span class="o">)</span>          
+r36                       R 3.6.x <span class="o">(</span>Environments<span class="o">)</span>             
+scala-2                   Scala 2.x &amp; sbt 1.3.x <span class="o">(</span>Environments<span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="listing-algorithm-environments-cli">Listing algorithm environments (CLI)</h4>
+
+<p>Environment IDs are unique on every cluster, so you’ll need to request the list of environments for your language of choice in order to get the ID value associated with a specific environment. To list environments, run <code class="language-plaintext highlighter-rouge">algo environment ALGO_LANG</code>, where <code class="language-plaintext highlighter-rouge">ALGO_LANG</code> is the name of your language of interest from the list <a href="#listing-algorithm-languages">above</a>. This will print out metadata for the available environments. For example, to list Python environments, you can use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>algo environment python3
+<span class="o">[</span>
+    ...,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: <span class="s2">"fd980f4f-1f1c-4b2f-a128-d60b40c6567a"</span>,
+        <span class="s2">"environment_specification_id"</span>: <span class="s2">"36fd467e-fbfe-4ea6-aa66-df3f403b7132"</span>,
+        <span class="s2">"display_name"</span>: <span class="s2">"Python 3.8 + TensorFlow GPU 2.3"</span>,
+        <span class="s2">"description"</span>: <span class="s2">"Python 3.8 installation with CUDA 10.1 and TensorFlow 2.3 installed"</span>,
+        <span class="s2">"created_at"</span>: <span class="s2">"2021-06-03T19:46:29.111"</span>,
+        <span class="s2">"language"</span>: <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"python3"</span>,
+            <span class="s2">"display_name"</span>: <span class="s2">"Python 3.x (Environments)"</span>,
+            <span class="s2">"configuration"</span>: <span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Python 3.x (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">req_files</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        </span><span class="se">\"</span><span class="s2">requirements.txt</span><span class="se">\"\n</span><span class="s2">    </span><span class="se">\]</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span>
+        <span class="o">}</span>,
+        <span class="s2">"machine_type"</span>: <span class="s2">"GPU"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: <span class="s2">"ea8f42fe-ea59-4eab-920a-09176729b4fa"</span>,
+        <span class="s2">"environment_specification_id"</span>: <span class="s2">"c6d34b46-0851-455d-97f5-ea8fd8b70552"</span>,
+        <span class="s2">"display_name"</span>: <span class="s2">"Python 3.7 + MXNet 1.3.1"</span>,
+        <span class="s2">"description"</span>: <span class="s2">"Python 3.7 installation with CUDA 9.0 and MXNet 1.3.1 installed"</span>,
+        <span class="s2">"created_at"</span>: <span class="s2">"2021-06-03T18:03:14.704"</span>,
+        <span class="s2">"language"</span>: <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"python3"</span>,
+            <span class="s2">"display_name"</span>: <span class="s2">"Python 3.x (Environments)"</span>,
+            <span class="s2">"configuration"</span>: <span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Python 3.x (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">req_files</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        </span><span class="se">\"</span><span class="s2">requirements.txt</span><span class="se">\"\n</span><span class="s2">    </span><span class="se">\]</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span>
+        <span class="o">}</span>,
+        <span class="s2">"machine_type"</span>: <span class="s2">"GPU"</span>
+    <span class="o">}</span>,
+    ...
+<span class="o">]</span>
+</code></pre></div></div>
+
+<p>Depending on your cluster, the above command might return a very long list of environments, many of which won’t be useful to you. We recommend filtering the list returned; for example, to only display environments with TensorFlow 2.x preinstalled, you can run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>algo environment python3 | <span class="nb">grep</span> <span class="nt">-iC4</span> <span class="nt">-e</span> <span class="s2">"tensorflow 2"</span>
+</code></pre></div></div>
+
+<h4 id="downloading-template-files-cli">Downloading template files (CLI)</h4>
+
+<p>To download template files for an environment from above, use the following command, replacing <code class="language-plaintext highlighter-rouge">ENV_SPEC_ID</code> with an environment’s <code class="language-plaintext highlighter-rouge">environment_specification_id</code> value from <a href="#listing-algorithm-environments">above</a>, and <code class="language-plaintext highlighter-rouge">DEST</code> with the local destination (directory path) to which to save the files (specify a dot “<code class="language-plaintext highlighter-rouge">.</code>” to save the template files to the current directory). The template files will be saved to the local directory specified and can now be checked in to source control for algorithm development.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>algo template ENV_SPEC_ID DEST
+</code></pre></div></div>
+
+<h3 id="option-b-using-rest-requests-directly">Option B: Using REST requests directly</h3>
+
+<p>To list languages and environments programmatically, you can use REST requests and then parse the JSON directly.</p>
+
+<h4 id="listing-algorithm-languages-rest">Listing algorithm languages (REST)</h4>
+
+<p>To list the languages available on your cluster, run the command below, substituting <code class="language-plaintext highlighter-rouge">AUTH_TOKEN</code> with an authentication token for any account on the cluster. Either specify <code class="language-plaintext highlighter-rouge">Simple</code> and provide an <a href="https://algorithmia.com/developers/platform/customizing-api-keys">API key</a> or specify <code class="language-plaintext highlighter-rouge">Bearer</code> and provide a <a href="https://algorithmia.com/developers/platform/jwt-authentication">JSON Web Token (JWT)</a>. For example, in the code below, for <code class="language-plaintext highlighter-rouge">-H 'Authorization: Simple|Bearer AUTH_TOKEN'</code> you’d use one or the other of the following commands, replacing the placeholders as appropriate:</p>
+
+<ul>
+  <li>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">'-H Authorization: Simple ADMIN_API_KEY'</code></li>
+      <li><code class="language-plaintext highlighter-rouge">'-H Authorization: Bearer JSON_WEB_TOKEN'</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>REST request</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl https://CLUSTER_DOMAIN/v1/algorithm-environments/edge/languages <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Simple|Bearer AUTH_TOKEN'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Content-type: application/json'</span>
+</code></pre></div></div>
+
+<p><strong>REST response</strong></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"anaconda3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="s2">"Conda (Environments) - beta"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Conda (Environments) - beta</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">req_files</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        </span><span class="se">\"</span><span class="s2">environment.yml</span><span class="se">\"\n</span><span class="s2">    </span><span class="se">\]</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.cache</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.cache/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/anaconda_environment</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">/home/algo/anaconda_environment/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"csharp-dotnet-core2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="s2">"C# .NET Core 2.x+ (Environments)"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">C# .NET Core 2.x+ (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/bin/Release/</span><span class="se">\*</span><span class="s2">/</span><span class="se">\*\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/resources</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/resources/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.nuget</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.nuget/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"java11"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="s2">"Java OpenJDK 11.0 (Environments)"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Java OpenJDK 11.0 (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/target/</span><span class="se">\*</span><span class="s2">.jar</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/target/algorithm.jar</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/target/lib</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/target/lib/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"python2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="s2">"Python 2.x (Environments)"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Python 2.x (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">req_files</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        </span><span class="se">\"</span><span class="s2">requirements.txt</span><span class="se">\"\n</span><span class="s2">    </span><span class="se">\]</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"python3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="s2">"Python 3.x (Environments)"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Python 3.x (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">req_files</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        </span><span class="se">\"</span><span class="s2">requirements.txt</span><span class="se">\"\n</span><span class="s2">    </span><span class="se">\]</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"r36"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="s2">"R 3.6.x (Environments)"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">R 3.6.x (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">      </span><span class="se">\"</span><span class="s2">req_files</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        </span><span class="se">\"</span><span class="s2">packages.txt</span><span class="se">\"\n</span><span class="s2">    </span><span class="se">\]</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">      {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">      {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/usr/local/lib/R/site-library</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/usr/local/lib/R/site-library/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n\n</span><span class="s2">"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"scala-2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="s2">"Scala 2.x &amp; sbt 1.3.x (Environments)"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Scala 2.x &amp; sbt 1.3.x (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">      {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/target/universal/stage</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/stage/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n\n</span><span class="s2">"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="listing-algorithm-environments-rest">Listing algorithm environments (REST)</h4>
+
+<p>Environment IDs are unique on every cluster, so you’ll need to request the list of environments for your language of choice in order to get the ID value associated with a specific environment. To list environments, run the command below, substituting <code class="language-plaintext highlighter-rouge">ALGO_LANG</code> with a language’s <code class="language-plaintext highlighter-rouge">name</code> value from the output of the command <a href="#listing-algorithm-languages-rest">above</a>. This will print out metadata for the available environments. The response below shows an abridged listing of <code class="language-plaintext highlighter-rouge">python3</code> environments.</p>
+
+<p><strong>REST request</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-X</span> GET https://CLUSTER_DOMAIN/v1/algorithm-environments/edge/languages/ALGO_LANG/environments <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Simple|Bearer AUTH_TOKEN'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Content-type: application/json'</span>
+</code></pre></div></div>
+
+<p><strong>REST response</strong></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+    </span><span class="err">...</span><span class="p">,</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fd980f4f-1f1c-4b2f-a128-d60b40c6567a"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"environment_specification_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36fd467e-fbfe-4ea6-aa66-df3f403b7132"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Python 3.8 + TensorFlow GPU 2.3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Python 3.8 installation with CUDA 10.1 and TensorFlow 2.3 installed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-03T19:46:29.111"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"python3"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Python 3.x (Environments)"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Python 3.x (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">req_files</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        </span><span class="se">\"</span><span class="s2">requirements.txt</span><span class="se">\"\n</span><span class="s2">    </span><span class="se">\]</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"machine_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPU"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ea8f42fe-ea59-4eab-920a-09176729b4fa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"environment_specification_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6d34b46-0851-455d-97f5-ea8fd8b70552"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Python 3.7 + MXNet 1.3.1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Python 3.7 installation with CUDA 9.0 and MXNet 1.3.1 installed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-03T18:03:14.704"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"python3"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Python 3.x (Environments)"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Python 3.x (Environments)</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">req_files</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        </span><span class="se">\"</span><span class="s2">requirements.txt</span><span class="se">\"\n</span><span class="s2">    </span><span class="se">\]</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">artifacts</span><span class="se">\"</span><span class="s2">: </span><span class="se">\[\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/home/algo/.local/</span><span class="se">\"</span><span class="s2">},</span><span class="se">\n</span><span class="s2">        {</span><span class="se">\"</span><span class="s2">source</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/opt/algorithm/</span><span class="se">\"</span><span class="s2">}</span><span class="se">\n</span><span class="s2">    </span><span class="se">\]\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"machine_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPU"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Depending on your cluster, the above command might return a very long list of environments, many of which won’t be useful to you. We recommend filtering the list returned; for example, to only display environments with TensorFlow 2.x preinstalled, you can pipe the output from above as follows:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl ... | <span class="nb">grep</span> <span class="nt">-iC4</span> <span class="nt">-e</span> <span class="s2">"tensorflow 2"</span>
+</code></pre></div></div>
+
+<h4 id="downloading-template-files-rest">Downloading template files (REST)</h4>
+
+<p>To download template files, you can use the command below, substituting an <code class="language-plaintext highlighter-rouge">environment_specification_id</code> for <code class="language-plaintext highlighter-rouge">ENV_SPEC_ID</code>. Note that no <code class="language-plaintext highlighter-rouge">Authorization</code> request header is required for this endpoint. </p>
+
+<p><strong>REST request</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-X</span> GET https://CLUSTER_DOMAIN/v1/algorithm-environments/edge/environment-specifications/ENV_SPEC_ID/template <span class="se">\</span>
+    <span class="nt">-o</span> <span class="s1">'template.tar'</span>
+</code></pre></div></div>
+
+<p>Now, unzip the downloaded template files into a target directory <code class="language-plaintext highlighter-rouge">DEST</code> (you must first create this directory if it doesn’t already exist). The files can now be checked in to source control for algorithm development.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvf</span> template.tar <span class="nt">-C</span> DEST <span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-f</span> template.tar
+</code></pre></div></div>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li class="active">
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

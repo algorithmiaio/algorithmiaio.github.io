@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm - Algorithmia Developer Center</title>
+    <meta name="description" content="Table of Contents
+">
+    <meta name="keywords" content="">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm">
+<meta name="twitter:description" content="Table of Contents
+">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm">
+<meta property="og:description" content="Table of Contents
+">
+<meta property="og:url" content="https://algorithmia.com/developers/model-deployment/environment-migration/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Algorithm development</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/model-deployment/environment-migration.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-11-19T22:32:33Z" itemprop="dateModified">November 19, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#getting-an-algorithms-details">Getting an algorithm’s details</a></li>
+  <li><a href="#migrating-an-algorithm">Migrating an algorithm</a>
+    <ul>
+      <li><a href="#python">Python</a></li>
+      <li><a href="#java">Java</a></li>
+      <li><a href="#scala">Scala</a></li>
+      <li><a href="#r">R</a></li>
+      <li><a href="#javascript-ruby-and-rust">JavaScript, Ruby, and Rust</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>Beginning in Algorithmia version 21.2, support for legacy language-based algorithms is deprecated. This page contains information for migrating a legacy-language based algorithm to the corresponding environment-based language. To learn more about algorithm environments, and to view the environments that we currently have available, see the <a href="/developers/model-deployment/environments">Environments</a> page. To get a list of the available languages and their associated algorithm environments currently installed on your cluster, see <a href="/developers/model-deployment/environments#list-languages-and-environments-and-download-algorithm-template-files">Listing languages and environments on your cluster</a>.</p>
+
+<h2 id="getting-an-algorithms-details">Getting an algorithm’s details</h2>
+
+<p>To begin, retrieve your algorithm’s details to determine whether it’s based on a legacy language and therefore needs to be migrated.</p>
+
+<p>When you get the algorithm details (see code <a href="#rest-request-algorithm-details">below</a>) for a legacy-language based algorithm, the REST response will contain a <code class="language-plaintext highlighter-rouge">language</code> property listing the name of the language. You can also find the language through the browser UI under the algorithm profile’s <strong>Settings</strong> tab, in the <strong>Language</strong> field. The following table lists the strings that you’ll see for legacy algorithms. (Note that we no longer support <a href="#javascript-ruby-and-rust">Javascript, Ruby, or Rust</a> algorithms.)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th><code class="language-plaintext highlighter-rouge">language</code> field in REST response</th>
+      <th>Language field in browser UI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Python 2</td>
+      <td><code class="language-plaintext highlighter-rouge">python2-langpack</code></td>
+      <td>Python 2.x (Legacy)</td>
+    </tr>
+    <tr>
+      <td>Python 3</td>
+      <td><code class="language-plaintext highlighter-rouge">python3-1</code></td>
+      <td>Python 3.x (Legacy)</td>
+    </tr>
+    <tr>
+      <td>Java</td>
+      <td><code class="language-plaintext highlighter-rouge">java</code></td>
+      <td>Java (Legacy)</td>
+    </tr>
+    <tr>
+      <td>Scala</td>
+      <td><code class="language-plaintext highlighter-rouge">scala</code></td>
+      <td>Scala (Legacy)</td>
+    </tr>
+    <tr>
+      <td>R</td>
+      <td><code class="language-plaintext highlighter-rouge">r</code></td>
+      <td>R (Legacy)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>REST request</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl https://CLUSTER_DOMAIN/v1/algorithms/ALGO_OWNER/ALGO_NAME <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Simple STD_API_KEY'</span>
+</code></pre></div></div>
+
+<p>As noted above, if the algorithm is <strong>legacy-language based</strong>, the response will contain a <code class="language-plaintext highlighter-rouge">language</code> property listing the name of the language. It’ll also contain an <code class="language-plaintext highlighter-rouge">environment</code> property listing the type of hardware (CPU or GPU) that the algorithm uses.</p>
+
+<p><strong>REST response</strong></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3cfdb152-d1f2-4b08-82b4-681c0b055a4f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALGO_NAME"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALGO_NAME"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"algorithm_callability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source_visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"closed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"python2-langpack"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpu"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apl"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network_access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pipeline_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"insights_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"scm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"algorithm"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>If the algorithm is <strong>environment based</strong>, the response will contain an <code class="language-plaintext highlighter-rouge">algorithm_environment</code> property, which is a UUID, as well as a <code class="language-plaintext highlighter-rouge">package_set</code> property, which specifies the bundle of packages included in the environment.</p>
+
+<p><strong>REST response</strong></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa57ed8-c8db-4bce-9cca-0242af442dfe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALGO_NAME"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALGO_NAME"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"algorithm_callability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source_visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"closed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"package_set"</span><span class="p">:</span><span class="w"> </span><span class="s2">"python27"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"algorithm_environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"717d36e0-222c-44a0-9aa8-06f4ebc1b82a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apl"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network_access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pipeline_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"insights_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"scm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"algorithm"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="migrating-an-algorithm">Migrating an algorithm</h2>
+
+<p>To begin, verify that you have a legacy-language based algorithm that needs to be migrated in the first place. To do this, <a href="#getting-an-algorithms-details">get the algorithm’s details</a>. If you determine that your algorithm is environment based, no migration is necessary. Otherwise, proceed with the instructions below for the language in question.</p>
+
+<ul>
+  <li><a href="#python">Python</a></li>
+  <li><a href="#java">Java</a></li>
+  <li><a href="#scala">Scala</a></li>
+  <li><a href="#r">R</a></li>
+  <li><a href="#javascript-ruby-and-rust">JavaScript, Ruby, and Rust</a></li>
+</ul>
+
+<h3 id="python">Python</h3>
+
+<p>To migrate a legacy Python algorithm, <a href="/developers/model-deployment/environments#listing-algorithm-environments-rest">get the environment ID value</a> for a valid Python 2 or Python 3 algorithm environment. Note that in the sample code at the link provided, you’ll use the string <code class="language-plaintext highlighter-rouge">python2</code> or <code class="language-plaintext highlighter-rouge">python3</code>, as appropriate, to replace <code class="language-plaintext highlighter-rouge">ALGO_LANG</code> to list the available environments. The environment ID will be a UUID like <code class="language-plaintext highlighter-rouge">2be2e978-9deb-494d-a2d1-e07e121d5ba0</code>. Execute the following <code class="language-plaintext highlighter-rouge">PUT</code> request to update the algorithm’s settings, using this UUID to replace <code class="language-plaintext highlighter-rouge">ENV_ID</code>.</p>
+
+<p><strong>REST request</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl https://CLUSTER_DOMAIN/v1/algorithms/ALGO_OWNER/ALGO_NAME <span class="se">\</span>
+    <span class="nt">-X</span> PUT
+    <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Simple STD_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">-d</span>  <span class="s1">'{
+      "settings":
+        {
+          "source_visibility": "closed",
+          "network_access": "full",
+          "pipeline_enabled": true,
+          "algorithm_environment": "ENV_ID",
+          "license":"apl"
+        }
+      }'</span>
+</code></pre></div></div>
+
+<h3 id="java">Java</h3>
+
+<p>To migrate a legacy Java algorithm, <a href="/developers/model-deployment/environments#listing-algorithm-environments-rest">get the environment ID value</a> for the Java 11 algorithm environment (there’s currently only one). Note that in the sample code at the link provided, you’ll use the string <code class="language-plaintext highlighter-rouge">java11</code> to replace <code class="language-plaintext highlighter-rouge">ALGO_LANG</code>. The environment ID will be a UUID like <code class="language-plaintext highlighter-rouge">2be2e978-9deb-494d-a2d1-e07e121d5ba0</code>. Execute the following <code class="language-plaintext highlighter-rouge">PUT</code> request to update the algorithm’s settings, using this UUID to replace <code class="language-plaintext highlighter-rouge">ENV_ID</code>.</p>
+
+<p><strong>REST request</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl https://CLUSTER_DOMAIN/v1/algorithms/ALGO_OWNER/ALGO_NAME <span class="se">\</span>
+    <span class="nt">-X</span> PUT
+    <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Simple STD_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">-d</span>  <span class="s1">'{
+      "settings":
+        {
+          "source_visibility": "closed",
+          "network_access": "full",
+          "pipeline_enabled": true,
+          "algorithm_environment": "ENV_ID",
+          "license":"apl"
+        }
+      }'</span>
+</code></pre></div></div>
+
+<p>Now clone your algorithm locally and move your algorithm’s main file <code class="language-plaintext highlighter-rouge">ALGONAME.java</code> to a new package and rename it to <code class="language-plaintext highlighter-rouge">Algorithm.java</code>, as demonstrated in the following code.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://git.CLUSTER_DOMAIN/git/ALGO_OWNER/ALGO_NAME.git
+<span class="nv">$ </span><span class="nb">cd </span>ALGO_NAME
+<span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> src/main/java/com/algorithmia/ALGO_NAME
+<span class="nv">$ </span><span class="nb">mv </span>src/main/java/algorithmia/ALGO_NAME/ALGO_NAME.java <span class="se">\</span>
+    src/main/java/com/algorithmia/ALGO_NAME/Algorithm.java
+</code></pre></div></div>
+
+<p>Similarly, if you have test files, move them to a new package as well.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> src/test/java/com/algorithmia/ALGO_NAME
+<span class="nv">$ </span><span class="nb">mv </span>src/test/java/algorithmia/ALGO_NAME/ALGO_NAME_test.java <span class="se">\</span>
+    src/test/java/com/algorithmia/ALGO_NAME/
+</code></pre></div></div>
+
+<p>Now make the following changes in your algorithm’s <a href="https://github.com/algorithmiaio/langpacks/blob/develop/languages/java11/template/pom.xml">Project Object Model (POM)</a> file.</p>
+
+<ul>
+  <li>Add the following <strong><a href="https://github.com/algorithmiaio/langpacks/blob/e91077e810da381128ba642ba5240c30c99b1f37/languages/java11/template/pom.xml#L5"><code class="language-plaintext highlighter-rouge">&lt;properties&gt;</code></a></strong>.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">&lt;</span><span class="n">properties</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">maven</span><span class="o">.</span><span class="na">compiler</span><span class="o">.</span><span class="na">source</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">maven</span><span class="o">.</span><span class="na">compiler</span><span class="o">.</span><span class="na">source</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">maven</span><span class="o">.</span><span class="na">compiler</span><span class="o">.</span><span class="na">target</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">maven</span><span class="o">.</span><span class="na">compiler</span><span class="o">.</span><span class="na">target</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">properties</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Add the following <strong><a href="https://github.com/algorithmiaio/langpacks/blob/e91077e810da381128ba642ba5240c30c99b1f37/languages/java11/template/pom.xml#L45"><code class="language-plaintext highlighter-rouge">&lt;dependency&gt;</code></a></strong> on the <code class="language-plaintext highlighter-rouge">Algorithm Handler</code>.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">algorithmia</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">algorithm</span><span class="o">-</span><span class="n">handler</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="err">\</span><span class="o">[</span><span class="mf">1.2</span><span class="o">,)&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Replace the contents of the <strong><a href="https://github.com/algorithmiaio/langpacks/blob/e91077e810da381128ba642ba5240c30c99b1f37/languages/java11/template/pom.xml#L66"><code class="language-plaintext highlighter-rouge">&lt;build&gt;</code></a></strong> tag with the following. Note that you’ll need to replace <code class="language-plaintext highlighter-rouge">ALGO_NAME</code> with the name of your algorithm.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">&lt;</span><span class="n">build</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">plugins</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">plugin</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;!--</span> <span class="nc">Make</span> <span class="n">sure</span> <span class="n">that</span> <span class="n">we</span> <span class="n">keep</span> <span class="n">our</span> <span class="n">dependencies</span> <span class="o">--&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">maven</span><span class="o">.</span><span class="na">plugins</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">maven</span><span class="o">-</span><span class="n">dependency</span><span class="o">-</span><span class="n">plugin</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">executions</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">execution</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">id</span><span class="o">&gt;</span><span class="n">copy</span><span class="o">-</span><span class="n">dependencies</span><span class="o">&lt;/</span><span class="n">id</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">phase</span><span class="o">&gt;</span><span class="n">prepare</span><span class="o">-</span><span class="kn">package</span><span class="err">&lt;/</span><span class="nn">phase</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">goals</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">goal</span><span class="o">&gt;</span><span class="n">copy</span><span class="o">-</span><span class="n">dependencies</span><span class="o">&lt;/</span><span class="n">goal</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">goals</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">configuration</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">outputDirectory</span><span class="o">&gt;</span><span class="err">$</span><span class="o">{</span><span class="n">project</span><span class="o">.</span><span class="na">build</span><span class="o">.</span><span class="na">directory</span><span class="o">}/</span><span class="n">lib</span><span class="o">&lt;/</span><span class="n">outputDirectory</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">overWriteReleases</span><span class="o">&gt;</span><span class="kc">false</span><span class="o">&lt;/</span><span class="n">overWriteReleases</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">overWriteSnapshots</span><span class="o">&gt;</span><span class="kc">false</span><span class="o">&lt;/</span><span class="n">overWriteSnapshots</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">overWriteIfNewer</span><span class="o">&gt;</span><span class="kc">true</span><span class="o">&lt;/</span><span class="n">overWriteIfNewer</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">configuration</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">execution</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">executions</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">plugin</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">plugin</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;!--</span> <span class="nc">Build</span> <span class="n">an</span> <span class="n">executable</span> <span class="no">JAR</span> <span class="o">--&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">maven</span><span class="o">.</span><span class="na">plugins</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">maven</span><span class="o">-</span><span class="n">jar</span><span class="o">-</span><span class="n">plugin</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">configuration</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">archive</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">manifest</span><span class="o">&gt;</span>
+  <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">mainClass</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">algorithmia</span><span class="o">.</span><span class="na">ALGO_NAME</span><span class="o">.</span><span class="na">Algorithm</span><span class="o">&lt;/</span><span class="n">mainClass</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">addClasspath</span><span class="o">&gt;</span><span class="kc">true</span><span class="o">&lt;/</span><span class="n">addClasspath</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;</span><span class="n">classpathPrefix</span><span class="o">&gt;</span><span class="n">lib</span><span class="o">/&lt;/</span><span class="n">classpathPrefix</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">manifest</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">archive</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">configuration</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">plugin</span><span class="o">&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">&lt;/</span><span class="n">plugins</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">build</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Once you’ve added the snippets above to your dependencies file, make the following changes to your source code in <a href="https://github.com/algorithmiaio/langpacks/blob/e91077e810da381128ba642ba5240c30c99b1f37/languages/java11/template/src/main/java/com/algorithmia/algorithm/Algorithm.java"><code class="language-plaintext highlighter-rouge">Algorithm.java</code></a>:</p>
+
+<ul>
+  <li>Update the package declaration to <code class="language-plaintext highlighter-rouge">package com.algorithmia.algorithm</code>.</li>
+  <li>Change the class to extend <code class="language-plaintext highlighter-rouge">AbstractAlgorithm</code> with appropriate input and output types.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Algorithm extends AbstractAlgorithm&lt;Algorithm.ExampleInput, String&gt;{
+    ...
+}
+</code></pre></div></div>
+
+<ul>
+  <li>Remove <code class="language-plaintext highlighter-rouge">throws Exception</code> from the <code class="language-plaintext highlighter-rouge">apply</code> method.</li>
+  <li>Add the following method, renaming the class to simply <code class="language-plaintext highlighter-rouge">Algorithm</code>.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    public static void main(String[] args) {
+        Algorithm algorithm = new Algorithm();
+        Handler algo = new Handler&lt;&gt;(algorithm);
+        algo.serve();
+    }
+</code></pre></div></div>
+
+<p>You can iterate locally by running <code class="language-plaintext highlighter-rouge">mvn package</code> while updating the dependency file to ensure that compilation succeeds, and then push the code back up to your Algorithmia cluster.</p>
+
+<h3 id="scala">Scala</h3>
+
+<p>To migrate a legacy Scala algorithm, <a href="/developers/model-deployment/environments#listing-algorithm-environments-rest">get the environment ID value</a> for the Scala 2 algorithm environment (there’s currently only one). Note that in the sample code at the link provided, you’ll use the string <code class="language-plaintext highlighter-rouge">scala-2</code> to replace <code class="language-plaintext highlighter-rouge">ALGO_LANG</code>. The environment ID will be a UUID like <code class="language-plaintext highlighter-rouge">2be2e978-9deb-494d-a2d1-e07e121d5ba0</code>. Execute the following <code class="language-plaintext highlighter-rouge">PUT</code> request to update the algorithm’s settings, using this UUID to replace <code class="language-plaintext highlighter-rouge">ENV_ID</code>.</p>
+
+<p><strong>REST request</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl https://CLUSTER_DOMAIN/v1/algorithms/ALGO_OWNER/ALGO_NAME <span class="se">\</span>
+    <span class="nt">-X</span> PUT
+    <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Simple STD_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">-d</span>  <span class="s1">'{
+      "settings":
+        {
+          "source_visibility": "closed",
+          "network_access": "full",
+          "pipeline_enabled": true,
+          "algorithm_environment": "ENV_ID",
+          "license":"apl"
+        }
+      }'</span>
+</code></pre></div></div>
+
+<p>Now clone your algorithm locally and move your algorithm’s main file <code class="language-plaintext highlighter-rouge">ALGONAME.scala</code> to a new package and rename it to <code class="language-plaintext highlighter-rouge">Algorithm.scala</code>, as demonstrated in the following code.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://git.CLUSTER_DOMAIN/git/ALGO_OWNER/ALGO_NAME.git
+<span class="nv">$ </span><span class="nb">cd </span>ALGO_NAME
+<span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> src/main/scala/com/algorithmia
+<span class="nv">$ </span><span class="nb">mv </span>src/main/scala/algorithmia/ALGO_NAME/ALGO_NAME.scala <span class="se">\</span>
+    src/main/scala/com/algorithmia/Algorithm.scala
+</code></pre></div></div>
+
+<p>Similarly, if you have test files, move them to a new package as well.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> src/test/scala/com/algorithmia
+<span class="nv">$ </span><span class="nb">mv </span>src/test/scala/algorithmia/ALGO_NAME/ALGO_NAME_test.scala <span class="se">\</span>
+    src/test/scala/com/algorithmia/
+</code></pre></div></div>
+
+<p>Once you’ve moved the source files, update <strong><a href="https://github.com/algorithmiaio/langpacks/blob/develop/languages/scala-2/template/build.sbt"><code class="language-plaintext highlighter-rouge">build.sbt</code></a></strong> with the following:</p>
+
+<ul>
+  <li>Set <code class="language-plaintext highlighter-rouge">name := "algorithm"</code>.</li>
+  <li>Set <code class="language-plaintext highlighter-rouge">scalaVersion := "2.13.1"</code>.</li>
+  <li>Add <code class="language-plaintext highlighter-rouge">enablePlugins(JavaAppPackaging)</code>.</li>
+  <li>Add <code class="language-plaintext highlighter-rouge">"com.algorithmia" %% "algorithmia-scala" % "1.0.+",</code> to your <code class="language-plaintext highlighter-rouge">libraryDependencies</code>.</li>
+  <li>Remove the line containing <code class="language-plaintext highlighter-rouge">mainClass</code>.</li>
+</ul>
+
+<p>Now add a file <strong><a href="https://github.com/algorithmiaio/langpacks/blob/develop/languages/scala-2/template/project/plugins.sbt"><code class="language-plaintext highlighter-rouge">project/plugins.sbt</code></a></strong> with the following contents.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">addSbtPlugin</span><span class="o">(</span><span class="s">"com.typesafe.sbt"</span> <span class="o">%</span> <span class="s">"sbt-native-packager"</span> <span class="o">%</span> <span class="s">"1.4.1"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Once you’ve added the snippets above to your build and plugins files, make the following changes to your source code in <strong><a href="https://github.com/algorithmiaio/langpacks/blob/develop/languages/scala-2/template/src/main/scala/com/algorithmia/Algorithm.scala"><code class="language-plaintext highlighter-rouge">Algorithm.scala</code></a></strong>:</p>
+
+<ul>
+  <li>Update the package declaration to <code class="language-plaintext highlighter-rouge">package com.algorithmia</code>.</li>
+  <li>Change the class to extend <code class="language-plaintext highlighter-rouge">AbstractAlgorithm</code> with appropriate input and output types.</li>
+</ul>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Algorithm</span> <span class="k">extends</span> <span class="nc">AbstractAlgorithm</span><span class="o">\[</span><span class="kt">String</span>, <span class="kt">String\</span><span class="o">]</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Update the <code class="language-plaintext highlighter-rouge">apply</code> method to return <code class="language-plaintext highlighter-rouge">Try[Output type]</code> instead of just the output type directly.</li>
+  <li>Add the following companion object.</li>
+</ul>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">Algorithm</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="nv">handler</span> <span class="k">=</span> <span class="nv">Algorithmia</span><span class="o">.</span><span class="py">handler</span><span class="o">(</span><span class="k">new</span> <span class="nc">Algorithm</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array\</span><span class="err">[</span><span class="kt">String\</span><span class="err">]</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="nv">handler</span><span class="o">.</span><span class="py">serve</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>You can iterate locally by running <code class="language-plaintext highlighter-rouge">sbt stage</code> to ensure that compilation succeeds, and then push the code back up to your Algorithmia cluster.</p>
+
+<h3 id="r">R</h3>
+
+<p>To migrate a legacy R algorithm, <a href="/developers/model-deployment/environments#listing-algorithm-environments-rest">get the environment ID value</a> for a valid R 3.6 algorithm environment. Note that in the sample code at the link provided, you’ll use the string <code class="language-plaintext highlighter-rouge">r36</code>, as appropriate, to replace <code class="language-plaintext highlighter-rouge">ALGO_LANG</code> to list the available environments. The environment ID will be a UUID like <code class="language-plaintext highlighter-rouge">2be2e978-9deb-494d-a2d1-e07e121d5ba0</code>. Execute the following <code class="language-plaintext highlighter-rouge">PUT</code> request to update the algorithm’s settings, using this UUID to replace <code class="language-plaintext highlighter-rouge">ENV_ID</code>.</p>
+
+<p><strong>REST request</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl https://CLUSTER_DOMAIN/v1/algorithms/ALGO_OWNER/ALGO_NAME <span class="se">\</span>
+    <span class="nt">-X</span> PUT
+    <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Simple STD_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">-d</span>  <span class="s1">'{
+      "settings":
+        {
+          "source_visibility": "closed",
+          "network_access": "full",
+          "pipeline_enabled": true,
+          "algorithm_environment": "ENV_ID",
+          "license":"apl"
+        }
+      }'</span>
+</code></pre></div></div>
+
+<p>To migrate a legacy R algorithm, clone your algorithm locally and rename the algorithm’s main file to <code class="language-plaintext highlighter-rouge">Algorithm.r</code> as demonstrated in the following code.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://git.CLUSTER_DOMAIN/git/ALGO_OWNER/ALGO_NAME.git
+<span class="nv">$ </span><span class="nb">cd </span>ALGO_NAME
+<span class="nv">$ </span><span class="nb">mv </span>src/ALGO_NAME.r src/Algorithm.r
+</code></pre></div></div>
+
+<p>Now add a <code class="language-plaintext highlighter-rouge">load</code> function to the source code in <strong><a href="https://github.com/algorithmiaio/langpacks/blob/develop/languages/r36/template/src/Algorithm.r"><code class="language-plaintext highlighter-rouge">Algorithm.r</code></a></strong> and a call to create the <code class="language-plaintext highlighter-rouge">AlgorithmHandler</code>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="kc">NULL</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">algo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">getAlgorithmHandler</span><span class="p">(</span><span class="n">algorithm</span><span class="p">,</span><span class="w"> </span><span class="n">load</span><span class="p">)</span><span class="w">
+</span><span class="n">algo</span><span class="o">$</span><span class="n">serve</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p>That’s it; simply push your code back up to your Algorithmia cluster and the algorithm will continue to execute without issues into the future.</p>
+
+<h3 id="javascript-ruby-and-rust">JavaScript, Ruby, and Rust</h3>
+
+<p>These languages are no longer supported. Please contact your customer success manager if you need support for one of these languages.</p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li class="active">
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

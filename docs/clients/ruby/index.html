@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Ruby - Algorithmia Developer Center</title>
+    <meta name="description" content="Add machine learning to your Ruby app with Algorithmia">
+    <meta name="keywords" content="clients">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Ruby">
+<meta name="twitter:description" content="Add machine learning to your Ruby app with Algorithmia">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby">
+<meta property="og:description" content="Add machine learning to your Ruby app with Algorithmia">
+<meta property="og:url" content="https://algorithmia.com/developers/clients/ruby/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Clients</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/language_logos/ruby.svg" alt="" itemprop="image" class="title-icon">
+
+Ruby<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/clients/ruby.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-03-30T16:58:46Z" itemprop="dateModified">March 30, 2021</time>
+
+      <p class="github-note">
+		Available on <a href='https://github.com/algorithmiaio/algorithmia-ruby' target='_blank' rel='nofollow'>GitHub</a>.
+	  </p>
+	
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p>The Algorithmia Ruby client provides a native Ruby interface to the Algorithmia API, letting developers manage and call algorithms, work with data in object stores using Algorithmia Data Sources, and access other features of the Algorithmia platform.</p>
+
+<p>This guide will cover setting up the client, calling an algorithm using direct user input, calling an algorithm that accesses data through Algorithmia Data Sources, and using Algorithmia’s Hosted Data service. For complete details about the Algorithmia API, please refer to the <a href="/developers/api/">API Docs</a>.</p>
+
+<p>To follow along you can create a new Ruby script or you can follow the examples in the Ruby interpreter.</p>
+
+<h2 id="set-up-the-client">Set Up the Client</h2>
+
+<p>The Algorithmia Ruby Client is available on rubygems. Simply add gem algorithmia to your application’s Gemfile and run bundle install or install via:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gem <span class="nb">install </span>algorithmia</code></pre></figure>
+
+<p>To use the client you’ll need an API key, which Algorithmia uses for fine-grained authentication across the platform. For this example, we’ll use the <code class="language-plaintext highlighter-rouge">default-key</code> that was created along with your account, which has a broad set of permissions. Log in to Algorithmia and navigate to Home &gt; <a href="/user#credentials">API Keys</a> to find your key, or read the <a href="/developers/platform/customizing-api-keys">API keys documentation</a> for more information.</p>
+
+<p>Once the client is installed, you can import it into your code and instantiate the client object:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"algorithmia"</span>
+
+<span class="c1"># Authenticate with your API key</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">"YOUR_API_KEY"</span>
+<span class="c1"># Create the Algorithmia client object</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Algorithmia</span><span class="p">.</span><span class="nf">client</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="specifying-an-on-premises-or-private-cloud-endpoint">Specifying an On-Premises or Private Cloud Endpoint</h4>
+
+<p class="notice-enterprise">This feature is available to <a href="/enterprise">Algorithmia Enterprise</a> users only.</p>
+
+<p>If you are running <a href="/enterprise">Algorithmia Enterprise</a>, you can specify the API endpoint when you create the client object:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">client</span> <span class="o">=</span> <span class="no">Algorithmia</span><span class="p">.</span><span class="nf">client</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="s2">"https://mylocalendpoint"</span><span class="p">)</span></code></pre></figure>
+
+<p>Alternately, you can ensure that each of your servers interacting with your Algorithmia Enterprise instance have an environment variable named <code class="language-plaintext highlighter-rouge">ALGORITHMIA_API</code> and the client will use it.  The fallback API endpoint is always the hosted Algorithmia marketplace service at <code class="language-plaintext highlighter-rouge">https://api.algorithmia.com/</code>.</p>
+
+<h2 id="calling-an-algorithm">Calling an Algorithm</h2>
+
+<p>Algorithms take three basic types of input whether they are invoked directly through the API or by using a client library: strings, JSON, and binary data. In addition, individual algorithms might have their own I/O requirements, such as using different data types for input and output, or accepting multiple types of input, so consult the input and output sections of an algorithm’s documentation for specifics.</p>
+
+<p>The first algorithm we’ll call is a demo version of the algorithm used in the Algorithm Development <a href="/developers/algorithm-development/your-first-algo">Getting Started</a> guide, which is available at <a href="/algorithms/demo/Hello">demo/Hello</a>. Looking at the <a href="/algorithms/demo/Hello/docs">algorithm’s documentation</a>, it takes a string as input and returns a string.</p>
+
+<p>In order to call an Algorithm from Ruby, we need to first create an algorithm object. With the client already instantiated, we can run the following code to create an object:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">algo</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">algo</span><span class="p">(</span><span class="s2">"demo/Hello"</span><span class="p">)</span></code></pre></figure>
+
+<p>Then, we can use the <code class="language-plaintext highlighter-rouge">pipe</code> method to call the algorithm. We’ll provide our input as the argument to the function, and then print the output using the <code class="language-plaintext highlighter-rouge">result</code> attribute:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">response</span> <span class="o">=</span> <span class="n">algo</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span><span class="s2">"HAL 9000"</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">result</span></code></pre></figure>
+
+<p>Which should print the phrase, <code class="language-plaintext highlighter-rouge">Hello HAL 9000</code>.</p>
+
+<h3 id="json-and-ruby">JSON and Ruby</h3>
+
+<p>The Ruby client provides some ease-of-use abstractions for working with algorithms with JSON inputs and outputs. When passing a Ruby array or hash into the <code class="language-plaintext highlighter-rouge">pipe</code> function, the library will automatically serialize it to JSON. Algorithms will return a JSON type and the <code class="language-plaintext highlighter-rouge">result</code> field of the response will contain the appropriate deserialized type.</p>
+
+<p>Let’s look at an example using JSON and the <a href="https://algorithmia.com/algorithms/nlp/LDA">nlp/LDA</a> algorithm. The <a href="https://algorithmia.com/algorithms/nlp/LDA/docs">algorithm docs</a> tell us that the algorithm takes a list of documents and returns a number of topics that are relevant to those documents. The documents can be a list of strings, a Data API file path, or a URL. We’ll call this algorithm using a list of strings, following the format in the algorithm documentation:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">algo_json</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">algo</span><span class="p">(</span><span class="s2">"nlp/LDA/1.0.0"</span><span class="p">)</span>
+<span class="n">input</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">:docsList</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">"It's apple picking season"</span><span class="p">,</span>
+        <span class="s2">"The apples are ready for picking"</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">algo_json</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">result</span></code></pre></figure>
+
+<p>The output will be a list of relevant topics and their number of occurrences, which will look something like: <code class="language-plaintext highlighter-rouge">[{'picking': 2}, {'apple': 1}, {'apples': 1, 'ready': 1}, {'season': 1}]</code>.</p>
+
+<p>Alternatively, if your input is already serialized to JSON, you may call <code class="language-plaintext highlighter-rouge">pipe_json</code> instead.</p>
+
+<p>You might have noticed that in this example we included a version number when instantiating the algorithm. Pinning your code to a specific version of the algorithm can be especially important in a production environment where the underlying implementation might change from version to version.</p>
+
+<h3 id="request-options">Request Options</h3>
+
+<p>The client exposes options that can configure algorithm requests. This includes support for changing the timeout or indicating that the API should include stdout in the response. In the following example, we set the timeout to 60 seconds and disable <code class="language-plaintext highlighter-rouge">stdout</code> in the response:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">algo</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="ss">timeout: </span><span class="mi">60</span><span class="p">,</span> <span class="ss">stdout: </span><span class="kp">false</span><span class="p">)</span></code></pre></figure>
+
+<p>You can find more details in <a href="/developers/api/">API Docs</a> &gt; <a href="/developers/api/#invoke-an-algorithm">Invoke an Algorithm</a>.</p>
+
+<h3 id="error-handling">Error Handling</h3>
+
+<p>To be able to better develop across languages, Algorithmia has created a set of standardized errors that can be returned by either the platform or by the algorithm being run. In Ruby, API errors and Algorithm exceptions will result in calls to <code class="language-plaintext highlighter-rouge">pipe</code> throwing an <code class="language-plaintext highlighter-rouge">AlgoException</code>:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">begin</span>
+    <span class="n">client</span><span class="p">.</span><span class="nf">algo</span><span class="p">(</span><span class="s1">'util/whoopsWrongAlgo'</span><span class="p">).</span><span class="nf">pipe</span><span class="p">(</span><span class="s1">'Hello, world!'</span><span class="p">)</span>
+<span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="n">e</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>You can read more about <a href="/developers/algorithm-development/algorithm-errors">Error Handling</a> in the <a href="/developers/algorithm-development">Algorithm Development</a> section of the dev center.</p>
+
+<h3 id="limits">Limits</h3>
+
+<p>Your account can make up to 80 Algorithmia requests at the same time (this limit <a onclick="Intercom('show')">can be raised</a> if needed).</p>
+
+<p>Algorithm requests have a payload size limit of 10MB for input and 15MB for output. If you need to work with larger amounts of data, you can make use of the Algorithmia <a href="/developers/api/#data">Data API</a>.</p>
+
+<h2 id="working-with-algorithmia-data-sources">Working with Algorithmia Data Sources</h2>
+
+<p>For some algorithms, passing input to the algorithm at request time is sufficient, while others might have larger data requirements or need to preserve state between calls. Application developers can use Algorithmia’s <a href="/developers/data/hosted">Hosted Data</a> to store data as text, JSON, or binary, and access it via the Algorithmia <a href="/developers/api/#data">Data API</a>.</p>
+
+<p>The Data API defines <a href="/developers/api/#connectors">connectors</a> to a variety of storage providers, including Algorithmia <a href="/developers/data/hosted">Hosted Data</a>, Amazon S3, Google Cloud Storage, Azure Storage Blobs, and Dropbox. After creating a connection in Data Sources, you can use the API to create, update, and delete directories and files and manage permissions across providers by making use of <a href="/developers/api/#data-uris">Data URIs</a> in your code.</p>
+
+<p>In this example, we’ll upload an image to Algorithmia’s <a href="/developers/data/hosted">Hosted Data</a> storage provider, and use the <a href="https://algorithmia.com/algorithms/dlib/FaceDetection">dlib/FaceDetection</a> algorithm to detect any faces in the image. The algorithm will create a new copy of the image with bounding boxes drawn around the detected faces, and then return a JSON object with details about the dimensions of the bounding boxes and a URI where you can download the resulting image.</p>
+
+<h3 id="create-a-data-collection">Create a Data Collection</h3>
+
+<p>The documentation for “Face Detection” says that it takes a URL or a Data URI of the image to be processed, and a Data URI where the algorithm can store the result. Create a directory to host the input image:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">img_directory</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">dir</span><span class="p">(</span><span class="s2">"data://YOUR_USERNAME/img_directory"</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">img_directory</span><span class="p">.</span><span class="nf">exists?</span> <span class="o">==</span> <span class="no">FALSE</span><span class="p">)</span>
+    <span class="n">img_directory</span><span class="p">.</span><span class="nf">create</span>
+    <span class="nb">puts</span> <span class="s2">"Created directory"</span>
+<span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">"Error: This directory already exists"</span>
+<span class="k">end</span></code></pre></figure>
+
+<p class="notice-info">Instead of your username you can also use ‘.my’ when calling algorithms. For more information about the ‘.my’ pseudonym check out the <a href="/developers/data/hosted">Hosted Data Guide</a>.</p>
+
+<p>We’ll also need to update the directory’s <a href="/developers/api/#update-collection-acl">permissions</a> so that it’s publicly accessible. In order to change your data collection permissions you can go to <a href="/data/hosted">Hosted Data</a> and click on the collection you just created called <strong>“img_directory”</strong> and select from the dropdown at the top of the screen that will show three different types of permissions:</p>
+
+<ul>
+  <li>My Algorithms (called by any user)</li>
+  <li>Private (accessed only by me)</li>
+  <li>Public (available to anyone)</li>
+</ul>
+
+<p>Set the permissions to <code class="language-plaintext highlighter-rouge">Public</code> before moving to the next section.</p>
+
+<h3 id="upload-data-to-your-data-collection">Upload Data to your Data Collection</h3>
+
+<p>Now we’re ready to upload an image file for processing. For this example, we’ll use <a href="https://unsplash.com/photos/Q_Sei-TqSlc">this photo of a group of friends</a>. Download the image and save it locally as <code class="language-plaintext highlighter-rouge">friends.jpg</code>.</p>
+
+<p>Next, create a variable that holds the location where you would like to upload the image as a URI:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">img_file</span> <span class="o">=</span> <span class="s2">"data://.my/img_directory/friends.jpg"</span></code></pre></figure>
+
+<p>Then upload your local file to the data collection using the <code class="language-plaintext highlighter-rouge">put_file</code> method:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="nf">file</span><span class="p">(</span><span class="n">img_file</span><span class="p">).</span><span class="nf">exists?</span> <span class="o">==</span> <span class="no">FALSE</span><span class="p">)</span>
+    <span class="c1"># Upload local file</span>
+    <span class="n">img_directory</span><span class="p">.</span><span class="nf">put_file</span><span class="p">(</span><span class="s2">"your_local_path_to_file/friends.jpg"</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"Uploaded local file"</span>
+<span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">"Error: File already exists."</span>
+<span class="k">end</span></code></pre></figure>
+
+<p class="notice-warning">This method call will replace a file if it already exists at the specified location. If you wish to avoid replacing a file, check if the file exists before using this method.</p>
+
+<p>Confirm that the file was created by navigating to Algorithmia’s <a href="/data/hosted">Hosted Data Source</a> and finding your data collection and file.</p>
+
+<p>You can also upload your data through the UI on Algorithmia’s <a href="/data/hosted">Hosted Data Source</a>. For instructions on how to do this go to the <a href="/developers/data/hosted">Hosted Data Guide</a>.</p>
+
+<h3 id="call-the-algorithm">Call the Algorithm</h3>
+
+<p>Once the file has been uploaded, you are ready to call the algorithm. Create the algorithm object, then pass the required inputs—an image URI (which is stored in <code class="language-plaintext highlighter-rouge">img_file</code> in the code above) and a URI for the image output—to <code class="language-plaintext highlighter-rouge">pipe</code>:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Create the algorithm object</span>
+<span class="n">algo_cv</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">algo</span><span class="p">(</span><span class="s2">"dlib/FaceDetection/0.2.1"</span><span class="p">)</span>
+
+<span class="n">input</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">:images</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s2">"data://.my/img_directory/friends.jpg"</span><span class="p">,</span>
+            <span class="ss">:output</span> <span class="o">=&gt;</span> <span class="s2">"data://.algo/temp/detected_faces.png"</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Invoke algorithm with error handling</span>
+<span class="k">begin</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">algo_cv</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">result</span>
+<span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="c1"># Algorithm error if, for example, the input is not correctly formatted</span>
+    <span class="nb">puts</span> <span class="n">e</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Once the algorithm has completed, <code class="language-plaintext highlighter-rouge">response.result</code> will contain the dimensions of the bounding boxes for any detected faces and the URI for the resulting file, which you can then download (or provide as input to another algorithm in a pipeline).</p>
+
+<p class="notice-info">Algorithms can create and store data in folders named with the algorithm name in the Algorithm Data collection. To access this folder from within an executing algorithm, the <code class="language-plaintext highlighter-rouge">.algo</code> shortcut can be used, as in the input example above. When accessing data from a client context, the algorithm author and name can be used along with the <code class="language-plaintext highlighter-rouge">.algo</code> shortcut to download data, in the format <code class="language-plaintext highlighter-rouge">data://.algo/author/algoName/folder/fileName</code>.</p>
+
+<h3 id="download-the-resulting-file">Download the resulting file</h3>
+
+<p>The URI included in the algorithm output uses the <code class="language-plaintext highlighter-rouge">.algo</code> shortcut, so we’ll need to modify it slightly to download the file by adding the algorithm name and author. Verify that the file that you want to download exists, and try downloading it to a new local file location:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">download_uri</span> <span class="o">=</span> <span class="s2">"data://.algo/dlib/FaceDetection/temp/detected_faces.png"</span>
+
+<span class="c1"># Download the file</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="nf">file</span><span class="p">(</span><span class="n">download_uri</span><span class="p">).</span><span class="nf">exists?</span> <span class="o">==</span> <span class="no">TRUE</span><span class="p">)</span>
+    <span class="n">local_file</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">file</span><span class="p">(</span><span class="n">download_uri</span><span class="p">).</span><span class="nf">get_file</span>
+    <span class="nb">puts</span> <span class="n">local_file</span><span class="p">.</span><span class="nf">path</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>This copies the file from your data collection and saves it as a temp file on your local machine, storing the filename in the variable <code class="language-plaintext highlighter-rouge">local_file</code>. Ruby cleans up temp files when the program or interpreter terminates, so remember to save the file to a new location if you want to keep it.</p>
+
+<p>Alternately, if you just need the contents of the file to be stored in a variable, you can retrieve the remote file’s content without saving the actual file:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Download contents of file as a string</span>
+<span class="k">if</span> <span class="n">client</span><span class="p">.</span><span class="nf">file</span><span class="p">(</span><span class="n">download_uri</span><span class="p">).</span><span class="nf">exists</span><span class="p">():</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">file</span><span class="p">(</span><span class="n">download_uri</span><span class="p">).</span><span class="nf">get</span></code></pre></figure>
+
+<p>This will get the image as binary data, saving it to the variable <code class="language-plaintext highlighter-rouge">image_data</code>, which might be useful when writing algorithms that are part of an image processing pipeline.</p>
+
+<p>If the file was text (an image, etc.), the <code class="language-plaintext highlighter-rouge">get</code> function will retrieve the file’s content as a string. For more methods on how to get a file from a data collection using the Data API go to the <a href="/developers/api/#get-a-file-or-directory">API Specification</a>.</p>
+
+<h2 id="additional-functionality">Additional Functionality</h2>
+
+<p>In addition to the functionality covered in this guide, the Ruby Client Library provides a complete interface to the Algorithmia platform, including <a href="/developers/algorithm-development/algorithm-management">managing algorithms</a>, administering <a href="/developers/platform/organizations">organizations</a>, and working with <a href="/developers/algorithm-development/source-code-management">source control</a>. You can also visit the <a href="/developers/api">API Docs</a> to view the complete API specification.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>If you’re a data scientist or developer who will be building and deploying new algorithms, you can move on to the <a href="/developers/algorithm-development/your-first-algo">Algorithm Development &gt; Getting Started</a> guide.</p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li class="active">
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

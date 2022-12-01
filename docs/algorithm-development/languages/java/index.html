@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Java - Algorithmia Developer Center</title>
+    <meta name="description" content="Build your algorithm in Java">
+    <meta name="keywords" content="algo-guide-lang">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Java">
+<meta name="twitter:description" content="Build your algorithm in Java">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java">
+<meta property="og:description" content="Build your algorithm in Java">
+<meta property="og:url" content="https://algorithmia.com/developers/algorithm-development/languages/java/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Languages</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/language_logos/java.svg" alt="" itemprop="image" class="title-icon">
+
+Java<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/algorithm-development/languages/java.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-07-07T16:55:34Z" itemprop="dateModified">July 07, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p>Before you get started learning about Java algorithm development, make sure you go through our <a href="/developers/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a> to learn how to create your first algorithm, understand permissions available, versioning, using the CLI, and more.</p>
+
+<p>Table of contents</p>
+
+<ul>
+  <li><a href="#available-libraries">Available libraries</a></li>
+  <li><a href="#write-your-first-algorithm">Write your first algorithm</a></li>
+  <li><a href="#managing-dependencies">Managing dependencies</a></li>
+  <li><a href="#io-for-your-algorithms">I/O for your algorithms</a></li>
+  <li><a href="#error-handling">Error handling</a></li>
+  <li><a href="#publishing-algorithmia-insights">Publishing Algorithmia Insights</a></li>
+  <li><a href="#algorithm-checklist">Algorithm checklist</a></li>
+  <li><a href="#publish-algorithm">Publish algorithm</a></li>
+  <li><a href="#conclusion-and-resources">Conclusion and resources</a></li>
+</ul>
+
+<h2 id="available-libraries">Available libraries</h2>
+
+<p>Algorithmia makes a number of libraries available to make algorithm development easier.</p>
+
+<p>The full <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/language/index.html">Java 11 language and standard library</a>
+is available for you to use in your algorithms.</p>
+
+<p>Furthermore, algorithms can call other algorithms and manage data on the Algorithmia platform via the <a href="/developers/clients/java">Algorithmia Java Client</a>.</p>
+
+<h2 id="write-your-first-algorithm">Write your first algorithm</h2>
+
+<p>If you’ve followed the <a href="/developers/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a>, you’ll notice in your algorithm editor, there is boilerplate code that returns “Hello” and whatever you input to the console.</p>
+
+<p>The main thing to note about the algorithm is that it’s wrapped in the apply() function.</p>
+
+<p class="notice-info">The apply() function defines the input point of the algorithm. We use the apply() function in order to make different algorithms standardized. This makes them easily chained and helps authors think about designing their algorithms in a way that makes them easy to leverage and predictable for end users.</p>
+
+<p>Go ahead and remove the boilerplate code below that’s inside the apply() function because we’ll be writing a different algorithm in this tutorial:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/algorithm_console_java.png" alt="Algorithm console Java" class="screenshot" /></p>
+
+<h2 id="managing-dependencies">Managing dependencies</h2>
+
+<p>Algorithmia supports adding 3rd party dependencies via Maven packages. Specifically, any packages from
+<a href="https://search.maven.org/artifact/com.algorithmia/algorithmia-client/">Maven Central</a> can be added to algorithms.</p>
+
+<p>On the algorithm editor page there is a button on the top right that says “Dependencies”. Click that button and you’ll see a modal window:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/java_dependencies.png" alt="Java Dependency File" class="screenshot img-md" /></p>
+
+<p>If you have any dependencies you can add them by typing in the package name to the dependency file in the following form:</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;dependency org="{GroupID}" name="{ArtifactID}" rev="{Version}" conf="default" changing="true"/&gt; </code></p>
+
+<p>For example, to make use of the Apache Commons Math version 3.4.1 library, you would include the line:</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;dependency org="org.apache.commons" name="commons-math3" rev="3.4.1" conf="default" changing="true"/&gt;</code></p>
+
+<p>in the dependencies file and add the line</p>
+
+<p><code class="language-plaintext highlighter-rouge">import org.apache.commons.math3.*;</code></p>
+
+<p>in the main file.</p>
+
+<p class="notice-info">The Algorithmia dependency is already installed for your convenience. For more information about Algorithmia’s Maven package visit <a href="https://www.javadoc.io/doc/com.algorithmia/algorithmia-client">Java Client Docs</a></p>
+
+<p>This guide won’t depend on any external dependencies so you can close the dependencies window.</p>
+
+<h2 id="io-for-your-algorithms">I/O for your algorithms</h2>
+
+<p>Now let’s get started on the hands-on portion of the guide:</p>
+
+<p>The first algorithm that we’ll create will take a JSON formatted object passed as input by the user which is deserialized into a Java object before the algorithm is called.</p>
+
+<p>It will output a JSON formatted object which the user will consume with an API call to the algorithm path which is found at the bottom of the algorithm description page.</p>
+
+<p>This path is based on your Algorithmia user name and the name of your algorithm, so if you are “AdaDeveloper” and your algorithm is “TokenizeText”, then the path for version 0.1.1 of your algorithm will be AdaDeveloper/TokenizeText/0.1.1</p>
+
+<h3 id="working-with-basic-data-structures">Working with basic data structures</h3>
+
+<p>Below is a code sample showing how to create an algorithm working with basic user input.</p>
+
+<p>You’ll also see some error handling within the algorithm, but we recommend that you take a look at our <a href="/developers/algorithm-development/algorithm-basics/algorithm-errors">Better Error Handling Guide</a> for more information.</p>
+
+<p>This example shows how to get the value of the key “URL” from a Map object that the user passes in when calling the algorithm:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">algorithmia.test_java</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.algorithmia.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.algo.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.data.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.gson.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">test_java</span> <span class="o">{</span>
+    <span class="c1">// Note that you don't pass in your API key when creating an algorithm</span>
+    <span class="nc">AlgorithmiaClient</span> <span class="n">client</span> <span class="o">=</span> <span class="nc">Algorithmia</span><span class="o">.</span><span class="na">client</span><span class="o">();</span>
+    <span class="c1">// The input and output of apply() automatically turns into JSON</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">apply</span><span class="o">(</span><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">dict</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">{</span>
+        <span class="k">return</span> <span class="n">dict</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"URL"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Go ahead and type or paste the code sample above in the Algorithmia code editor after removing the “Hello World” code.</p>
+
+<p>Now compile the new code sample and when that’s done test the code in the console by passing in the input and hitting enter on your keyboard:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">{</span><span class="s2">"URL"</span>: <span class="s2">"some/path/somefile.txt"</span><span class="o">}</span></code></pre></figure>
+
+<p>You should see the value from the key returned in the console:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="s2">"some/path/somefile.txt"</span></code></pre></figure>
+
+<h3 id="working-with-data-stored-on-algorithmia">Working with data stored on Algorithmia</h3>
+
+<p>This next code snippet shows how to create an algorithm working with a data file that a user has stored using Algorithmia’s <a href="/developers/data/hosted">Hosted Data Source</a>.</p>
+
+<p class="notice-warning">Files stored in <a href="/developers/data/hosted">Hosted Data</a> must be transferred into the algorithm before use, via the <a href="https://algorithmia.com/developers/api/?java#files">getFile</a> method. Alternately, their contents can be transferred using <a href="https://algorithmia.com/developers/api/?java#files">getString, getJson, or getBytes</a>.</p>
+
+<h4 id="prerequisites">Prerequisites</h4>
+<p>If you wish to follow along working through the example yourself, create a text file that contains any unstructured text such as a chapter from a public domain book or article. We used a chapter from <a href="https://en.wikisource.org/wiki/Burning_Daylight">Burning Daylight, by Jack London</a> which you can copy and paste into a text file. Or copy and paste it from here: <a href="/developers/data_assets/burning_daylight.txt">Chapter One Burning Daylight, by Jack London</a>. Then you will can upload it into one of your <a href="/data/hosted">Data Collections</a>.</p>
+
+<p>This example shows how to create an algorithm that takes a user’s file which is stored in a data collection on the Algorithmia platform. It then splits up the text into sentences and then splits those sentences up into words:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">algorithmia.test_java</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.algorithmia.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.algo.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.data.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.gson.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="nc">HashMap</span> <span class="nf">apply</span><span class="o">(</span><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">dict</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Take user input of URL and return text split up as words.</span>
+    <span class="c1">// Note that you don't pass in your API key when creating an algorithm</span>
+    <span class="nc">AlgorithmiaClient</span> <span class="n">client</span> <span class="o">=</span> <span class="nc">Algorithmia</span><span class="o">.</span><span class="na">client</span><span class="o">();</span>
+    <span class="nc">String</span> <span class="n">text_file</span> <span class="o">=</span> <span class="n">dict</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"URL"</span><span class="o">);</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">all_words</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">();</span>
+    <span class="nc">String</span> <span class="n">text</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">();</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">client</span><span class="o">.</span><span class="na">file</span><span class="o">(</span><span class="n">text_file</span><span class="o">).</span><span class="na">exists</span><span class="o">()</span> <span class="o">==</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Get the contents of the file as a string.</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">file</span><span class="o">(</span><span class="n">text_file</span><span class="o">).</span><span class="na">getString</span><span class="o">();</span>
+            <span class="c1">// Split the contents of the file by the sentences.</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">sentences</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">"\\."</span><span class="o">);</span>
+            <span class="c1">// Break down each sentence of the array.</span>
+            <span class="k">for</span><span class="o">(</span> <span class="nc">String</span> <span class="n">sentence</span> <span class="o">:</span> <span class="n">sentences</span> <span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">"[ ]"</span><span class="o">);</span>
+                <span class="n">all_words</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">words</span><span class="o">));</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Please check that your file exists"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"words"</span><span class="o">,</span> <span class="n">all_words</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span> <span class="n">text</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">map</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>After you paste the above code into the Algorithmia code editor you can compile and then test the example by passing in a file that you’ve hosted in <a href="/data/hosted">Data Collections</a>.</p>
+
+<p>Following the example below replace the path to your data collection with your user name (it will appear already if you are logged in), data collection name, and data file name which you can find under “My Collections” in <a href="/data/hosted">Data Collections</a>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">{</span><span class="s2">"user_file"</span>: <span class="s2">"data://YOUR_USERNAME/data_collection_dir/data_file.txt"</span><span class="o">}</span></code></pre></figure>
+
+<p>This guide uses a chapter from the public domain book <a href="https://en.wikisource.org/wiki/Burning_Daylight">Burning Daylight, by Jack London</a>, but for brevity we’ll only show the first sentence in “text” and “words”:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">{</span><span class="s2">"text"</span>: <span class="s2">"It was a quiet night in the Shovel."</span>, <span class="s2">"words"</span>: <span class="o">[[</span><span class="s1">'It'</span>, <span class="s1">'was'</span>, <span class="s1">'a'</span>, <span class="s1">'quiet'</span>, <span class="s1">'night'</span>, <span class="s1">'in'</span>, <span class="s1">'the'</span>, <span class="s1">'Shovel'</span><span class="o">]]}</span></code></pre></figure>
+
+<p class="notice-info">When you are creating an algorithm be mindful of the data types you require from the user and the output you return to them. Our advice is to create algorithms that allow for a few different input types such as a file, a sequence or a URL.</p>
+
+<h3 id="automatic-json-parsing">Automatic JSON parsing</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">algorithmia.docs.Example</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">apply</span><span class="o">(</span><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">dict</span><span class="o">,</span> <span class="nc">String</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dict</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>By default, Algorithmia uses Google’s <a href="https://github.com/google/gson">GSON</a> library for converting JSON to and from
+native Java objects. You can specify the input and output types of your algorithm simply by setting the parameters and return type of
+your <code class="language-plaintext highlighter-rouge">apply()</code> method.</p>
+
+<p>This example shows a function that takes two parameters, a Map from Strings to Strings (dict) and another String (key), and returns another String.</p>
+
+<p>Algorithmia can automatically parse many types of native Java objects to and from JSON: Integers, Lists, Arrays, Maps, and many others. In many cases it can also parse arbitrary user-defined Java Classes to and from JSON. See the <a href="https://sites.google.com/site/gson/gson-user-guide">Gson User Guide</a> for reference.</p>
+
+<h3 id="custom-json-parsing">Custom JSON parsing</h3>
+<p>If you want more control over parsing, then use a single apply method accepting a <code>String</code> and give it the <code>@AcceptsJson</code> annotation (from the <code>com.algorithmia.algo</code> package).</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">algorithmia.Example</span>
+
+<span class="kn">import</span> <span class="nn">com.algorithmia.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.algo.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.data.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JavaTest</span> <span class="o">{</span>
+    <span class="nd">@AcceptsJson</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">apply</span><span class="o">(</span><span class="nc">String</span> <span class="n">input</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="c1">// Parse JSON here</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>If you have more than 1 apply method, or your apply method does not take a <code>String</code> as an argument then you will receive an error message at runtime.  Also note that passing in a String <code>"foo"</code> becomes serialized to JSON like <code>"\"foo\""</code>.</p>
+
+<p>On the other hand, if GSON doesn’t serialize your output response to JSON correctly (or you want to do some custom serialization) you can add an <code>@ReturnsJson</code> to your apply method and return a serialized JSON String.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">algorithmia.Example</span>
+
+<span class="kn">import</span> <span class="nn">com.algorithmia.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.algo.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.data.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JavaTest</span> <span class="o">{</span>
+    <span class="nd">@ReturnsJson</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">apply</span><span class="o">(</span><span class="nc">String</span> <span class="n">input</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="c1">// Do some work</span>
+        <span class="c1">// Return a JSON string</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p class="notice-info">If you use <code>@ReturnsJson</code> but don’t return a valid JSON string, your algorithm will return a JSON parsing error.</p>
+
+<h3 id="working-with-directories">Working with directories</h3>
+
+<p>While running, algorithms have access to a temporary filesystem located at <code class="language-plaintext highlighter-rouge">/tmp</code>, the contents of which do not persist across calls to the algorithm. While the Data API allows you to get the contents of the files you want to work with as JSON, a string, or raw bytes, in some cases you might need your algorithm to read and write files locally. This can be useful as a temporary location to store files downloaded from Hosted Data, such as raw data for processing or models to be loaded into your algorithms. It can also be used to write new files before uploading them via the Data API.</p>
+
+<p>For reference, <a href="https://gist.github.com/StephanieKim/56af1aeb6dcd895e2c914bad8c35876c">this gist</a> provides an example of iterating over data in a directory, processing it, and writing new data to a file, while <a href="https://algorithmia.com/algorithms/asli/albert_template/source">this template for ALBERT and Tensorflow</a> provides an example of using the <code class="language-plaintext highlighter-rouge">/tmp</code> directory to load a model.</p>
+
+<h3 id="writing-files-for-the-user-to-consume">Writing files for the user to consume</h3>
+
+<p>Sometimes it is more appropriate to write your output to a file than to return it directly to the caller.  In these cases, you may need to create a temporary file, then copy it to a <a href="http://docs.algorithmia.com/#data-api-specification">Data URI</a> (usually one which the caller specified in their request, or a <a href="/developers/data/hosted#temporary-algorithm-collections">Temporary Algorithm Collection</a>):</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// {"target_file":"data://username/collection/filename.txt"}</span>
+<span class="nc">String</span> <span class="n">file_uri</span> <span class="o">=</span> <span class="n">dict</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"target_file"</span><span class="o">);</span>
+<span class="nc">File</span> <span class="n">tempfile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"/tmp/"</span><span class="o">+</span><span class="no">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">()+</span><span class="s">".tmp"</span><span class="o">);</span>
+<span class="n">save_some_output_to</span><span class="o">(</span><span class="n">tempfile</span><span class="o">);</span>
+<span class="n">client</span><span class="o">.</span><span class="na">file</span><span class="o">(</span><span class="n">file_uri</span><span class="o">).</span><span class="na">put</span><span class="o">(</span><span class="n">tempfile</span><span class="o">);</span></code></pre></figure>
+
+<h3 id="calling-other-algorithms-and-managing-data">Calling other algorithms and managing data</h3>
+
+<p>To call other algorithms or manage data from your algorithm, use the <a href="/developers/clients/java">Algorithmia Java Client</a> which is automatically available to any algorithm you create on the Algorithmia platform. For more detailed information on how to work with data see the <a href="http://docs.algorithmia.com/">Data API docs</a> and learn about Algorithmia’s <a href="/developers/data">Hosted Data Source</a>.</p>
+
+<p>Here is an example of creating an algorithm that relies on data from another algorithm:</p>
+
+<p>You may call up to 24 other algorithms, either in parallel or recursively.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">algorithmia.test_java</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.algorithmia.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.algo.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.algorithmia.data.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.gson.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="nc">HashMap</span> <span class="nf">apply</span><span class="o">(</span><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">dict</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Take user input of URL and return text split up as words.</span>
+    <span class="c1">// Note that you don't pass in your API key when creating an algorithm</span>
+    <span class="nc">AlgorithmiaClient</span> <span class="n">client</span> <span class="o">=</span> <span class="nc">Algorithmia</span><span class="o">.</span><span class="na">client</span><span class="o">();</span>
+    <span class="nc">String</span> <span class="n">input_url</span> <span class="o">=</span> <span class="n">dict</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"URL"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">text</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">();</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">all_words</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">input_url</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"http:"</span><span class="o">)</span> <span class="o">||</span> <span class="n">input_url</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"https:"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">Algorithm</span> <span class="n">algo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">algo</span><span class="o">(</span><span class="s">"algo://util/Url2Text/0.1.4"</span><span class="o">);</span>
+            <span class="nc">AlgoResponse</span> <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="na">pipe</span><span class="o">(</span><span class="n">input_url</span><span class="o">);</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">asJsonString</span><span class="o">();</span>
+            <span class="c1">// Split the contents of the file by the sentences.</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">sentences</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">"\\."</span><span class="o">);</span>
+            <span class="c1">// Break down each sentence of the array.</span>
+            <span class="k">for</span><span class="o">(</span> <span class="nc">String</span> <span class="n">sentence</span> <span class="o">:</span> <span class="n">sentences</span> <span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">"[ ]"</span><span class="o">);</span>
+                <span class="n">all_words</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">words</span><span class="o">));</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">APIException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"API Exception: "</span> <span class="o">+</span> <span class="n">ex</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">AlgorithmException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"API Exception: "</span> <span class="o">+</span> <span class="n">ex</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Please pass in a valid URL"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"result"</span><span class="o">,</span> <span class="n">all_words</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">map</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Go ahead and try the above code sample in the Algorithmia code editor and then type the input into the console:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">{</span><span class="s2">"URL"</span>: <span class="s2">"http://github.com"</span><span class="o">}</span></code></pre></figure>
+
+<p>This returns a Map of an ArrayList of words:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/tokenize_url.png" alt="Run basic algorithm in console" class="screenshot" /></p>
+
+<p>As you can see from these examples, fields that are passed into your algorithm by the user such as scalar values and sequences such as lists, maps, arrays and bytearray (binary byte sequence such as an image file) can be handled as you would any Java data structure within your algorithm.</p>
+
+<p><strong>Note:</strong> Binary data is passed using <code>byte[]</code> and for more information check out the <a href="http://docs.algorithmia.com/?java#input-output">API Docs</a>.</p>
+
+<p>For an example that takes and processes image data check out the <a href="https://algorithmia.com/algorithms/deeplearning/Places365Classifier">Places 365 Classifier’s source code</a>.</p>
+
+<p class="notice-warning">Some older algorithms use our deprecated Java client. If it has an import from the <code>algorithmia</code> package instead of the <code>com.algorithmia</code> package, that means it is using the deprecated client.</p>
+
+<h2 id="error-handling">Error handling</h2>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">throw</span> <span class="k">new</span> <span class="nc">AlgorithmException</span><span class="o">(</span><span class="s">"Invalid graph structure"</span><span class="o">);</span></code></pre></figure>
+
+<p>Algorithms can throw any exception, and they will be returned as an error via the Algorithmia API. If you want to throw a generic exception message, use an <code class="language-plaintext highlighter-rouge">AlgorithmException</code>.</p>
+
+<p>For more information on error handling see the <a href="/developers/algorithm-development/algorithm-basics/algorithm-errors">Better Error Handling Guide</a>.</p>
+
+<h2 id="publishing-algorithmia-insights">Publishing Algorithmia Insights</h2>
+
+<p class="notice-enterprise">This feature is available to <a href="/enterprise">Algorithmia Enterprise</a> users only.</p>
+
+<p>Inference-related metrics (a feature of <a href="../algorithmia-enterprise/algorithmia-insights">Algorithmia Insights</a>) can be reported via using the <code class="language-plaintext highlighter-rouge">report_insights</code> method of the Algorithmia client.</p>
+
+<p>Depending on your algorithm, you might want to report on the algorithm payload for each API call (such as the features or number of features), the output of the algorithm to monitor data distributions of predictions, or probability of each inference.</p>
+
+<p>In the case of an example credit scoring model, shown in this <a href="https://www.youtube.com/watch?v=pdKwtp-_n2M">demo for Algorithmia Insights</a>, reported metrics include the algorithm predictions:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Report Algorithmia Insights</span>
+<span class="n">client</span><span class="o">.</span><span class="na">reportInsights</span><span class="o">(</span><span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">Object</span><span class="o">&gt;()</span> <span class="o">{</span> <span class="o">{</span>
+    <span class="n">put</span><span class="o">(</span><span class="s">"risk_score"</span><span class="o">,</span> <span class="n">risk_score</span><span class="o">);</span>
+    <span class="n">put</span><span class="o">(</span><span class="s">"approved"</span><span class="o">,</span> <span class="n">approved</span><span class="o">);</span>
+<span class="o">}</span> <span class="o">});</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">Sample</span><span class="w"> </span><span class="err">model</span><span class="w"> </span><span class="err">output</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">pushed</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">Insights</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"approved"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"risk_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<h2 id="algorithm-checklist">Algorithm checklist</h2>
+
+<p>Before you are ready to publish your algorithm it’s important to go through this <a href="/developers/algorithm-development/algorithm-checklist">Algorithm Checklist</a> and check out this blog post for <a href="https://algorithmia.com/blog/advanced-algorithm-design">Advanced Algorithm Development <i class="fa fa-external-link"></i></a>.</p>
+
+<p>Both links will go over important best practices such as how to create a good algorithm description, add links to external documentation and other important information.</p>
+
+<h2 id="publish-algorithm">Publish algorithm</h2>
+
+<p>Once you’ve developed your algorithm, you can publish it and make it available for others to use.</p>
+
+<p>On the upper right hand side of the algorithm page you’ll see a purple button “Publish” which will bring up a modal:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/publish_algorithm.png" alt="Publish an algorithm" class="screenshot img-sm" /></p>
+
+<p>In this modal, you’ll see a Changes tab, a Sample I/O tab, and one called Versioning.</p>
+
+<p>Changes shows you your commit history and release notes.</p>
+
+<p>Sample I/O is where you’ll create your sample input and output for the user to try under Try the API in the Run tab. When you add a sample input, make sure to test it out with all the inputs that you accept since users will be able to test your algorithm with their own inputs.</p>
+
+<p>Under the Versioning tab, you can select whether your algorithm will be for public use or private use as well as set the royalty. The algorithm can either be royalty-free or charge per-call. If you opt to have the algorithm charge a royalty, as the author, you will earn 70% of the royalty cost.</p>
+
+<p>Check out <a href="/developers/pricing">Algorithm Pricing</a> for more information on how much algorithms will cost to run.</p>
+
+<p>Under Semantic Versioning you can choose which kind of release your change should fall under: Major, Minor, or Revision.</p>
+
+<p>If you are satisfied with your algorithm and settings, go ahead and hit publish. Congratulations, you’re an algorithm developer!</p>
+
+<h2 id="conclusion-and-resources">Conclusion and resources</h2>
+
+<p>In this guide we covered how to create an algorithm, work with different types of data and learned how to publish an algorithm.</p>
+
+<p>For more resources:</p>
+
+<ul>
+  <li><a href="/developers/clients/java">Algorithmia Java client documentation</a></li>
+  <li><a href="https://www.javadoc.io/doc/com.algorithmia/algorithmia-client">Algorithmia Java Client Docs</a></li>
+  <li><a href="http://docs.algorithmia.com/?java#error-handling">Algorithmia API Docs</a></li>
+  <li><a href="http://docs.oracle.com/javase/8/docs/api/">Java 8 JDK API</a></li>
+</ul>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="active category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li class="active">
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

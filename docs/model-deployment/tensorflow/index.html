@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>TensorFlow - Algorithmia Developer Center</title>
+    <meta name="description" content="Bring your Tensorflow graph model to Algorithmia.">
+    <meta name="keywords" content="algo-model-guide">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="TensorFlow">
+<meta name="twitter:description" content="Bring your Tensorflow graph model to Algorithmia.">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlow">
+<meta property="og:description" content="Bring your Tensorflow graph model to Algorithmia.">
+<meta property="og:url" content="https://algorithmia.com/developers/model-deployment/tensorflow/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Model guides</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/language_logos/tensorflow.svg" alt="" itemprop="image" class="title-icon">
+
+TensorFlow<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/model-deployment/tensorflow.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-04-23T19:56:52Z" itemprop="dateModified">April 23, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p>Welcome to deploying your pre-trained <a href="https://www.tensorflow.org/">Tensorflow</a> model on Algorithmia!</p>
+
+<p><strong>Currently we support tensorflow-gpu up to version 2.4.</strong></p>
+
+<p class="notice-info">Note: this guide uses the web UI to create and deploy your Algorithm. If you prefer a code-only approach to deployment, review <a href="/developers/algorithm-development/algorithm-management">Algorithm Management</a> after reading this guide.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+  <li><a href="#prerequisites">Prerequisites</a>
+    <ul>
+      <li><a href="#save-your-pre-trained-model">Save your Pre-Trained Model</a></li>
+      <li><a href="#create-a-data-collection">Create a Data Collection</a></li>
+      <li><a href="#host-your-model-file">Host Your Model File</a></li>
+    </ul>
+  </li>
+  <li><a href="#create-your-algorithm">Create your Algorithm</a></li>
+  <li><a href="#set-your-dependencies">Set your Dependencies</a></li>
+  <li><a href="#load-your-model">Load your Model</a>
+    <ul>
+      <li><a href="#using-the-savedmodel-method">Using the SavedModel Method</a></li>
+      <li><a href="#gpu-memory-tricks">GPU memory tricks</a></li>
+    </ul>
+  </li>
+  <li><a href="#publish-your-algorithm">Publish your Algorithm</a></li>
+</ul>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you get started deploying your pre-trained model on Algorithmia, there are a few things you’ll want to do first:</p>
+
+<h3 id="save-your-pre-trained-model">Save your Pre-Trained Model</h3>
+<p>You’ll want to do the training and saving of your model on your local machine, or the platform you’re using for training, before you deploy it to production on the Algorithmia platform.</p>
+
+<p>After training your Tensorflow model, you’ll need to save it, along with its assets and variables.</p>
+
+<p>There are a few ways to save models in different versions of Tensorflow, but below, we’ll use the <a href="https://www.tensorflow.org/api_docs/python/tf/saved_model">SavedModel</a> method that works with multiple versions.</p>
+
+<p class="notice-warning">Because of how Tensorflow doesn’t save the entire graph architecture when using saver.save &amp; saver.restore (which require the same Tensorflow global context to be used), you’ll need to use <a href="https://www.tensorflow.org/api_docs/python/tf/saved_model/Builder">tf.saved_model.Builder</a> to save your TF model.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="kn">import</span> <span class="n">input_data</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="c1"># Pulls data from a folder in your local directory data/MNIST
+</span><span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="s">"data/MNIST/"</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">preprocessing</span><span class="p">(</span><span class="n">save_directory</span><span class="p">):</span>
+    <span class="s">"""
+    Read data from mnist dataset.
+    Every data point has two parts: image (xs) and label (ys).
+    """</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
+
+    <span class="c1"># Weights and biases for model
+</span>    <span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">10</span><span class="p">]))</span>
+
+    <span class="c1"># Implement model.
+</span>    <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+    <span class="c1"># Add new placeholder for correct answers
+</span>    <span class="n">y_</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+    <span class="c1"># Implement cross-entropy to meausre the inefficiency of our
+</span>    <span class="c1"># predictions
+</span>    <span class="n">cross_entropy</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="o">-</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">y_</span> <span class="o">*</span>
+                                                  <span class="n">tf</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">reduction_indices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">train_step</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span>
+        <span class="mf">0.5</span><span class="p">).</span><span class="n">minimize</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">)</span>
+
+    <span class="c1"># Initialize variables we created
+</span>    <span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">initialize_all_variables</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">save_model</span><span class="p">(</span><span class="n">train_step</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="n">save_directory</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">save_model</span><span class="p">(</span><span class="n">train_step</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="n">save_directory</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="s">"""
+    Launch model, initialize variables and save variables to disk after
+    training
+    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="p">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">save_directory</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">saved_model</span><span class="p">.</span><span class="n">builder</span><span class="p">.</span><span class="n">SavedModelBuilder</span><span class="p">(</span><span class="n">save_directory</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+        <span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+            <span class="n">batch_xs</span><span class="p">,</span> <span class="n">batch_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">next_batch</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">train_step</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">batch_xs</span><span class="p">,</span> <span class="n">y_</span><span class="p">:</span> <span class="n">batch_ys</span><span class="p">})</span>
+
+        <span class="c1"># We define our input tensors by name
+</span>        <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Placeholder"</span><span class="p">:</span> <span class="n">tf</span><span class="p">.</span><span class="n">saved_model</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">build_tensor_info</span><span class="p">(</span><span class="n">x</span><span class="p">)}</span>
+
+        <span class="c1">#  We also define our output tensors
+</span>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Softmax"</span><span class="p">:</span> <span class="n">tf</span><span class="p">.</span><span class="n">saved_model</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">build_tensor_info</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
+                   <span class="s">"Placeholder_1"</span><span class="p">:</span> <span class="n">tf</span><span class="p">.</span><span class="n">saved_model</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">build_tensor_info</span><span class="p">(</span><span class="n">y_</span><span class="p">)}</span>
+        <span class="c1"># Then we create a SignatureDef
+</span>        <span class="n">signature</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">saved_model</span><span class="p">.</span><span class="n">signature_def_utils</span><span class="p">.</span><span class="n">build_signature_def</span><span class="p">(</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+            <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">,</span>
+            <span class="n">method_name</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">saved_model</span><span class="p">.</span><span class="n">signature_constants</span><span class="p">.</span><span class="n">PREDICT_METHOD_NAME</span>
+        <span class="p">)</span>
+
+        <span class="n">builder</span><span class="p">.</span><span class="n">add_meta_graph_and_variables</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span>
+                                             <span class="p">[</span><span class="n">tf</span><span class="p">.</span><span class="n">saved_model</span><span class="p">.</span><span class="n">tag_constants</span><span class="p">.</span><span class="n">SERVING</span><span class="p">],</span>
+                                             <span class="n">signature_def_map</span><span class="o">=</span><span class="p">{</span><span class="s">'foo'</span><span class="p">:</span> <span class="n">signature</span><span class="p">})</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">"Model saved in file: {0}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">save_directory</span><span class="p">))</span>
+        <span class="c1"># argmax gives you the index of the highest entry in a tensor along an
+</span>        <span class="c1"># axis
+</span>        <span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="c1"># Cast floating points to take mean
+</span>        <span class="n">calculate_accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">))</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span>
+            <span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="n">images</span><span class="p">,</span> <span class="n">y_</span><span class="p">:</span> <span class="n">mnist</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="n">labels</span><span class="p">})</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"accuracy before serialization: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">))</span>
+        <span class="n">builder</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<p>In the above code, the Manual Builder API is used to save your graph using a MetaGraph. That way all of the graph and its variables, assets, and signatures will be saved as a protocol buffer. Note that the signature is the set of inputs and outputs from your graph.</p>
+
+<p>Now that you’ve trained and saved your Tensorflow model elsewhere, we’ll deploy it on Algorithmia.</p>
+
+<h3 id="create-a-data-collection">Create a Data Collection</h3>
+<p>Host your data where you want and serve it to your model with Algorithmia’s <a href="http://docs.algorithmia.com/">Data API</a>.</p>
+
+<p>In this guide we’ll use Algorithmia’s <a href="/developers/data/hosted">Hosted Data Collection</a>, but you can host it in <a href="/developers/data/s3">S3</a> or <a href="/developers/data/dropbox">Dropbox</a> as well. Alternatively, if your data lies in a database, <a href="/developers/data/dynamodb">check out</a> how we connected to a DynamoDB database.</p>
+
+<p>First, you’ll want to create a data collection to host your graph and variables.</p>
+
+<ul>
+  <li>
+    <p>Log into your Algorithmia account and create a data collection via the <a href="/developers/data/hosted">Data Collections</a> page.</p>
+  </li>
+  <li>
+    <p>Click on <strong>“Add Collection”</strong> under the “My Collections” section.</p>
+  </li>
+  <li>
+    <p>After you create your collection you can set the read and write access on your data collection.</p>
+  </li>
+</ul>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/model_hosting/add_collection.png" alt="Create a data collection" class="screenshot img-sm" /></p>
+
+<p>For more information check out: <a href="/developers/data/hosted">Data Collection Types</a>.</p>
+
+<p>Note, that you can also use the <a href="https://docs.algorithmia.com/#data-uri">Data API</a> to create data collections and upload files.</p>
+
+<h3 id="host-your-model-file">Host Your Model File</h3>
+<p>Next, upload your Tensorflow variables and graph to your newly created data collection. They should be in a .zip file or .gzip, although note our examples show using zip format so you’ll need to change the code in your main model file in the function <code class="language-plaintext highlighter-rouge">extract_model()</code> to extract your gzip accordingly or simply save your model as a .zip file.</p>
+
+<ul>
+  <li>
+    <p>Load model by clicking box <strong>“Drop files here to upload”</strong></p>
+  </li>
+  <li>
+    <p>Note the path to your data collection and the zip folder: data://user_name/collections_name/model.zip</p>
+  </li>
+</ul>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/model_hosting/tensorflow_data_collection.png" alt="Create a data collection" class="screenshot img-md" /></p>
+
+<h2 id="create-your-algorithm">Create your Algorithm</h2>
+
+<p>Hopefully you’ve already followed along with the <a href="/developers/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a> for algorithm development. If not, you might want to check it out in order to understand the various permission types, how to enable a GPU environment, and use the CLI.</p>
+
+<p class="notice-info">Note, that for this guide we are showing a model meant to run on a GPU enabled environment. To run the same model on CPUs check out this code sample: <a href="https://algorithmia.com/algorithms/demo/tensorflowmnistcpu">Tensorflow MNIST CPU Demo</a></p>
+
+<p>Once you’ve gone through the <a href="/developers/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a>, you’ll notice that when you’ve created your algorithm, there is boilerplate code in the editor that returns “Hello” and whatever you input to the console.</p>
+
+<p>The main thing to note about the algorithm is that it’s wrapped in the <code class="language-plaintext highlighter-rouge">apply()</code> function.</p>
+
+<p>The apply() function defines the input point of the algorithm. We use the apply() function in order to make different algorithms standardized. This makes them easily chained and helps authors think about designing their algorithms in a way that makes them easy to leverage and predictable for end users.</p>
+
+<p>Go ahead and remove the boilerplate code below that’s inside the <code class="language-plaintext highlighter-rouge">apply()</code> function on line 6, but leave the <code class="language-plaintext highlighter-rouge">apply()</code> function intact:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/algorithm_console_python.png" alt="Algorithm console Python" class="screenshot" /></p>
+
+<h3 id="set-your-dependencies">Set your Dependencies</h3>
+<p>Now is the time to set your dependencies that your model relies on.</p>
+
+<ul>
+  <li>Click on the <strong>“Dependencies”</strong> button at the top right of the UI and list your packages under the required ones already listed and click <strong>“Save Dependencies”</strong> on the bottom right corner.</li>
+</ul>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/model_hosting/tensorflow_dependencies_gpu.png" alt="Set your dependencies" class="screenshot img-md" /></p>
+
+<h2 id="load-your-model">Load your Model</h2>
+
+<p>Now that you’ve seen how to save your model using SavedModelBuilder, you can load your model using the Algorithmia IDE.</p>
+
+<p>When you load your model, our recommendation is to preload your model in a separate function external to the apply() function.</p>
+
+<p>This is because when a model is first loaded it can take time to load depending on the file size.</p>
+
+<p>Then, with all subsequent calls only the apply() function gets called which will be much faster since your model is already loaded.</p>
+
+<p class="notice-warning">If you are authoring an algorithm, avoid using the ‘.my’ pseudonym in the source code. When the algorithm is executed, ‘.my’ will be interpreted as the user name of the user who called the algorithm, rather than the author’s user name.</p>
+
+<p>Note that you always want to create valid JSON input and output in your algorithm. For examples see the <a href="https://algorithmia.com/developers/algorithm-development/languages/python/#io-for-your-algorithms">Algorithm Development Guides</a>.</p>
+
+<h3 id="using-the-savedmodel-method">Using the SavedModel Method</h3>
+
+<p>This is where we’ll show how to deploy your saved model to make predictions on the sample data.</p>
+
+<p>The following code sample is adapted from <a href="https://www.tensorflow.org/versions/r0.9/tutorials/mnist/beginners/index.html">MNIST for Beginners</a> tutorial from Tensorflow.</p>
+
+<p>If you want to follow along, you can add the <a href="http://yann.lecun.com/exdb/mnist/">MNIST data files</a> to your data collection, but make sure you update the username and path to match your own.</p>
+
+<p>You will also need the file in the <a href="https://algorithmia.com/algorithms/demo/TensorflowDemoGPU">Tensorflow Demo GPU</a> called loadmnistdata.py shown here to deal with unpacking the mnist files:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""
+Functions to handle MNIST data extraction and loading
+
+Adopted from https://github.com/tensorflow/tensorflow/blob/v0.6.0/tensorflow/examples/tutorials/mnist/input_data.py
+"""</span>
+
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">def</span> <span class="nf">extract_images</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">gzip</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">gz</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">'I'</span><span class="p">,</span> <span class="n">gz</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+            <span class="c1"># Read magic number.
+</span>            <span class="k">if</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mh">0x3080000</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'Invalid file: unexpected magic number.'</span><span class="p">)</span>
+            <span class="c1"># Read number of entries.
+</span>            <span class="n">n</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">'&gt;I'</span><span class="p">,</span> <span class="n">gz</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">img</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'Invalid file: expected {0} entries.'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
+            <span class="n">crow</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">'&gt;I'</span><span class="p">,</span> <span class="n">gz</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">ccol</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">'&gt;I'</span><span class="p">,</span> <span class="n">gz</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">crow</span> <span class="o">!=</span> <span class="mi">28</span> <span class="ow">or</span> <span class="n">ccol</span> <span class="o">!=</span> <span class="mi">28</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'Invalid file: expected 28 rows/cols per image.'</span><span class="p">)</span>
+            <span class="c1"># Read data.
+</span>            <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">gz</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">img</span> <span class="o">*</span> <span class="n">crow</span> <span class="o">*</span> <span class="n">ccol</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">img</span><span class="p">,</span> <span class="n">crow</span> <span class="o">*</span> <span class="n">ccol</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">dense_to_one_hot</span><span class="p">(</span><span class="n">labels_dense</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+  <span class="s">"""Convert class labels from scalars to one-hot vectors."""</span>
+  <span class="n">num_labels</span> <span class="o">=</span> <span class="n">labels_dense</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">index_offset</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_labels</span><span class="p">)</span> <span class="o">*</span> <span class="n">num_classes</span>
+  <span class="n">labels_one_hot</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_labels</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">))</span>
+  <span class="n">labels_one_hot</span><span class="p">.</span><span class="n">flat</span><span class="p">[</span><span class="n">index_offset</span> <span class="o">+</span> <span class="n">labels_dense</span><span class="p">.</span><span class="n">ravel</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="n">labels_one_hot</span>
+
+<span class="k">def</span> <span class="nf">extract_labels</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">gzip</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">gz</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">'I'</span><span class="p">,</span> <span class="n">gz</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+            <span class="c1"># Read magic number.
+</span>            <span class="k">if</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mh">0x1080000</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'Invalid file: unexpected magic number.'</span><span class="p">)</span>
+            <span class="c1"># Read number of entries.
+</span>            <span class="n">n</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">'&gt;I'</span><span class="p">,</span> <span class="n">gz</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">img</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'Invalid file: expected {0} rows.'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
+            <span class="c1"># Read labels.
+</span>            <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">gz</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dense_to_one_hot</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load_mnist</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">label_data</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">extract_images</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">extract_labels</span><span class="p">(</span><span class="n">label_data</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="c1"># return np.hstack((data, labels))
+</span>    <span class="k">return</span> <span class="p">{</span><span class="s">"images"</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="s">"labels"</span><span class="p">:</span> <span class="n">labels</span><span class="p">}</span>
+</code></pre></div></div>
+<p>Now that you have that code saved in a separate file, let’s get on with the meat of the algorithm that you’ll replace the boilerplate code with in your main algorithm file:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">'''
+MNIST prediction from pre-trained model
+Tutorial created based on:
+https://www.tensorflow.org/versions/r1.0/get_started/mnist/beginners
+'''</span>
+
+<span class="kn">import</span> <span class="nn">Algorithmia</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">.loadmnistdata</span> <span class="kn">import</span> <span class="n">load_mnist</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Algorithmia</span><span class="p">.</span><span class="n">client</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="s">"""
+    Pass in {"mnist_images": "data://demo/tensorflow_mnist_data/t10k-images-idx3-ubyte.gz",
+        "mnist_labels": "data://demo/tensorflow_mnist_data/t10k-labels-idx1-ubyte.gz"
+    }
+    """</span>
+    <span class="k">if</span> <span class="nb">input</span><span class="p">[</span><span class="s">"mnist_images"</span><span class="p">].</span><span class="n">startswith</span><span class="p">(</span><span class="s">"data://"</span><span class="p">):</span>
+        <span class="c1"># "data://demo/tensorflow_mnist_data/t10k-images-idx3-ubyte.gz"
+</span>        <span class="n">mnist_images</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nb">file</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">"mnist_images"</span><span class="p">]).</span><span class="n">getFile</span><span class="p">().</span><span class="n">name</span>
+    <span class="k">if</span> <span class="nb">input</span><span class="p">[</span><span class="s">"mnist_labels"</span><span class="p">].</span><span class="n">startswith</span><span class="p">(</span><span class="s">"data://"</span><span class="p">):</span>
+        <span class="c1"># "data://demo/tensorflow_mnist_data/t10k-labels-idx1-ubyte.gz"
+</span>        <span class="n">mnist_labels</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nb">file</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">"mnist_labels"</span><span class="p">]).</span><span class="n">getFile</span><span class="p">().</span><span class="n">name</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># load_mnist is a function from loadmnistdata.py to one hot encode images
+</span>        <span class="n">data</span> <span class="o">=</span> <span class="n">load_mnist</span><span class="p">(</span><span class="n">mnist_images</span><span class="p">,</span> <span class="n">mnist_labels</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Check your mnist image path in your data collection"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">def</span> <span class="nf">extract_zip</span><span class="p">():</span>
+    <span class="s">"""
+    Get zipped model file from data collections
+    """</span>
+    <span class="c1"># Saved model protocol buffer and variables
+</span>    <span class="n">filename</span> <span class="o">=</span> <span class="s">"data://demo/tensorflow_mnist_model/model.zip"</span>
+    <span class="n">model_file</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nb">file</span><span class="p">(</span><span class="n">filename</span><span class="p">).</span><span class="n">getFile</span><span class="p">().</span><span class="n">name</span>
+    <span class="k">return</span> <span class="n">model_file</span>
+
+<span class="k">def</span> <span class="nf">extract_model</span><span class="p">():</span>
+    <span class="s">"""
+    Unzip model files from data collections
+    """</span>
+    <span class="c1"># Model path from data collections
+</span>    <span class="n">input_zip</span> <span class="o">=</span> <span class="n">extract_zip</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create directory to unzip model files into
+</span>        <span class="n">os</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">"unzipped_files"</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Created directory"</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Error in creating directory"</span><span class="p">)</span>
+    <span class="n">zipped_file</span> <span class="o">=</span> <span class="n">zipfile</span><span class="p">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">input_zip</span><span class="p">)</span>
+    <span class="c1"># Extract unzipped files into directory created earlier returns none
+</span>    <span class="k">return</span> <span class="n">zipped_file</span><span class="p">.</span><span class="n">extractall</span><span class="p">(</span><span class="s">"unzipped_files"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">generate_gpu_config</span><span class="p">(</span><span class="n">memory_fraction</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">ConfigProto</span><span class="p">()</span>
+    <span class="n">config</span><span class="p">.</span><span class="n">gpu_options</span><span class="p">.</span><span class="n">allow_growth</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">config</span><span class="p">.</span><span class="n">gpu_options</span><span class="p">.</span><span class="n">per_process_gpu_memory_fraction</span> <span class="o">=</span> <span class="n">memory_fraction</span>
+    <span class="k">return</span> <span class="n">config</span>
+
+<span class="c1"># Unzip model files to directory
+</span><span class="n">extract_model</span><span class="p">()</span>
+
+<span class="c1"># Load model outside of apply() in global state so it only gets loaded one time
+</span><span class="k">def</span> <span class="nf">create_session</span><span class="p">():</span>
+    <span class="c1"># Set your memory fraction equal to a value less than 1, 0.6 is a good starting point.
+</span>    <span class="c1"># If no fraction is defined, the tensorflow algorithm may run into gpu out of memory problems.
+</span>    <span class="n">fraction</span> <span class="o">=</span> <span class="mf">0.6</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">generate_gpu_config</span><span class="p">(</span><span class="n">fraction</span><span class="p">))</span>
+    <span class="n">path_to_graph</span> <span class="o">=</span> <span class="s">"./unzipped_files/model"</span>
+
+    <span class="n">tf</span><span class="p">.</span><span class="n">saved_model</span><span class="p">.</span><span class="n">loader</span><span class="p">.</span><span class="n">load</span><span class="p">(</span>
+        <span class="n">session</span><span class="p">,</span>
+        <span class="p">[</span><span class="n">tf</span><span class="p">.</span><span class="n">saved_model</span><span class="p">.</span><span class="n">tag_constants</span><span class="p">.</span><span class="n">SERVING</span><span class="p">],</span>
+        <span class="n">path_to_graph</span><span class="p">)</span>
+
+    <span class="n">y_</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">graph</span><span class="p">.</span><span class="n">get_tensor_by_name</span><span class="p">(</span><span class="s">'Placeholder_1:0'</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">graph</span><span class="p">.</span><span class="n">get_tensor_by_name</span><span class="p">(</span><span class="s">'Softmax:0'</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">graph</span><span class="p">.</span><span class="n">get_tensor_by_name</span><span class="p">(</span><span class="s">'Placeholder:0'</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span>
+
+<span class="c1"># Load model in global state so it only gets initialized once, subsequent calls will be faster
+</span><span class="n">Y_</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">SESSION</span> <span class="o">=</span> <span class="n">create_session</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mnist</span><span class="p">):</span>
+    <span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Y_</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">calculate_accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">))</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">SESSION</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span>
+        <span class="n">X</span><span class="p">:</span> <span class="n">mnist</span><span class="p">[</span><span class="s">"images"</span><span class="p">],</span> <span class="n">Y_</span><span class="p">:</span> <span class="n">mnist</span><span class="p">[</span><span class="s">"labels"</span><span class="p">]})</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"accuracy after serialization: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">))</span>
+    <span class="n">predict_values</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">predict_values</span><span class="p">.</span><span class="nb">eval</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">SESSION</span><span class="p">,</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">mnist</span><span class="p">[</span><span class="s">"images"</span><span class="p">]})</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"predicted classes: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">prediction</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">"prediction"</span><span class="p">:</span> <span class="n">prediction</span><span class="p">,</span> <span class="s">"accuracy"</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">}</span>
+
+<span class="c1"># API calls will begin at the apply() method, with the request body passed as 'input'
+# For more details, see https://algorithmia.com/developers/algorithm-development/languages
+</span><span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+    <span class="n">inference</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">tf_version</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">__version__</span>
+    <span class="k">return</span> <span class="s">"MNIST Predictions: {0}, TF version: {1}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">inference</span><span class="p">,</span> <span class="n">tf_version</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now when you run this code, the expected input is:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s">"mnist_images"</span><span class="p">:</span> <span class="s">"data://YOUR_USERNAME/YOUR_DATA_COLLECTION/t10k-images-idx3-ubyte.gz"</span><span class="p">,</span> <span class="s">"mnist_labels"</span><span class="p">:</span> <span class="s">"data://YOUR_USERNAME/YOUR_DATA_COLLECTION/t10k-labels-idx1-ubyte.gz"</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>With the expected output:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MNIST</span> <span class="n">Predictions</span><span class="p">:</span> <span class="p">{</span><span class="s">'accuracy'</span><span class="p">:</span> <span class="mf">0.88910013</span><span class="p">,</span> <span class="s">'prediction'</span><span class="p">:</span> <span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">...,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">])},</span> <span class="n">TF</span> <span class="n">version</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">.</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Let’s take a look at another example that we’ve implemented ourselves, the tensor names entirely depend on your graph, so replace our variables and types with yours as necessary.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">Algorithmia</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.contrib</span> <span class="kn">import</span> <span class="n">predictor</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="nb">object</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Algorithmia</span><span class="p">.</span><span class="n">client</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">_create_float</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">float_list</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">FloatList</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="n">v</span><span class="p">]))</span>
+
+<span class="k">def</span> <span class="nf">_create_str</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">bytes_list</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">BytesList</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="nb">bytes</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s">'utf-8'</span><span class="p">)]))</span>
+
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">():</span>
+    <span class="n">graph_uri</span> <span class="o">=</span> <span class="s">'data://zeryx/SavedModelExample/savedmodel.zip'</span>
+    <span class="n">graph_file</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nb">file</span><span class="p">(</span><span class="n">graph_uri</span><span class="p">).</span><span class="n">getFile</span><span class="p">().</span><span class="n">name</span>
+    <span class="n">output_dir</span> <span class="o">=</span> <span class="s">'/tmp/model_dir'</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">os</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="p">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">graph_file</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+        <span class="n">z</span><span class="p">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+        <span class="n">z</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="s">"{}/{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s">"1515693886"</span><span class="p">)</span>
+
+<span class="n">graph_dir</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">_create_float</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'age'</span><span class="p">])</span>
+    <span class="n">capital_gain</span> <span class="o">=</span> <span class="n">_create_float</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'capital_gain'</span><span class="p">])</span>
+    <span class="n">capital_loss</span> <span class="o">=</span> <span class="n">_create_float</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'capital_loss'</span><span class="p">])</span>
+    <span class="n">education</span> <span class="o">=</span> <span class="n">_create_str</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'education'</span><span class="p">])</span>
+    <span class="n">education_num</span> <span class="o">=</span> <span class="n">_create_float</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'education_num'</span><span class="p">])</span>
+    <span class="n">gender</span> <span class="o">=</span> <span class="n">_create_str</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'gender'</span><span class="p">])</span>
+    <span class="n">hours_per_week</span> <span class="o">=</span> <span class="n">_create_float</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'hours_per_week'</span><span class="p">])</span>
+    <span class="n">native_country</span> <span class="o">=</span> <span class="n">_create_str</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'native_country'</span><span class="p">])</span>
+    <span class="n">occupation</span> <span class="o">=</span> <span class="n">_create_str</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'occupation'</span><span class="p">])</span>
+    <span class="n">relationship</span> <span class="o">=</span> <span class="n">_create_str</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'relationship'</span><span class="p">])</span>
+    <span class="n">workclass</span> <span class="o">=</span> <span class="n">_create_str</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s">'workclass'</span><span class="p">])</span>
+
+    <span class="n">features</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">'age'</span><span class="p">:</span> <span class="n">age</span><span class="p">,</span>
+        <span class="s">'capital_gain'</span><span class="p">:</span> <span class="n">capital_gain</span><span class="p">,</span>
+        <span class="s">'capital_loss'</span><span class="p">:</span> <span class="n">capital_loss</span><span class="p">,</span>
+        <span class="s">'education'</span><span class="p">:</span> <span class="n">education</span><span class="p">,</span>
+        <span class="s">'education_num'</span><span class="p">:</span> <span class="n">education_num</span><span class="p">,</span>
+        <span class="s">'gender'</span><span class="p">:</span> <span class="n">gender</span><span class="p">,</span>
+        <span class="s">'hours_per_week'</span><span class="p">:</span> <span class="n">hours_per_week</span><span class="p">,</span>
+        <span class="s">'native_country'</span><span class="p">:</span> <span class="n">native_country</span><span class="p">,</span>
+        <span class="s">'occupation'</span><span class="p">:</span> <span class="n">occupation</span><span class="p">,</span>
+        <span class="s">'relationship'</span><span class="p">:</span> <span class="n">relationship</span><span class="p">,</span>
+        <span class="s">'workclass'</span><span class="p">:</span> <span class="n">workclass</span>
+    <span class="p">}</span>
+    <span class="n">example</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">Example</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">Features</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">features</span><span class="p">))</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">example</span><span class="p">.</span><span class="n">SerializeToString</span><span class="p">()</span>
+    <span class="n">predict_fn</span> <span class="o">=</span> <span class="n">predictor</span><span class="p">.</span><span class="n">from_saved_model</span><span class="p">(</span><span class="n">graph_dir</span><span class="p">)</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">predict_fn</span><span class="p">({</span><span class="s">"inputs"</span><span class="p">:[</span><span class="n">inputs</span><span class="p">]})</span>
+    <span class="n">predictions</span><span class="p">[</span><span class="s">'scores'</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictions</span><span class="p">[</span><span class="s">'scores'</span><span class="p">].</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">predictions</span><span class="p">[</span><span class="s">'classes'</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictions</span><span class="p">[</span><span class="s">'classes'</span><span class="p">].</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">predictions</span>
+</code></pre></div></div>
+
+<p>As you can see, most of the processing is similar, but we use a different endpoint to actually create the graph.</p>
+
+<p>If you want to create a custom graph session (aka with gpu memory optimizations like those defined below), pass a graph variable to <code class="language-plaintext highlighter-rouge">predictor.from_saved_model</code> like this: <code class="language-plaintext highlighter-rouge">predict_fn = predictor.from_saved_model(graph_dir, graph=graph)</code></p>
+
+<h3 id="gpu-memory-tricks">GPU memory tricks</h3>
+<p>Are you running into out of memory exceptions? Tensorflow attempts to allocate all available
+gpu memory.
+By defining a configuration with a max memory fraction you can ensure algorithm stability.
+Also, uncomment <code class="language-plaintext highlighter-rouge">allow_growth</code> if you aren’t sure how much memory your algorithm needs, tensorflow will grow it’s gpu memory allocation as necessary.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">generate_gpu_config</span><span class="p">(</span><span class="n">memory_fraction</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">ConfigProto</span><span class="p">()</span>
+    <span class="c1"># config.gpu_options.allow_growth = True
+</span>    <span class="n">config</span><span class="p">.</span><span class="n">gpu_options</span><span class="p">.</span><span class="n">per_process_gpu_memory_fraction</span> <span class="o">=</span> <span class="n">memory_fraction</span>
+    <span class="k">return</span> <span class="n">config</span>
+</code></pre></div></div>
+
+<h2 id="publish-your-algorithm">Publish your Algorithm</h2>
+<p>Last is publishing your algorithm. The best part of deploying your model on Algorithmia is that users can access it via an API that takes only a few lines of code to use! Here is what you can set when publishing your algorithm:</p>
+
+<p>On the upper right hand side of the algorithm page you’ll see a purple button “Publish” which will bring up a modal:</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/publish_algorithm.png" alt="Publish an algorithm" class="screenshot img-sm" /></p>
+
+<p>In this modal, you’ll see a Changes tab, a Sample I/O tab, and one called Versioning.</p>
+
+<p>If you don’t recall from the <a href="/developers/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a> how to go through the process of publishing your model, check that out before you finish publishing.</p>
+
+<p>If you want to have a better idea of what a finished tensorflow algorithm looks like, check out: <a href="https://algorithmia.com/algorithms/deeplearning/InceptionNet/edit">InceptionNet</a> or one of the demos for <a href="https://algorithmia.com/algorithms/demo/tensorflowmnistcpu">Tensorflow MNIST CPU</a> and <a href="https://algorithmia.com/algorithms/demo/TensorflowDemoGPU">Tensorflow MNIST GPU</a> already mentioned in this guide.</p>
+
+<p>That’s it for hosting your <a href="https://www.tensorflow.org/">tensorflow</a> model on Algorithmia!</p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

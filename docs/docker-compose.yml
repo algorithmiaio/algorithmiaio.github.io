@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  jekyll:
+    image: algorithmiahq/dev-center:local-dev-jekyll-server
+    command: bundle exec jekyll serve --config _config.yml,_config-dev.yml --port 4001 --host 0.0.0.0 --incremental --verbose
+    volumes:
+      - .:/jekyll
+    ports:
+      - "4001:4001"
+  node:
+    image: algorithmiahq/dev-center:local-dev-node-server
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - jekyll
+      - slate

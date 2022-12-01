@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Amazon SQS - Algorithmia Developer Center</title>
+    <meta name="description" content="This feature is only available in Algorithmia Enterprise installations.
+">
+    <meta name="keywords" content="integrations, event-flows">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Amazon SQS">
+<meta name="twitter:description" content="This feature is only available in Algorithmia Enterprise installations.
+">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Amazon SQS">
+<meta property="og:description" content="This feature is only available in Algorithmia Enterprise installations.
+">
+<meta property="og:url" content="https://algorithmia.com/developers/event-flows/amazon-sqs/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Event flows</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/language_logos/amazon_sqs.png" alt="" itemprop="image" class="title-icon">
+
+Amazon SQS<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/event-flows/amazon-sqs.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-12-14T17:31:56Z" itemprop="dateModified">December 14, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p class="notice-enterprise">This feature is only available in Algorithmia Enterprise installations.</p>
+
+<p>This guide will walk you through setting up Algorithmia Event Flows using an <a href="https://aws.amazon.com/sqs/">Amazon Simple Queue Service (SQS)</a> message broker. Once configured, you can create event-driven workflows in which your algorithms subscribe to an SQS queue and are automatically invoked with the contents of messages published to the queue.</p>
+
+<h2 id="event-flow-configuration-overview">Event Flow configuration overview</h2>
+
+<p>The process of configuring Event Flows with an SQS message broker involves multiple steps, some of which are to be completed on the AWS side and some of which are to be completed on the Algorithmia side. At a high level, the configuration steps are:</p>
+
+<ol>
+  <li><a href="#1-gathering-required-information-from-algorithmia">Gather required information from Algorithmia</a>.</li>
+  <li><a href="#2-configuring-resources-on-aws">On AWS, create a stack of resources</a> (including an SQS queue) using a CloudFormation template or manually as the situation dictates.</li>
+  <li><a href="#3-creating-an-event-flow-in-algorithmia">On Algorithmia create an algorithm and connect it to the SQS queue</a> to subscribe to messages published there.</li>
+  <li><a href="#4-sending-messages-to-the-broker">Test the connection by sending messages</a> to the SQS queue to be consumed by the subscriber algorithm.</li>
+</ol>
+
+<h2 id="how-messages-are-read-from-sqs">How messages are read from SQS</h2>
+
+<p>To begin, let’s first expore the following diagram, which displays the interaction between SQS and Algorithmia. When a message is published to SQS, it’s sent to Algorithmia as an API call, and if Algorithmia’s API server returns <code class="language-plaintext highlighter-rouge">200 OK</code>, the message is queued for processing. If the API server returns <code class="language-plaintext highlighter-rouge">429 Too Many Requests</code>, the message is requeued in SQS with a 5-minute delay.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/workflow.png" alt="SQS and Algorithmia Workflow Diagram" /></p>
+
+<p>To influence how much work Algorithmia will accept, you can tune either the maximum number of workers or the user session limit.</p>
+
+<p>On the SQS side, the option for <strong>Maximum Receives</strong> determines how many times a message will loop through the system before being delivered to the dead letter queue (DLQ). Since each loop is 5 minutes, messages will queue on the SQS side for (5 minutes) * (Maximum Receives). The Maximum Receives value defaults to 10, but this can be increased up to 1000 to queue messages for more loops. See this <a href="https://aws.amazon.com/blogs/aws/amazon-sqs-new-dead-letter-queue/#:~:text=Maximum%20Receives%20%E2%80%93%20The%20maximum%20number,to%20the%20Dead%20Letter%20Queue.">Amazon SQS – New Dead Letter Queue</a> blog post for additional details.</p>
+
+<h2 id="1-gathering-required-information-from-algorithmia">1. Gathering required information from Algorithmia</h2>
+
+<p>Contact <a href="mailto:support@algorithmia.com">support@algorithmia.com</a> to obtain the account number of the AWS account running your Algorithmia cluster. This number references below as <strong>AlgorithmiaAccountNumber</strong>.</p>
+
+<h2 id="2-configuring-resources-on-aws">2. Configuring resources on AWS</h2>
+
+<p class="notice-info"><strong>NOTE:</strong> The steps in this section are to be completed within the <a href="https://console.aws.amazon.com/" target="_blank" rel="noreferrer noopener">AWS Management Console</a>.</p>
+
+<h3 id="required-permissions">Required permissions</h3>
+
+<p>The CloudFormation template that we’ll walk through below describes the creation of CloudFormation, IAM, and SQS resources. In order to use the template you’ll need to be a user (or assume a role) with the following AWS permissions:</p>
+
+<ul>
+  <li><strong>CloudFormation</strong>: CreateStack and DescribeStacks (on all resources)</li>
+  <li><strong>IAM</strong>: CreateRole, GetRole, and PutRolePolicy (on all resources)</li>
+  <li><strong>SQS</strong>: CreateQueue, GetQueueAttributes, and SetQueueAttributes (on all resources)</li>
+</ul>
+
+<h4 id="scenarios">Scenarios</h4>
+
+<p>The following are the two possible scenarios that describe the relationship between the AWS account that creates the SQS queue and the AWS account running the Algorithmia cluster from which the queue is accessed:</p>
+
+<ol>
+  <li>The SQS queue is created within the account that’s running the Algorithmia cluster.</li>
+  <li>The SQS queue is created within a <strong>different</strong> account than the one running the Algorithmia cluster.</li>
+</ol>
+
+<p>The configuration steps are essentially the same for these two scenarios, but before diving into CloudFormation, it’s helpful to consider these scenarios separately to understand where the differences are so that you configure the permissions correctly.</p>
+
+<h5 id="scenario-1-queue-created-in-the-same-aws-account">Scenario #1: Queue created in the same AWS account</h5>
+
+<p>If you create SQS resources within the account running your Algorithmia instance, it’s assumed by default that the instance profile running Algorithmia is trusted because it’s in the same account. If you’re using the CloudFormation template, you don’t need to concern yourself with configuring the trust relationship. After the CloudFormation step, you’ll attach a policy to the instance profile to allow it to assume the appropriate role to take actions on the target SQS queue.</p>
+
+<h5 id="scenario-2-queue-created-in-a-different-aws-account">Scenario #2: Queue created in a different AWS account</h5>
+
+<p>If you create an SQS queue in a different account than the one running the Algorithmia instance, establishing the trust relationship is essential because it tells AWS that the account associated with the instance profile is allowed to take actions on the target queue. There’s otherwise no implicit relationship between the two accounts. Again, if you’re using the CloudFormation template, you don’t need to concern yourself with configuring the trust relationship. Similar to Scenario #1, you’ll attach a policy to the instance profile to allow it to assume the appropriate role to take actions on the target queue, in this case a queue from a <em>different</em> account.</p>
+
+<h3 id="understanding-the-cloudformation-template">Understanding the CloudFormation template</h3>
+
+<p>In this section we’ll walk through the key components of the CloudFormation template file that we’ll be using with AWS CloudFormation to create the stack of resources that support Algorithmia Event Flows.</p>
+
+<p>To begin, save the following YAML template as a local file <code class="language-plaintext highlighter-rouge">client-aws-cloudformation-template.yaml</code>.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">AWSTemplateFormatVersion</span><span class="pi">:</span> <span class="s">2010-09-09</span>
+<span class="na">Resources</span><span class="pi">:</span>
+  <span class="na">algoqueuedlq</span><span class="pi">:</span>
+    <span class="na">Type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">AWS::SQS::Queue'</span>
+    <span class="na">Properties</span><span class="pi">:</span>
+      <span class="na">QueueName</span><span class="pi">:</span> <span class="kt">!Ref</span> <span class="s">QueueDLQName</span>
+      <span class="na">MessageRetentionPeriod</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1209600'</span>
+  <span class="na">algoqueue</span><span class="pi">:</span>
+    <span class="na">Type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">AWS::SQS::Queue'</span>
+    <span class="na">Properties</span><span class="pi">:</span>
+      <span class="na">MessageRetentionPeriod</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1209600'</span>
+      <span class="na">QueueName</span><span class="pi">:</span> <span class="kt">!Ref</span> <span class="s">QueueName</span>
+      <span class="na">RedrivePolicy</span><span class="pi">:</span>
+        <span class="na">maxReceiveCount</span><span class="pi">:</span> <span class="m">10</span>
+        <span class="na">deadLetterTargetArn</span><span class="pi">:</span> <span class="kt">!GetAtt</span>
+          <span class="pi">-</span> <span class="s">algoqueuedlq</span>
+          <span class="pi">-</span> <span class="s">Arn</span>
+    <span class="na">DependsOn</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">algoqueuedlq</span>
+  <span class="na">algoqueuepolicy</span><span class="pi">:</span>
+    <span class="na">Type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">AWS::IAM::Policy'</span>
+    <span class="na">Properties</span><span class="pi">:</span>
+      <span class="na">PolicyName</span><span class="pi">:</span> <span class="s">eventlistenerpolicy</span>
+      <span class="na">PolicyDocument</span><span class="pi">:</span>
+        <span class="na">Version</span><span class="pi">:</span> <span class="s">2012-10-17</span>
+        <span class="na">Statement</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">Sid</span><span class="pi">:</span> <span class="s">VisualEditor0</span>
+            <span class="na">Effect</span><span class="pi">:</span> <span class="s">Allow</span>
+            <span class="na">Action</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="s1">'</span><span class="s">sqs:ChangeMessageVisibility'</span>
+              <span class="pi">-</span> <span class="s1">'</span><span class="s">sqs:DeleteMessage'</span>
+              <span class="pi">-</span> <span class="s1">'</span><span class="s">sqs:GetQueueAttributes'</span>
+              <span class="pi">-</span> <span class="s1">'</span><span class="s">sqs:ReceiveMessage'</span>
+            <span class="na">Resource</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="kt">!GetAtt</span>
+                <span class="pi">-</span> <span class="s">algoqueue</span>
+                <span class="pi">-</span> <span class="s">Arn</span>
+      <span class="na">Roles</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="kt">!Ref</span> <span class="s">algoqueuerole</span>
+  <span class="na">algoqueuerole</span><span class="pi">:</span>
+    <span class="na">Type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">AWS::IAM::Role'</span>
+    <span class="na">Properties</span><span class="pi">:</span>
+      <span class="na">AssumeRolePolicyDocument</span><span class="pi">:</span>
+        <span class="na">Version</span><span class="pi">:</span> <span class="s">2012-10-17</span>
+        <span class="na">Statement</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">Effect</span><span class="pi">:</span> <span class="s">Allow</span>
+            <span class="na">Principal</span><span class="pi">:</span>
+              <span class="na">AWS</span><span class="pi">:</span> <span class="kt">!Sub</span>
+                <span class="pi">-</span> <span class="s1">'</span><span class="s">arn:aws:iam::${AlgorithmiaAccountNumber}:root'</span>
+                <span class="pi">-</span> <span class="na">AlgorithmiaAccountNumber</span><span class="pi">:</span> <span class="kt">!Ref</span> <span class="s">AlgorithmiaAccountNumber</span>
+            <span class="na">Action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">sts:AssumeRole'</span>
+            <span class="na">Condition</span><span class="pi">:</span> <span class="pi">{}</span>
+<span class="na">Parameters</span><span class="pi">:</span>
+  <span class="na">AlgorithmiaAccountNumber</span><span class="pi">:</span>
+    <span class="na">Description</span><span class="pi">:</span> <span class="s">Algorithmia's AWS account number</span>
+    <span class="na">Type</span><span class="pi">:</span> <span class="s">Number</span>
+  <span class="na">QueueName</span><span class="pi">:</span>
+    <span class="na">Description</span><span class="pi">:</span> <span class="s">The name of the algorithm payload queue</span>
+    <span class="na">Type</span><span class="pi">:</span> <span class="s">String</span>
+    <span class="na">AllowedPattern</span><span class="pi">:</span> <span class="s1">'</span><span class="s">[a-zA-Z][a-zA-Z0-9-]*'</span>
+    <span class="na">ConstraintDescription</span><span class="pi">:</span> <span class="s">must start with a letter and contain only alphanumeric characters or hyphens</span>
+  <span class="na">QueueDLQName</span><span class="pi">:</span>
+    <span class="na">Description</span><span class="pi">:</span> <span class="s">The name of the queue which stores payloads which could not run by Event Listener</span>
+    <span class="na">Type</span><span class="pi">:</span> <span class="s">String</span>
+    <span class="na">AllowedPattern</span><span class="pi">:</span> <span class="s1">'</span><span class="s">[a-zA-Z][a-zA-Z0-9-]*'</span>
+    <span class="na">ConstraintDescription</span><span class="pi">:</span> <span class="s">must start with a letter and contain only alphanumeric characters or hyphens</span>
+<span class="na">Outputs</span><span class="pi">:</span>
+  <span class="na">QueueURL</span><span class="pi">:</span>
+    <span class="na">Description</span><span class="pi">:</span> <span class="s">URL of SQS Queue used to create Event Flow in Algorithmia Platform</span>
+    <span class="na">Value</span><span class="pi">:</span> <span class="kt">!Ref</span> <span class="s">algoqueue</span>
+  <span class="na">QueueConsumerARN</span><span class="pi">:</span>
+    <span class="na">Description</span><span class="pi">:</span> <span class="s">ARN of role used to create Event Flow in Algorithmia Platform</span>
+    <span class="na">Value</span><span class="pi">:</span> <span class="kt">!GetAtt</span>
+      <span class="pi">-</span> <span class="s">algoqueuerole</span>
+      <span class="pi">-</span> <span class="s">Arn</span>
+</code></pre></div></div>
+
+<h4 id="template-components">Template components</h4>
+
+<p>To understand the resource stack, let’s begin by considering an instance of Algorithmia Enterprise running in some AWS account called <code class="language-plaintext highlighter-rouge">ACCOUNT_AE</code>. All nodes in this Algorithmia instance run with the same IAM instance profile, which has a set of IAM policies attached to it.</p>
+
+<p>Let’s also suppose that you’re in <a href="#scenario-2-queue-created-in-a-different-aws-account">Scenario #2</a>, creating an SQS queue in some other AWS account called <code class="language-plaintext highlighter-rouge">ACCOUNT_SQS</code>. This account needs an IAM role and policy created to allow for reading, acknowledging, and deleting messages from the target SQS queue. Let’s call this role <code class="language-plaintext highlighter-rouge">READ_SQS</code>; it must be created within <code class="language-plaintext highlighter-rouge">ACCOUNT_SQS</code>, specifying the appropriate permissions on the SQS queue.</p>
+
+<p>The following diagram is a visual representation of this configuration, and we’ll continue to explore it below.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/iam-sqs-relationships.png" alt="SQS and Algorithmia permission diagram" /></p>
+
+<p>Here’s what the <code class="language-plaintext highlighter-rouge">READ_SQS</code> permission policy looks like in JSON. (<strong>NOTE: This policy is created by CloudFormation.</strong>)</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"sqs:ChangeMessageVisibility"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sqs:DeleteMessage"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sqs:GetQueueAttributes"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sqs:ReceiveMessage"</span><span class="p">,</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:us-west-2:ACCOUNT_SQS:QueueName"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VisualEditor0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-role-perms-json.png" alt="Role READ_SQS permission policy" /></p>
+
+<p>Note that further down in this guide, the <code class="language-plaintext highlighter-rouge">READ_SQS</code> role ARN will be used both for the <a href="#attaching-an-assumerole-policy">AssumeRole policy</a> that you’ll attach to <code class="language-plaintext highlighter-rouge">ACCOUNT_AE</code> and in Algorithmia’s browser UI when you <a href="#connect-to-an-sqs-message-broker">connect the SQS message broker</a>.</p>
+
+<p>In order to consume messages from the queue created in <code class="language-plaintext highlighter-rouge">ACCOUNT_SQS</code>, the <code class="language-plaintext highlighter-rouge">ACCOUNT_AE</code> Algorithmia instance profile must attach an IAM policy allowing it to assume the <code class="language-plaintext highlighter-rouge">READ_SQS</code> role from above. Let’s call this policy <code class="language-plaintext highlighter-rouge">ASSUME_READ_SQS</code>; it must be created within <code class="language-plaintext highlighter-rouge">ACCOUNT_AE</code> to allow the instance profile to assume this specific role from <code class="language-plaintext highlighter-rouge">ACCOUNT_SQS</code>.</p>
+
+<p>Here’s what the <code class="language-plaintext highlighter-rouge">ASSUME_READ_SQS</code> permission policy looks like in JSON. (<strong>NOTE: You must attach this policy to the <code class="language-plaintext highlighter-rouge">ACCOUNT_AE</code> profile</strong>; we’ll walk through this <a href="#attaching-an-assumerole-policy">below</a>.)</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sts:AssumeRole"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::ACCOUNT_SQS:role/READ_SQS"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VisualEditor0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>On the <code class="language-plaintext highlighter-rouge">ACCOUNT_SQS</code> side, the <code class="language-plaintext highlighter-rouge">READ_SQS</code> role must designate <code class="language-plaintext highlighter-rouge">ACCOUNT_AE</code> as a <strong>Trusted entity</strong> so that the <code class="language-plaintext highlighter-rouge">READ_SQS</code> role can be assumed by roles from <code class="language-plaintext highlighter-rouge">ACCOUNT_AE</code>. (<strong>NOTE: This trust relationship will be configured by CloudFormation</strong>.) Note that if you aren’t using CloudFormation, setting a trust relationship is only necessary in <a href="#scenario-2-queue-created-in-a-different-aws-account">Scenario #2</a> where <code class="language-plaintext highlighter-rouge">Account_AE</code> is different from <code class="language-plaintext highlighter-rouge">Account_SQS</code>.</p>
+
+<p>If necessary, the <strong>trust relationship</strong> can be edited under <strong>IAM</strong> → <strong>Roles</strong> → {<code class="language-plaintext highlighter-rouge">READ_SQS</code>} → <strong>Trust relationships</strong>. You can also access the role-configuration page for the <code class="language-plaintext highlighter-rouge">READ_SQS</code> role through <strong>CloudFormation</strong> → <strong>Stacks</strong> → {<strong>Stack name</strong>} → <strong>Resources</strong> (the role will by <strong>Type</strong> <code class="language-plaintext highlighter-rouge">AWS::IAM::Role</code> in the table under this tab).</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-trust-relationships.png" alt="Trust relationships trusted entities" /></p>
+
+<h3 id="creating-a-stack-with-cloudformation">Creating a stack with CloudFormation</h3>
+
+<p>Open the <a href="https://console.aws.amazon.com/cloudformation/home" target="_blank" rel="noopener noreferrer">CloudFormation</a> page in the AWS console.</p>
+
+<p>Click <strong>Stacks</strong> in the left-hand navigation menu, and then click <strong>Create stack</strong>. If you already have resources provisioned, you may need to specify whether to create the stack using those existing resources. In this guide we’ll create the stack with new resources, so in the dropdown select the <strong>With new resources (standard)</strong> option.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-create-stack.png" alt="CloudFormation create stack" /></p>
+
+<p>On the resulting page, in the <strong>Specify template</strong> section, leave the default <strong>Template is ready</strong> option selected in the first box and select <strong>Upload a template file</strong> in the second box. Click <strong>Choose file</strong>, navigate to the <code class="language-plaintext highlighter-rouge">client-aws-cloudformation-template.yaml</code> template file that you saved locally <a href="#exploring-the-cloudformation-template-and-required-aws-permissions">above</a>, and select it for upload.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-specify-template.png" alt="CloudFormation upload template file" /></p>
+
+<p>Click <strong>Next</strong>.</p>
+
+<p>On the following page, enter a <strong>Stack name</strong>. This should be a unique name that identifies the bundle of Amazon resources used for this configuration.</p>
+
+<p>Under <strong>AlgorithmiaAccountNumber</strong>, enter Algorithmia’s AWS account number, <a href="#1-gathering-required-information-from-algorithmia">provided to you by Algorithmia</a>.</p>
+
+<p class="notice-info">The <strong>AlgorithmiaAccountNumber</strong> is the account number of the AWS account running the Algorithmia instance, regardless of <a href="#scenarios">where the SQS queue is created</a>.</p>
+
+<p>Under <strong>QueueDLQName</strong>, enter a unique name that identifies the Amazon SQS queue that’ll be a holding queue for payloads that weren’t accepted by the Algorithmia algorithm for <em>any</em> reason (invalid message format, Algorithmia platform downtime, etc.).</p>
+
+<p>Under <strong>QueueName</strong>, enter a unique name that identifies the SQS queue that’ll be the source of payloads for the algorithm to run.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-specify-stack-details.png" alt="CloudFormation specify stack details" /></p>
+
+<p>Click <strong>Next</strong>.</p>
+
+<p>The next page allows you to <strong>Configure stack options</strong>. If you need to use a specific IAM role that has the permissions specified <a href="#2-configuring-resources-on-aws">above</a>, enter that role in the <strong>Permissions</strong> section. Otherwise, leave it blank.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-iam-permissions.png" alt="CloudFormation configure stack options" /></p>
+
+<p>Click <strong>Next</strong>.</p>
+
+<p>The next page allows you to review your options. Scroll to the bottom and click the checkbox next to <strong>I acknowledge that AWS CloudFormation might create IAM resources.</strong></p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-review-create-stack.png" alt="CloudFormation review stack configuration" /></p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-acknowledge-resources.png" alt="CloudFormation acknowledge IAM resource creation" /></p>
+
+<p>Finally, click <strong>Create stack</strong>.</p>
+
+<p>The next page will indicate that the stack creation is in progress.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-stack-create-in-progress.png" alt="CloudFormation stack creation in progress" /></p>
+
+<p>After about 60 seconds, click the gray refresh wheel (<img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_11.png" alt="refresh icon" />). It should show the <strong>Stack status</strong> as “CREATE_COMPLETE”. If not, wait another 60 seconds and click the wheel again.</p>
+
+<p><span id="outputs"></span></p>
+
+<p>Click the <strong>Outputs</strong> tab. Copy the <strong>QueueConsumerARN</strong> and <strong>QueueURL</strong>; you’ll use them below both for the <a href="#attaching-an-assumerole-policy">AssumeRole policy</a> that you’ll attach to <code class="language-plaintext highlighter-rouge">ACCOUNT_AE</code> and in Algorithmia’s browser UI when you <a href="#connect-to-an-sqs-message-broker">connect the SQS message broker</a>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws-console-stack-outputs.png" alt="CloudFormation stack output" /></p>
+
+<h3 id="attaching-an-assumerole-policy">Attaching an AssumeRole policy</h3>
+
+<p>As described <a href="#template-components">above</a>, once you’ve created the resource stack with CloudFormation, you’ll need to attach the following policy to the Algorithma instance profile account, replacing the <code class="language-plaintext highlighter-rouge">Resource</code> value with the role ARN for the <code class="language-plaintext highlighter-rouge">READ_SQS</code> role created. The following policy template is the same as that shown above.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sts:AssumeRole"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::ACCOUNT_SQS:role/READ_SQS"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VisualEditor0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>If you’re not familiar with working with IAM policies, see the AWS documentation for <a href="https://docs.amazonaws.cn/en_us/IAM/latest/UserGuide/access_policies_create-console.html#access_policies_create-json-editor" target="_blank" rel="noreferrer noopener">creating an IAM policy using the JSON editor</a> and <a href="https://docs.amazonaws.cn/en_us/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#add-policies-console" target="_blank" rel="noreferrer noopener">attaching an IAM policy to an identity</a> to complete this step.</p>
+
+<h2 id="3-creating-an-event-flow-in-algorithmia">3. Creating an Event Flow in Algorithmia</h2>
+
+<p class="notice-info"><strong>NOTE</strong>: The steps in this section are to be completed on Algorithmia, from within the browser user interface (UI) or through the API. In this guide, we’ll demonstrate what the workflow looks like in the UI.</p>
+
+<p>Note that you can set up <em>any</em> algorithm to subscribe to an SQS message broker so that the algorithm is executed when a message is published to that specific queue. On our platform we refer to this type of event-driven configuration as an Event Flow, and the following demonstrates one possible example of how to set one up.</p>
+
+<h3 id="create-an-algorithm">Create an algorithm</h3>
+
+<p>Create a Python 3.x algorithm with a generic Python 3.7 algorithm environment and default settings. If you’re new to Algorithmia or need a quick refresher on how to create and modify algorithms, see our <a href="/algorithm-development/your-first-algo">Getting Started Guide</a>.</p>
+
+<p>On the newly created algorithm’s profile, click the <strong>Source Code</strong> tab to access the algorithm’s source code in the Web IDE.</p>
+
+<p>In the body of your algorithm, paste the code below, replacing <code class="language-plaintext highlighter-rouge">COLLECTION_OWNER</code> and <code class="language-plaintext highlighter-rouge">COLLECTION_NAME</code> with your Algorithmia account name and the name of a data collection (which you’ll create in the next section), respectively. In the screenshot below the sample code, these respective values are <code class="language-plaintext highlighter-rouge">ezra</code> and <code class="language-plaintext highlighter-rouge">TestingSQSEventFlow</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">Algorithmia</span>
+<span class="kn">from</span> <span class="nn">Algorithmia</span> <span class="kn">import</span> <span class="n">ADK</span>
+
+<span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="n">Algorithmia</span><span class="p">.</span><span class="n">client</span><span class="p">().</span><span class="nb">file</span><span class="p">(</span><span class="s">"data://COLLECTION_OWNER/COLLECTION_NAME/"</span> <span class="o">+</span> <span class="nb">input</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"filename"</span><span class="p">)).</span><span class="n">put</span><span class="p">(</span><span class="nb">input</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"data"</span><span class="p">))</span>
+
+<span class="n">algorithm</span> <span class="o">=</span> <span class="n">ADK</span><span class="p">(</span><span class="nb">apply</span><span class="p">)</span>
+<span class="n">algorithm</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">"Algorithmia"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/algorithmia-web-ide-example-code.png" alt="create algorithm Web IDE" /></p>
+
+<p>Click the <strong>Save</strong> and <strong>Build</strong> buttons and then click <strong>Publish</strong> when the build completes.</p>
+
+<p>On the newly published algorithm’s profile, copy the algorithm endpoint, which will be in the form <code class="language-plaintext highlighter-rouge">ALGO_OWNER/ALGO_NAME/ALGO_VERSION</code>; in the screenshot below, this is <code class="language-plaintext highlighter-rouge">ezra/testSQSEventFlow/0.2.0</code>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/algorithm-profile-algorithm-endpoint-sqs-subscriber.png" alt="algorithm profile algorithm endpoint" /></p>
+
+<h3 id="create-a-hosted-data-collection">Create a hosted data collection</h3>
+
+<p>Now create a hosted data collection to which the algorithm above will write the records read from the SQS message broker. To begin, click the <strong>Data Sources</strong> menu item in the left-hand navigation bar. Click <strong>New Data Source</strong> and then <strong>Hosted Data Collection</strong>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/create-hosted-data-collection.png" alt="Create Algorithmia hosted data collection" /></p>
+
+<p>In the dialog box that appears, enter the <code class="language-plaintext highlighter-rouge">COLLECTION_NAME</code> value from above (in this case, <code class="language-plaintext highlighter-rouge">TestingSQSEventFlow</code>) and click <strong>Create Collection</strong>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/new-collection-sqs-event-flow.png" alt="New hosted data collection dialog" /></p>
+
+<h3 id="connect-to-an-sqs-message-broker">Connect to an SQS message broker</h3>
+
+<p class="notice-info">This section documents the workflow in Algorithmia versions &gt;=20.5.53. See the section <a href="#create-an-event-listener">below</a> for the previous event listeners-based workflow.</p>
+
+<p>Navigate to your new algorithm’s profile and click the <strong>Events</strong> tab and then the <strong>Connect broker</strong> button.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/connect_sqs_broker_button.png" /></p>
+
+<p>In the modal, enter the <strong>QueueURL</strong> and <strong>QueueConsumerARN</strong> <a href="#outputs">stack output</a> values for the <strong>URI</strong> and <strong>ROLE ARN</strong> fields, respectively.</p>
+
+<p>The <strong>Algorithm</strong> endpoint field is auto-populated, and the full algorithm path is shown below the text input field. The version number is optional if the algorithm is published publicly. If it’s only published privately, you’ll either need to specify a semantic version, a version hash, or the string <code class="language-plaintext highlighter-rouge">latestPrivate</code>.</p>
+
+<p>Optionally, enter a value for <strong>Algorithm timeout in seconds</strong>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/connect_sqs_broker_modal.png" /></p>
+
+<p>Click <strong>Connect to Amazon SQS broker</strong>. The <strong>Events</strong> tab on the algorithm profile will now list your newly created connection.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/connect_sqs_broker_events_tab.png" /></p>
+
+<p>Click <a href="#4-sending-messages-to-the-broker">here</a> to skip to the next step to learn how to send messages to the newly connected broker.</p>
+
+<h3 id="create-an-event-listener">Create an Event Listener</h3>
+
+<p class="notice-info">This section documents the workflow in Algorithmia versions &lt;20.5.53, where Event Flows were called event listeners. See the section <a href="#connect-to-an-sqs-message-broker">above</a> for the updated Event Flows workflow.</p>
+
+<p>Navigate to the <strong>Home</strong> tab on the left-hand navigation menu. Click on the <strong>Create New</strong> button and select <strong>Event Listener</strong>. Select <strong>Amazon SQS</strong> from the dropdown.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_26.png" /></p>
+
+<p>In the modal, enter the <strong>QueueURL</strong> and <strong>QueueConsumerARN</strong> <a href="#outputs">stack output</a> values for the <strong>URI</strong> and <strong>ROLE ARN</strong> fields, respectively.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_27.png" /></p>
+
+<p>Enter the full path to the algorithm you created above and click <strong>Create New Event Listener</strong>. The <strong>Listeners</strong> tab on the algorithm profile will now list your newly created event listener.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/image_28.png" /></p>
+
+<h2 id="4-sending-messages-to-the-broker">4. Sending messages to the broker</h2>
+
+<p>Many methods exist for sending messages to Amazon SQS queues. For the purposes of this demonstration, here we show how to send messages in the AWS console.</p>
+
+<p>Open the <a href="https://console.aws.amazon.com/sqs/home" target="_blank" rel="noopener noreferrer">SQS</a> page in the AWS console. Click on the name of the target queue (<strong>QueueName</strong> from above) and click the <strong>Send and receive messages</strong> button.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws_console_send_messages.png" /></p>
+
+<p>In the <strong>Send and receive messages</strong> page, in the <strong>Message body</strong> field enter the message payload to send to the algorithm you created above. For the example code above, you can use the following format.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-new-file.txt"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file contents to store"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/aws_console_sqs-message-body.png" /></p>
+
+<p>Click <strong>Send Message</strong> and the payload will be consumed by Algorithmia and sent to the configured algorithm as input for execution.</p>
+
+<p>To verify, open the <strong>Data Sources</strong> menu item in the left sidebar and navigate to the <code class="language-plaintext highlighter-rouge">COLLECTION_NAME</code> data collection that you configured above as the destination for your algorithm to write data. Based on the payload shown above in the <strong>Message body</strong> section, the collection should contain the file <code class="language-plaintext highlighter-rouge">some-new-file.txt</code>, with contents equal to the string <code class="language-plaintext highlighter-rouge">file contents to store</code>.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/eventlisteners/amazon-sqs-file-contents.png" /></p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li class="active">
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>

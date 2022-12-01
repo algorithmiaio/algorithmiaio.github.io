@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- BEGIN_HEAD_EMBED -->
+    <title>Getting Started - Algorithmia Developer Center</title>
+    <meta name="description" content="Getting your algorithm on Algorithmia is easy. Find out how with this tutorial.">
+    <meta name="keywords" content="algo-dev">
+    
+    <!-- Twitter Cards -->
+<meta name="twitter:title" content="Getting Started">
+<meta name="twitter:description" content="Getting your algorithm on Algorithmia is easy. Find out how with this tutorial.">
+<meta name="twitter:site" content="@algorithmia">
+<meta name="twitter:creator" content="@algorithmia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+
+
+<!-- Open Graph -->
+
+<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Getting Started">
+<meta property="og:description" content="Getting your algorithm on Algorithmia is easy. Find out how with this tutorial.">
+<meta property="og:url" content="https://algorithmia.com/developers/algorithm-development/your-first-algo/">
+<meta property="og:site_name" content="Algorithmia Developer Center">
+    
+
+    
+    <link rel="shortcut icon" type="image/png" href="/v1/config/favicon">
+    
+
+    
+
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
+    <link rel="stylesheet" href="/developers/css/vendors.css">
+    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <!-- END_HEAD_EMBED -->
+
+    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="cleartype" content="on">
+
+    
+
+    <script>
+      window.__ENTERPRISE = false
+    </script>
+  </head>
+
+  <body>
+    
+
+    <!-- BEGIN_BODY_EMBED -->
+    <div data-ng-app="algorithmia">
+      <header class="syn-styles-supported supports-synapse-typography syn-page-header">
+  <div class="utility-header syn-visible-lg">
+    <div class="syn-pr-32 syn-pv-8 syn-flex flex-row justify-end">
+      <div class="hide-if-signed-in">
+        <a href="/signin" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm">
+          Sign in
+        </a>
+      </div>
+      <div>
+        <a href="/contact" class="syn-link syn-font-weight-bold syn-text-secondary syn-text-sm syn-ml-24">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))"></div>
+  <div class="syn-page-header-content syn-flex justify-space-between">
+    <div class="syn-flex align-center">
+      <a class="syn-flex" href="/">
+        <img class="syn-ml-8" src="/v1/config/logo" style="max-height: 40px; max-width: 100%;" />
+      </a>
+    </div>
+    <button class="syn-btn icon text grow syn-hidden-lg" onclick="['nav-open'].forEach((a) => document.querySelector('.syn-page-header').classList.toggle(a))">
+      <svg width="32" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="open-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1 1h29.849M1 10h29.849M1 19h29.849"></path></g></svg>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="close-button"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M1.371 22.553L22.478 1.447M1.371 1.461l21.107 21.107"></path></g></svg>
+    </button>
+    <div class="syn-visible-lg">
+      <a href="/mlops" class="syn-link-no-decoration">
+        <button class="syn-btn text">MLOps</button>
+      </a>
+      <a href="/product" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Product</button>
+      </a>
+      <a href="/pricing" class="syn-link-no-decoration">
+        <button class="syn-btn text syn-ml-8">Pricing</button>
+      </a>
+      <div class="syn-dropdown syn-ml-8">
+        <button class="syn-btn text" onclick="this.parentNode.classList.toggle('open')">
+          Learn
+          <svg width="7px" height="4px" viewBox="0 0 7 4" class="syn-ml-4">
+            <polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon>
+          </svg>
+        </button>
+        <div class="open-break syn-bg-black syn-mt-8"></div>
+        <ul class="syn-dropdown-list" onclick="this.parentNode.classList.toggle('open')">
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/blog" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Blog</div>
+              <div class="link-description">
+                Special topics in machine learning
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/resources" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Resources</div>
+              <div class="link-description">
+                Case studies, videos, and reports
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/developers" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Docs</div>
+              <div class="link-description">
+                Platform technical documentation
+              </div>
+            </a>
+          </li>
+          <li class="syn-dropdown-list-item syn-body-2 syn-mb-0">
+            <a href="/events" class="syn-ph-48 syn-pv-16 display-block">
+              <div class="syn-font-weight-bold">Events</div>
+              <div class="link-description">
+                Webinars, talks, and trade shows
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        href="/demo"
+        class="syn-btn text syn-ml-8 syn-link-no-decoration display-inline-flex">
+        Demo
+      </a>
+      <a href="/signup"
+        class="syn-btn outlined no-capitalize theme-primary syn-visible-lg syn-ml-8 syn-pv-8 syn-link-no-decoration display-inline hide-if-signed-in"
+        rel="noopener noreferrer">
+        Try now
+      </a>
+    </div>
+  </div>
+  <div class="syn-page-header-nav mobile-nav-container syn-hidden-lg" >
+    <nav class="syn-nav syn-pt-16">
+      <ul class="mobile-nav syn-mb-16">
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/mlops">MLOps</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/product">Product</a></li>
+        <li class="syn-list-item"><a class="syn-link syn-font-weight-bold syn-text-base syn-text-primary" href="/pricing">Pricing</a></li>
+        <li class="accordion-button syn-list-item">
+
+          <div class="syn-pv-8 syn-ph-16 syn-flex align-center syn-width-full justify-space-between syn-link syn-font-weight-bold" onclick="['accordion-open'].forEach((a) => document.querySelector('.accordion-button').classList.toggle(a))">
+            <span class="syn-text-base syn-text-primary">Learn</span>
+            <svg width="14" height="10" viewBox="0 0 7 4" class="accordion-caret syn-ml-4 syn-text-primary"><polygon fill="currentColor" points="0 0 6.688 0 3.344 3.344"></polygon></svg>
+          </div>
+
+          <ul class="learn-accordion syn-ph-24 syn-width-full">
+            <li class="syn-list-item">
+              <a href="/blog" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Blog</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Special topics in machine learning
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/resources" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">
+                  Resources
+                </div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Case studies, videos, and reports
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="/developers" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Docs</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                  Platform technical documentation
+                </div>
+              </a>
+            </li>
+            <li class="syn-list-item">
+              <a href="https://events.algorithmia.com" rel="noopener noreferrer" class="syn-link syn-font-weight-bold syn-text-primary display-block">
+                <div class="syn-font-weight-bold syn-text-sm">Events</div>
+                <div class="link-description syn-mt-8 syn-font-weight-regular">
+                    Webinars, talks, and trade shows
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li class="syn-list-item hide-if-signed-in">
+          <a href="/signin" class="syn-link syn-font-weight-bold syn-text-base syn-text-primary">
+           Sign In
+          </a>
+        </li>
+      </ul>
+      <div class="syn-mb-16 hide-if-signed-in">
+        <a href="/signup" class="syn-link display-block syn-mh-16 outlined">
+          <div class="syn-btn no-capitalize theme-primary syn-width-full outlined">
+            Try now
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="/demo" class="syn-ph-16 display-block">
+          <div class="syn-btn no-capitalize contained theme-primary syn-width-full">
+            See a demo
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+      <div id="wrapper">
+        <div class="jumbotron dev-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Developer Center</h2>
+        <h4>Resources to get you started with Algorithmia</h4>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container dev-center-content-container">
+          <div class="row section">
+            <div class="col-sm-8 col-md-8 col-sm-push-3 col-md-push-3">
+              <section id="search-results" style="display: none;">
+</section>
+
+<script id="search-results-template" type="text/mustache">
+  {{#entries}}
+  <hr>
+  <article>
+    <h3><a href="/developers{{url}}">{{title}}</a></h3>
+    <span class="breadcrumbs-title m-B-s">{{categories}}</span>
+    <p>{{excerpt}}</p>
+  </article>
+  {{/entries}}
+</script>
+
+              <div id="main-content">
+                <article itemscope itemtype="http://schema.org/Article">
+
+  <nav class="breadcrumbs-title">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span itemprop="title">Algorithm development</span>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+	<h1 id="page-title">
+	<img src="https://cdn.algorithmia.com/developers/images/icons/algo.svg" alt="" itemprop="image" class="title-icon">
+
+Getting Started<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/algorithm-development/your-first-algo.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
+</h1>
+	
+  <p class="updated-date">Updated
+
+  <time datetime="2021-11-19T22:32:33Z" itemprop="dateModified">November 19, 2021</time>
+
+	<div id="content" class="page-content" itemprop="articleBody">
+		<p>In this quick-start guide, we’ll walk through the process of developing a classic “Hello World” algorithm on Algorithmia.</p>
+
+<p>We’ll develop an algorithm in Python, but all the steps shown here are the same in all programming languages supported on the platform. To see specific code examples in the languages we support, check out <a href="/developers/algorithm-development/languages">Algorithm Development Languages</a>.</p>
+
+<p class="notice-info">Note: this guide uses Algorithmia’s browser UI to create and deploy your algorithm. If you prefer a code-only approach to development, see <a href="/developers/algorithm-development/algorithm-management">Algorithm Management</a>.</p>
+
+<p>Table of contents</p>
+
+<ul>
+  <li><a href="#creating-your-first-algorithm">Creating your first algorithm</a>
+    <ul>
+      <li><a href="#owner-and-name">Owner and name</a></li>
+      <li><a href="#source-code">Source code</a></li>
+      <li><a href="#environment">Environment</a></li>
+      <li><a href="#settings">Settings</a></li>
+    </ul>
+  </li>
+  <li><a href="#developing-your-algorithm-in-the-web-ide">Developing your algorithm in the Web IDE</a></li>
+  <li><a href="#publishing-your-algorithm">Publishing your algorithm</a></li>
+  <li><a href="#calling-your-algorithm">Calling your algorithm</a></li>
+  <li><a href="#quick-reference-local-development-vs-web-ide">Quick Reference: Local Development vs. Web IDE</a></li>
+  <li><a href="#next-steps">Next steps</a>
+    <ul>
+      <li><a href="#language-guides">Language guides</a></li>
+      <li><a href="#connecting-to-data">Connecting to data</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="creating-your-first-algorithm">Creating your first algorithm</h2>
+
+<p>To get started, navigate to <a href="/">Algorithmia</a>, click the “Create New” button in the upper-right corner, and select the “Algorithm” option. This will navigate you to a modal, which you’ll fill out step-by-step below.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/add_algorithm.png" alt="Add algorithm navigation" class="screenshot img-sm" /></p>
+
+<h3 id="owner-and-name">Owner and name</h3>
+
+<p>Select your account name as the algorithm owner, and provide a descriptive name for your algorithm. For example, in <a href="https://algorithmia.com/blog/introduction-natural-language-processing-nlp" target="_blank">natural language processing</a>, the process of splitting up text into discreet words is called tokenizing, so an algorithm that performs this function could be called “TokenizeText”. Your algorithm’s name will serve as its unique identifier on the platform, and it will be used to call your algorithm via the API.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/create_algorithm_algo_details.png" alt="Configure your algorithm's owner and name" class="screenshot img-sm" /></p>
+
+<h3 id="source-code">Source code</h3>
+
+<p>In this section, you can customize the visibility, licensing, and hosting of your algorithm’s source code. For your algorithm, just leave the defaults so that the source code is hosted privately on our platform under the <a href="https://algorithmia.com/api_dev_terms">Algorithmia Platform License</a>. You can read more about creating algorithms with GitHub or GitHub Enterprise in our <a href="/developers/algorithm-development/source-code-management/">Source Code Management</a> docs.</p>
+
+<p class="notice-info">Note: if you’re on the Algorithmia Teams tier, these Source Code options won’t be available. Your source code will always be hosted privately on our platform—only your team will be able to view it.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/create_algorithm_source_code_internal.png" alt="Configure your algorithm's repository host" class="screenshot img-sm" /></p>
+
+<h3 id="environment">Environment</h3>
+
+<p>In this section, you can specify your algorithm’s runtime environment. For your algorithm, go ahead and select Python 3.x for the language and Python 3.7 for the environment, because your example algorithm won’t require any external library dependencies.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/create_algorithm_runtime_env.png" alt="Configure your algorithm's runtime settings" class="screenshot img-sm" /></p>
+
+<p class="notice-info">When you develop an algorithm on our platform, you’ll need to consider what machine learning framework(s) it’ll need and whether it would benefit from using a graphics processing unit (GPU) to accelerate certain kinds of computation, such as image processing and deep learning. Certain algorithm environments come pre-loaded with GPU computing capabilities and specific machine learning frameworks. This includes Nvidia drivers, CUDA support, and several of the most popular deep learning frameworks, including MXNet, Pytorch, Spacy, and TensorFlow.</p>
+
+<h3 id="settings">Settings</h3>
+
+<p>In this section you can adjust your algorithm’s access <a href="/developers/basics/permissions">permissions</a>. Leave the defaults so that your algorithm can access the public internet as well as call other algorithms on the platform.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/create_algorithm_settings.png" alt="Configure your algorithm's settings" class="screenshot img-sm" /></p>
+
+<p>Click the “Create New Algorithm” button at the bottom of the form and you’ll see the following modal.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/create-algo-cli.png" alt="cli info modal" class="screenshot img-md" /></p>
+
+<h2 id="developing-your-algorithm-in-the-web-ide">Developing your algorithm in the Web IDE</h2>
+
+<p>To access Algorithmia’s built-in Web IDE, click the “Web IDE” button in the modal, or click the <strong>Source Code</strong> tab from your newly created algorithm’s homepage if the modal is no longer shown.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/generic_algorithm_description.png" alt="Algorithm description page" class="screenshot img-md" /></p>
+
+<p>In the Web IDE, you’ll see that your algorithm comes with some template code: a function called <code class="language-plaintext highlighter-rouge">apply()</code> that takes a string as input and returns “Hello” concatenated with that string.</p>
+
+<p>On Algorithmia, every algorithm is required to have an <code class="language-plaintext highlighter-rouge">apply()</code> function—it defines the algorithm’s entry point and serves to standardize algorithms across the platform regardless of programming language. Authors are encouraged to leverage this standardization and to design their algorithms in a way that makes them predictable for end users and that supports algorithm pipelining (chaining multiple algorithms together).</p>
+
+<p>In order to run the algorithm, you’ll first need to compile (build) it by clicking the “Build” button on the top-right corner of the source code editor. You’ll need to complete this step even for an interpreted language such as Python, because we still need to package up all the source code into a callable algorithm instance on the back end.</p>
+
+<p>At the bottom of the page in the test console you’ll see a confirmation when your algorithm’s been built successfully, along with the version hash. Once the build completes, you can test out your algorithm by passing it input through the test console. For example, try running the algorithm with the input “World” (make sure to include the double quotes, because algorithm input must be valid JSON).</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/algorithm_console_python.png" alt="Algorithm console Python" class="screenshot" /></p>
+
+<p class="notice-info">Note: the first time you run your algorithm it might take some time to return a value; subsequent runs will return much more quickly.</p>
+
+<p>If you’d like, you can edit the source code, for example by changing it to return an “Hola” instead of a “Hello”. Every time you want to re-test the algorithm, you’ll need to click the green “Build” button and wait for the build confirmation message.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/compile_test_algorithm_python.png" alt="Run basic algorithm in console Python" class="screenshot" /></p>
+
+<h2 id="publishing-your-algorithm">Publishing your algorithm</h2>
+
+<p>The best part of developing on Algorithmia is that you and other users can call your algorithms via an API that takes only a few lines of code to use! To enable this, you must first start the publishing flow by clicking the purple “Publish” button at the upper-right corner of the source code editor.</p>
+
+<p><img src="https://cdn.algorithmia.com/developers/images/post_images/algo_dev_lang/publish_algorithm.png" alt="Publish an algorithm" class="screenshot img-sm" /></p>
+
+<p>There are 3 steps to publishing an algorithm: documenting changes, adding example input and output, and configuring algorithm settings.</p>
+
+<p>The <strong>Changes</strong> step shows you your commit history and allows you to add release notes. Go ahead and enter some example release notes like “Initial Hello World release”.</p>
+
+<p>The <strong>Example Input/Output</strong> step is where you’ll enter sample input to be displayed on the algorithm’s home page, where other users will be able to test out your algorithm. Go ahead and enter your name in double quotes, or another short text string, and run the algorithm to ensure that it behaves as expected.</p>
+
+<p>In the <strong>Configure Settings</strong> step you can select whether your algorithm will be publicly callable or for private use only. Under “Semantic Version” you can choose which kind of release characterizes your changes: Major, Minor, or Revision. Finally, you can enable the collection of metrics using <a href="/developers/algorithmia-enterprise/algorithmia-insights">Algorithmia Insights</a> by checking the “Insights” box. For your simple algorithm here, you can leave the default options selected.</p>
+
+<p>If you’re satisfied with your algorithm code, behavior, and settings, go ahead and hit “Publish”. Congratulations, you’re an algorithm developer!</p>
+
+<h2 id="calling-your-algorithm">Calling your algorithm</h2>
+
+<p>Once you’ve published your algorithm, you can call it via our API in just a few lines of code. Let’s first see what this looks like using cURL from the command line. To call your algorithm you’ll send a <code class="language-plaintext highlighter-rouge">POST</code> request to the following API endpoint, where <code class="language-plaintext highlighter-rouge">ALGO_NAME</code> is the name of the algorithm you just created, and <code class="language-plaintext highlighter-rouge">ALGO_OWNER</code> is your account name.</p>
+
+<div ng-controller="GettingStartedControl" ng-init="setCardContent('YOUR_USERNAME')" class="gs-code-container">
+  <div class="code-toolbar ph-16 pv-8 text-right">
+    <button type="button" class="btn btn-flat text-light-primary copy-btn" ng-click="copyCode('api')">
+      <i class="fa fa-copy"></i>
+    </button>
+  </div>
+
+  <div class="tab-pane code__pane gs-pane" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs bash">POST https://api.algorithmia.com/v1/algo/ALGO_OWNER/ALGO_NAME</code></pre>
+
+<textarea id="api-copy-text" class="copy-text curl">POST https://api.algorithmia.com/v1/algo/ALGO_OWNER/ALGO_NAME</textarea>
+
+  </div>
+</div>
+
+<p>The algorithm you published above takes a string as input and returns a greeting addressed to that string. Try calling your algorithm from the command line using the following code, and sending in your name as input. The endpoint will be the same endpoint described above, with your algorithm-specific parameters. Make sure to replace <code class="language-plaintext highlighter-rouge">API_KEY</code> with a valid <a href="/developers/platform/customizing-api-keys">API key</a> associated with your account.</p>
+
+<div ng-controller="GettingStartedControl" ng-init="setCardContent('YOUR_USERNAME')" class="gs-code-container">
+  <div class="code-toolbar ph-16 pv-8 text-right">
+    <button type="button" class="btn btn-flat text-light-primary copy-btn" ng-click="copyCode('curl')">
+      <i class="fa fa-copy"></i>
+    </button>
+  </div>
+
+  <div class="tab-pane code__pane gs-pane" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs bash">curl -X POST https://api.algorithmia.com/v1/algo/ALGO_OWNER/ALGO_NAME \
+       -H <span class="hljs-string">'Content-Type: application/json'</span> \
+       -H <span class="hljs-string">'Authorization: Simple API_KEY'</span> \
+       -d <span class="hljs-string">'"Your Name"'</span></code></pre>
+
+  <textarea id="curl-copy-text" class="copy-text curl">
+    curl -X POST https://api.algorithmia.com/v1/algo/ALGO_OWNER/ALGO_NAME 'Content-Type: application/json' -H 'Authorization: Simple API_KEY' -d '"Your Name"'
+  </textarea>
+  </div>
+</div>
+
+<p>You can also call your algorithm using any of our supported language clients, for example from within an app. To view the code for your language of choice, toggle the drop-down language option in the box below. Further language-specific guidance is available in our <a href="/developers/clients">Client Guides</a>.</p>
+
+<div ng-controller="GettingStartedControl" ng-init="setCardContent('YOUR_USERNAME')" class="gs-code-container">
+  <div class="code-toolbar ph-16 pv-8">
+    <div class="btn-group dropdown">
+      <button type="button" class="btn btn-default dropdown-toggle gs-dropdown pa-0" data-toggle="dropdown">
+        <div class="lang-logo white-logo mr-4" ng-class="lang"></div>
+        <span ng-bind="languages[lang]" class="mr-4"></span>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu gs-languages pv-4" role="menu">
+        <li ng-repeat="(language, displayName) in languages" class="mb-0">
+          <a class="caption" ng-click="setLang(language)">
+            <div class="lang-logo color-logo mr-4" ng-class="language"></div>
+            <span ng-bind="displayName"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-flat text-light-primary copy-btn" ng-click="copyCode(lang)">
+      <i class="fa fa-copy"></i>
+    </button>
+  </div>
+
+  <!-- PYTHON -->
+  <div class="tab-pane code__pane gs-pane" id="python" ng-show="lang==='python'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs python"><span class="hljs-keyword">import</span> Algorithmia
+
+input = <span class="hljs-string">"Your Name"</span>
+client = Algorithmia.client(<span class="hljs-string">"API_KEY"</span>)
+algo = client.algo(<span class="hljs-string">"ALGO_OWNER/ALGO_NAME"</span>)
+<span class="hljs-keyword">print</span>(algo.pipe(input))</code></pre>
+
+<textarea id="python-copy-text" class="copy-text">import Algorithmia
+
+input = "Your Name"
+client = Algorithmia.client("API_KEY")
+algo = client.algo("ALGO_OWNER/ALGO_NAME")
+print(algo.pipe(input).result)</textarea>
+
+  </div>
+
+  <!-- JAVA -->
+  <div class="tab-pane code__pane gs-pane" id="java" ng-show="lang==='java'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs java"><span class="hljs-keyword">import</span> com.algorithmia.*;
+<span class="hljs-keyword">import</span> com.algorithmia.algo.*;
+
+String input = <span class="hljs-string">"Your Name"</span>
+AlgorithmiaClient client = Algorithmia.client(<span class="hljs-string">"API_KEY"</span>);
+Algorithm algo = client.algo(<span class="hljs-string">"ALGO_OWNER/ALGO_NAME"</span>);
+AlgoResponse result = algo.pipe(input);
+System.out.println(result.asString());</code></pre>
+
+<textarea class="copy-text" id="java-copy-text">import com.algorithmia._;
+import com.algorithmia.algo._;
+
+String input = "Your Name"
+AlgorithmiaClient client = Algorithmia.client("API_KEY");
+Algorithm algo = client.algo("ALGO_OWNER/ALGO_NAME");
+AlgoResponse result = algo.pipe(input);
+System.out.println(result.asString());</textarea>
+
+  </div>
+
+  <!-- R LANG -->
+  <div class="tab-pane code__pane gs-pane" id="rlang" ng-show="lang==='rlang'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs R"><span class="hljs-keyword">library</span>(algorithmia)
+
+input &lt;- <span class="hljs-string">"Your Name"</span>
+client &lt;- getAlgorithmiaClient(<span class="hljs-string">"API_KEY"</span>)
+algo &lt;- client$algo(<span class="hljs-string">"ALGO_OWNER/ALGO_NAME"</span>)
+result &lt;- algo$pipe(input)$result
+print(result)</code></pre>
+<textarea class="copy-text" id="rlang-copy-text">library(algorithmia)
+
+input &lt;- "Your Name"
+client &lt;- getAlgorithmiaClient("API_KEY")
+algo &lt;- client$algo("ALGO_OWNER/ALGO_NAME")
+result &lt;- algo$pipe(input)$result
+print(result)</textarea>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <div class="tab-pane code__pane gs-pane" id="javascript" ng-show="lang==='javascript'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs js"><span class="hljs-keyword">var</span> input = <span class="hljs-string">"Your Name"</span>;
+Algorithmia.client(<span class="hljs-string">"API_KEY"</span>)
+  .algo(<span class="hljs-string">"ALGO_OWNER/ALGO_NAME"</span>)
+  .pipe(input)
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(response);
+  });</code></pre>
+  <textarea class="copy-text" id="javascript-copy-text">var input = "Your Name";
+Algorithmia.client("API_KEY")
+  .algo("ALGO_OWNER/ALGO_NAME")
+  .pipe(input)
+  .then(function(response) {
+    console.log(response);
+  });</textarea>
+  </div>
+
+  <!-- NODE -->
+  <div class="tab-pane code__pane gs-pane" id="node" ng-show="lang==='node'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs js"><span class="hljs-keyword">var</span> input = <span class="hljs-string">"Your Name"</span>;
+Algorithmia.client(<span class="hljs-string">"API_KEY"</span>)
+  .algo(<span class="hljs-string">"algo://ALGO_OWNER/ALGO_NAME"</span>)
+  .pipe(input)
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(response.get());
+  });</code></pre>
+  <textarea class="copy-text" id="node-copy-text">var input = "Your Name";
+Algorithmia.client("API_KEY")
+  .algo("algo://ALGO_OWNER/ALGO_NAME")
+  .pipe(input)
+  .then(function(response) {
+    console.log(response.get());
+  });</textarea>
+  </div>
+
+  <!-- RUBY -->
+  <div class="tab-pane code__pane gs-pane" id="ruby" ng-show="lang==='ruby'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">'algorithmia'</span>
+
+input = <span class="hljs-string">"Your Name"</span>
+client = Algorithmia.client(<span class="hljs-string">"API_KEY"</span>)
+algo = client.algo(<span class="hljs-string">"ALGO_OWNER/ALGO_NAME"</span>)
+response = algo.pipe(input).result
+puts response</code></pre>
+<textarea class="copy-text" id="ruby-copy-text">require 'algorithmia'
+
+input = "Your Name"
+client = Algorithmia.client("API_KEY")
+algo = client.algo("ALGO_OWNER/ALGO_NAME")
+response = algo.pipe(input).result
+puts response</textarea>
+
+  </div>
+
+  <!-- RUST -->
+  <div class="tab-pane code__pane gs-pane" id="rust" ng-show="lang==='rust'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs rust"><span class="hljs-keyword">use</span> algorithmia::*;
+
+<span class="hljs-keyword">let</span> input = <span class="hljs-string">"Your Name"</span>;
+<span class="hljs-keyword">let</span> client = Algorithmia::client(<span class="hljs-string">"API_KEY"</span>);
+<span class="hljs-keyword">let</span> algo = client.algo(<span class="hljs-string">"ALGO_OWNER/ALGO_NAME"</span>);
+<span class="hljs-keyword">let</span> response = algo.pipe(input);
+<span class="hljs-built_in">println!</span>(response)</code></pre>
+<textarea class="copy-text" id="rust-copy-text">use algorithmia::\*;
+
+let input = "Your Name";
+let client = Algorithmia::client("API_KEY");
+let algo = client.algo("ALGO_OWNER/ALGO_NAME");
+let response = algo.pipe(input);
+println!(response)</textarea>
+
+  </div>
+
+  <!-- SCALA -->
+  <div class="tab-pane code__pane gs-pane" id="scala" ng-show="lang==='scala'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs scala"><span class="hljs-keyword">import</span> com.algorithmia._
+<span class="hljs-keyword">import</span> com.algorithmia.algo._
+
+<span class="hljs-keyword">val</span> input = <span class="hljs-string">"Your Name"</span>
+<span class="hljs-keyword">val</span> client = <span class="hljs-type">Algorithmia</span>.client(<span class="hljs-string">"API_KEY"</span>)
+<span class="hljs-keyword">val</span> algo = client.algo(<span class="hljs-string">"algo://ALGO_OWNER/ALGO_NAME"</span>)
+<span class="hljs-keyword">val</span> result = algo.pipeJson(input)
+<span class="hljs-type">System</span>.out.println(result.asString)</code></pre>
+<textarea class="copy-text" id="scala-copy-text">import com.algorithmia.\*
+import com.algorithmia.algo.\_
+
+val input = "Your Name"
+val client = Algorithmia.client("API_KEY")
+val algo = client.algo("algo://ALGO_OWNER/ALGO_NAME")
+val result = algo.pipeJson(input)
+System.out.println(result.asJsonString)</textarea>
+
+  </div>
+
+  <!-- SWIFT -->
+  <div class="tab-pane code__pane gs-pane" id="swift" ng-show="lang==='swift'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs swift"><span class="hljs-keyword">import</span> Algorithmia
+
+<span class="hljs-keyword">let</span> input = <span class="hljs-string">"Your Name"</span>;
+<span class="hljs-keyword">let</span> client = <span class="hljs-type">Algorithmia</span>.client(simpleKey: <span class="hljs-string">"API_KEY"</span>)
+<span class="hljs-keyword">let</span> algo = client.algo(algoUri: <span class="hljs-string">"ALGO_OWNER/ALGO_NAME"</span>) { response, error <span class="hljs-keyword">in</span>
+<span class="hljs-built_in">print</span>(response)
+}</code></pre>
+<textarea class="copy-text" id="swift-copy-text">import Algorithmia
+
+let input = "Your Name";
+let client = Algorithmia.client(simpleKey: "API_KEY")
+let algo = client.algo(algoUri: "ALGO_OWNER/ALGO_NAME") { response, error in
+print(response)
+}</textarea>
+
+  </div>
+
+  <!-- GO -->
+  <div class="tab-pane code__pane gs-pane" id="go" ng-show="lang==='go'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs go"><span class="hljs-keyword">import</span> (
+  algorithmia <span class="hljs-string">"github.com/algorithmiaio/algorithmia-go"</span>
+)
+
+input := <span class="hljs-string">"Your Name"</span>
+
+<span class="hljs-keyword">var</span> client = algorithmia.NewClient(<span class="hljs-string">"API_KEY"</span>)
+algo, _ := client.Algo(<span class="hljs-string">"algo://ALGO_OWNER/ALGO_NAME"</span>)
+resp, _ := algo.Pipe(input)
+response := resp.(*algorithmia.AlgoResponse)
+fmt.Println(response.Result)</code></pre>
+<textarea class="copy-text" id="go-copy-text">import (
+algorithmia "github.com/algorithmiaio/algorithmia-go"
+)
+
+input := "Your Name"
+
+var client = algorithmia.NewClient("API_KEY")
+algo, _ := client.Algo("algo://ALGO_OWNER/ALGO_NAME")
+resp, _ := algo.Pipe(input)
+response := resp.(*algorithmia.AlgoResponse)
+fmt.Println(response.Result)</textarea>
+
+  </div>
+
+  <!-- CSHARP -->
+  <div class="tab-pane code__pane gs-pane" id="c-sharp" ng-show="lang==='c-sharp'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs csharp"><span class="hljs-keyword">using</span> Algorithmia;
+
+<span class="hljs-keyword">var</span> input = <span class="hljs-string">"Your Name"</span>;
+<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> Client(<span class="hljs-string">"API_KEY"</span>);
+<span class="hljs-keyword">var</span> algo = client.algo(client, <span class="hljs-string">"algo://ALGO_OWNER/ALGO_NAME"</span>);
+<span class="hljs-keyword">var</span> response = algo.pipe&lt;<span class="hljs-keyword">string</span>&gt;(input);
+System.Console.WriteLine(response.result.ToString());</code></pre>
+<textarea class="copy-text" id="c-sharp-copy-text">using Algorithmia;
+
+var input = "Your Name";
+var client = new Client("API_KEY");
+var algo = client.algo(client, "algo://ALGO_OWNER/ALGO_NAME");
+var response = algo.pipe&lt;string&gt;(input);
+System.Console.WriteLine(response.result.ToString());</textarea>
+
+  </div>
+
+  <!-- PERL -->
+  <div class="tab-pane code__pane gs-pane" id="perl" ng-show="lang==='perl'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs perl"><span class="hljs-keyword">use</span> LWP::UserAgent;
+
+<span class="hljs-keyword">my</span> $input = <span class="hljs-string">'Your Name'</span>;
+<span class="hljs-keyword">my</span> $api_key = <span class="hljs-string">'API_KEY'</span>;
+<span class="hljs-keyword">my</span> $req = HTTP::Request-&gt;new(<span class="hljs-string">POST =&gt;</span> <span class="hljs-string">'http://api.algorithmia.com/v1/algo/ALGO_OWNER/ALGO_NAME'</span>);
+$req-&gt;header(<span class="hljs-string">'content-type'</span> =&gt; <span class="hljs-string">'application/json'</span>);
+$req-&gt;header(<span class="hljs-string">'Authorization'</span> =&gt; <span class="hljs-string">'Simple '</span>.$api_key);
+$req-&gt;content($post_data);
+<span class="hljs-keyword">my</span> $ua = LWP::UserAgent-&gt;new;
+<span class="hljs-keyword">my</span> $resp = $ua-&gt;request($req);
+<span class="hljs-keyword">if</span> ($resp-&gt;is_success) {
+<span class="hljs-keyword">print</span> $resp-&gt;decoded_content;
+} <span class="hljs-keyword">else</span> {
+<span class="hljs-keyword">print</span> <span class="hljs-string">'POST error: '</span>, $resp-&gt;code, <span class="hljs-string">': '</span>, $resp-&gt;message;
+}</code></pre>
+<textarea class="copy-text" id="perl-copy-text">use LWP::UserAgent;
+
+my $input = 'Your Name';
+my $api_key = 'API_KEY';
+my $req = HTTP::Request-&gt;new(POST =&gt; 'http://api.algorithmia.com/v1/algo/ALGO_OWNER/ALGO_NAME');
+$req-&gt;header('content-type' =&gt; 'application/json');
+$req-&gt;header('Authorization' =&gt; 'Simple '.$api_key);
+$req-&gt;content($post_data);
+my $ua = LWP::UserAgent-&gt;new;
+my $resp = $ua-&gt;request($req);
+if ($resp-&gt;is_success) {
+print $resp-&gt;decoded_content;
+} else {
+print 'POST error: ', $resp-&gt;code, ': ', $resp-&gt;message;
+}</textarea>
+
+  </div>
+
+  <!-- PHP -->
+  <div class="tab-pane code__pane gs-pane" id="php" ng-show="lang==='php'" ng-cloak="">
+  <pre class="getting-started-code"><code class="demo-code-sample hljs php">$input = <span class="hljs-string">'Your Name'</span>;
+$api_key = <span class="hljs-string">'API_KEY'</span>;
+$data_json = json_encode($input);
+$ch = curl_init();
+  curl_setopt_array($ch, <span class="hljs-keyword">array</span>(
+    CURLOPT_URL =&gt; <span class="hljs-string">'https://api.algorithmia.com/v1/algo/ALGO_OWNER/ALGO_NAME'</span>,
+    CURLOPT_HTTPHEADER =&gt; <span class="hljs-keyword">array</span>(
+      <span class="hljs-string">'Content-Type: application/json'</span>,
+      <span class="hljs-string">'Authorization: Simple '</span> . $api_key,
+      <span class="hljs-string">'Content-Length: '</span> . strlen($data_json)
+    ),
+    CURLOPT_POSTFIELDS =&gt; $data_json,
+    CURLOPT_RETURNTRANSFER =&gt; <span class="hljs-keyword">true</span>,
+    CURLOPT_POST =&gt; <span class="hljs-keyword">true</span>
+  ));
+  $response_json = curl_exec($ch);
+  curl_close($ch);
+  $response = json_decode($response_json);
+  <span class="hljs-keyword">if</span>($response-&gt;error) {
+    <span class="hljs-keyword">print</span>(<span class="hljs-string">'ERROR: '</span>);
+    print_r($response-&gt;error);
+  } <span class="hljs-keyword">else</span> {
+    print_r($response-&gt;result);
+  }</code></pre>
+  <textarea class="copy-text" id="php-copy-text">$input = 'Your Name';
+$api_key = 'API_KEY';
+$data_json = json_encode($input);
+$ch = curl_init();
+  curl_setopt_array($ch, array(
+    CURLOPT_URL =&gt; 'https://api.algorithmia.com/v1/algo/ALGO_OWNER/ALGO_NAME',
+    CURLOPT_HTTPHEADER =&gt; array(
+      'Content-Type: application/json',
+      'Authorization: Simple ' . $api_key,
+      'Content-Length: ' . strlen($data_json)
+    ),
+    CURLOPT_POSTFIELDS =&gt; $data_json,
+    CURLOPT_RETURNTRANSFER =&gt; true,
+    CURLOPT_POST =&gt; true
+  ));
+  $response_json = curl_exec($ch);
+  curl_close($ch);
+  $response = json_decode($response_json);
+  if($response-&gt;error) {
+    print('ERROR: ');
+    print_r($response-&gt;error);
+  } else {
+    print_r($response-&gt;result);
+  }</textarea>
+  </div>
+</div>
+
+<h2 id="quick-reference-local-development-vs-web-ide">Quick Reference: Local Development vs. Web IDE</h2>
+
+<p>Every developer has a different workflow, and Algorithmia is built with flexibility in mind. When you’re developing on our platform, you may find that you use your local environment for the majority of your work but that sometimes it’s convenient to jump into the Web IDE, for example to make minor changes.</p>
+
+<p>Both local and Web IDE development are backed by Git version control, so you can use a normal Git workflow as you would with any other remote repositories. Note that, just like in any other distributed version control scenario, if you use both a local environment and the Web IDE to make changes in the same file(s) at the same time, you may end up with merge conflicts. If you do commit and push code locally via Git while the Web IDE is open to the same repository, simply reload the page to view the latest version.</p>
+
+<p>The following table provides a quick-reference comparison for understanding how algorithm management actions completed using the local workflow map to actions in the browser UI.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Git and/or Python Client</th>
+      <th>Browser UI/Web IDE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create an algorithm</td>
+      <td><code class="language-plaintext highlighter-rouge">algo.create(...)</code></td>
+      <td><strong>Create New</strong> button → <strong>Algorithm</strong> button</td>
+    </tr>
+    <tr>
+      <td>Save an algorithm change without a commit</td>
+      <td>(“save/write file” command)</td>
+      <td>(no equivalent functionality)</td>
+    </tr>
+    <tr>
+      <td>Save an algorithm change with a commit</td>
+      <td><code class="language-plaintext highlighter-rouge">git commit</code></td>
+      <td><strong>Save</strong> button</td>
+    </tr>
+    <tr>
+      <td>Build an algorithm</td>
+      <td><code class="language-plaintext highlighter-rouge">algo.compile()</code> / <code class="language-plaintext highlighter-rouge">git push</code></td>
+      <td><strong>Build</strong> button (also creates a commit)</td>
+    </tr>
+    <tr>
+      <td>Publish an algorithm</td>
+      <td><code class="language-plaintext highlighter-rouge">algo.publish(...)</code></td>
+      <td><strong>Publish</strong> button</td>
+    </tr>
+    <tr>
+      <td>Call an algorithm</td>
+      <td><code class="language-plaintext highlighter-rouge">algo.pipe(...)</code></td>
+      <td>(input directly in test console)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>Now that you’ve published your first simple algorithm on the platform, you’re empowered to start developing much more complex and useful algorithms. You can write them from scratch, adopt and modify open-source algorithms, and even pipeline multiple algorithms together. Once published, your algorithms will become versioned API endpoints that you can consume from external applications with just a few lines of code!</p>
+
+<h3 id="language-guides">Language guides</h3>
+
+<p>Now that you know the basics, you can check out the <a href="/developers/algorithm-development/languages">Language Guides</a> to learn how to write algorithms in whichever language you prefer; we support R, Python, Rust, Ruby, Java, Scala, and JavaScript.</p>
+
+<h3 id="connecting-to-data">Connecting to data</h3>
+
+<p>As you saw in this guide, you can create simple algorithms that don’t read or write any data to disk. However, most algorithms you develop will need to be able to interact with some sort of data source.</p>
+
+<p>As an integration-first platform, we encourage you to connect to whatever data source(s) you’re already using. We also enable you to host data directly on our platform for lower-latency access, and we even have several native integrations with cloud-hosted data platforms.</p>
+
+<p>See our <a href="/developers/api/#tag/data">Data API docs</a> and our <a href="/developers/data">Developer Center data docs</a> to get started connecting to data sources.</p>
+
+		<aside>
+			
+		</aside>
+	</div><!-- /.content -->
+</article>
+
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-sm-pull-8 col-md-pull-8 col-xs-12">
+              <nav class="hidden-print">
+                <ul class="devcenter-nav sidebar-nav nav">
+	<li class="sidebar-nav__label"><label>Topics</label></li>
+	<div id="search">
+	  <form action="/developers" method="get">
+	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
+	  </form>
+	</div>
+
+	<ul class="nav sidebar">
+<li>
+<a href='/developers' >Home</a>
+</li>
+<li>
+<a href='/developers/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations' >Integrations</a>
+</li>
+<li>
+<a href='/developers/glossary' >Glossary</a>
+</li>
+<li>
+<a href='/developers/api' >API Documentation</a>
+</li>
+<li class="category">
+<a href='/developers/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/platform/account-profile' >Accounts</a>
+</li>
+<li>
+<a href='/developers/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/platform/algorithm-profile' >Algorithms</a>
+</li>
+<li>
+<a href='/developers/platform/customizing-api-keys' >API Keys</a>
+</li>
+<li>
+<a href='/developers/platform/organization-first-updates' >Collaboration-Focused UI</a>
+</li>
+<li>
+<a href='/developers/platform/organization-profile' >Organizations</a>
+</li>
+<li>
+<a href='/developers/platform/permissions' >Permissions</a>
+</li>
+<li>
+<a href='/developers/platform/rbac' >Role-Based Access Control</a>
+</li>
+<li>
+<a href='/developers/platform/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/platform/teams' >Teams</a>
+</li>
+<li>
+<a href='/developers/platform/versioning' >Versioning</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/clients' >Overview</a>
+</li>
+<li>
+<a href='/developers/clients/android' >Android</a>
+</li>
+<li>
+<a href='/developers/clients/cli' >CLI</a>
+</li>
+<li>
+<a href='/developers/clients/curl' >cURL</a>
+</li>
+<li>
+<a href='/developers/clients/go' >Go</a>
+</li>
+<li>
+<a href='/developers/clients/java' >Java</a>
+</li>
+<li>
+<a href='/developers/clients/javascript' >Javascript</a>
+</li>
+<li>
+<a href='/developers/clients/c_sharp_net' >.NET / C#</a>
+</li>
+<li>
+<a href='/developers/clients/node' >Node</a>
+</li>
+<li>
+<a href='/developers/clients/perl' >Perl</a>
+</li>
+<li>
+<a href='/developers/clients/php' >PHP</a>
+</li>
+<li>
+<a href='/developers/clients/python' >Python</a>
+</li>
+<li>
+<a href='/developers/clients/r' >R</a>
+</li>
+<li>
+<a href='/developers/clients/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/clients/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/clients/scala' >Scala</a>
+</li>
+<li>
+<a href='/developers/clients/swift' >Swift</a>
+</li>
+<li>
+<a href='/developers/clients/aws-lambda' >AWS Lambda</a>
+</li>
+</ul>
+</li>
+<li class="active category">
+<a href='/developers/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-errors' >Error Handling</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/algorithm-management' >Algorithm Management</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+</li>
+<li class="category">
+<a href='/developers/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/algorithm-development/languages/conda' >Conda</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/java' >Java</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/javascript' >JavaScript</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/python' >Python</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/r' >R</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/ruby' >Ruby</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/rust' >Rust</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/languages/scala' >Scala</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/algorithm-development/markdown-syntax' >Markdown</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/reloading-models' >Reloading Models</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/source-code-management' >Source Code Management</a>
+</li>
+<li class="active">
+<a href='/developers/algorithm-development/your-first-algo' >Getting Started</a>
+</li>
+<li>
+<a href='/developers/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+</li>
+<li>
+<a href='/developers/algorithm-development/environments' >Algorithm Environments</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/model-deployment' >Supported Frameworks</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/data' >Overview</a>
+</li>
+<li>
+<a href='/developers/data/azureblob' >Azure Blob</a>
+</li>
+<li>
+<a href='/developers/data/dropbox' >Dropbox</a>
+</li>
+<li>
+<a href='/developers/data/googlecloudstorage' >Google Cloud Storage</a>
+</li>
+<li>
+<a href='/developers/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/developers/data/s3' >Amazon S3</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/sql-patterns' >Overview</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mssqlserver' >MS SQL Server</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/mysql' >MySQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/developers/sql-patterns/snowflake' >Snowflake</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/other-data-sources' >Overview</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/backblazeb2' >Backblaze B2</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/dynamodb' >DynamoDB</a>
+</li>
+<li>
+<a href='/developers/other-data-sources/hdfs' >HDFS</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/datarobot' >DataRobot</a>
+</li>
+<li>
+<a href='/developers/integrations/mlflow' >MLFlow</a>
+</li>
+<li>
+<a href='/developers/integrations/sagemaker' >SageMaker</a>
+</li>
+<li>
+<a href='/developers/integrations/spark-streaming' >Spark Streaming</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/event-flows' >Overview</a>
+</li>
+<li>
+<a href='/developers/event-flows/amazon-sqs' >Amazon SQS</a>
+</li>
+<li>
+<a href='/developers/event-flows/apache-kafka' >Apache Kafka</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-eh' >Azure Event Hubs</a>
+</li>
+<li>
+<a href='/developers/event-flows/azure-sb' >Azure Service Bus</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/monitoring-and-observability/arize' >Arize</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/arthur' >Arthur</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/datadog' >Datadog</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/developers/monitoring-and-observability/newrelic' >New Relic</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/android-basic' >Android (Basic)</a>
+</li>
+<li>
+<a href='/developers/integrations/android-dl' >Android (Deep Learning)</a>
+</li>
+<li>
+<a href='/developers/integrations/ios' >iOS</a>
+</li>
+<li>
+<a href='/developers/integrations/shiny' >Shiny App</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/integrations/tableau' >Tableau</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/administrators' >Administrators</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/banner' >Banner</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/developers/administration/admin-panel/workers' >Workers</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/developers/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/developers/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/developers/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/developers/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/developers/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/developers/vmware' >VMware</a>
+</li>
+<li>
+<a href='/developers/release-notes' >Release Notes</a>
+</li>
+<li>
+<a href='/developers/faqs' >FAQ</a>
+</li>
+</ul>
+</ul>
+
+              </nav>
+            </div> <!-- END NAV CONTAINER -->
+          </div>
+        </div>
+        <footer role="contentinfo" id="site-footer" class="syn-styles-supported">
+  <div class="syn-container">
+    <div class="syn-row syn-mb-32">
+      <div class="syn-col syn-col-lg-2 syn-col-md-3">
+        <div class="syn-mb-8">
+          <a href="/">
+            
+            <img
+            src="/developers/images/logos/binary_tree.svg"
+              alt="Algorithmia Logo"
+            />
+            
+          </a>
+        </div>
+        <div
+          class="syn-caption syn-text-secondary syn-mb-0"
+        >
+          © 2021 Algorithmia Inc.
+        </div>
+
+          <div class="syn-caption syn-mt-8 syn-mb-8">
+            <a href="/privacy" class="syn-text-secondary"
+              >Privacy</a
+            >
+            ⋅
+            <a href="/terms" class="syn-text-secondary"
+              >Terms</a
+            >
+          </div>
+          <div
+            class="syn-caption syn-mb-8 syn-mr-16 syn-flex justify-space-between syn-width-capped-160"
+          >
+            <a
+              href="https://github.com/algorithmiaio"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/github.svg" />
+            </a>
+            <a
+              href="https://twitter.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/twitter.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/algorithmia"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/facebook.svg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/algorithmia-inc"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/linkedin.svg" />
+            </a>
+            <a
+              href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="syn-text-secondary syn-link-no-decoration syn-link-animated"
+            >
+              <img src="/developers/images/icons/glassdoor.svg" />
+            </a>
+          </div>
+        
+      </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Company</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/about" class="syn-text-secondary">About</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              class="syn-text-secondary"
+              href="https://www.datarobot.com/careers/"
+              rel="noopener noreferrer">
+              Careers at DataRobot
+            </a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="https://algorithmia.com/blog" class="syn-text-secondary"
+              >Blog</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/press" class="syn-text-secondary "
+              >Press</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/partners" class="syn-text-secondary"
+              >Partners</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Product</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a
+              href="/pricing"
+              class="syn-text-secondary"
+              >Pricing</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/serverless-ai-layer" class="syn-text-secondary"
+              >Cloud AI Layer</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/enterprise" class="syn-text-secondary"
+              >Enterprise AI Layer</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/algorithms" class="syn-text-secondary"
+              >Algorithms</a
+            >
+          </div>
+        </div>
+
+        <div class="syn-col syn-col-lg-2 syn-col-md-3">
+          <div class="syn-overline syn-mb-8">Resources</div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/getting-started" class="syn-text-secondary"
+              >Getting Started</a
+            >
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/developers" class="syn-text-secondary">Docs</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/learn" class="syn-text-secondary">Learn</a>
+          </div>
+          <div class="syn-mb-8 syn-body-2">
+            <a href="/research" class="syn-text-secondary"
+              >Research</a
+            >
+          </div>
+          <div class="syn-body-2">
+            <a href="/contact" class="syn-text-secondary"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+      </div> <!-- end wrapper -->
+    </div>
+    <!-- END_BODY_EMBED -->
+
+    
+
+    <!-- BEGIN_SCRIPTS_EMBED -->
+    
+      <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+    
+    <script src="/developers/js/core.cat.js"></script>
+    <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
+    <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/developers/js/index.json',
+        results:  '#search-results',
+        template: '#search-results-template',
+        titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
+        emptyMsg: '<p>No results found...</p>'
+      });
+
+      $('#search-query').on('input', function(evt) {
+        if(evt.target.value.length < 3) {
+          $('#main-content').show();
+        } else {
+          $('#main-content').hide();
+        }
+      });
+
+      $('.sidebar .category > a').on('click', function(evt) {
+        evt.preventDefault();
+        evt.currentTarget.parentNode.classList.toggle('active');
+      });
+
+      // If there is a query string that will get picked up by lunrSearch
+      //   then hide the page content by default
+      // Note: the search input field doesn't get set by lunrSearch until index.json loads
+      var uri = new URI(window.location.search.toString());
+      var queryString = uri.search(true);
+      if (queryString.hasOwnProperty('q')) {
+        if(queryString.q.length >= 3) {
+          $('#main-content').hide();
+          $('#search-query').focus();
+        }
+      }
+    });
+    </script>
+    <!-- END_SCRIPTS_EMBED -->
+  </body>
+</html>
