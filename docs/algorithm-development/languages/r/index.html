@@ -36,14 +36,14 @@
 
     
 
-    <link rel="stylesheet" href="https://cdn.algorithmia.com//css/pygments-github.css">
-    <link rel="stylesheet" href="//css/vendors.css">
-    <link rel="stylesheet" href="//css/scoped-synapse.css?v=2">
-    <link rel="stylesheet" href="//css/devcenter.css">
+    <link rel="stylesheet" href="css/pygments-github.css">
+    <link rel="stylesheet" href="css/vendors.css">
+    <link rel="stylesheet" href="css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="css/devcenter.css">
     <!-- END_HEAD_EMBED -->
 
-    <link href="https://algorithmiaio.github.io//atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
-    <link href="https://algorithmiaio.github.io//sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+    <link href="atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
 
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -187,7 +187,7 @@
   {{#entries}}
   <hr>
   <article>
-    <h3><a href="/{{url}}">{{title}}</a></h3>
+    <h3><a href="{{url}}">{{title}}</a></h3>
     <span class="breadcrumbs-title m-B-s">{{categories}}</span>
     <p>{{excerpt}}</p>
   </article>
@@ -204,7 +204,7 @@
   </nav><!-- /.breadcrumbs -->
 
 	<h1 id="page-title">
-	<img src="https://cdn.algorithmia.com/images/language_logos/r.svg" alt="" itemprop="image" class="title-icon">
+	<img src="/images/language_logos/r.svg" alt="" itemprop="image" class="title-icon">
 
 R<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/algorithm-development/languages/r.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
 </h1>
@@ -214,7 +214,7 @@ R<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/algori
   <time datetime="2021-07-07T09:55:34Z" itemprop="dateModified">July 07, 2021</time>
 
 	<div id="content" class="page-content" itemprop="articleBody">
-		<p>Before you get started learning about R algorithm development, make sure you go through our <a href="//algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a> to learn how to create your first algorithm, understand permissions available, versioning, using the CLI, and more.</p>
+		<p>Before you get started learning about R algorithm development, make sure you go through our <a href="/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a> to learn how to create your first algorithm, understand permissions available, versioning, using the CLI, and more.</p>
 
 <p>Table of contents</p>
 
@@ -237,13 +237,13 @@ R<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/algori
 
 <p>The full <a href="https://www.r-project.org/about.html" rel="noopener noreferrer">R language and standard library version 3.3.6</a> is available for you to use in your algorithms, which you can find through the “Environment” drop-down when creating a new algorithm:</p>
 
-<p><img src="https://cdn.algorithmia.com//images/post_images/algo_dev_lang/env_dropdown_r.png" alt="Algorithm creation modal, Environment drop-down" class="screenshot" /></p>
+<p><img src="/images/post_images/algo_dev_lang/env_dropdown_r.png" alt="Algorithm creation modal, Environment drop-down" class="screenshot" /></p>
 
-<p>Furthermore, algorithms can call other algorithms and manage data on the Algorithmia platform via the <a href="//clients/r">Algorithmia R language Client</a>.</p>
+<p>Furthermore, algorithms can call other algorithms and manage data on the Algorithmia platform via the <a href="/clients/r">Algorithmia R language Client</a>.</p>
 
 <h2 id="write-your-first-algorithm">Write your first algorithm</h2>
 
-<p>If you’ve followed the <a href="//algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a>, you’ll notice in your algorithm editor, there is boilerplate code that returns “Hello” and whatever you input to the console.</p>
+<p>If you’ve followed the <a href="/algorithm-development/algorithm-basics/your-first-algo">Getting Started Guide</a>, you’ll notice in your algorithm editor, there is boilerplate code that returns “Hello” and whatever you input to the console.</p>
 
 <p>The main thing to note about the algorithm is that it’s wrapped in the algorithm() function.</p>
 
@@ -251,7 +251,7 @@ R<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/algori
 
 <p>Go ahead and remove the boilerplate code below that’s inside the algorithm() function because we’ll be writing a different algorithm in this tutorial:</p>
 
-<p><img src="https://cdn.algorithmia.com//images/post_images/algo_dev_lang/algorithm_console_r.png" alt="Algorithm console R" class="screenshot" /></p>
+<p><img src="/images/post_images/algo_dev_lang/algorithm_console_r.png" alt="Algorithm console R" class="screenshot" /></p>
 
 <h2 id="saving-and-loading-r-models">Saving and loading R models</h2>
 
@@ -259,7 +259,7 @@ R<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/algori
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">saveRDS</span><span class="p">(</span><span class="n">iris_fit_naive</span><span class="p">,</span><span class="w"> </span><span class="s2">"./naive_bayes_iris.rds"</span><span class="p">)</span></code></pre></figure>
 
-<p>Then follow the instructions for how to work with data using the Data Api in the <a href="//clients/r">R Client Docs</a> in order to upload your saved model to Algorithmia hosted data or you can store it in Dropbox or an S3 bucket. To find out more about working with data check out the <a href="//data">Data Portal</a>.</p>
+<p>Then follow the instructions for how to work with data using the Data Api in the <a href="/clients/r">R Client Docs</a> in order to upload your saved model to Algorithmia hosted data or you can store it in Dropbox or an S3 bucket. To find out more about working with data check out the <a href="/data">Data Portal</a>.</p>
 
 <p>Here are a couple of demos to show you how to load your hosted .rds file inside your algorithm:</p>
 
@@ -276,7 +276,7 @@ R<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/algori
 
 <p>On the algorithm editor page there is a button on the top right that says “Dependencies”. Click that button and you’ll see a modal window:</p>
 
-<p><img src="https://cdn.algorithmia.com//images/post_images/algo_dev_lang/dependencies_r.png" alt="Set your dependencies" class="screenshot img-md" /></p>
+<p><img src="/images/post_images/algo_dev_lang/dependencies_r.png" alt="Set your dependencies" class="screenshot img-md" /></p>
 
 <p>As you can see in the dependency file above, there are four different ways you can load packages in R.
 If you want the latest version from CRAN, than you simply type in the dependency name (this example uses the package e1071):</p>
@@ -367,7 +367,7 @@ withr</code></pre></figure>
 
 <p>Below is a code sample showing how to create an algorithm working with basic user input.</p>
 
-<p>You’ll also see some error handling within the algorithm, but we recommend that you take a look at our <a href="//algorithm-development/algorithm-basics/algorithm-errors">Better Error Handling Guide</a> for more information.</p>
+<p>You’ll also see some error handling within the algorithm, but we recommend that you take a look at our <a href="/algorithm-development/algorithm-basics/algorithm-errors">Better Error Handling Guide</a> for more information.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">algorithmia</span><span class="p">)</span><span class="w">
 
@@ -409,12 +409,12 @@ withr</code></pre></figure>
 
 <h3 id="working-with-data-stored-on-algorithmia">Working with data stored on Algorithmia</h3>
 
-<p>This next code snippet shows how to create an algorithm working with a data file that a user has stored using Algorithmia’s <a href="//data/hosted">Hosted Data Source</a>.</p>
+<p>This next code snippet shows how to create an algorithm working with a data file that a user has stored using Algorithmia’s <a href="/data/hosted">Hosted Data Source</a>.</p>
 
-<p class="notice-warning">Files stored in <a href="//data/hosted">Hosted Data</a> must be transferred into the algorithm before use, via the <a href="https://algorithmia.com/developers/api/?r#files">getFile</a> method. Alternately, their contents can be transferred using <a href="https://algorithmia.com/developers/api/?r#files">getString, getJson, or getBytes</a>.</p>
+<p class="notice-warning">Files stored in <a href="/data/hosted">Hosted Data</a> must be transferred into the algorithm before use, via the <a href="https://algorithmia.com/developers/api/?r#files">getFile</a> method. Alternately, their contents can be transferred using <a href="https://algorithmia.com/developers/api/?r#files">getString, getJson, or getBytes</a>.</p>
 
 <h4 id="prerequisites">Prerequisites</h4>
-<p>If you wish to follow along working through the example yourself, create a text file that contains any unstructured text such as a chapter from a public domain book or article. We used a chapter from <a href="https://en.wikisource.org/wiki/Burning_Daylight">Burning Daylight, by Jack London</a> which you can copy and paste into a text file. Or copy and paste it from here: <a href="//data_assets/burning_daylight.txt">Chapter One Burning Daylight, by Jack London</a>. Then you will can upload it into one of your <a href="/data/hosted">Data Collections</a>.</p>
+<p>If you wish to follow along working through the example yourself, create a text file that contains any unstructured text such as a chapter from a public domain book or article. We used a chapter from <a href="https://en.wikisource.org/wiki/Burning_Daylight">Burning Daylight, by Jack London</a> which you can copy and paste into a text file. Or copy and paste it from here: <a href="/data_assets/burning_daylight.txt">Chapter One Burning Daylight, by Jack London</a>. Then you will can upload it into one of your <a href="/data/hosted">Data Collections</a>.</p>
 
 <p>This example shows how to create an algorithm that takes a user’s file which is stored in a data collection on the Algorithmia platform. It then splits up the text into sentences and then splits those sentences up into words:</p>
 
@@ -469,7 +469,7 @@ withr</code></pre></figure>
 
 <h3 id="writing-files-for-the-user-to-consume">Writing files for the user to consume</h3>
 
-<p>Sometimes it is more appropriate to write your output to a file than to return it directly to the caller.  In these cases, you may need to create a temporary file, then copy it to a <a href="http://docs.algorithmia.com/#data-api-specification">Data URI</a> (usually one which the caller specified in their request, or a <a href="//data/hosted#temporary-algorithm-collections">Temporary Algorithm Collection</a>):</p>
+<p>Sometimes it is more appropriate to write your output to a file than to return it directly to the caller.  In these cases, you may need to create a temporary file, then copy it to a <a href="http://docs.algorithmia.com/#data-api-specification">Data URI</a> (usually one which the caller specified in their request, or a <a href="/data/hosted#temporary-algorithm-collections">Temporary Algorithm Collection</a>):</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># {"target_file":"data://username/collection/filename.txt"}</span><span class="w">
 </span><span class="n">file_uri</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">input</span><span class="o">$</span><span class="n">target_file</span><span class="w">
@@ -479,7 +479,7 @@ withr</code></pre></figure>
 
 <h3 id="calling-other-algorithms-and-managing-data">Calling other algorithms and managing data</h3>
 
-<p>To call other algorithms or manage data from your algorithm, use the <a href="//clients/r">Algorithmia R Client</a> which is automatically available to any algorithm you create on the Algorithmia platform. For more detailed information on how to work with data see the <a href="http://docs.algorithmia.com/">Data API docs</a>.</p>
+<p>To call other algorithms or manage data from your algorithm, use the <a href="/clients/r">Algorithmia R Client</a> which is automatically available to any algorithm you create on the Algorithmia platform. For more detailed information on how to work with data see the <a href="http://docs.algorithmia.com/">Data API docs</a>.</p>
 
 <p>You may call up to 24 other algorithms, either in parallel or recursively.</p>
 
@@ -523,7 +523,7 @@ withr</code></pre></figure>
 
 <p>This should return a split up list of strings:</p>
 
-<p><img src="https://cdn.algorithmia.com//images/post_images/algo_dev_lang/tokenize_url.png" alt="Run basic algorithm in console" class="screenshot" /></p>
+<p><img src="/images/post_images/algo_dev_lang/tokenize_url.png" alt="Run basic algorithm in console" class="screenshot" /></p>
 
 <p>As you can see from these examples, fields that are passed into your algorithm by the user such as scalar values and sequences such as lists, dictionaries, tuples and bytearrays (binary byte sequence such as an image file) can be handled as you would any Python data structure within your algorithm.</p>
 
@@ -551,7 +551,7 @@ withr</code></pre></figure>
 </span><span class="c1"># Try calling without valid input</span><span class="w">
 </span><span class="n">algo</span><span class="o">$</span><span class="n">pipe</span><span class="p">(</span><span class="nf">list</span><span class="p">())</span><span class="o">$</span><span class="n">error</span><span class="o">$</span><span class="n">message</span></code></pre></figure>
 
-<p>For more information on error handling see the <a href="//algorithm-development/algorithm-basics/algorithm-errors">Better Error Handling Guide</a>.</p>
+<p>For more information on error handling see the <a href="/algorithm-development/algorithm-basics/algorithm-errors">Better Error Handling Guide</a>.</p>
 
 <h2 id="publishing-algorithmia-insights">Publishing Algorithmia Insights</h2>
 
@@ -564,7 +564,7 @@ withr</code></pre></figure>
 
 <h2 id="algorithm-checklist">Algorithm checklist</h2>
 
-<p>Before you are ready to publish your algorithm it’s important to go through this <a href="//algorithm-development/algorithm-checklist">Algorithm Checklist</a> and check out this blog post for <a href="https://algorithmia.com/blog/advanced-algorithm-design">Advanced Algorithm Development <i class="fa fa-external-link"></i></a>.</p>
+<p>Before you are ready to publish your algorithm it’s important to go through this <a href="/algorithm-development/algorithm-checklist">Algorithm Checklist</a> and check out this blog post for <a href="https://algorithmia.com/blog/advanced-algorithm-design">Advanced Algorithm Development <i class="fa fa-external-link"></i></a>.</p>
 
 <p>Both links will go over important best practices such as how to create a good algorithm description, add links to external documentation and other important information.</p>
 
@@ -574,7 +574,7 @@ withr</code></pre></figure>
 
 <p>On the upper right hand side of the algorithm page you’ll see a purple button “Publish” which will bring up a modal:</p>
 
-<p><img src="https://cdn.algorithmia.com//images/post_images/algo_dev_lang/publish_algorithm.png" alt="Publish an algorithm" class="screenshot img-sm" /></p>
+<p><img src="/images/post_images/algo_dev_lang/publish_algorithm.png" alt="Publish an algorithm" class="screenshot img-sm" /></p>
 
 <p>In this modal, you’ll see a Changes tab, a Sample I/O tab, and one called Versioning.</p>
 
@@ -584,7 +584,7 @@ withr</code></pre></figure>
 
 <p>Under the Versioning tab, you can select whether your algorithm will be for public use or private use as well as set the royalty. The algorithm can either be royalty-free or charge per-call. If you opt to have the algorithm charge a royalty, as the author, you will earn 70% of the royalty cost.</p>
 
-<p>Check out <a href="//pricing">Algorithm Pricing</a> for more information on how much algorithms will cost to run.</p>
+<p>Check out <a href="/pricing">Algorithm Pricing</a> for more information on how much algorithms will cost to run.</p>
 
 <p>Under Semantic Versioning you can choose which kind of release your change should fall under: Major, Minor, or Revision.</p>
 
@@ -598,8 +598,8 @@ withr</code></pre></figure>
 
 <ul>
   <li><a href="https://cran.r-project.org/web/packages/algorithmia/vignettes/introduction-to-algorithmia.html">Algorithmia CRAN package documentation</a></li>
-  <li><a href="//clients/r">Algorithmia R client documentation</a></li>
-  <li><a href="//data">Hosted data documentation</a></li>
+  <li><a href="/clients/r">Algorithmia R client documentation</a></li>
+  <li><a href="/data">Hosted data documentation</a></li>
   <li><a href="http://docs.algorithmia.com/?r">Algorithmia API documentation</a></li>
 </ul>
 
@@ -616,528 +616,528 @@ withr</code></pre></figure>
                 <ul class="devcenter-nav sidebar-nav nav">
 	<li class="sidebar-nav__label"><label>Topics</label></li>
 	<div id="search">
-	  <form action="/" method="get">
+	  <form action="" method="get">
 	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
 	  </form>
 	</div>
 
 	<ul class="nav sidebar">
 <li>
-<a href='/' >Home</a>
+<a href='' >Home</a>
 </li>
 <li>
-<a href='//datarobot' >DataRobot</a>
+<a href='/datarobot' >DataRobot</a>
 </li>
 <li>
-<a href='//integrations' >Integrations</a>
+<a href='/integrations' >Integrations</a>
 </li>
 <li>
-<a href='//glossary' >Glossary</a>
+<a href='/glossary' >Glossary</a>
 </li>
 <li>
-<a href='//api' >API Documentation</a>
+<a href='/api' >API Documentation</a>
 </li>
 <li class="category">
-<a href='//platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//platform/account-profile' >Accounts</a>
+<a href='/platform/account-profile' >Accounts</a>
 </li>
 <li>
-<a href='//platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+<a href='/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
 </li>
 <li>
-<a href='//platform/algorithm-profile' >Algorithms</a>
+<a href='/platform/algorithm-profile' >Algorithms</a>
 </li>
 <li>
-<a href='//platform/customizing-api-keys' >API Keys</a>
+<a href='/platform/customizing-api-keys' >API Keys</a>
 </li>
 <li>
-<a href='//platform/organization-first-updates' >Collaboration-Focused UI</a>
+<a href='/platform/organization-first-updates' >Collaboration-Focused UI</a>
 </li>
 <li>
-<a href='//platform/organization-profile' >Organizations</a>
+<a href='/platform/organization-profile' >Organizations</a>
 </li>
 <li>
-<a href='//platform/permissions' >Permissions</a>
+<a href='/platform/permissions' >Permissions</a>
 </li>
 <li>
-<a href='//platform/rbac' >Role-Based Access Control</a>
+<a href='/platform/rbac' >Role-Based Access Control</a>
 </li>
 <li>
-<a href='//platform/secret-store' >Secret Store</a>
+<a href='/platform/secret-store' >Secret Store</a>
 </li>
 <li>
-<a href='//platform/teams' >Teams</a>
+<a href='/platform/teams' >Teams</a>
 </li>
 <li>
-<a href='//platform/versioning' >Versioning</a>
+<a href='/platform/versioning' >Versioning</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//clients' >Overview</a>
+<a href='/clients' >Overview</a>
 </li>
 <li>
-<a href='//clients/android' >Android</a>
+<a href='/clients/android' >Android</a>
 </li>
 <li>
-<a href='//clients/cli' >CLI</a>
+<a href='/clients/cli' >CLI</a>
 </li>
 <li>
-<a href='//clients/curl' >cURL</a>
+<a href='/clients/curl' >cURL</a>
 </li>
 <li>
-<a href='//clients/go' >Go</a>
+<a href='/clients/go' >Go</a>
 </li>
 <li>
-<a href='//clients/java' >Java</a>
+<a href='/clients/java' >Java</a>
 </li>
 <li>
-<a href='//clients/javascript' >Javascript</a>
+<a href='/clients/javascript' >Javascript</a>
 </li>
 <li>
-<a href='//clients/c_sharp_net' >.NET / C#</a>
+<a href='/clients/c_sharp_net' >.NET / C#</a>
 </li>
 <li>
-<a href='//clients/node' >Node</a>
+<a href='/clients/node' >Node</a>
 </li>
 <li>
-<a href='//clients/perl' >Perl</a>
+<a href='/clients/perl' >Perl</a>
 </li>
 <li>
-<a href='//clients/php' >PHP</a>
+<a href='/clients/php' >PHP</a>
 </li>
 <li>
-<a href='//clients/python' >Python</a>
+<a href='/clients/python' >Python</a>
 </li>
 <li>
-<a href='//clients/r' >R</a>
+<a href='/clients/r' >R</a>
 </li>
 <li>
-<a href='//clients/ruby' >Ruby</a>
+<a href='/clients/ruby' >Ruby</a>
 </li>
 <li>
-<a href='//clients/rust' >Rust</a>
+<a href='/clients/rust' >Rust</a>
 </li>
 <li>
-<a href='//clients/scala' >Scala</a>
+<a href='/clients/scala' >Scala</a>
 </li>
 <li>
-<a href='//clients/swift' >Swift</a>
+<a href='/clients/swift' >Swift</a>
 </li>
 <li>
-<a href='//clients/aws-lambda' >AWS Lambda</a>
+<a href='/clients/aws-lambda' >AWS Lambda</a>
 </li>
 </ul>
 </li>
 <li class="active category">
-<a href='//algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+<a href='/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
 </li>
 <li>
-<a href='//algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+<a href='/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
 </li>
 <li>
-<a href='//algorithm-development/algorithm-errors' >Error Handling</a>
+<a href='/algorithm-development/algorithm-errors' >Error Handling</a>
 </li>
 <li>
-<a href='//algorithm-development/algorithm-management' >Algorithm Management</a>
+<a href='/algorithm-development/algorithm-management' >Algorithm Management</a>
 </li>
 <li>
-<a href='//algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+<a href='/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
 </li>
 <li>
-<a href='//algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+<a href='/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
 </li>
 <li class="active category">
-<a href='//algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//algorithm-development/languages/conda' >Conda</a>
+<a href='/algorithm-development/languages/conda' >Conda</a>
 </li>
 <li>
-<a href='//algorithm-development/languages/java' >Java</a>
+<a href='/algorithm-development/languages/java' >Java</a>
 </li>
 <li>
-<a href='//algorithm-development/languages/javascript' >JavaScript</a>
+<a href='/algorithm-development/languages/javascript' >JavaScript</a>
 </li>
 <li>
-<a href='//algorithm-development/languages/python' >Python</a>
+<a href='/algorithm-development/languages/python' >Python</a>
 </li>
 <li class="active">
-<a href='//algorithm-development/languages/r' >R</a>
+<a href='/algorithm-development/languages/r' >R</a>
 </li>
 <li>
-<a href='//algorithm-development/languages/ruby' >Ruby</a>
+<a href='/algorithm-development/languages/ruby' >Ruby</a>
 </li>
 <li>
-<a href='//algorithm-development/languages/rust' >Rust</a>
+<a href='/algorithm-development/languages/rust' >Rust</a>
 </li>
 <li>
-<a href='//algorithm-development/languages/scala' >Scala</a>
+<a href='/algorithm-development/languages/scala' >Scala</a>
 </li>
 </ul>
 </li>
 <li>
-<a href='//algorithm-development/markdown-syntax' >Markdown</a>
+<a href='/algorithm-development/markdown-syntax' >Markdown</a>
 </li>
 <li>
-<a href='//algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+<a href='/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
 </li>
 <li>
-<a href='//algorithm-development/reloading-models' >Reloading Models</a>
+<a href='/algorithm-development/reloading-models' >Reloading Models</a>
 </li>
 <li>
-<a href='//algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+<a href='/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
 </li>
 <li>
-<a href='//algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+<a href='/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
 </li>
 <li>
-<a href='//algorithm-development/source-code-management' >Source Code Management</a>
+<a href='/algorithm-development/source-code-management' >Source Code Management</a>
 </li>
 <li>
-<a href='//algorithm-development/your-first-algo' >Getting Started</a>
+<a href='/algorithm-development/your-first-algo' >Getting Started</a>
 </li>
 <li>
-<a href='//model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+<a href='/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
 </li>
 <li>
-<a href='//algorithm-development/environments' >Algorithm Environments</a>
-</li>
-</ul>
-</li>
-<li class="category">
-<a href='//model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
-<ul class="nav sidebar">
-<li>
-<a href='//model-deployment' >Supported Frameworks</a>
+<a href='/algorithm-development/environments' >Algorithm Environments</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//data' >Overview</a>
-</li>
-<li>
-<a href='//data/azureblob' >Azure Blob</a>
-</li>
-<li>
-<a href='//data/dropbox' >Dropbox</a>
-</li>
-<li>
-<a href='//data/googlecloudstorage' >Google Cloud Storage</a>
-</li>
-<li>
-<a href='//data/hosted' >Hosted Data</a>
-</li>
-<li>
-<a href='//data/s3' >Amazon S3</a>
+<a href='/model-deployment' >Supported Frameworks</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//sql-patterns' >Overview</a>
+<a href='/data' >Overview</a>
 </li>
 <li>
-<a href='//sql-patterns/mssqlserver' >MS SQL Server</a>
+<a href='/data/azureblob' >Azure Blob</a>
 </li>
 <li>
-<a href='//sql-patterns/mysql' >MySQL</a>
+<a href='/data/dropbox' >Dropbox</a>
 </li>
 <li>
-<a href='//sql-patterns/postgres' >PostgreSQL</a>
+<a href='/data/googlecloudstorage' >Google Cloud Storage</a>
 </li>
 <li>
-<a href='//sql-patterns/snowflake' >Snowflake</a>
+<a href='/data/hosted' >Hosted Data</a>
+</li>
+<li>
+<a href='/data/s3' >Amazon S3</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//other-data-sources' >Overview</a>
+<a href='/sql-patterns' >Overview</a>
 </li>
 <li>
-<a href='//other-data-sources/backblazeb2' >Backblaze B2</a>
+<a href='/sql-patterns/mssqlserver' >MS SQL Server</a>
 </li>
 <li>
-<a href='//other-data-sources/dynamodb' >DynamoDB</a>
+<a href='/sql-patterns/mysql' >MySQL</a>
 </li>
 <li>
-<a href='//other-data-sources/hdfs' >HDFS</a>
+<a href='/sql-patterns/postgres' >PostgreSQL</a>
+</li>
+<li>
+<a href='/sql-patterns/snowflake' >Snowflake</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//integrations/datarobot' >DataRobot</a>
+<a href='/other-data-sources' >Overview</a>
 </li>
 <li>
-<a href='//integrations/mlflow' >MLFlow</a>
+<a href='/other-data-sources/backblazeb2' >Backblaze B2</a>
 </li>
 <li>
-<a href='//integrations/sagemaker' >SageMaker</a>
+<a href='/other-data-sources/dynamodb' >DynamoDB</a>
 </li>
 <li>
-<a href='//integrations/spark-streaming' >Spark Streaming</a>
+<a href='/other-data-sources/hdfs' >HDFS</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//event-flows' >Overview</a>
+<a href='/integrations/datarobot' >DataRobot</a>
 </li>
 <li>
-<a href='//event-flows/amazon-sqs' >Amazon SQS</a>
+<a href='/integrations/mlflow' >MLFlow</a>
 </li>
 <li>
-<a href='//event-flows/apache-kafka' >Apache Kafka</a>
+<a href='/integrations/sagemaker' >SageMaker</a>
 </li>
 <li>
-<a href='//event-flows/azure-eh' >Azure Event Hubs</a>
-</li>
-<li>
-<a href='//event-flows/azure-sb' >Azure Service Bus</a>
+<a href='/integrations/spark-streaming' >Spark Streaming</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//monitoring-and-observability/arize' >Arize</a>
+<a href='/event-flows' >Overview</a>
 </li>
 <li>
-<a href='//monitoring-and-observability/arthur' >Arthur</a>
+<a href='/event-flows/amazon-sqs' >Amazon SQS</a>
 </li>
 <li>
-<a href='//monitoring-and-observability/datadog' >Datadog</a>
+<a href='/event-flows/apache-kafka' >Apache Kafka</a>
 </li>
 <li>
-<a href='//monitoring-and-observability/influxdb' >InfluxDB</a>
+<a href='/event-flows/azure-eh' >Azure Event Hubs</a>
 </li>
 <li>
-<a href='//monitoring-and-observability/insights' >Algorithmia Insights</a>
-</li>
-<li>
-<a href='//monitoring-and-observability/newrelic' >New Relic</a>
+<a href='/event-flows/azure-sb' >Azure Service Bus</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//integrations/android-basic' >Android (Basic)</a>
+<a href='/monitoring-and-observability/arize' >Arize</a>
 </li>
 <li>
-<a href='//integrations/android-dl' >Android (Deep Learning)</a>
+<a href='/monitoring-and-observability/arthur' >Arthur</a>
 </li>
 <li>
-<a href='//integrations/ios' >iOS</a>
+<a href='/monitoring-and-observability/datadog' >Datadog</a>
 </li>
 <li>
-<a href='//integrations/shiny' >Shiny App</a>
+<a href='/monitoring-and-observability/influxdb' >InfluxDB</a>
+</li>
+<li>
+<a href='/monitoring-and-observability/insights' >Algorithmia Insights</a>
+</li>
+<li>
+<a href='/monitoring-and-observability/newrelic' >New Relic</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//integrations/tableau' >Tableau</a>
-</li>
-</ul>
+<a href='/integrations/android-basic' >Android (Basic)</a>
 </li>
 <li>
-<a href='//training-center' >Training Center</a>
-</li>
-<li class="category">
-<a href='//administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
-<ul class="nav sidebar">
-<li>
-<a href='//administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+<a href='/integrations/android-dl' >Android (Deep Learning)</a>
 </li>
 <li>
-<a href='//administration/admin-panel/administrators' >Administrators</a>
+<a href='/integrations/ios' >iOS</a>
 </li>
 <li>
-<a href='//administration/admin-panel/advanced-actions' >Advanced Actions</a>
-</li>
-<li>
-<a href='//administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
-</li>
-<li>
-<a href='//administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
-</li>
-<li>
-<a href='//administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
-</li>
-<li>
-<a href='//administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
-</li>
-<li>
-<a href='//administration/admin-panel/banner' >Banner</a>
-</li>
-<li>
-<a href='//administration/admin-panel/broker-manager' >Broker Manager</a>
-</li>
-<li>
-<a href='//administration/admin-panel/constellation' >Constellation Distributed Serving</a>
-</li>
-<li>
-<a href='//administration/admin-panel/dashboard' >Dashboard</a>
-</li>
-<li>
-<a href='//administration/admin-panel/governance-reporting' >Governance Reporting</a>
-</li>
-<li>
-<a href='//administration/admin-panel/gpu-limits' >GPU Limits</a>
-</li>
-<li>
-<a href='//administration/admin-panel/gpu-usage' >GPU Usage</a>
-</li>
-<li>
-<a href='//administration/admin-panel/insights' >Insights</a>
-</li>
-<li>
-<a href='//administration/admin-panel/invite-codes' >Invite Codes</a>
-</li>
-<li>
-<a href='//administration/admin-panel/logs' >Logs</a>
-</li>
-<li>
-<a href='//administration/admin-panel/metrics' >Metrics</a>
-</li>
-<li>
-<a href='//administration/admin-panel/nodes' >Nodes</a>
-</li>
-<li>
-<a href='//administration/admin-panel/organizations' >Organizations</a>
-</li>
-<li>
-<a href='//administration/admin-panel/queue' >Queue</a>
-</li>
-<li>
-<a href='//administration/admin-panel/reservations' >Reservations</a>
-</li>
-<li>
-<a href='//administration/admin-panel/secret-store' >Secret Store</a>
-</li>
-<li>
-<a href='//administration/admin-panel/source-code-management' >Source Code Management</a>
-</li>
-<li>
-<a href='//administration/admin-panel/system-version' >System Version</a>
-</li>
-<li>
-<a href='//administration/admin-panel/ui-customization' >UI Customization</a>
-</li>
-<li>
-<a href='//administration/admin-panel/users' >Users</a>
-</li>
-<li>
-<a href='//administration/admin-panel/workers' >Workers</a>
+<a href='/integrations/shiny' >Shiny App</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
+<a href='/integrations/tableau' >Tableau</a>
+</li>
+</ul>
 </li>
 <li>
-<a href='//administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
+<a href='/training-center' >Training Center</a>
+</li>
+<li class="category">
+<a href='/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
 </li>
 <li>
-<a href='//administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
+<a href='/administration/admin-panel/administrators' >Administrators</a>
 </li>
 <li>
-<a href='//administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
+<a href='/administration/admin-panel/advanced-actions' >Advanced Actions</a>
 </li>
 <li>
-<a href='//administration/admin-config/configure-user-roles' >Manage User Roles</a>
+<a href='/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
 </li>
 <li>
-<a href='//administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+<a href='/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
 </li>
 <li>
-<a href='//administration/admin-config/migration-overview' >Migration Overview</a>
+<a href='/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
 </li>
 <li>
-<a href='//administration/admin-config/migration-scripts' >Migration Scripts</a>
+<a href='/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
 </li>
 <li>
-<a href='//administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+<a href='/administration/admin-panel/banner' >Banner</a>
 </li>
 <li>
-<a href='//administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+<a href='/administration/admin-panel/broker-manager' >Broker Manager</a>
+</li>
+<li>
+<a href='/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+</li>
+<li>
+<a href='/administration/admin-panel/dashboard' >Dashboard</a>
+</li>
+<li>
+<a href='/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+</li>
+<li>
+<a href='/administration/admin-panel/gpu-limits' >GPU Limits</a>
+</li>
+<li>
+<a href='/administration/admin-panel/gpu-usage' >GPU Usage</a>
+</li>
+<li>
+<a href='/administration/admin-panel/insights' >Insights</a>
+</li>
+<li>
+<a href='/administration/admin-panel/invite-codes' >Invite Codes</a>
+</li>
+<li>
+<a href='/administration/admin-panel/logs' >Logs</a>
+</li>
+<li>
+<a href='/administration/admin-panel/metrics' >Metrics</a>
+</li>
+<li>
+<a href='/administration/admin-panel/nodes' >Nodes</a>
+</li>
+<li>
+<a href='/administration/admin-panel/organizations' >Organizations</a>
+</li>
+<li>
+<a href='/administration/admin-panel/queue' >Queue</a>
+</li>
+<li>
+<a href='/administration/admin-panel/reservations' >Reservations</a>
+</li>
+<li>
+<a href='/administration/admin-panel/secret-store' >Secret Store</a>
+</li>
+<li>
+<a href='/administration/admin-panel/source-code-management' >Source Code Management</a>
+</li>
+<li>
+<a href='/administration/admin-panel/system-version' >System Version</a>
+</li>
+<li>
+<a href='/administration/admin-panel/ui-customization' >UI Customization</a>
+</li>
+<li>
+<a href='/administration/admin-panel/users' >Users</a>
+</li>
+<li>
+<a href='/administration/admin-panel/workers' >Workers</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+<a href='/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
 </li>
 <li>
-<a href='//administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+<a href='/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
 </li>
 <li>
-<a href='//administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+<a href='/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
 </li>
 <li>
-<a href='//administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+<a href='/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
 </li>
 <li>
-<a href='//administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+<a href='/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='//administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='//administration/troubleshooting/1-overview' >1) Triage Overview</a>
+<a href='/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
 </li>
 <li>
-<a href='//administration/troubleshooting/2-issues' >2) Common Issues</a>
+<a href='/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
 </li>
 <li>
-<a href='//administration/troubleshooting/3-strategies' >3) Strategies</a>
+<a href='/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
 </li>
 <li>
-<a href='//administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+<a href='/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
 </li>
 </ul>
 </li>
 <li>
-<a href='//vmware' >VMware</a>
+<a href='/vmware' >VMware</a>
 </li>
 <li>
-<a href='//release-notes' >Release Notes</a>
+<a href='/release-notes' >Release Notes</a>
 </li>
 <li>
-<a href='//faqs' >FAQ</a>
+<a href='/faqs' >FAQ</a>
 </li>
 </ul>
 </ul>
@@ -1271,7 +1271,7 @@ withr</code></pre></figure>
         <div class="syn-col syn-col-lg-2 syn-col-md-3">
           <div class="syn-overline syn-mb-8">Resources</div>
           <div class="syn-mb-8 syn-body-2">
-            <a href="/" class="syn-text-secondary">Docs</a>
+            <a href="" class="syn-text-secondary">Docs</a>
           </div>
           <div class="syn-mb-8 syn-body-2">
             <a
@@ -1307,20 +1307,20 @@ withr</code></pre></figure>
 
     <!-- BEGIN_SCRIPTS_EMBED -->
     
-      <script src="//js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
-      <script src="//js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
-      <script src="//js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
-      <script src="//js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
     
-    <script src="//js/core.cat.js"></script>
-    <script src="//js/search.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="//js/userCreds.js" type="text/javascript" charset="utf-8"></script>
-    <script src="//js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/core.cat.js"></script>
+    <script src="/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
     <script type="text/javascript">
     $(function() {
       $('#search-query').lunrSearch({
-        indexUrl: '//js/index.json',
+        indexUrl: '/js/index.json',
         results:  '#search-results',
         template: '#search-results-template',
         titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',

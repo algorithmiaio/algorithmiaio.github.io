@@ -20,7 +20,7 @@ module Jekyll
 
       config = @context.registers[:site].config
       if config['emoji_dir']
-        emoji_dir = File.join(config['baseurl'], config['emoji_dir'])
+        emoji_dir = File.join(config['emoji_dir'])
       end
 
       content.to_str.gsub(/:([a-z0-9\+\-_]+):/) do |match|
