@@ -21,7 +21,6 @@ const waitForServer = async (done) => {
 
 const init = (done) => {
   console.log('Starting server...');
-  console.log(customEnv)
   const child = shell.exec('node server', {
     async: true,
     env: { ...shell.env, ...customEnv },

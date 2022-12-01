@@ -20,12 +20,12 @@
 <meta name="twitter:creator" content="@algorithmia">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_tw.png">
+<meta name="twitter:image" content="https://algorithmiaio.github.io/algorithmiaio.github.io/images/logos/AlgorithmiaLogo_tw.png">
 
 
 <!-- Open Graph -->
 
-<meta property="og:image" content="https://algorithmia.com/developers/images/logos/AlgorithmiaLogo_fb.png">
+<meta property="og:image" content="https://algorithmiaio.github.io/algorithmiaio.github.io/images/logos/AlgorithmiaLogo_fb.png">
 
 
 <meta property="og:locale" content="en_US">
@@ -35,7 +35,7 @@
 
 
 ">
-<meta property="og:url" content="https://algorithmia.com/developers/api/">
+<meta property="og:url" content="https://algorithmiaio.github.io/algorithmiaio.github.io/api/">
 <meta property="og:site_name" content="Algorithmia Developer Center">
     
 
@@ -45,14 +45,14 @@
 
     
 
-    <link rel="stylesheet" href="https://cdn.algorithmia.com/developers/css/pygments-github.css">
-    <link rel="stylesheet" href="/developers/css/vendors.css">
-    <link rel="stylesheet" href="/developers/css/scoped-synapse.css?v=2">
-    <link rel="stylesheet" href="/developers/css/devcenter.css">
+    <link rel="stylesheet" href="https://cdn.algorithmia.com/algorithmiaio.github.io//css/pygments-github.css">
+    <link rel="stylesheet" href="/algorithmiaio.github.io//css/vendors.css">
+    <link rel="stylesheet" href="/algorithmiaio.github.io//css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="/algorithmiaio.github.io//css/devcenter.css">
     <!-- END_HEAD_EMBED -->
 
-    <link href="https://algorithmia.com/developers/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
-    <link href="https://algorithmia.com/developers/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+    <link href="https://algorithmiaio.github.io/algorithmiaio.github.io//atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmiaio.github.io/algorithmiaio.github.io//sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
 
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -81,20 +81,20 @@
 
  <!-- BEGIN_SCRIPTS_EMBED -->
  
-   <script src="/developers/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
-   <script src="/developers/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
-   <script src="/developers/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
-   <script src="/developers/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+   <script src="/algorithmiaio.github.io//js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+   <script src="/algorithmiaio.github.io//js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+   <script src="/algorithmiaio.github.io//js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+   <script src="/algorithmiaio.github.io//js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
  
- <script src="/developers/js/core.cat.js"></script>
- <script src="/developers/js/search.min.js" type="text/javascript" charset="utf-8"></script>
- <script src="/developers/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
- <script src="/developers/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+ <script src="/algorithmiaio.github.io//js/core.cat.js"></script>
+ <script src="/algorithmiaio.github.io//js/search.min.js" type="text/javascript" charset="utf-8"></script>
+ <script src="/algorithmiaio.github.io//js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+ <script src="/algorithmiaio.github.io//js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
  <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
  <script type="text/javascript">
  $(function() {
    $('#search-query').lunrSearch({
-     indexUrl: '/developers/js/index.json',
+     indexUrl: '/algorithmiaio.github.io//js/index.json',
      results:  '#search-results',
      template: '#search-results-template',
      titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',
@@ -127,6 +127,33 @@
    }
  });
  </script>
+ <!-- Snowplow -->
+ <script>
+  ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+  p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+  };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+  n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//analytics.datarobot.com/sp.js","snowplow"));
+  window.snowplow('newTracker', 'dr', 'analytics.datarobot.com', {
+      appId: 'developers.algorithmia.com',
+      discoverRootDomain: true,
+      cookieName: 'datarobot_analytics',
+      encodeBase64: false,
+      respectDoNotTrack: false,
+      userFingerprint: true,
+      pageUnloadTimer: 0,
+      forceSecureTracker: true,
+      eventMethod: 'get',
+      contexts: {
+          webPage: true,
+          performanceTiming: true,
+          gaCookies: true,
+      },
+  });
+  window.snowplow('enableActivityTracking', 1, 15);
+  window.snowplow('trackPageView');
+  window.snowplow('enableLinkClickTracking');
+  window.snowplow('enableFormTracking');
+</script>
  <!-- END_SCRIPTS_EMBED -->
 </body>
 </html>

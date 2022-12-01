@@ -5,7 +5,6 @@ const Bunyan = require('bunyan');
 const config = require('../config');
 const prometheus = require('prom-client');
 const { monitor } = require('./prometheus');
-const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const log = Bunyan.createLogger({ name: 'dev-center-server' });
 const app = express();
@@ -19,7 +18,6 @@ log.info('Starting server');
 
 // Add security headers to all responses
 app.use((req, res, next) => {
-  console.log(config.env.disableXXSSProtection)
   if (!config.env.disableXXSSProtection) {
     res.setHeader('X-XSS-Protection', 1);
   }
@@ -117,7 +115,7 @@ app.get('*', (req, res, next) => {
 
 if (!isProduction) {
   app.use(
-    createProxyMiddleware({
+    require('http-proxy-middleware')({
       target: config.env.stage.devCenterUrl,
       changeOrigin: true,
     })
@@ -152,7 +150,7 @@ app.use(/^\/developers/, (req, res, next) => {
 
   const basePath = path.join(
     __dirname,
-    `../sites/${!usePublic ? 'public' : 'enterprise'}`,
+    `../sites/${usePublic ? 'public' : 'enterprise'}`,
     'developers'
   );
 
