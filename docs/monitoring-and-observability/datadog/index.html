@@ -14,19 +14,19 @@
 <meta name="twitter:creator" content="@algorithmia">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://algorithmiaio.github.io/images/logos/AlgorithmiaLogo_tw.png">
+<meta name="twitter:image" content="https://algorithmiaio.github.io/https://algorithmiaio.github.io/images/logos/AlgorithmiaLogo_tw.png">
 
 
 <!-- Open Graph -->
 
-<meta property="og:image" content="https://algorithmiaio.github.io/images/logos/AlgorithmiaLogo_fb.png">
+<meta property="og:image" content="https://algorithmiaio.github.io/https://algorithmiaio.github.io/images/logos/AlgorithmiaLogo_fb.png">
 
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Datadog">
 <meta property="og:description" content="Monitor model performance metrics with Datadog">
-<meta property="og:url" content="https://algorithmiaio.github.io/monitoring-and-observability/datadog/">
+<meta property="og:url" content="https://algorithmiaio.github.io/https://algorithmiaio.github.io/monitoring-and-observability/datadog/">
 <meta property="og:site_name" content="Algorithmia Developer Center">
     
 
@@ -36,14 +36,14 @@
 
     
 
-    <link rel="stylesheet" href="css/pygments-github.css">
-    <link rel="stylesheet" href="css/vendors.css">
-    <link rel="stylesheet" href="css/scoped-synapse.css?v=2">
-    <link rel="stylesheet" href="css/devcenter.css">
+    <link rel="stylesheet" href="https://algorithmiaio.github.io/css/pygments-github.css">
+    <link rel="stylesheet" href="https://algorithmiaio.github.io/css/vendors.css">
+    <link rel="stylesheet" href="https://algorithmiaio.github.io/css/scoped-synapse.css?v=2">
+    <link rel="stylesheet" href="https://algorithmiaio.github.io/css/devcenter.css">
     <!-- END_HEAD_EMBED -->
 
-    <link href="atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
-    <link href="sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+    <link href="https://algorithmiaio.github.io/atom.xml" type="application/atom+xml" rel="alternate" title="Algorithmia Developer Center Atom Feed">
+    <link href="https://algorithmiaio.github.io/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
 
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -187,7 +187,7 @@
   {{#entries}}
   <hr>
   <article>
-    <h3><a href="{{url}}">{{title}}</a></h3>
+    <h3><a href="https://algorithmiaio.github.io{{url}}">{{title}}</a></h3>
     <span class="breadcrumbs-title m-B-s">{{categories}}</span>
     <p>{{excerpt}}</p>
   </article>
@@ -204,7 +204,7 @@
   </nav><!-- /.breadcrumbs -->
 
 	<h1 id="page-title">
-	<img src="/images/language_logos/datadog.svg" alt="" itemprop="image" class="title-icon">
+	<img src="/https://algorithmiaio.github.io/images/language_logos/datadog.svg" alt="" itemprop="image" class="title-icon">
 
 Datadog<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/monitoring-and-observability/datadog.md" target="_blank" title="Suggest changes to this page" class="edit-link"><i class="fa fa-edit" aria-hidden="true"></i></a>
 </h1>
@@ -220,11 +220,11 @@ Datadog<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/
 
 <p><a href="https://algorithmia.com/blog/introducing-algorithmia-insights-datadog-integration">Algorithmia Insights</a> is a new feature of Algorithmia Enterprise that provides a metrics pipeline that can be used to instrument, measure, and monitor your machine learning models. Monitoring your model performance metrics can help with your organization’s overall <a href="https://algorithmia.com/blog/model-governance">AI/ML governance efforts</a>, and use cases include detecting <a href="https://algorithmia.com/blog/model-drift-and-ensuring-a-healthy-machine-learning-lifecycle">model drift</a>, data drift, and model bias.</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-cc-baseline-split.png" alt="Algorithmia insights page and Datadog dashboard side-by-side" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-cc-baseline-split.png" alt="Algorithmia insights page and Datadog dashboard side-by-side" class="screenshot" /></p>
 
 <p><a href="https://www.datadoghq.com/">Datadog</a> is a cloud-based monitoring service that aggregates metrics and logs across different services. You can use Insights to send real-time model performance metrics from Algorithmia to Datadog as time-series data that can be included in dashboards, monitors, and alerts.</p>
 
-<p><img src="/images/post_images/datadog/algorithmia-datadog.gif" alt="Switching between browser tabs with different Datadog dashboards" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/algorithmia-datadog.gif" alt="Switching between browser tabs with different Datadog dashboards" class="screenshot" /></p>
 
 <p>The <a href="https://docs.datadoghq.com/integrations/algorithmia/">Algorithmia-Datadog integration</a> described in this post allows you to stream operational and inference metrics from your models in Algorithmia to Datadog, where you can create dashboards, monitors, and alerts to analyze model performance metrics in production systems across your entire model catalog.</p>
 
@@ -232,11 +232,11 @@ Datadog<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/
 
 <p>When algorithms that have Insights enabled are run, Algorithmia emits a metrics payload to a configured Kafka broker and topic. The <a href="https://docs.datadoghq.com/integrations/algorithmia/">Algorithmia-Datadog integration</a> then transforms and forwards Insights data from Kafka to the <a href="https://docs.datadoghq.com/api/v1/metrics/">Datadog metrics API endpoint</a>. All of the data from Algorithmia Insights will show up in Datadog as metrics with the prefix <code class="language-plaintext highlighter-rouge">algorithmia</code>. This makes it easy to include model performance data from Algorithmia Insights in dashboards or monitors.</p>
 
-<p><img src="/images/post_images/datadog/algorithmia-datadog-integration.png" alt="Flow chart of Datadog-Algorithmia integration for model performance metrics" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/algorithmia-datadog-integration.png" alt="Flow chart of Datadog-Algorithmia integration for model performance metrics" class="screenshot" /></p>
 
 <p>The metrics payload from Algorithmia Insights contains both operational and inference metrics. Operational metrics include the algorithm name, version, owner, duration, session ID, and request ID. Inference metrics include user-defined metrics that are specified by data scientists depending on the particular algorithm and use case.</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-pipeline.png" alt="Flow chart of Datadog-Algorithmia integration for operational metrics" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-pipeline.png" alt="Flow chart of Datadog-Algorithmia integration for operational metrics" class="screenshot" /></p>
 
 <p>When this integration is used, all of the operational metrics related to the algorithm name, version, owner, request ID, and session ID will be included with each data point as <a href="https://docs.datadoghq.com/getting_started/tagging/using_tags/">tags</a> in Datadog. These tags can then be used to filter and group model performance metrics in dashboards and monitors.</p>
 
@@ -250,7 +250,7 @@ Datadog<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/
 
 <p>Once you’ve installed this integration in Datadog, you’ll have a default dashboard and monitor to help you get started with Insights and Datadog:</p>
 
-<p><img src="/images/post_images/datadog/datadog-default-dashboard.png" alt="Default Algorithmia dashboard on Datadog" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/datadog-default-dashboard.png" alt="Default Algorithmia dashboard on Datadog" class="screenshot" /></p>
 
 <p>Refer to the <a href="https://docs.datadoghq.com/integrations/algorithmia/">integration page on Datadog</a> and <a href="https://github.com/algorithmiaio/integrations/tree/master/Datadog">documentation in the Algorithmia integrations repository</a> for more detailed information on installing and configuring this integration.</p>
 
@@ -262,27 +262,27 @@ Datadog<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/
 
 <p>From the <strong>Dashboard</strong> page in Datadog, click on the <strong>New Dashboard</strong> button:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-new-dashboard.png" alt="Datadog dashboard page with arrow pointing to new dashboard button" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-new-dashboard.png" alt="Datadog dashboard page with arrow pointing to new dashboard button" class="screenshot" /></p>
 
 <p>Specify a name for your new dashboard, then click on the <strong>New Timeboard</strong> button:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-new-timeboard.png" alt="Datadog create dashboard modal" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-new-timeboard.png" alt="Datadog create dashboard modal" class="screenshot" /></p>
 
 <p>When viewing the new dashboard, click on the <strong><em>Edit Widgets</em></strong> button. Drag a new widget such as the <strong>Timeseries</strong> widget onto your dashboard:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-widgets.png" alt="Datadog edit widgets view" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-widgets.png" alt="Datadog edit widgets view" class="screenshot" /></p>
 
 <p>After dragging a widget on to the dashboard, a configuration screen will appear where you can select the type of visualization you want to use and which data to show on your graph.</p>
 
 <p>In the <strong>Graph your data</strong> configuration section, select the metric that you want to display from the list of metrics that start with the prefix <code class="language-plaintext highlighter-rouge">algorithmia</code> . For example, we’ll choose the custom <code class="language-plaintext highlighter-rouge">algorithmia.risk_score</code> metric that we defined in a model (or you could choose the default operational metric named <code class="language-plaintext highlighter-rouge">algorithmia.duration_milliseconds</code>):</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-graph.png" alt="Datadog graph your data view with metric selection" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-graph.png" alt="Datadog graph your data view with metric selection" class="screenshot" /></p>
 
 <p>Click on the <strong>Save</strong> button, then the data from Insights should show up in your new widget. You might need to call your algorithm on your Algorithmia cluster to see data flowing into Datadog.</p>
 
 <p>You can continue adding different widgets and customizing your dashboard to display different metrics from Insights:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-customize-dashboard.png" alt="A customized Datadog dashboard" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-customize-dashboard.png" alt="A customized Datadog dashboard" class="screenshot" /></p>
 
 <p>Now you’ll have all of the relevant model metrics from Insights displayed in one place with real-time updates as models are queried in Algorithmia.</p>
 
@@ -294,19 +294,19 @@ Datadog<a href="https://github.com/algorithmiaio/dev-center/blob/develop/_pages/
 
 <p>From the <strong>Monitors</strong> page in Datadog, click on the <strong>New Monitor</strong> button:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-new-monitor.png" alt="Datadog monitors page with arrow pointing to new monitor button" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-new-monitor.png" alt="Datadog monitors page with arrow pointing to new monitor button" class="screenshot" /></p>
 
 <p>Select <strong>Metric</strong> as the <strong>Monitor Type</strong>:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-new-monitor-2.png" alt="Datadog monitors page with arrow pointing to Metric monitor type" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-new-monitor-2.png" alt="Datadog monitors page with arrow pointing to Metric monitor type" class="screenshot" /></p>
 
 <p>In the <strong>Define the metric</strong> configuration section, select the metric that you want to display from the list of metrics that start with the prefix <code class="language-plaintext highlighter-rouge">algorithmia</code> . For example, we’ll choose the custom <code class="language-plaintext highlighter-rouge">algorithmia.risk_score</code> metric that we defined in a model (or you could choose the default operational metric named <code class="language-plaintext highlighter-rouge">algorithmia.duration_milliseconds</code>):</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-new-monitor-3.png" alt="Datadog monitors configuration Define the Metric section" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-new-monitor-3.png" alt="Datadog monitors configuration Define the Metric section" class="screenshot" /></p>
 
 <p>Set an alert threshold, monitor name, monitor message, notification settings, and any other desired configuration settings, then click on the <strong>Save</strong> button at the bottom of the monitor configuration page:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-new-monitor-4.png" alt="Datadog monitors configuration Define the Metric section view of second half of page" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-new-monitor-4.png" alt="Datadog monitors configuration Define the Metric section view of second half of page" class="screenshot" /></p>
 
 <p>When your metrics from Insights exceed the specified threshold value, you’ll receive an alert that includes guidance on what actions need to be taken. Depending on your use case, you might want to configure notifications for email, Slack, PagerDuty, or other notification systems, and your suggested actions might include retraining and publishing a new version of a model, rolling back to an older version of a model, or other actions to mitigate model risk.</p>
 
@@ -319,19 +319,19 @@ In this example, we’ll demonstrate the use of tags in Datadog to compare metri
 
 <p>Using <strong>Graph additional</strong> option, choose <strong>Metrics</strong>, then select the same metric twice from an algorithm that has data from at least two versions that you want to compare:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-compare-models-1.png" alt="Datadog Edit page, graph your data UI" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-compare-models-1.png" alt="Datadog Edit page, graph your data UI" class="screenshot" /></p>
 
 <p>Using the <strong>from</strong> field for each metric, select two different model versions that you want to compare by filtering for <code class="language-plaintext highlighter-rouge">algorithm_version:&lt;X.Y.Z&gt;</code>, where <code class="language-plaintext highlighter-rouge">X.Y.Z</code> corresponds to your algorithm versions:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-compare-models-2.png" alt="Datadog Edit page, graph your data UI with From field filled in" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-compare-models-2.png" alt="Datadog Edit page, graph your data UI with From field filled in" class="screenshot" /></p>
 
 <p>Now when you view your dashboard, you should see different series in the graph for each version that you specified in the previous step:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-compare-models-3.png" alt="Datadog edit page, zoomed out UI view that shows graphs" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-compare-models-3.png" alt="Datadog edit page, zoomed out UI view that shows graphs" class="screenshot" /></p>
 
 <p>You can also set monitors and alerts for calculated metrics that measure differences between versions. For example, the following monitor is configured with a threshold alert that will be triggered when the difference between two model versions exceeds a specified value:</p>
 
-<p><img src="/images/post_images/datadog/insights-datadog-alert-compare.png" alt="Datadog monitor edit view" class="screenshot" /></p>
+<p><img src="https://algorithmiaio.github.io/images/post_images/datadog/insights-datadog-alert-compare.png" alt="Datadog monitor edit view" class="screenshot" /></p>
 
 <p>You can use the same approach with tags to filter metrics by version, name, or owner and compare different metrics from Insights in your dashboards and monitors.</p>
 
@@ -355,528 +355,528 @@ You can use this integration and the examples described here to create initial d
                 <ul class="devcenter-nav sidebar-nav nav">
 	<li class="sidebar-nav__label"><label>Topics</label></li>
 	<div id="search">
-	  <form action="" method="get">
+	  <form action="https://algorithmiaio.github.io" method="get">
 	    <input type="text" id="search-query" class="form-control input-sm" name="q" placeholder="&#xf002;  Search Docs" autocomplete="on">
 	  </form>
 	</div>
 
 	<ul class="nav sidebar">
 <li>
-<a href='' >Home</a>
+<a href='https://algorithmiaio.github.io' >Home</a>
 </li>
 <li>
-<a href='/datarobot' >DataRobot</a>
+<a href='https://algorithmiaio.github.io/datarobot' >DataRobot</a>
 </li>
 <li>
-<a href='/integrations' >Integrations</a>
+<a href='https://algorithmiaio.github.io/integrations' >Integrations</a>
 </li>
 <li>
-<a href='/glossary' >Glossary</a>
+<a href='https://algorithmiaio.github.io/glossary' >Glossary</a>
 </li>
 <li>
-<a href='/api' >API Documentation</a>
+<a href='https://algorithmiaio.github.io/api' >API Documentation</a>
 </li>
 <li class="category">
-<a href='/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/platform' >Platform Features <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/platform/account-profile' >Accounts</a>
+<a href='https://algorithmiaio.github.io/platform/account-profile' >Accounts</a>
 </li>
 <li>
-<a href='/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
+<a href='https://algorithmiaio.github.io/platform/advanced-governance-reporting' >Advanced Governance Reporting</a>
 </li>
 <li>
-<a href='/platform/algorithm-profile' >Algorithms</a>
+<a href='https://algorithmiaio.github.io/platform/algorithm-profile' >Algorithms</a>
 </li>
 <li>
-<a href='/platform/customizing-api-keys' >API Keys</a>
+<a href='https://algorithmiaio.github.io/platform/customizing-api-keys' >API Keys</a>
 </li>
 <li>
-<a href='/platform/organization-first-updates' >Collaboration-Focused UI</a>
+<a href='https://algorithmiaio.github.io/platform/organization-first-updates' >Collaboration-Focused UI</a>
 </li>
 <li>
-<a href='/platform/organization-profile' >Organizations</a>
+<a href='https://algorithmiaio.github.io/platform/organization-profile' >Organizations</a>
 </li>
 <li>
-<a href='/platform/permissions' >Permissions</a>
+<a href='https://algorithmiaio.github.io/platform/permissions' >Permissions</a>
 </li>
 <li>
-<a href='/platform/rbac' >Role-Based Access Control</a>
+<a href='https://algorithmiaio.github.io/platform/rbac' >Role-Based Access Control</a>
 </li>
 <li>
-<a href='/platform/secret-store' >Secret Store</a>
+<a href='https://algorithmiaio.github.io/platform/secret-store' >Secret Store</a>
 </li>
 <li>
-<a href='/platform/teams' >Teams</a>
+<a href='https://algorithmiaio.github.io/platform/teams' >Teams</a>
 </li>
 <li>
-<a href='/platform/versioning' >Versioning</a>
+<a href='https://algorithmiaio.github.io/platform/versioning' >Versioning</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/clients' >Client Guides <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/clients' >Overview</a>
+<a href='https://algorithmiaio.github.io/clients' >Overview</a>
 </li>
 <li>
-<a href='/clients/android' >Android</a>
+<a href='https://algorithmiaio.github.io/clients/android' >Android</a>
 </li>
 <li>
-<a href='/clients/cli' >CLI</a>
+<a href='https://algorithmiaio.github.io/clients/cli' >CLI</a>
 </li>
 <li>
-<a href='/clients/curl' >cURL</a>
+<a href='https://algorithmiaio.github.io/clients/curl' >cURL</a>
 </li>
 <li>
-<a href='/clients/go' >Go</a>
+<a href='https://algorithmiaio.github.io/clients/go' >Go</a>
 </li>
 <li>
-<a href='/clients/java' >Java</a>
+<a href='https://algorithmiaio.github.io/clients/java' >Java</a>
 </li>
 <li>
-<a href='/clients/javascript' >Javascript</a>
+<a href='https://algorithmiaio.github.io/clients/javascript' >Javascript</a>
 </li>
 <li>
-<a href='/clients/c_sharp_net' >.NET / C#</a>
+<a href='https://algorithmiaio.github.io/clients/c_sharp_net' >.NET / C#</a>
 </li>
 <li>
-<a href='/clients/node' >Node</a>
+<a href='https://algorithmiaio.github.io/clients/node' >Node</a>
 </li>
 <li>
-<a href='/clients/perl' >Perl</a>
+<a href='https://algorithmiaio.github.io/clients/perl' >Perl</a>
 </li>
 <li>
-<a href='/clients/php' >PHP</a>
+<a href='https://algorithmiaio.github.io/clients/php' >PHP</a>
 </li>
 <li>
-<a href='/clients/python' >Python</a>
+<a href='https://algorithmiaio.github.io/clients/python' >Python</a>
 </li>
 <li>
-<a href='/clients/r' >R</a>
+<a href='https://algorithmiaio.github.io/clients/r' >R</a>
 </li>
 <li>
-<a href='/clients/ruby' >Ruby</a>
+<a href='https://algorithmiaio.github.io/clients/ruby' >Ruby</a>
 </li>
 <li>
-<a href='/clients/rust' >Rust</a>
+<a href='https://algorithmiaio.github.io/clients/rust' >Rust</a>
 </li>
 <li>
-<a href='/clients/scala' >Scala</a>
+<a href='https://algorithmiaio.github.io/clients/scala' >Scala</a>
 </li>
 <li>
-<a href='/clients/swift' >Swift</a>
+<a href='https://algorithmiaio.github.io/clients/swift' >Swift</a>
 </li>
 <li>
-<a href='/clients/aws-lambda' >AWS Lambda</a>
+<a href='https://algorithmiaio.github.io/clients/aws-lambda' >AWS Lambda</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/algorithm-development' >Algorithm Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/advanced-algorithm-development' >Deep Dives</a>
 </li>
 <li>
-<a href='/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/algorithm-checklist' >Algorithm Checklist</a>
 </li>
 <li>
-<a href='/algorithm-development/algorithm-errors' >Error Handling</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/algorithm-errors' >Error Handling</a>
 </li>
 <li>
-<a href='/algorithm-development/algorithm-management' >Algorithm Management</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/algorithm-management' >Algorithm Management</a>
 </li>
 <li>
-<a href='/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/ci-cd' >Deploy Models via CI/CD</a>
 </li>
 <li>
-<a href='/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/create-scm-backed-algo-api' >Create an Algorithm Backed by an External SCM Provider Through the API</a>
 </li>
 <li class="category">
-<a href='/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/algorithm-development/languages' >Languages <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/algorithm-development/languages/conda' >Conda</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/languages/conda' >Conda</a>
 </li>
 <li>
-<a href='/algorithm-development/languages/java' >Java</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/languages/java' >Java</a>
 </li>
 <li>
-<a href='/algorithm-development/languages/javascript' >JavaScript</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/languages/javascript' >JavaScript</a>
 </li>
 <li>
-<a href='/algorithm-development/languages/python' >Python</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/languages/python' >Python</a>
 </li>
 <li>
-<a href='/algorithm-development/languages/r' >R</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/languages/r' >R</a>
 </li>
 <li>
-<a href='/algorithm-development/languages/ruby' >Ruby</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/languages/ruby' >Ruby</a>
 </li>
 <li>
-<a href='/algorithm-development/languages/rust' >Rust</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/languages/rust' >Rust</a>
 </li>
 <li>
-<a href='/algorithm-development/languages/scala' >Scala</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/languages/scala' >Scala</a>
 </li>
 </ul>
 </li>
 <li>
-<a href='/algorithm-development/markdown-syntax' >Markdown</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/markdown-syntax' >Markdown</a>
 </li>
 <li>
-<a href='/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/model-manifest' >Algorithm Development with Model Versioning</a>
 </li>
 <li>
-<a href='/algorithm-development/reloading-models' >Reloading Models</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/reloading-models' >Reloading Models</a>
 </li>
 <li>
-<a href='/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/retrieve-build-logs' >Retrieve Algorithm Build-Time Logs</a>
 </li>
 <li>
-<a href='/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/retrieve-error-logs' >Retrieve Algorithm Run-Time Error Logs</a>
 </li>
 <li>
-<a href='/algorithm-development/source-code-management' >Source Code Management</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/source-code-management' >Source Code Management</a>
 </li>
 <li>
-<a href='/algorithm-development/your-first-algo' >Getting Started</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/your-first-algo' >Getting Started</a>
 </li>
 <li>
-<a href='/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
+<a href='https://algorithmiaio.github.io/model-deployment/environment-migration' >Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm</a>
 </li>
 <li>
-<a href='/algorithm-development/environments' >Algorithm Environments</a>
+<a href='https://algorithmiaio.github.io/algorithm-development/environments' >Algorithm Environments</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/model-deployment' >Model Deployment <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/model-deployment' >Supported Frameworks</a>
+<a href='https://algorithmiaio.github.io/model-deployment' >Supported Frameworks</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/data' >Native Data Integrations <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/data' >Overview</a>
+<a href='https://algorithmiaio.github.io/data' >Overview</a>
 </li>
 <li>
-<a href='/data/azureblob' >Azure Blob</a>
+<a href='https://algorithmiaio.github.io/data/azureblob' >Azure Blob</a>
 </li>
 <li>
-<a href='/data/dropbox' >Dropbox</a>
+<a href='https://algorithmiaio.github.io/data/dropbox' >Dropbox</a>
 </li>
 <li>
-<a href='/data/googlecloudstorage' >Google Cloud Storage</a>
+<a href='https://algorithmiaio.github.io/data/googlecloudstorage' >Google Cloud Storage</a>
 </li>
 <li>
-<a href='/data/hosted' >Hosted Data</a>
+<a href='https://algorithmiaio.github.io/data/hosted' >Hosted Data</a>
 </li>
 <li>
-<a href='/data/s3' >Amazon S3</a>
+<a href='https://algorithmiaio.github.io/data/s3' >Amazon S3</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/sql-patterns' >SQL Database Patterns <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/sql-patterns' >Overview</a>
+<a href='https://algorithmiaio.github.io/sql-patterns' >Overview</a>
 </li>
 <li>
-<a href='/sql-patterns/mssqlserver' >MS SQL Server</a>
+<a href='https://algorithmiaio.github.io/sql-patterns/mssqlserver' >MS SQL Server</a>
 </li>
 <li>
-<a href='/sql-patterns/mysql' >MySQL</a>
+<a href='https://algorithmiaio.github.io/sql-patterns/mysql' >MySQL</a>
 </li>
 <li>
-<a href='/sql-patterns/postgres' >PostgreSQL</a>
+<a href='https://algorithmiaio.github.io/sql-patterns/postgres' >PostgreSQL</a>
 </li>
 <li>
-<a href='/sql-patterns/snowflake' >Snowflake</a>
+<a href='https://algorithmiaio.github.io/sql-patterns/snowflake' >Snowflake</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/other-data-sources' >Other External Data <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/other-data-sources' >Overview</a>
+<a href='https://algorithmiaio.github.io/other-data-sources' >Overview</a>
 </li>
 <li>
-<a href='/other-data-sources/backblazeb2' >Backblaze B2</a>
+<a href='https://algorithmiaio.github.io/other-data-sources/backblazeb2' >Backblaze B2</a>
 </li>
 <li>
-<a href='/other-data-sources/dynamodb' >DynamoDB</a>
+<a href='https://algorithmiaio.github.io/other-data-sources/dynamodb' >DynamoDB</a>
 </li>
 <li>
-<a href='/other-data-sources/hdfs' >HDFS</a>
+<a href='https://algorithmiaio.github.io/other-data-sources/hdfs' >HDFS</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/model-training' >Model Training <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/integrations/datarobot' >DataRobot</a>
+<a href='https://algorithmiaio.github.io/integrations/datarobot' >DataRobot</a>
 </li>
 <li>
-<a href='/integrations/mlflow' >MLFlow</a>
+<a href='https://algorithmiaio.github.io/integrations/mlflow' >MLFlow</a>
 </li>
 <li>
-<a href='/integrations/sagemaker' >SageMaker</a>
+<a href='https://algorithmiaio.github.io/integrations/sagemaker' >SageMaker</a>
 </li>
 <li>
-<a href='/integrations/spark-streaming' >Spark Streaming</a>
+<a href='https://algorithmiaio.github.io/integrations/spark-streaming' >Spark Streaming</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/event-flows' >Event Flows <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/event-flows' >Overview</a>
+<a href='https://algorithmiaio.github.io/event-flows' >Overview</a>
 </li>
 <li>
-<a href='/event-flows/amazon-sqs' >Amazon SQS</a>
+<a href='https://algorithmiaio.github.io/event-flows/amazon-sqs' >Amazon SQS</a>
 </li>
 <li>
-<a href='/event-flows/apache-kafka' >Apache Kafka</a>
+<a href='https://algorithmiaio.github.io/event-flows/apache-kafka' >Apache Kafka</a>
 </li>
 <li>
-<a href='/event-flows/azure-eh' >Azure Event Hubs</a>
+<a href='https://algorithmiaio.github.io/event-flows/azure-eh' >Azure Event Hubs</a>
 </li>
 <li>
-<a href='/event-flows/azure-sb' >Azure Service Bus</a>
+<a href='https://algorithmiaio.github.io/event-flows/azure-sb' >Azure Service Bus</a>
 </li>
 </ul>
 </li>
 <li class="active category">
-<a href='/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/monitoring-and-observability' >Monitoring & Observability <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/monitoring-and-observability/arize' >Arize</a>
+<a href='https://algorithmiaio.github.io/monitoring-and-observability/arize' >Arize</a>
 </li>
 <li>
-<a href='/monitoring-and-observability/arthur' >Arthur</a>
+<a href='https://algorithmiaio.github.io/monitoring-and-observability/arthur' >Arthur</a>
 </li>
 <li class="active">
-<a href='/monitoring-and-observability/datadog' >Datadog</a>
+<a href='https://algorithmiaio.github.io/monitoring-and-observability/datadog' >Datadog</a>
 </li>
 <li>
-<a href='/monitoring-and-observability/influxdb' >InfluxDB</a>
+<a href='https://algorithmiaio.github.io/monitoring-and-observability/influxdb' >InfluxDB</a>
 </li>
 <li>
-<a href='/monitoring-and-observability/insights' >Algorithmia Insights</a>
+<a href='https://algorithmiaio.github.io/monitoring-and-observability/insights' >Algorithmia Insights</a>
 </li>
 <li>
-<a href='/monitoring-and-observability/newrelic' >New Relic</a>
+<a href='https://algorithmiaio.github.io/monitoring-and-observability/newrelic' >New Relic</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/app-development' >App Development <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/integrations/android-basic' >Android (Basic)</a>
+<a href='https://algorithmiaio.github.io/integrations/android-basic' >Android (Basic)</a>
 </li>
 <li>
-<a href='/integrations/android-dl' >Android (Deep Learning)</a>
+<a href='https://algorithmiaio.github.io/integrations/android-dl' >Android (Deep Learning)</a>
 </li>
 <li>
-<a href='/integrations/ios' >iOS</a>
+<a href='https://algorithmiaio.github.io/integrations/ios' >iOS</a>
 </li>
 <li>
-<a href='/integrations/shiny' >Shiny App</a>
+<a href='https://algorithmiaio.github.io/integrations/shiny' >Shiny App</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/analytics' >Analytics <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/integrations/tableau' >Tableau</a>
+<a href='https://algorithmiaio.github.io/integrations/tableau' >Tableau</a>
 </li>
 </ul>
 </li>
 <li>
-<a href='/training-center' >Training Center</a>
+<a href='https://algorithmiaio.github.io/training-center' >Training Center</a>
 </li>
 <li class="category">
-<a href='/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel' >Admin - Panel <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/admin-panel-overview' >Admin Panel Overview</a>
 </li>
 <li>
-<a href='/administration/admin-panel/administrators' >Administrators</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/administrators' >Administrators</a>
 </li>
 <li>
-<a href='/administration/admin-panel/advanced-actions' >Advanced Actions</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/advanced-actions' >Advanced Actions</a>
 </li>
 <li>
-<a href='/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/algorithm-categories' >Algorithm Categories</a>
 </li>
 <li>
-<a href='/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/algorithm-environments' >Algorithm Environments</a>
 </li>
 <li>
-<a href='/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/algorithm-errors' >Algorithm Errors</a>
 </li>
 <li>
-<a href='/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/algorithm-executions' >Algorithm Executions</a>
 </li>
 <li>
-<a href='/administration/admin-panel/banner' >Banner</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/banner' >Banner</a>
 </li>
 <li>
-<a href='/administration/admin-panel/broker-manager' >Broker Manager</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/broker-manager' >Broker Manager</a>
 </li>
 <li>
-<a href='/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/constellation' >Constellation Distributed Serving</a>
 </li>
 <li>
-<a href='/administration/admin-panel/dashboard' >Dashboard</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/dashboard' >Dashboard</a>
 </li>
 <li>
-<a href='/administration/admin-panel/governance-reporting' >Governance Reporting</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/governance-reporting' >Governance Reporting</a>
 </li>
 <li>
-<a href='/administration/admin-panel/gpu-limits' >GPU Limits</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/gpu-limits' >GPU Limits</a>
 </li>
 <li>
-<a href='/administration/admin-panel/gpu-usage' >GPU Usage</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/gpu-usage' >GPU Usage</a>
 </li>
 <li>
-<a href='/administration/admin-panel/insights' >Insights</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/insights' >Insights</a>
 </li>
 <li>
-<a href='/administration/admin-panel/invite-codes' >Invite Codes</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/invite-codes' >Invite Codes</a>
 </li>
 <li>
-<a href='/administration/admin-panel/logs' >Logs</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/logs' >Logs</a>
 </li>
 <li>
-<a href='/administration/admin-panel/metrics' >Metrics</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/metrics' >Metrics</a>
 </li>
 <li>
-<a href='/administration/admin-panel/nodes' >Nodes</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/nodes' >Nodes</a>
 </li>
 <li>
-<a href='/administration/admin-panel/organizations' >Organizations</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/organizations' >Organizations</a>
 </li>
 <li>
-<a href='/administration/admin-panel/queue' >Queue</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/queue' >Queue</a>
 </li>
 <li>
-<a href='/administration/admin-panel/reservations' >Reservations</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/reservations' >Reservations</a>
 </li>
 <li>
-<a href='/administration/admin-panel/secret-store' >Secret Store</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/secret-store' >Secret Store</a>
 </li>
 <li>
-<a href='/administration/admin-panel/source-code-management' >Source Code Management</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/source-code-management' >Source Code Management</a>
 </li>
 <li>
-<a href='/administration/admin-panel/system-version' >System Version</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/system-version' >System Version</a>
 </li>
 <li>
-<a href='/administration/admin-panel/ui-customization' >UI Customization</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/ui-customization' >UI Customization</a>
 </li>
 <li>
-<a href='/administration/admin-panel/users' >Users</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/users' >Users</a>
 </li>
 <li>
-<a href='/administration/admin-panel/workers' >Workers</a>
-</li>
-</ul>
-</li>
-<li class="category">
-<a href='/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
-<ul class="nav sidebar">
-<li>
-<a href='/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
-</li>
-<li>
-<a href='/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
-</li>
-<li>
-<a href='/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
-</li>
-<li>
-<a href='/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
-</li>
-<li>
-<a href='/administration/admin-config/configure-user-roles' >Manage User Roles</a>
-</li>
-<li>
-<a href='/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
-</li>
-<li>
-<a href='/administration/admin-config/migration-overview' >Migration Overview</a>
-</li>
-<li>
-<a href='/administration/admin-config/migration-scripts' >Migration Scripts</a>
-</li>
-<li>
-<a href='/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
-</li>
-<li>
-<a href='/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
+<a href='https://algorithmiaio.github.io/administration/admin-panel/workers' >Workers</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/administration/admin-config' >Admin - Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
+<a href='https://algorithmiaio.github.io/administration/admin-config/configure-aks' >Configure an Azure Kubernetes Service (AKS) Cluster</a>
 </li>
 <li>
-<a href='/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
+<a href='https://algorithmiaio.github.io/administration/admin-config/configure-eks' >Configure an Amazon Elastic Kubernetes Service (EKS) Cluster</a>
 </li>
 <li>
-<a href='/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
+<a href='https://algorithmiaio.github.io/administration/admin-config/configure-logging-output-plugins' >Configure Logging Output Plugins</a>
 </li>
 <li>
-<a href='/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+<a href='https://algorithmiaio.github.io/administration/admin-config/configure-oauth-grafana' >Configure OAuth for Grafana</a>
 </li>
 <li>
-<a href='/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+<a href='https://algorithmiaio.github.io/administration/admin-config/configure-user-roles' >Manage User Roles</a>
+</li>
+<li>
+<a href='https://algorithmiaio.github.io/administration/admin-config/jwt-authentication' >JWT-JWKS Authentication and Organization Management</a>
+</li>
+<li>
+<a href='https://algorithmiaio.github.io/administration/admin-config/migration-overview' >Migration Overview</a>
+</li>
+<li>
+<a href='https://algorithmiaio.github.io/administration/admin-config/migration-scripts' >Migration Scripts</a>
+</li>
+<li>
+<a href='https://algorithmiaio.github.io/administration/admin-config/push-images-external-registries' >Push algorithm images to external registries</a>
+</li>
+<li>
+<a href='https://algorithmiaio.github.io/administration/admin-config/saml-authentication' >SAML Authentication and Organization Management</a>
 </li>
 </ul>
 </li>
 <li class="category">
-<a href='/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<a href='https://algorithmiaio.github.io/administration/scm-config' >Admin - SCM Configuration <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
 <ul class="nav sidebar">
 <li>
-<a href='/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+<a href='https://algorithmiaio.github.io/administration/scm-config/source-code-management-bitbucket-cloud' >Create a Bitbucket Cloud Configuration</a>
 </li>
 <li>
-<a href='/administration/troubleshooting/2-issues' >2) Common Issues</a>
+<a href='https://algorithmiaio.github.io/administration/scm-config/source-code-management-bitbucket-server-api' >Create a Bitbucket Server (build-via-API) Configuration</a>
 </li>
 <li>
-<a href='/administration/troubleshooting/3-strategies' >3) Strategies</a>
+<a href='https://algorithmiaio.github.io/administration/scm-config/source-code-management-bitbucket-server-checkin' >Create a Bitbucket Server (build-on-checkin) Configuration</a>
 </li>
 <li>
-<a href='/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
+<a href='https://algorithmiaio.github.io/administration/scm-config/source-code-management-github' >Create a GitHub Configuration</a>
+</li>
+<li>
+<a href='https://algorithmiaio.github.io/administration/scm-config/source-code-management-gitlab' >Create a GitLab Configuration</a>
+</li>
+</ul>
+</li>
+<li class="category">
+<a href='https://algorithmiaio.github.io/administration/troubleshooting' >Admin - Troubleshooting <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+<ul class="nav sidebar">
+<li>
+<a href='https://algorithmiaio.github.io/administration/troubleshooting/1-overview' >1) Triage Overview</a>
+</li>
+<li>
+<a href='https://algorithmiaio.github.io/administration/troubleshooting/2-issues' >2) Common Issues</a>
+</li>
+<li>
+<a href='https://algorithmiaio.github.io/administration/troubleshooting/3-strategies' >3) Strategies</a>
+</li>
+<li>
+<a href='https://algorithmiaio.github.io/administration/troubleshooting/4-information-gathering' >4) Information Gathering</a>
 </li>
 </ul>
 </li>
 <li>
-<a href='/vmware' >VMware</a>
+<a href='https://algorithmiaio.github.io/vmware' >VMware</a>
 </li>
 <li>
-<a href='/release-notes' >Release Notes</a>
+<a href='https://algorithmiaio.github.io/release-notes' >Release Notes</a>
 </li>
 <li>
-<a href='/faqs' >FAQ</a>
+<a href='https://algorithmiaio.github.io/faqs' >FAQ</a>
 </li>
 </ul>
 </ul>
@@ -893,7 +893,7 @@ You can use this integration and the examples described here to create initial d
           <a href="/">
             
             <img
-            src="/images/logos/binary_tree.svg"
+            src="/https://algorithmiaio.github.io/images/logos/binary_tree.svg"
               alt="Algorithmia Logo"
             />
             
@@ -923,7 +923,7 @@ You can use this integration and the examples described here to create initial d
               target="_blank"
               class="syn-text-secondary syn-link-no-decoration syn-link-animated"
             >
-              <img src="/images/icons/github.svg" />
+              <img src="/https://algorithmiaio.github.io/images/icons/github.svg" />
             </a>
             <a
               href="https://twitter.com/algorithmia"
@@ -931,7 +931,7 @@ You can use this integration and the examples described here to create initial d
               target="_blank"
               class="syn-text-secondary syn-link-no-decoration syn-link-animated"
             >
-              <img src="/images/icons/twitter.svg" />
+              <img src="/https://algorithmiaio.github.io/images/icons/twitter.svg" />
             </a>
             <a
               href="https://www.facebook.com/algorithmia"
@@ -939,7 +939,7 @@ You can use this integration and the examples described here to create initial d
               target="_blank"
               class="syn-text-secondary syn-link-no-decoration syn-link-animated"
             >
-              <img src="/images/icons/facebook.svg" />
+              <img src="/https://algorithmiaio.github.io/images/icons/facebook.svg" />
             </a>
             <a
               href="https://www.linkedin.com/company/algorithmia-inc"
@@ -947,7 +947,7 @@ You can use this integration and the examples described here to create initial d
               target="_blank"
               class="syn-text-secondary syn-link-no-decoration syn-link-animated"
             >
-              <img src="/images/icons/linkedin.svg" />
+              <img src="/https://algorithmiaio.github.io/images/icons/linkedin.svg" />
             </a>
             <a
               href="https://www.glassdoor.com/Overview/Working-at-Algorithmia-EI_IE2030295.11,22.htm"
@@ -955,7 +955,7 @@ You can use this integration and the examples described here to create initial d
               target="_blank"
               class="syn-text-secondary syn-link-no-decoration syn-link-animated"
             >
-              <img src="/images/icons/glassdoor.svg" />
+              <img src="/https://algorithmiaio.github.io/images/icons/glassdoor.svg" />
             </a>
           </div>
         
@@ -1010,7 +1010,7 @@ You can use this integration and the examples described here to create initial d
         <div class="syn-col syn-col-lg-2 syn-col-md-3">
           <div class="syn-overline syn-mb-8">Resources</div>
           <div class="syn-mb-8 syn-body-2">
-            <a href="" class="syn-text-secondary">Docs</a>
+            <a href="https://algorithmiaio.github.io" class="syn-text-secondary">Docs</a>
           </div>
           <div class="syn-mb-8 syn-body-2">
             <a
@@ -1046,20 +1046,20 @@ You can use this integration and the examples described here to create initial d
 
     <!-- BEGIN_SCRIPTS_EMBED -->
     
-      <script src="/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
-      <script src="/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
-      <script src="/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
-      <script src="/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="https://algorithmiaio.github.io/js/sentry.5.7.1.min.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="https://algorithmiaio.github.io/js/sentry.init.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="https://algorithmiaio.github.io/js/segment.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
+      <script src="https://algorithmiaio.github.io/js/bigPicture.js" type="text/javascript" crossorigin="anonymous" charset="utf-8"></script>
     
-    <script src="/js/core.cat.js"></script>
-    <script src="/js/search.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://algorithmiaio.github.io/js/core.cat.js"></script>
+    <script src="https://algorithmiaio.github.io/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://algorithmiaio.github.io/js/userCreds.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://algorithmiaio.github.io/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"> </script>
     <script type="text/javascript">
     $(function() {
       $('#search-query').lunrSearch({
-        indexUrl: '/js/index.json',
+        indexUrl: 'https://algorithmiaio.github.io/js/index.json',
         results:  '#search-results',
         template: '#search-results-template',
         titleMsg: '<h3><small>SEARCH RESULTS</small></h3>',

@@ -12,7 +12,7 @@ locale: en_US
 # Do not include a trailing /.
 domain: algorithmiaio.github.io
 url: https://algorithmiaio.github.io
-# baseurl: algorithmiaio.github.io
+baseurl: https://algorithmiaio.github.io
 
 # URL for assets we serve via CDN
 # cdnurl: https://cdn.algorithmia.com
