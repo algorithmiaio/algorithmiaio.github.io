@@ -1,0 +1,15 @@
+# Dev Config Overrides
+
+url: algorithmiaio.github.io
+baseUrl: /algorithmiaio.github.io/
+
+# URL for assets we serve via CDN
+cdnurl: algorithmiaio.github.io
+
+plugins_dir: _plugins-dev
+
+# This is a subset of the plugins configured in _config.yml
+# Removing some plugins speeds up local dev
+plugins:
+  - jekyll-redirect-from
+  - jekyll-last-modified-at

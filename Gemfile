@@ -1,13 +1,15 @@
 source "https://rubygems.org"
 
-gem 'jekyll', '4.2.1'
-gem 'jekyll-sitemap'
-gem 'jekyll-redirect-from'
+# gem 'jekyll', '4.2.1'
+gem 'github-pages', '227' , group: :jekyll_plugins
+gem 'jekyll-sitemap', '1.4.0'
+gem 'jekyll-redirect-from', '0.16.0'
 gem 'jekyll-last-modified-at'
+gem 'jekyll-sass-converter',	'1.5.2'
 gem 'redcarpet'
 gem 'rake'
 gem 'gemoji'
 gem 'therubyracer'
-gem 'nokogiri'
+gem 'nokogiri', '1.13.7'
 gem 'git'
 gem 'metainspector'
