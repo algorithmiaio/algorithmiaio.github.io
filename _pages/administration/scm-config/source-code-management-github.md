@@ -20,17 +20,17 @@ Note that when you follow the steps below on GitHub, you must be a GitHub organ
 8.  Enter an **authorization callback URL**. The format of this is `https://CLUSTER_DOMAIN`, where `CLUSTER_DOMAIN` is the domain name of your Algorithmia cluster (e.g., `algorithmia.com`).
 9.  Click **Register application** at the bottom.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1620867268774.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1620867268774.png)
 
 The resulting page for the new application displays the configuration information that you specified above. If you need to modify this information, make any desired changes and click **Update application**.
 
 Click the **Generate a new client secret** button and store the **client secret** value temporarily in a safe place, or leave the tab open. You'll need the **client secret** and **client ID** values <span style="font-family: inherit; font-size: 1em;">displayed here in the next step when you complete the SCM provider configuration within Algorithmia.</span>
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1620865506829.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1620865506829.png)
 
 ## Algorithmia setup
 
-Once you've created an OAuth application in GitHub as described above, log in to Algorithmia as a cluster admin and navigate to the [Source Code Management](/developers/administration/admin-panel/source-code-management) page from the admin panel. Click **Add SCM Configuration** and select GitHub from the drop-down.
+Once you've created an OAuth application in GitHub as described above, log in to Algorithmia as a cluster admin and navigate to the [Source Code Management](/administration/admin-panel/source-code-management) page from the admin panel. Click **Add SCM Configuration** and select GitHub from the drop-down.
 
 Enter the base website, API, and SSH endpoint URLs, as described below. The pre-filled values that appear are just placeholders, so you must actually enter the paths in each field even if you just want the defaults.
 
@@ -42,6 +42,6 @@ The **SSH URL** is the URL by which we'll attempt to pull source code from your 
 
 Under the **OAuth information** section, enter the **client ID** and **client secret** from the application configuration above and click **Create SCM Configuration**.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1621526891651.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1621526891651.png)
 
-Once you've created the configuration, it'll show up in the list of SCM configurations on the [Source Code Management](/developers/administration/admin-panel/source-code-management) page.
+Once you've created the configuration, it'll show up in the list of SCM configurations on the [Source Code Management](/administration/admin-panel/source-code-management) page.

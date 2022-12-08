@@ -4,7 +4,7 @@ layout: article
 title: Configure an Azure Kubernetes Service (AKS) Cluster
 ---
 
-This page contains information for configuring a managed AKS cluster with the appropriate network access for use with [Constellation Distributed Serving](/developers/administration/admin-panel/constellation).
+This page contains information for configuring a managed AKS cluster with the appropriate network access for use with [Constellation Distributed Serving](/administration/admin-panel/constellation).
 
 This feature (and its associated documentation) is currently in **beta**.
 {: .notice-info}
@@ -24,31 +24,31 @@ This feature is only available in Algorithmia Enterprise installations.
 
 Log in to the [Azure Portal](http://portal.azure.com/) and navigate to **Kubernetes services**. Click **+ Create** and **+ Create a Kubernetes cluster** from the dropdown.
 
-**![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628690773473.png)**
+**![]({{site.url}}/images/post_images/algo-images-admin/algo-1628690773473.png)**
 
 Choose a **Resource group**, **Kubernetes cluster name**, **Region**, and **Kubernetes version**. At present, only Kubernetes 1.18.x has been fully validated with Constellation, so you should select this minor version.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628691208465.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628691208465.png)
 
 Click **Next: Node Pools**.
 
 In the **Node Pools** tab, click on the **agentpool** node pool.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628691742612.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628691742612.png)
 
 In the **Update node pool** form, change **Max pods per node** to 30 and click **Update**. Each node gets a number of IP addresses equal to this max pods value. The subnet size, along with max pods per node, determines how many total nodes the AKS cluster can have.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628691680959.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628691680959.png)
 
 Click **Next: Authentication** and **Next: Networking**. Under **Network configuration** select **Azure CNI**, and under **Network policy** select **Calico**.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628692540121.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628692540121.png)
 
 Click **Next: Integrations**.
 
 In the **Integrations** tab click **Create new** under **Container registry** to create a new container registry to hold the algorithm container images from Constellation.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628693282164.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628693282164.png)
 
 Once you've created the registry, click **Review + create** to validate your configuration. When validation passes, click **Create** to provision the cluster.
 
@@ -109,35 +109,35 @@ You can also query the Amazon Container Registry (ACR) service to list the regis
 
 Once the AKS cluster is provisioned, navigate to the cluster and select **Networking** under **Settings** in the left-hand submenu. Select the **Enable ingress controller** option and click **Save**.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628701674663.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628701674663.png)
 
 Note that a new application gateway may need to be created if an application gateway subnet isn't already configured. If this is the case, under the **Application gateway** section that appears, click **Create new** or navigate to the **Load balancing** service and click **Application gateway** and then **+ Create**.
 
 In the **Basic** tab, select the same **Resource group** and **Region** that the AKS cluster are in. For **Virtual network** (VNet), enter the name of the VNet in which the AKS cluster is provisioned, appending `-vnet` to the end of the name.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628703837974.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628703837974.png)
 
 Click **Next: Frontends** and make sure the **Frontend IP address type** is **Public**. For the **Public IP address**, select an existing address or create a new one.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628704297942.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628704297942.png)
 
 Click **Next: Backends** and click **Add a backend pool** to add a virtual machine scale set (VMSS) backend pool targeting the [AKS node pool configured above](#node-pools) (for the configuration shown above in this guide, the **Target type** would be **VMSS** and the **Target** would be "agentpool").
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628704536051.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628704536051.png)
 
 Click **Next: Configuration** and click **+ Add a routing rule**.
 
 Under the **Listener** tab, configure the new routing rule with the **Frontend IP** set to **Public** and the **Port** set to the default value of 80.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628705096999.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628705096999.png)
 
 Now click the **Backend targets** tab. For the **Backend target**, select your backend pool from above to specify where to send traffic.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628705513447.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628705513447.png)
 
 Now click **Add new** under the **HTTP settings** field to create a new HTTP setting. Set the **Backend port** to 80 and the **Request time-out** to 3000 seconds and click **Add**. Now select select your new HTTP setting for the **HTTP settings** field and click **Add** to add the routing rule.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628705872778.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628705872778.png)
 
 Click **Next: Tags** and **Next: Review + create** to validate your configuration. When validation passes, click **Create** to provision the gateway.
 
@@ -178,4 +178,4 @@ Note that the path-matching pattern for the `PathPrefix` `Ingress` type isn't a
 *   `/v1/algo/*` will forward any `/v1/algo/.*` route
 *   `/v1/algo/.*` will match the literal route `/v1/algo/.*`
 
-Once you have local access to your AKS cluster and its kubeconfig file and you've enabled cluster ingress, navigate back to the [Constellation](/developers/administration/admin-panel/constellation) docs to proceed with deploying a Constellation satellite to your AKS cluster.
+Once you have local access to your AKS cluster and its kubeconfig file and you've enabled cluster ingress, navigate back to the [Constellation](/administration/admin-panel/constellation) docs to proceed with deploying a Constellation satellite to your AKS cluster.

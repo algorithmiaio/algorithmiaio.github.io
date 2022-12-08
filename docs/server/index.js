@@ -125,7 +125,7 @@ if (!isProduction) {
 // Dev Center
 
 const isDirectory = (devCenterPath) => !/\w+\.\w+$/.test(devCenterPath);
-app.use(/^\/developers/, (req, res, next) => {
+app.use(/^\/, (req, res, next) => {
   const usePublic =
     req.headers['x-public-marketplace-documentation'] === 'true';
 

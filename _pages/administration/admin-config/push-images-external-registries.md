@@ -75,7 +75,7 @@ In order to modify an external registry, you'll need the following:
 
 <span style="font-family: inherit; font-size: 1em;">During the call to compile, you can push an algorithm to an external registry by providing an optional</span> `registry_push_credentials` object that has **PUSH** permissions to the external registry, along with the `registry_id` to which to push. You'll need the following:
 
-1.  The [algorithm UUID](https://algorithmia.com/developers/glossary#algorithm-uuid); this references below as `ALGO_ID`
+1.  The [algorithm UUID](https://algorithmiaio.github.io/glossary#algorithm-uuid); this references below as `ALGO_ID`
 2.  A username with **PUSH** permissions to the registry; this references below as `REGISTRY_USERNAME`
 3.  The password for the account in (2); this references below as `REGISTRY_PASSWORD`
 4.  The ID of the registry to modify; this references below as `REGISTRY_ID` and can be retrieved through a `GET` request to `/v1/registries` if it wasn't captured from the output of the original [registry-configuration](#h_69449249320481631198612011) `POST` request.
@@ -141,15 +141,15 @@ If no credentials are supplied, the credentials associated with the registry wil
 
 Alternatively:
 
-*   The `https://**YOUR-SERVER-NAME.com**/v1/algorithms/**ALGO_OWNER**/**ALGO_NAME**/version` endpoint in the request above also takes an [algorithm UIID](https://algorithmia.com/developers/glossary#algorithm-uuid) (`ALGO_ID`) in place of `ALGO_OWNER/ALGO_NAME` as an algorithm specifier.
+*   The `https://**YOUR-SERVER-NAME.com**/v1/algorithms/**ALGO_OWNER**/**ALGO_NAME**/version` endpoint in the request above also takes an [algorithm UIID](https://algorithmiaio.github.io/glossary#algorithm-uuid) (`ALGO_ID`) in place of `ALGO_OWNER/ALGO_NAME` as an algorithm specifier.
 *   The `https://**YOUR-SERVER-NAME.com**/v1/algorithms/[ {**ALGO_OWNER**/**ALGO_NAME} | {ALGO_ID}** ]/versions` endpoint (note that `versions` is plural here) can also be used.
 
 ## Re-pushing an algorithm image to an external registry on failure
 
 In the case of a failure to push the algorithm image to the external registry during the algorithm publishing step, an algorithm image for a specific version can be re-pushed to the external registry later. In order to do this, you'll need the following:
 
-1.  The [algorithm UUID](https://algorithmia.com/developers/glossary#algorithm-uuid); this references below as `ALGO_ID`
-2.  The [algorithm version hash](https://algorithmia.com/developers/glossary#algorithm-version-hash); this references below as `ALGO_HASH_VERSION`
+1.  The [algorithm UUID](https://algorithmiaio.github.io/glossary#algorithm-uuid); this references below as `ALGO_ID`
+2.  The [algorithm version hash](https://algorithmiaio.github.io/glossary#algorithm-version-hash); this references below as `ALGO_HASH_VERSION`
 3.  Depending on how the repository is set up, credentials may or may not be required. If required, you'll need to specify:
     1.  A username with **PUSH** permissions to the registry; this references below as `REGISTRY_USERNAME`
     2.  The password for the account in (3.a); this references below as `REGISTRY_PASSWORD`
@@ -177,8 +177,8 @@ In the case of a failure to push the algorithm image to the external registry du
 
 The image-push process can take several minutes, so we provide a route to get the image push status. In order to do this, you'll need the following:
 
-1.  The [algorithm UUID](https://algorithmia.com/developers/glossary#algorithm-uuid); this references below as `ALGO_ID`
-2.  The [algorithm version hash](https://algorithmia.com/developers/glossary#algorithm-version-hash); this references below as `ALGO_HASH_VERSION`.
+1.  The [algorithm UUID](https://algorithmiaio.github.io/glossary#algorithm-uuid); this references below as `ALGO_ID`
+2.  The [algorithm version hash](https://algorithmiaio.github.io/glossary#algorithm-version-hash); this references below as `ALGO_HASH_VERSION`.
 
 This route will return a list of image push statuses for each registry that has been configured for the provided algorithm version hash. Any subsequent pushes to the same registry will overwrite the existing entry for that (`ALGO_HASH_VERSION`, `REGISTRY_ID`) combination.
 

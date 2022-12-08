@@ -25,13 +25,13 @@ Keep in mind that any Algorithmia collaborator who has access to an algorithm's 
 The ability to use external secret providers is available to [Algorithmia Enterprise](/enterprise) users only.
 {: .notice-enterprise}
 
-If your organization uses an external vaulting system to manage secrets, storing your secrets within Algorithmia might not be suitable. Therefore, Algorithmia Enterprise's Secret Store enables cluster admins to [connect Algorithmia to external vaulting systems](/developers/administration/admin-panel/secret-store#secret-provider-plugins) such as Hashicorp Vault and Azure Key Vault, where secrets are managed and maintained by a DevOps team. This helps Data Science teams access secrets in accordance to an organization's security and compliance standards.
+If your organization uses an external vaulting system to manage secrets, storing your secrets within Algorithmia might not be suitable. Therefore, Algorithmia Enterprise's Secret Store enables cluster admins to [connect Algorithmia to external vaulting systems](/administration/admin-panel/secret-store#secret-provider-plugins) such as Hashicorp Vault and Azure Key Vault, where secrets are managed and maintained by a DevOps team. This helps Data Science teams access secrets in accordance to an organization's security and compliance standards.
 
 ## Managing Secret Store entries
 
 Secrets are managed through the **Settings** tab on an algorithm's homepage, where you can create, update, and delete secrets, and view secret metadata.
 
-![Image of UI settings page for creating secrets](/developers/images/post_images/algorithm_secrets/settings_page.png)
+![Image of UI settings page for creating secrets](/images/post_images/algorithm_secrets/settings_page.png)
 
 To create a new entry in the Secret Store, click **New secret**.
 
@@ -42,11 +42,11 @@ Enter a **display name**, **description**, **environment variable name**, and **
 It can take up to one minute for new secrets to show up inside your algorithm. Similarly, when you update a secret, it can take one minute for that change to take effect.
 {: .notice-info}
 
-![Image of UI create secret page](/developers/images/post_images/algorithm_secrets/create_secret_page.png)
+![Image of UI create secret page](/images/post_images/algorithm_secrets/create_secret_page.png)
 
 After your secret is created, it can be updated or deleted from the same page. Clicking **Update** will open the same modal as shown above, and you'll be able to change the secret's name, description, and value. Note that through the settings page you can view but not update an existing secret's environment variable name, and you can update but not view an existing secret's value.
 
-![Image of UI settings page with an existing secret](/developers/images/post_images/algorithm_secrets/settings_page_with_secret.png)
+![Image of UI settings page with an existing secret](/images/post_images/algorithm_secrets/settings_page_with_secret.png)
 
 ## Accessing Secret Store values
 
@@ -66,4 +66,4 @@ def apply(input):
     return "My secret value".format(os.environ["MYSQL_PASSWORD"])
 {% endhighlight %}
 
-![Image of UI algorithm running with secret](/developers/images/post_images/algorithm_secrets/running_algorithm_with_secret.png)
+![Image of UI algorithm running with secret](/images/post_images/algorithm_secrets/running_algorithm_with_secret.png)

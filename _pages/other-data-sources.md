@@ -9,7 +9,7 @@ tags: [other-data-sources-overview]
 title:  "Other Data Sources"
 ---
 
-If your algorithm needs to read or write data files from a data source for which there is no [Data Connector]({{site.baseurl}}/data/), you can connect directly to that provider from within your algorithm using an API or client library for that data source, while storing credentials outside of your algorithm source by using [Hosted Data]({{site.baseurl}}/data/hosted) and the Algorithmia [Data API]({{site.baseurl}}/developers/api/#data).
+If your algorithm needs to read or write data files from a data source for which there is no [Data Connector]({{site.baseurl}}/data/), you can connect directly to that provider from within your algorithm using an API or client library for that data source, while storing credentials outside of your algorithm source by using [Hosted Data]({{site.baseurl}}/data/hosted) and the Algorithmia [Data API]({{site.baseurl}}/api/#data).
 
 ### Other Data Sources
 {% assign other_data_sources_tags = "other-data-sources" | split:"|" %}

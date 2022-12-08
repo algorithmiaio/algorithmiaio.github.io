@@ -10,4 +10,4 @@ image:
 
 Of course! Dependencies are added to the algorithm through the Dependencies dialog inside the algorithm editor.
 
-You can read more in the managing dependencies section of the [Python Algorithm Developers guide](https://algorithmia.com/developers/algorithm-development/languages/python#managing-dependencies).
+You can read more in the managing dependencies section of the [Python Algorithm Developers guide](https://algorithmiaio.github.io/algorithm-development/languages/python#managing-dependencies).

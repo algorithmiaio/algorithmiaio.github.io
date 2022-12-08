@@ -8,4 +8,4 @@ image:
   teaser: /icons/fa-bolt.png
 ---
 
-If you are an Algorithmia Enterprise user, you can get detailed information about algorithm invocation by making use of [Advanced Usage Reporting](https://algorithmia.com/developers/algorithmia-enterprise/usage-metrics).
+If you are an Algorithmia Enterprise user, you can get detailed information about algorithm invocation by making use of [Advanced Usage Reporting](https://algorithmiaio.github.io/algorithmia-enterprise/usage-metrics).

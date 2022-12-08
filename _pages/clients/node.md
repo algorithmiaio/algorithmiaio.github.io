@@ -18,7 +18,7 @@ redirect_from:
 
 The Algorithmia Node.js client provides a native Node.js interface to the Algorithmia API, letting developers manage and call algorithms, work with data in object stores using Algorithmia Data Sources, and access other features of the Algorithmia platform.
 
-This guide will cover setting up the client, calling an algorithm using direct user input, calling an algorithm that accesses data through Algorithmia Data Sources, and using Algorithmia's Hosted Data service. For complete details about the Algorithmia API, please refer to the [API Docs](/developers/api).
+This guide will cover setting up the client, calling an algorithm using direct user input, calling an algorithm that accesses data through Algorithmia Data Sources, and using Algorithmia's Hosted Data service. For complete details about the Algorithmia API, please refer to the [API Docs](/api).
 
 ## Set Up the Client
 
@@ -28,7 +28,7 @@ The official Algorithmia Node.js Client is available on NPM. Install it for your
 $ npm install --save algorithmia
 {% endhighlight %}
 
-To use the client you'll need an API key, which Algorithmia uses for fine-grained authentication across the platform. For this example, we'll use the `default-key` that was created along with your account, which has a broad set of permissions. Log in to Algorithmia and navigate to Home > [API Keys](/user#credentials) to find your key, or read the [API keys](/developers/platform/customizing-api-keys) documentation for more information.
+To use the client you'll need an API key, which Algorithmia uses for fine-grained authentication across the platform. For this example, we'll use the `default-key` that was created along with your account, which has a broad set of permissions. Log in to Algorithmia and navigate to Home > [API Keys](/user#credentials) to find your key, or read the [API keys](/platform/customizing-api-keys) documentation for more information.
 
 Once the client is installed, you can import it into your code and instantiate the client object:
 
@@ -57,7 +57,7 @@ Alternately, you can ensure that each of your servers interacting with your Algo
 
 Algorithms take three basic types of input whether they are invoked directly through the API or by using a client library: strings, JSON, and binary data. In addition, individual algorithms might have their own I/O requirements, such as using different data types for input and output, or accepting multiple types of input, so consult the input and output sections of an algorithm's documentation for specifics.
 
-The first algorithm we'll call is a demo version of the algorithm used in the Algorithm Development [Getting Started](/developers/algorithm-development/your-first-algo) guide, which is available at [demo/Hello](/algorithms/demo/Hello). Looking at the [algorithm's documentation](/algorithms/demo/Hello/docs), it takes a string as input and returns a string.
+The first algorithm we'll call is a demo version of the algorithm used in the Algorithm Development [Getting Started](/algorithm-development/your-first-algo) guide, which is available at [demo/Hello](/algorithms/demo/Hello). Looking at the [algorithm's documentation](/algorithms/demo/Hello/docs), it takes a string as input and returns a string.
 
 We'll need to create an algorithm object, then use the `.pipe()` method to call the algorithm. We'll provide our input as the argument to the function. Next, we call the `.then()` method and log the response to the console using the `.get()` method of the response object: 
 
@@ -105,7 +105,7 @@ The Algorithmia API exposes options that can configure algorithm requests. This 
 client.algo("demo/Hello?timeout=60&stdout=false");
 {% endhighlight %}
 
-You can find more details in [API Docs](/developers/api) > [Invoke an Algorithm](/developers/api/#invoke-an-algorithm).
+You can find more details in [API Docs](/api) > [Invoke an Algorithm](/api/#invoke-an-algorithm).
 
 ### Error Handling
 
@@ -121,21 +121,21 @@ client.algo("util/WhoopsWrongAlgo")
 
 The above code will output `{ message: 'algorithm algo://util/WhoopsWrongAlgo/ not found' }`.
 
-You can read more about [Error Handling](/developers/algorithm-development/algorithm-errors) in the [Algorithm Development](/developers/algorithm-development) section of the dev center.
+You can read more about [Error Handling](/algorithm-development/algorithm-errors) in the [Algorithm Development](/algorithm-development) section of the dev center.
 
 ### Limits
 
 Your account can make up to {{site.data.stats.platform.max_num_algo_requests}} Algorithmia requests at the same time (this limit <a onclick="Intercom('show')">can be raised</a> if needed).
 
-Algorithm requests have a payload size limit of 10MB for input and 15MB for output. If you need to work with larger amounts of data, you can make use of the Algorithmia [Data API](/developers/api/#data).
+Algorithm requests have a payload size limit of 10MB for input and 15MB for output. If you need to work with larger amounts of data, you can make use of the Algorithmia [Data API](/api/#data).
 
 ## Working with Algorithmia Data Sources
 
-For some algorithms, passing input to the algorithm at request time is sufficient, while others might have larger data requirements or need to preserve state between calls. Application developers can use Algorithmia's [Hosted Data](/developers/data/hosted) to store data as text, JSON, or binary, and access it via the Algorithmia [Data API](/developers/api/#data).
+For some algorithms, passing input to the algorithm at request time is sufficient, while others might have larger data requirements or need to preserve state between calls. Application developers can use Algorithmia's [Hosted Data](/data/hosted) to store data as text, JSON, or binary, and access it via the Algorithmia [Data API](/api/#data).
 
-The Data API defines [connectors](/developers/api/#connectors) to a variety of storage providers, including Algorithmia [Hosted Data](/developers/data/hosted), Amazon S3, Google Cloud Storage, Azure Storage Blobs, and Dropbox. After creating a connection in Data Sources, you can use the API to create, update, and delete directories and files and manage permissions across providers by making use of [Data URIs](/developers/api/#data-uris) in your code.
+The Data API defines [connectors](/api/#connectors) to a variety of storage providers, including Algorithmia [Hosted Data](/data/hosted), Amazon S3, Google Cloud Storage, Azure Storage Blobs, and Dropbox. After creating a connection in Data Sources, you can use the API to create, update, and delete directories and files and manage permissions across providers by making use of [Data URIs](/api/#data-uris) in your code.
 
-In this example, we'll upload an image to Algorithmia's [Hosted Data](/developers/data/hosted) storage provider, and use the [dlib/FaceDetection](https://algorithmia.com/algorithms/dlib/FaceDetection) algorithm to detect any faces in the image. The algorithm will create a new copy of the image with bounding boxes drawn around the detected faces, and then return a JSON object with details about the dimensions of the bounding boxes and a URI where you can download the resulting image.
+In this example, we'll upload an image to Algorithmia's [Hosted Data](/data/hosted) storage provider, and use the [dlib/FaceDetection](https://algorithmia.com/algorithms/dlib/FaceDetection) algorithm to detect any faces in the image. The algorithm will create a new copy of the image with bounding boxes drawn around the detected faces, and then return a JSON object with details about the dimensions of the bounding boxes and a URI where you can download the resulting image.
 
 ### Create a Data Collection
 
@@ -156,7 +156,7 @@ img_directory.exists(function(exists) {
 Instead of your username you can also use '.my' when calling algorithms. For more information about the '.my' pseudonym check out the [Hosted Data Guide]({{site.baseurl}}/data/hosted).
 {: .notice-info}
 
-We'll also need to update the directory's [permissions](/developers/api/#update-collection-acl) so that it's publicly accessible. In order to change your data collection permissions you can go to [Hosted Data](/data/hosted) and click on the collection you just created called `img_directory` and select from the dropdown at the top of the screen that will show three different types of permissions:
+We'll also need to update the directory's [permissions](/api/#update-collection-acl) so that it's publicly accessible. In order to change your data collection permissions you can go to [Hosted Data](/data/hosted) and click on the collection you just created called `img_directory` and select from the dropdown at the top of the screen that will show three different types of permissions:
 
 -   My Algorithms (called by any user)
 -   Private (accessed only by me)
@@ -253,12 +253,12 @@ client.file(download_uri).exists(function(exists) {
 
 Alternately, you can work directly with the binary content of the file instead of using `fs` to write it to disk.
 
-If the file was text or JSON you could instead use `.getString()` or `.getJSON()`, respectively, to retrieve the file's contents. For more methods on how to get a file from a data collection using the Data API go to the [API Specification](/developers/api/#get-a-file-or-directory).x
+If the file was text or JSON you could instead use `.getString()` or `.getJSON()`, respectively, to retrieve the file's contents. For more methods on how to get a file from a data collection using the Data API go to the [API Specification](/api/#get-a-file-or-directory).x
 
 ## Additional Functionality
 
-In addition to the functionality covered in this guide, the Python Client Library provides a complete interface to the Algorithmia platform, including [managing algorithms](/developers/algorithm-development/algorithm-management), administering [organizations](/developers/platform/organizations), and working with [source control](/developers/algorithm-development/source-code-management). You can also visit the [API Docs](/developers/api) to view the complete API specification.
+In addition to the functionality covered in this guide, the Python Client Library provides a complete interface to the Algorithmia platform, including [managing algorithms](/algorithm-development/algorithm-management), administering [organizations](/platform/organizations), and working with [source control](/algorithm-development/source-code-management). You can also visit the [API Docs](/api) to view the complete API specification.
 
 ## Next Steps
 
-If you're a data scientist or developer who will be building and deploying new algorithms, you can move on to the [Algorithm Development > Getting Started](/developers/algorithm-development/your-first-algo) guide.
+If you're a data scientist or developer who will be building and deploying new algorithms, you can move on to the [Algorithm Development > Getting Started](/algorithm-development/your-first-algo) guide.

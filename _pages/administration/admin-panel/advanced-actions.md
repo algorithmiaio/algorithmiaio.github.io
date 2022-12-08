@@ -10,7 +10,7 @@ The Advanced page provides functionality for performing several specific platfor
 
 One-time actions are used for cluster maintenance tasks such as re-encrypting data and rehashing keys. These actions can be performed by clicking the "One-Time Action" button, selecting the desired action from the list of those available, entering additional data if required, and pressing the "Perform Action" button.
 
-![Admin Panel - One-Time Action]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1609204125948.png)
+![Admin Panel - One-Time Action]({{site.url}}/images/post_images/algo-images-admin/algo-1609204125948.png)
 
 The "Perform Cluster Setup" button exposes functionality for configuring the cluster. This will only be necessary when the cluster is first deployed and there are still remaining setup steps to be taken; clicking this button will otherwise yield a pop-up notification alerting you that the setup is already complete.
 
@@ -22,4 +22,4 @@ A private (not published publicly) algorithm may be deleted by the algorithm's o
 
 To delete a publicly published algorithm, click the "Delete Algorithm" button from the "Advanced Actions" list, enter the name of the algorithm owner and the algorithm, and select "Force Delete" before clicking the red "Delete Algorithm" button to take the action. Private algorithms can also be deleted using this interface, in which case the "Force Delete" selection is not necessary.
 
-![Admin Panel - Delete An Algorithm]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1609195926279.png)
+![Admin Panel - Delete An Algorithm]({{site.url}}/images/post_images/algo-images-admin/algo-1609195926279.png)

@@ -17,9 +17,9 @@ The following features are available in Algorithmia LTS version 21.1.13.
 
 ### New API Documentation ###
 
-We’ve migrated our static API documentation to a framework based on the open-source tool [Redoc](https://github.com/Redocly/redoc). The new API docs are rendered dynamically from your cluster-specific API spec file at `https://CLUSTER_DOMAIN/v1/openapispec`. When you view your cluster-specific API docs at `https://CLUSTER_DOMAIN/developers/api`, you'll now be viewing only the functionality available in your deployed version of Algorithmia. As before, cURL and Python code samples are shown for select endpoints.
+We’ve migrated our static API documentation to a framework based on the open-source tool [Redoc](https://github.com/Redocly/redoc). The new API docs are rendered dynamically from your cluster-specific API spec file at `https://CLUSTER_DOMAIN/v1/openapispec`. When you view your cluster-specific API docs at `https://CLUSTER_DOMAIN/api`, you'll now be viewing only the functionality available in your deployed version of Algorithmia. As before, cURL and Python code samples are shown for select endpoints.
 
-The new docs are available beginning in Algorithmia version 21.1.13 and immediately at our [public API docs site](https://algorithmia.com/developers/api). Note that the public API docs include only a subset of endpoints available to enterprise customers, as not all features are included in our multi-tenant offering.
+The new docs are available beginning in Algorithmia version 21.1.13 and immediately at our [public API docs site](https://algorithmiaio.github.io/api). Note that the public API docs include only a subset of endpoints available to enterprise customers, as not all features are included in our multi-tenant offering.
 
 ## Q2 2021 Release Notes ##
 
@@ -40,7 +40,7 @@ Our brand new [Integrations]({{site.baseurl}}/integrations) page contains descri
 
 ### Third-Party Secret Provider Plugins ###
 
-We’re excited to announce that we now have documented example implementations of [secret provider plugins](/developers/administration/admin-panel/secret-store#secret-provider-plugins) for Hashicorp Vault and Azure Key Vault. This enables Algorithmia Enterprise customers to use their existing accounts in these third-party vaulting systems to store and manage their sensitive data, and for their Algorithmia algorithms to access those secrets at run time. To use this feature, a cluster administrator must first configure the new secret provider by uploading the secret provider plugin module through the Secret Store page in the admin panel.
+We’re excited to announce that we now have documented example implementations of [secret provider plugins](/administration/admin-panel/secret-store#secret-provider-plugins) for Hashicorp Vault and Azure Key Vault. This enables Algorithmia Enterprise customers to use their existing accounts in these third-party vaulting systems to store and manage their sensitive data, and for their Algorithmia algorithms to access those secrets at run time. To use this feature, a cluster administrator must first configure the new secret provider by uploading the secret provider plugin module through the Secret Store page in the admin panel.
 
 ---
 
@@ -68,7 +68,7 @@ The Advanced Reporting for Governance feature provides administrators the abilit
 
 #### Cluster-level reporting ####
 
-Only cluster administrators have access to [cluster-level reporting](/developers/administration/admin-panel/governance-reporting). To use this feature, navigate to the “Governance Reporting” page in the administrator panel.
+Only cluster administrators have access to [cluster-level reporting](/administration/admin-panel/governance-reporting). To use this feature, navigate to the “Governance Reporting” page in the administrator panel.
 
 As a first step, we recommend you add your hardware cost rate estimates to ensure you get accurate cost estimates based on your resource usage. To do this, click the “Resource Cost Rates” button in the top-right corner to view the values. To add or modify existing values, click the “Edit Values” button and input your values in the form. Submit your changes when you’re done and you’ll see cost estimates displayed in the report. Once you’re satisfied with the cost estimates, you can dive into the data. Note that only cluster administrators have access to set or modify cost rates, which are set at the cluster level.
 
@@ -90,7 +90,7 @@ To view Advanced Reporting at the algorithm level, navigate to the algorithm’s
 
 We’ve added three new source code management (SCM) integrations: GitLab, Bitbucket Cloud, and Bitbucket Server. These new integrations expand on our current SCM integration with GitHub Enterprise. By using a single source of truth for your machine learning codebase, you can now take advantage of all the enhanced governance and management features that GitLab and Bitbucket Cloud’s CI/CD workflows offer, and with the Bitbucket Server integration, you can do your development work in the SCM system that you’re most comfortable using.
 
-Once your cluster administrator [configures a connection to an SCM provider](/developers/administration/admin-panel/source-code-management#creating-scm-configurations), you can immediately create algorithms backed by a Git repository on that provider.
+Once your cluster administrator [configures a connection to an SCM provider](/administration/admin-panel/source-code-management#creating-scm-configurations), you can immediately create algorithms backed by a Git repository on that provider.
 
 With the implementation of GitLab, Bitbucket Cloud, and Bitbucket Server SCM integrations, users can now easily connect their hosted repositories to their Algorithmia accounts, which provides a seamless workflow from development to production. Customers that use these third-party SCM providers can leverage engineering best practices such as code reviews and dependency audits to ensure consistencies between development and production code, and CI/CD workflows to increase automation and testing of MLOps pipelines.
 
@@ -150,7 +150,7 @@ Algorithmia Insights allows customers to emit a rich metrics payload from every 
 
 Algorithmia Insights is available to Enterprise customers for deployments scheduled after the feature release date of October 30 and will be included in Enterprise subscriptions.
 
-To enable Algorithmia Insights, your cluster administrator can follow the [administrator docs](/developers/algorithmia-enterprise/algorithmia-insights) to learn how to configure the connection to Kafka. After your cluster administrator has connected to Kafka, algorithm creators can enable Algorithmia Insights with a click of a checkbox when publishing their algorithm. It’s that easy to then view all the algorithm metrics that have been enabled in monitoring and alerting tools such as DataDog, InfluxDB, New Relic, Grafana, Kibana, and more.
+To enable Algorithmia Insights, your cluster administrator can follow the [administrator docs](/algorithmia-enterprise/algorithmia-insights) to learn how to configure the connection to Kafka. After your cluster administrator has connected to Kafka, algorithm creators can enable Algorithmia Insights with a click of a checkbox when publishing their algorithm. It’s that easy to then view all the algorithm metrics that have been enabled in monitoring and alerting tools such as DataDog, InfluxDB, New Relic, Grafana, Kibana, and more.
 
 #### Monitoring, alerting, and taking action based on Algorithmia Insights ####
 
@@ -229,7 +229,7 @@ Enabling users to pass in their local data file into the Python Client will make
 
 #### Using the feature ####
 
-Set up a local development environment, including installing the Algorithmia Python Client in PyCharm. Full directions for integrating Algorithmia with PyCharm is in the Developer Center [under Advanced Algorithm Development.](/developers/algorithm-development/advanced-algorithm-development/pycharm)
+Set up a local development environment, including installing the Algorithmia Python Client in PyCharm. Full directions for integrating Algorithmia with PyCharm is in the Developer Center [under Advanced Algorithm Development.](/algorithm-development/advanced-algorithm-development/pycharm)
 
 Clone an algorithm from GitHub or Algorithmia in PyCharm, pass in the local file path when running it for testing, then write and run the unit test file.
 
@@ -307,14 +307,14 @@ Our first release of 2020 comprises a diverse feature set that increases the opt
 * Platform Usage Reports
 
 ### Source Code Management ###
-We are pleased to announce that we have expanded our source code management offering to include [GitHub,](/developers/algorithm-development/source-code-management) adding to the benefits of a centralized code repository and increasing ML portability! By connecting your Algorithmia and GitHub accounts, you can store your source code on GitHub and deploy it directly to Algorithmia. It's that simple.
+We are pleased to announce that we have expanded our source code management offering to include [GitHub,](/algorithm-development/source-code-management) adding to the benefits of a centralized code repository and increasing ML portability! By connecting your Algorithmia and GitHub accounts, you can store your source code on GitHub and deploy it directly to Algorithmia. It's that simple.
 
 Once enabled by your administrator, you will be able to select a GitHub (or GitHub Enterprise) instance when creating an algorithm, which will create a new GitHub repository for your algorithm.
 
 All updates to the repository's default branch will automatically precipitate new builds for your algorithm. By leveraging GitHub with Algorithmia, algorithm developers can leverage existing GitHub workflows they already have and access the entire suite of GitHub features, including [GitHub Actions,](https://github.com/features/actions) and still ensure that source code visibility is restricted to those with proper GitHub permissions.
 
 #### Where to learn more ####
-Algorithmia administrators can learn more about integrating GitHub with Algorithmia [here.](/developers/algorithmia-enterprise/scms) Once configured, users need simply select the GitHub repository host when creating an algorithm:
+Algorithmia administrators can learn more about integrating GitHub with Algorithmia [here.](/algorithmia-enterprise/scms) Once configured, users need simply select the GitHub repository host when creating an algorithm:
 
 <img src="{{site.cdnurl}}{{site.baseurl}}/images/post_images/release_notes/Source_Code_Manage.png" alt="Source code management" class="screenshot">
 

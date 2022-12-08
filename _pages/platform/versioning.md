@@ -28,13 +28,13 @@ Revisions are to be used for publishing backward-compatible bug fixes. New revis
 
 ### Requesting specific algorithm versions through the API
 
-Algorithmia's language clients support requesting a particular algorithm version by specifying the [algorithm endpoint](/developers/glossary#algorithm-endpoint) with the format `ALGO_OWNER/ALGO_NAME[/ALGO_VERSION]`, e.g., `util/echo/0.2.1`. Below are several ways that the version can be specified.
+Algorithmia's language clients support requesting a particular algorithm version by specifying the [algorithm endpoint](/glossary#algorithm-endpoint) with the format `ALGO_OWNER/ALGO_NAME[/ALGO_VERSION]`, e.g., `util/echo/0.2.1`. Below are several ways that the version can be specified.
 
 #### Fully specified semantic version
 
 If you specify the version as `<major>.<minor>.<revision>` (e.g., `util/echo/0.2.1`), you'll ensure that exactly that algorithm is used.
 
-It's recommended that you supply a fully specified [semantic version](/developers/glossary#algorithm-semantic-version) when calling an algorithm from a production service. This ensures that your application is not affected by changes in algorithm permissions or functionality.
+It's recommended that you supply a fully specified [semantic version](/glossary#algorithm-semantic-version) when calling an algorithm from a production service. This ensures that your application is not affected by changes in algorithm permissions or functionality.
 {: .notice-info}
 
 #### Partially specified semantic version
@@ -53,7 +53,7 @@ For algorithms that you or your organizations own and only publish privately, sp
 
 #### SHA (algorithm version hash) version
 
-For algorithms that you or your organizations own, you may specify the version using the full SHA (e.g., `4be0e18fba270e4aaa7cff20558905263f69a11b`) of a successful build. This is useful for testing your algorithms during development without needing to publish them. Note that on our platform we also refer to the SHA as the [algorithm version hash](/developers/glossary#algorithm-version-hash).
+For algorithms that you or your organizations own, you may specify the version using the full SHA (e.g., `4be0e18fba270e4aaa7cff20558905263f69a11b`) of a successful build. This is useful for testing your algorithms during development without needing to publish them. Note that on our platform we also refer to the SHA as the [algorithm version hash](/glossary#algorithm-version-hash).
 
 ## FAQs
 

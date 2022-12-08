@@ -4,7 +4,7 @@ layout: article
 title: Secret Store
 ---
 
-Algorithmia's Secret Store enables you to securely store sensitive data like credentials and access tokens to be accessed from within your algorithms. To learn how to set and modify secrets and how to then retrieve them from within your algorithms, see [docs for using the Secret Store](https://algorithmia.com/developers/platform/algorithm-secrets). Note that the Secret Store is first available in Algorithmia version 20.5.52.
+Algorithmia's Secret Store enables you to securely store sensitive data like credentials and access tokens to be accessed from within your algorithms. To learn how to set and modify secrets and how to then retrieve them from within your algorithms, see [docs for using the Secret Store](https://algorithmiaio.github.io/platform/algorithm-secrets). Note that the Secret Store is first available in Algorithmia version 20.5.52.
 
 The **Secret Store** page in the admin panel contains information on how to create plugins so that you can add external secret providers.
 
@@ -20,7 +20,7 @@ We take security seriously at Algorithmia, and this is especially true with our 
 
 We provide an internal Secret Store plugin that's loaded by default in every cluster. This plugin stores secrets in the internal database that backs the Algorithmia application, and in our implementation, secret values are encrypted before being written to that database. Depending on your cluster settings, the entire database may also be encrypted on disk. The default internal plugin appears as **Internal Secret Provider** in the UI, as shown below.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1623877064419.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1623877064419.png)
 
 ## Secret provider plugins
 
@@ -54,13 +54,13 @@ In the upper-right corner, click the **New Provider** button and fill out the fo
 *   **Provider factory classname** is the name of the class that implements the `SecretProviderFactory` interface, e.g., `com.algorithmia.plugin.vault.VaultSecretProviderFactory`. Key-value pairs are passed as a `Map<String, String>` to the `SecretProviderFactory.create` method and are encrypted before being stored in the Algorithmia application's database. For details on which key-value pairs are required, see the **Key-value** pairs section for your provider of interest in the examples below.
 *   Click the **Add Secret Provider** button to add the provider.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1624998443467.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1624998443467.png)
 
 #### Importing a Secret Store provider plugin through the admin API
 
 To upload a JAR file via the API, you can use the `/v1/admin/secret-provider` endpoint.
 
-The code sample below shows how you can create a secret provider with cURL. Note that you'll need to substitute `ADMIN_API_KEY` with a valid [admin API key](/developers/platform/customizing-api-keys#admin-api-keys), and `CLUSTER_DOMAIN` with your specific cluster's domain name. The remaining parameters match the field names from the section above, where `moduleName` is the name of the JAR file that you uploaded, and the key-value pairs specified under `configuration` are plugin-specific required parameters that depend on the secret provider (the specifics are listed in the READMEs for each respective [plugin example](#example-plugin-implementations)).
+The code sample below shows how you can create a secret provider with cURL. Note that you'll need to substitute `ADMIN_API_KEY` with a valid [admin API key](/platform/customizing-api-keys#admin-api-keys), and `CLUSTER_DOMAIN` with your specific cluster's domain name. The remaining parameters match the field names from the section above, where `moduleName` is the name of the JAR file that you uploaded, and the key-value pairs specified under `configuration` are plugin-specific required parameters that depend on the secret provider (the specifics are listed in the READMEs for each respective [plugin example](#example-plugin-implementations)).
 
 <div class="syn-code-block">
 
@@ -98,7 +98,7 @@ When you run the command above you'll receive a response payload with the `provi
 
 ### Example Secret Store provider plugins
 
-By writing a Secret Store provider plugin, you can integrate external vault systems, such as Azure Key Vault and Hashicorp Vault, with Algorithmia. **The following are provided as example plugin implementations, but note that they're included to provide guidance only and aren't supported or included in the scope of [Algorithmia Support](https://algorithmia.com/developers/support).**
+By writing a Secret Store provider plugin, you can integrate external vault systems, such as Azure Key Vault and Hashicorp Vault, with Algorithmia. **The following are provided as example plugin implementations, but note that they're included to provide guidance only and aren't supported or included in the scope of [Algorithmia Support](https://algorithmiaio.github.io/support).**
 
 #### Hashicorp Vault
 

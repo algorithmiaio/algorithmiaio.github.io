@@ -18,7 +18,7 @@ title: Migrate a Legacy-Language Algorithm to an Environment-Based Algorithm
 
 ## Overview
 
-Beginning in Algorithmia version 21.2, support for legacy language-based algorithms is deprecated. This page contains information for migrating a legacy-language based algorithm to the corresponding environment-based language. To learn more about algorithm environments, and to view the environments that we currently have available, see the [Environments](/developers/model-deployment/environments) page. To get a list of the available languages and their associated algorithm environments currently installed on your cluster, see [Listing languages and environments on your cluster](/developers/model-deployment/environments#list-languages-and-environments-and-download-algorithm-template-files).
+Beginning in Algorithmia version 21.2, support for legacy language-based algorithms is deprecated. This page contains information for migrating a legacy-language based algorithm to the corresponding environment-based language. To learn more about algorithm environments, and to view the environments that we currently have available, see the [Environments](/model-deployment/environments) page. To get a list of the available languages and their associated algorithm environments currently installed on your cluster, see [Listing languages and environments on your cluster](/model-deployment/environments#list-languages-and-environments-and-download-algorithm-template-files).
 
 ## Getting an algorithm's details
 
@@ -123,7 +123,7 @@ To begin, verify that you have a legacy-language based algorithm that needs to b
 
 ### Python
 
-To migrate a legacy Python algorithm, [get the environment ID value](/developers/model-deployment/environments#listing-algorithm-environments-rest) for a valid Python 2 or Python 3 algorithm environment. Note that in the sample code at the link provided, you'll use the string `python2` or `python3`, as appropriate, to replace `ALGO_LANG` to list the available environments. The environment ID will be a UUID like `2be2e978-9deb-494d-a2d1-e07e121d5ba0`. Execute the following `PUT` request to update the algorithm's settings, using this UUID to replace `ENV_ID`.
+To migrate a legacy Python algorithm, [get the environment ID value](/model-deployment/environments#listing-algorithm-environments-rest) for a valid Python 2 or Python 3 algorithm environment. Note that in the sample code at the link provided, you'll use the string `python2` or `python3`, as appropriate, to replace `ALGO_LANG` to list the available environments. The environment ID will be a UUID like `2be2e978-9deb-494d-a2d1-e07e121d5ba0`. Execute the following `PUT` request to update the algorithm's settings, using this UUID to replace `ENV_ID`.
 
 **REST request**
 
@@ -146,7 +146,7 @@ $ curl https://CLUSTER_DOMAIN/v1/algorithms/ALGO_OWNER/ALGO_NAME \
 
 ### Java
 
-To migrate a legacy Java algorithm, [get the environment ID value](/developers/model-deployment/environments#listing-algorithm-environments-rest) for the Java 11 algorithm environment (there's currently only one). Note that in the sample code at the link provided, you'll use the string `java11` to replace `ALGO_LANG`. The environment ID will be a UUID like `2be2e978-9deb-494d-a2d1-e07e121d5ba0`. Execute the following `PUT` request to update the algorithm's settings, using this UUID to replace `ENV_ID`.
+To migrate a legacy Java algorithm, [get the environment ID value](/model-deployment/environments#listing-algorithm-environments-rest) for the Java 11 algorithm environment (there's currently only one). Note that in the sample code at the link provided, you'll use the string `java11` to replace `ALGO_LANG`. The environment ID will be a UUID like `2be2e978-9deb-494d-a2d1-e07e121d5ba0`. Execute the following `PUT` request to update the algorithm's settings, using this UUID to replace `ENV_ID`.
 
 **REST request**
 
@@ -276,7 +276,7 @@ You can iterate locally by running `mvn package` while updating the dependency f
 
 ### Scala
 
-To migrate a legacy Scala algorithm, [get the environment ID value](/developers/model-deployment/environments#listing-algorithm-environments-rest) for the Scala 2 algorithm environment (there's currently only one). Note that in the sample code at the link provided, you'll use the string `scala-2` to replace `ALGO_LANG`. The environment ID will be a UUID like `2be2e978-9deb-494d-a2d1-e07e121d5ba0`. Execute the following `PUT` request to update the algorithm's settings, using this UUID to replace `ENV_ID`.
+To migrate a legacy Scala algorithm, [get the environment ID value](/model-deployment/environments#listing-algorithm-environments-rest) for the Scala 2 algorithm environment (there's currently only one). Note that in the sample code at the link provided, you'll use the string `scala-2` to replace `ALGO_LANG`. The environment ID will be a UUID like `2be2e978-9deb-494d-a2d1-e07e121d5ba0`. Execute the following `PUT` request to update the algorithm's settings, using this UUID to replace `ENV_ID`.
 
 **REST request**
 
@@ -357,7 +357,7 @@ You can iterate locally by running `sbt stage` to ensure that compilation succee
 
 ### R
 
-To migrate a legacy R algorithm, [get the environment ID value](/developers/model-deployment/environments#listing-algorithm-environments-rest) for a valid R 3.6 algorithm environment. Note that in the sample code at the link provided, you'll use the string `r36`, as appropriate, to replace `ALGO_LANG` to list the available environments. The environment ID will be a UUID like `2be2e978-9deb-494d-a2d1-e07e121d5ba0`. Execute the following `PUT` request to update the algorithm's settings, using this UUID to replace `ENV_ID`.
+To migrate a legacy R algorithm, [get the environment ID value](/model-deployment/environments#listing-algorithm-environments-rest) for a valid R 3.6 algorithm environment. Note that in the sample code at the link provided, you'll use the string `r36`, as appropriate, to replace `ALGO_LANG` to list the available environments. The environment ID will be a UUID like `2be2e978-9deb-494d-a2d1-e07e121d5ba0`. Execute the following `PUT` request to update the algorithm's settings, using this UUID to replace `ENV_ID`.
 
 **REST request**
 

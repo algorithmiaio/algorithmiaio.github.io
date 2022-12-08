@@ -53,7 +53,7 @@ The algorithm runtime environment you select should match up as closely as possi
 
 ## View currently available environments
 
-Below is a list of available environments that we've created and that can be made available to you to upon request. Once we provide you with the requested environment, you'll be able to [install it on your cluster](/developers/administration/admin-panel/algorithm-environments/#installing-environments) so that your users can select it when they create new algorithms. For steps on how to list the environments available on your cluster for each particular language, see [List languages and environments and download algorithm template files](#list-languages-and-environments-and-download-algorithm-template-files).
+Below is a list of available environments that we've created and that can be made available to you to upon request. Once we provide you with the requested environment, you'll be able to [install it on your cluster](/administration/admin-panel/algorithm-environments/#installing-environments) so that your users can select it when they create new algorithms. For steps on how to list the environments available on your cluster for each particular language, see [List languages and environments and download algorithm template files](#list-languages-and-environments-and-download-algorithm-template-files).
 
 ### Environments available on all clusters
 
@@ -185,7 +185,7 @@ To list languages and environments programmatically, you can use REST requests a
 
 #### Listing algorithm languages (REST)
 
-To list the languages available on your cluster, run the command below, substituting `AUTH_TOKEN` with an authentication token for any account on the cluster. Either specify `Simple` and provide an [API key](https://algorithmia.com/developers/platform/customizing-api-keys) or specify `Bearer` and provide a [JSON Web Token (JWT)](https://algorithmia.com/developers/platform/jwt-authentication). For example, in the code below, for `-H 'Authorization: Simple|Bearer AUTH_TOKEN'` you'd use one or the other of the following commands, replacing the placeholders as appropriate:
+To list the languages available on your cluster, run the command below, substituting `AUTH_TOKEN` with an authentication token for any account on the cluster. Either specify `Simple` and provide an [API key](https://algorithmiaio.github.io/platform/customizing-api-keys) or specify `Bearer` and provide a [JSON Web Token (JWT)](https://algorithmiaio.github.io/platform/jwt-authentication). For example, in the code below, for `-H 'Authorization: Simple|Bearer AUTH_TOKEN'` you'd use one or the other of the following commands, replacing the placeholders as appropriate:
 
 *   *   `'-H Authorization: Simple ADMIN_API_KEY'`
     *   `'-H Authorization: Bearer JSON_WEB_TOKEN'`

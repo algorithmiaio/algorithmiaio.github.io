@@ -13,4 +13,4 @@ The GPU Usage page displays a table listing which algorithms are assigned to whi
 
 To revert the table to the default sort order and update the table values, click the refresh icon at the top-right corner of the table.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1617984218616.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1617984218616.png)

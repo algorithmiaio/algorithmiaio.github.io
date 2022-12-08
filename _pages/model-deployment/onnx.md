@@ -78,7 +78,7 @@ from PIL import Image
 import onnxruntime
 
 # API calls will begin at the apply() method, with the request body passed as 'input'
-# For more details, see algorithmia.com/developers/algorithm-development/languages
+# For more details, see algorithmia.com/algorithm-development/languages
 
 SIMD_ALGO = "util/SmartImageDownloader/0.2.14"
 

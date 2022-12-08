@@ -27,7 +27,7 @@ We'll begin by looking at a basic Python algorithm that implements the `predict_
 
 First, you must instantiate a `client` object to handle the request. Note that if you're running [Algorithmia Enterprise](/enterprise), you'll want to specify the API endpoint when you create the client object.
 
-In this example, the trained model `credit_model.pkl` is saved in a [hosted data collection](/developers/data/hosted) on Algorithmia, but it could be loaded from a [data source](/developers/data) outside of Algorithmia as well. In this example, the `COLLECTION_OWNER` string must match the account name (i.e., username) associated with the API key calling the algorithm, and the `COLLECTION_NAME` string must match the name of the hosted data collection.
+In this example, the trained model `credit_model.pkl` is saved in a [hosted data collection](/data/hosted) on Algorithmia, but it could be loaded from a [data source](/data) outside of Algorithmia as well. In this example, the `COLLECTION_OWNER` string must match the account name (i.e., username) associated with the API key calling the algorithm, and the `COLLECTION_NAME` string must match the name of the hosted data collection.
 
 {% highlight python %}
 import Algorithmia
@@ -80,6 +80,6 @@ def apply(input):
 
 Once you’ve connected your algorithm to Arthur's platform and published it, all executions of that specific version of your algorithm will send inference data to Arthur.
 
-In addition to Arthur, Algorithmia has other model monitoring and observability capabilities. If you're using Algorithmia Enterprise, you have access to an admin panel where you can view usage metrics at the cluster, user account, and algorithm level. See the [Platform Usage Reporting](/developers/algorithmia-enterprise/usage-metrics) page for more information. You can also opt in to Algorithmia Insights in your algorithms, enabling you to publish your inference data to a Kafka topic which you can then subscribe to from external observability platforms. See [Algorithmia Insights](/developers/algorithmia-enterprise/algorithmia-insights) for more information.
+In addition to Arthur, Algorithmia has other model monitoring and observability capabilities. If you're using Algorithmia Enterprise, you have access to an admin panel where you can view usage metrics at the cluster, user account, and algorithm level. See the [Platform Usage Reporting](/algorithmia-enterprise/usage-metrics) page for more information. You can also opt in to Algorithmia Insights in your algorithms, enabling you to publish your inference data to a Kafka topic which you can then subscribe to from external observability platforms. See [Algorithmia Insights](/algorithmia-enterprise/algorithmia-insights) for more information.
 
 If you're new to Algorithmia and would like to learn more about our product and model monitoring capabilities, please [contact our sales team](https://info.algorithmia.com/contact-sales). We'd love to hear from you!

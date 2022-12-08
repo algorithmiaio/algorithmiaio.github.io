@@ -4,7 +4,7 @@ layout: article
 title: Governance Reporting
 ---
 
-Beginning in Algorithmia version 20.5.57, the **Governance Reporting** page provides you with granular reporting capabilities, enabling you to view organization-owned algorithm resource usage at the cluster, organization, and algorithm level. For additional details, see the page documentation [user-facing Governance Reporting features](/developers/platform/advanced-governance-reporting).
+Beginning in Algorithmia version 20.5.57, the **Governance Reporting** page provides you with granular reporting capabilities, enabling you to view organization-owned algorithm resource usage at the cluster, organization, and algorithm level. For additional details, see the page documentation [user-facing Governance Reporting features](/platform/advanced-governance-reporting).
 
 ## Setting cost rates
 
@@ -12,7 +12,7 @@ In order for you to see estimated costs for resource usage, you must first set t
 
 To view current cost rates, click on the **Resource Cost Rates** dropdown in the upper-right corner.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1623360789374.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1623360789374.png)
 
 To set the cost rates for the first time, or to modify the current values, click on the **Edit Values** button in the dropdown.
 
@@ -23,7 +23,7 @@ Cost rates can be specified to the ten thousandth of a cost unit (i.e., 0.0001).
 *   Algorithmia-hosted data transfer (cost / GiB)
 *   Externally hosted (through data connector) data transfer (cost / GiB)
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1623360962360.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1623360962360.png)
 
 ## Pulling and viewing usage data
 
@@ -33,9 +33,9 @@ As a cluster admin, you have access to all information captured within the platf
 
 The first dropdown enables you to select a time range for which you'd like to pull and display usage data. You can select a predefined time duration from the present or a recent month, or you can specify specify a custom date range as shown in the screenshots below.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1623361669450.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1623361669450.png)
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1623361713877.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1623361713877.png)
 
 <span style="font-family: inherit; font-size: 1em;">Note that cluster-wide usage data is only aggregated once per day. This means that the aggregated data has day-level granularity, from midnight to midnight as indicated in the screenshot above.</span>
 
@@ -43,13 +43,13 @@ The first dropdown enables you to select a time range for which you'd like to pu
 
 In the second dropdown, you can select the level at which you'd like the data to be grouped. The following screenshot shows the algorithm-level view.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1623361562447.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1623361562447.png)
 
 ### Selecting a metric
 
-In the third dropdown you can select the metric for which you'd like to view data; the metrics available are displayed in the screenshot below, and more information about these metrics is available in the [user-facing Governance Reporting feature docs](/developers/platform/advanced-governance-reporting#metrics).
+In the third dropdown you can select the metric for which you'd like to view data; the metrics available are displayed in the screenshot below, and more information about these metrics is available in the [user-facing Governance Reporting feature docs](/platform/advanced-governance-reporting#metrics).
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1623361756199.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1623361756199.png)
 
 ### Sorting and exporting data
 

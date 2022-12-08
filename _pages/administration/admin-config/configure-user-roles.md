@@ -17,11 +17,11 @@ Beginning in Algorithmia version 21.1.1-1, the "cluster viewer" role can be assi
 
 The screenshots below are provided as an example to demonstrate the difference between the functionality available to a normal admin and that available to an admin with the cluster viewer role assigned. When a normal admin navigates to the Secret Store page in the admin panel, they have the ability to take actions (e.g., create, update, delete) on secret providers.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1629302657998.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1629302657998.png)
 
 An admin with the cluster viewer role assigned, however, only has viewing permissions.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1629302738308.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1629302738308.png)
 
 ### Adding the cluster viewer role to a user account
 

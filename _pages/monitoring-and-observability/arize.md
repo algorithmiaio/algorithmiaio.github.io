@@ -116,7 +116,7 @@ shap_values = get_shap_values(clf, X, show_graph=True)
 
 You can use the following code to upload your model to a hosted data collection on Algorithmia, without ever leaving your training environment. Note that if you're running [Algorithmia Enterprise](/enterprise), you'll need to specify the API endpoint `CLUSTER_DOMAIN` when you create the Algorithmia `client` object; if not, delete the references to this variable.
 
-You'll need to replace the `COLLECTION_OWNER` string with the name of the user or org account that owns the data collection. You'll upload your model to that data collection and in your algorithm source code you'll replace the `COLLECTION_NAME` string with the name of that data collection. The Algorithmia API key you're using must have write access to this data collection. See our [Hosted Data](/developers/data/hosted) docs for information about how to use hosted data collections.
+You'll need to replace the `COLLECTION_OWNER` string with the name of the user or org account that owns the data collection. You'll upload your model to that data collection and in your algorithm source code you'll replace the `COLLECTION_NAME` string with the name of that data collection. The Algorithmia API key you're using must have write access to this data collection. See our [Hosted Data](/data/hosted) docs for information about how to use hosted data collections.
 
 Finally, this code assumes that you've set the `ALGORITHMIA_API_KEY` environment variable to the value of your Algorithmia API key.
 
@@ -146,11 +146,11 @@ The following represents the algorithm code that you would deploy on Algorithmia
 
 ### Create an algorithm
 
-To begin, on Algorithmia you'll need to [create an algorithm](/developers/algorithm-development/your-first-algo) using an environment with Python 3.6 or later.
+To begin, on Algorithmia you'll need to [create an algorithm](/algorithm-development/your-first-algo) using an environment with Python 3.6 or later.
 
 ### Set Arize secrets in the Secret Store
 
-In order to log metrics to Arize, you'll need a pair of Arize API keys, which are accessible through the [Arize Settings](https://app.arize.com/admin) page. In your newly create algorithm profile's **Settings** tab, set `ARIZE_API_KEY` and `ARIZE_ORG_KEY` as secrets so that they'll be made accessible to the algorithm as environment variables. For more information on how to set secret values, see our [Secret Store](/developers/platform/secret-store) documentation.
+In order to log metrics to Arize, you'll need a pair of Arize API keys, which are accessible through the [Arize Settings](https://app.arize.com/admin) page. In your newly create algorithm profile's **Settings** tab, set `ARIZE_API_KEY` and `ARIZE_ORG_KEY` as secrets so that they'll be made accessible to the algorithm as environment variables. For more information on how to set secret values, see our [Secret Store](/platform/secret-store) documentation.
 
 ### Define the algorithm's requirements
 
@@ -247,7 +247,7 @@ The following code is intended to show how you'd call the algorithm for inferenc
 
 Once you've built your algorithm, you can call it using its hash version to test it out; this will be a value like `f35025657bdc37eb0d6ffeed62b0539ee21c8b4e`. If you build your algorithm in the Algorithmia Web IDE, this hash is displayed in the test console output upon successful build completion, but it's also available in the "Builds" tab on the algorithm's homepage. You can also publish the algorithm, in which case you'll be able to call the algorithm using a semantic version such as `1.0.0`.
 
-In the code below, substitute the appropriate strings for `ALGO_OWNER` (the user or org account under which the algorithm was created), `ALGO_NAME` (the name of the algorithm), and `ALGO_VERSION` (the hash version or semantic version described above). As in the code above when you originally uploaded your model to Algorithmia, the `CLUSTER_DOMAIN` variable should be deleted if you aren't using an Enterprise cluster. The optional `timeout` parameter can be used to specify the [timeout](/developers/api/?python#invoke-an-algorithm) for the call, in seconds.
+In the code below, substitute the appropriate strings for `ALGO_OWNER` (the user or org account under which the algorithm was created), `ALGO_NAME` (the name of the algorithm), and `ALGO_VERSION` (the hash version or semantic version described above). As in the code above when you originally uploaded your model to Algorithmia, the `CLUSTER_DOMAIN` variable should be deleted if you aren't using an Enterprise cluster. The optional `timeout` parameter can be used to specify the [timeout](/api/?python#invoke-an-algorithm) for the call, in seconds.
 
 ```python
 import Algorithmia
@@ -276,6 +276,6 @@ result = pd.read_json(result_json)
 
 Once you’ve incorporated these Arize logging methods and published your algorithm, every execution of your algorithm will send data to Arize.
 
-In addition to this integration with Arize, we integrate with other platforms, including training platforms and other monitoring and observability platforms; see our [Integrations](/developers/integrations#monitoring-and-observability) page for information.
+In addition to this integration with Arize, we integrate with other platforms, including training platforms and other monitoring and observability platforms; see our [Integrations](/integrations#monitoring-and-observability) page for information.
 
-If you're using Algorithmia Enterprise, you have access to an admin panel where you can view usage metrics at the cluster, user account, and algorithm level. See the [Advanced Governance Reporting](/developers/platform/advanced-governance-reporting) docs for more information. You can also opt in to our Insights feature in your algorithms, which enables you to publish your inference data to a Kafka topic which you can then subscribe to from external observability platforms. See [Algorithmia Insights](/developers/integrations/insights) for more information.
+If you're using Algorithmia Enterprise, you have access to an admin panel where you can view usage metrics at the cluster, user account, and algorithm level. See the [Advanced Governance Reporting](/platform/advanced-governance-reporting) docs for more information. You can also opt in to our Insights feature in your algorithms, which enables you to publish your inference data to a Kafka topic which you can then subscribe to from external observability platforms. See [Algorithmia Insights](/integrations/insights) for more information.

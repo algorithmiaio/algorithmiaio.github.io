@@ -48,17 +48,17 @@ The **Constellation** page in the admin panel provides functionality for selecti
 
 On the **Constellation** page you'll see a list of existing satellites.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1626914678968.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1626914678968.png)
 
 To configure a new satellite of algorithms, click on the **New satellite** button. In the modal, provide a **Satellite name**.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1624479366286.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1624479366286.png)
 
 #### Adding algorithms to a satellite
 
 Next, you can add algorithms by clicking the **Add an algorithm** button, and another modal will pop up for adding your algorithm information.
 
-**Note that you'll need to have an [Admin API key](f/developers/platform/customizing-api-keys#admin-api-keys) configured in your account in order to add algorithms.**
+**Note that you'll need to have an [Admin API key](f/platform/customizing-api-keys#admin-api-keys) configured in your account in order to add algorithms.**
 
 In the **Algorithm** field you'll provide the name of the account or organization that owns the algorithm, the name of the algorithm, and the algorithm version hash (SHA-1), in the format `ALGO_OWNER/ALGO_NAME/ALGO_VERSION_HASH`.
 
@@ -66,11 +66,11 @@ In the **Algorithm vanity URL** field, supply a unique URL to associate with you
 
 In the **Replica count** field, configure the number of algorithm replicas for the satellite.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1626914547827.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1626914547827.png)
 
 Click **Add algorithm** and you'll see the algorithm added to the **Algorithms** section.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1626914629869.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1626914629869.png)
 
 Once you've filled out the **Satellite name** and added the algorithms that'll be connected to the satellite, click **Create satellite**. You'll be sent back to the **Constellation** admin page, where your newly created satellite should now be visible.
 
@@ -78,17 +78,17 @@ Once you've filled out the **Satellite name** and added the algorithms that'll b
 
 Click on the name of an existing satellite from the Constellation admin page. On the satellite details page, you'll have the ability to [edit the algorithms in the satellite](#editing-a-satellites-algorithms), [create a new launch instance](#creating-a-new-launch-instance), and [remove a launch instance](#deleting-a-launch-instance).
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1624484478899.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1624484478899.png)
 
 #### Editing a satellite's algorithms
 
 To edit the list of algorithms associated with an existing satellite, click on the **gear icon** at the upper-right corner of the screen or click on the **Algorithms** tab and then the **Edit algorithms** button.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1624485460383.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1624485460383.png)
 
 A form titled **Edit satellite** will open. The satellite's current algorithms will be listed. You can remove existing algorithms from the satellite using the **X** button to the right of an algorithm. You can add algorithms by clicking the **Add an algorithm** button and a new window will pop up for you to specify which algorithm you'd like to add. The fields to fill out are identical to those described in the [Adding algorithms to a satellite](#adding-algorithms-to-a-satellite) section above.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1624479893421.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1624479893421.png)
 
 Click the **Save changes** button, and your satellite will be updated. Back in the satellite details page, you'll be able to view the new algorithms under the **Algorithms** tab.
 
@@ -99,7 +99,7 @@ Note that editing algorithms for a satellite will increment the latest satellite
 To create a new launch instance, click on the **New launch instance** button.
 Select the **Satellite version** for your new launch instance, and provide an **Instance name** and **Description**. Click **Create launch instance** and you should see your new launch instance under the **Launch instances** tab.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1624485185460.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1624485185460.png)
 
 ### Editing a launch instance
 
@@ -109,7 +109,7 @@ Click **Edit Launch Instance** and a window will pop up that'll allow you to edi
 
 Note that updating launch instance configuration details won't automatically update any deployed instances. To do this, you'll need to re-launch those instances with the new configuration. The command to do this is provided in the upper-right corner of the sidesheet, and its usage is demonstrated in the [Satellite deployment](#satellite-deployment) section below.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1624480231841.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1624480231841.png)
 
 ### Removing a launch instance
 
@@ -121,7 +121,7 @@ Note that removing a launch instance will not delete the launched instance; it'l
 
 ## Satellite deployment
 
-Once a satellite has been [configured in the mothership UI](#configuring-a-satellite-deployment) as indicated above, it must be deployed to a Kubernetes cluster. See [Configuring Azure Kubernetes Service (AKS)](/developers/administration/admin-config/configure-aks/) or [Configuring Amazon Elastic Kubernetes Service (EKS)](/developers/administration/admin-config/configure-eks/) for provider-specific Kubernetes configuration details. To summarize, the following are required:
+Once a satellite has been [configured in the mothership UI](#configuring-a-satellite-deployment) as indicated above, it must be deployed to a Kubernetes cluster. See [Configuring Azure Kubernetes Service (AKS)](/administration/admin-config/configure-aks/) or [Configuring Amazon Elastic Kubernetes Service (EKS)](/administration/admin-config/configure-eks/) for provider-specific Kubernetes configuration details. To summarize, the following are required:
 
 *   A **target** <span style="font-family: inherit; font-size: 1em;">**Kubernetes cluster**, where you must:</span>
     *   Be running Kubernetes 1.18.x
@@ -130,7 +130,7 @@ Once a satellite has been [configured in the mothership UI](#configuring-a-satel
     *   Provision adequate pod space to run all pods for the satellite (5 pods for the system + N pods for your algorithms based on the number of replicas)
     *   [Enable application ingress](#kubernetes-configuration) for the environment as described below
 *   A **target kubernetes namespace** within that cluster, in which objects will be created; this references below as `NAMESPACE`
-*   A **kubeconfig** <span style="font-family: inherit; font-size: 1em;">file that can be used to access and create resources within that cluster; see [Connecting to an AKS cluster](/developers/administration/admin-config/configure-aks/#connecting-to-an-aks-cluster) for instructions on how to obtain this using the</span> Azure CLI
+*   A **kubeconfig** <span style="font-family: inherit; font-size: 1em;">file that can be used to access and create resources within that cluster; see [Connecting to an AKS cluster](/administration/admin-config/configure-aks/#connecting-to-an-aks-cluster) for instructions on how to obtain this using the</span> Azure CLI
 *   A private **docker container registry** (and **login credentials**) to which images needed for the satellite can be pushed during installation, and from which images will be pulled during cluster operation
 
 Once the above configuration is in place, you must launch a codex-install container (version >= 1.10.4).
@@ -146,7 +146,7 @@ Once the above configuration is in place, you must launch a codex-install contai
 
 *   <span style="font-weight: 400;">Identify the **Satellite ID** and **Launch ID** you want to deploy using the [Constellation admin page](#satellite-configuration)</span><span style="font-weight: 400;">. Click on the name of an existing satellite; the values are displayed as in the screenshot below.</span>
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1624487644396.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1624487644396.png)
 
 *   <span style="font-weight: 400;">Using the ID values from above, run the command below. This will download artifacts like Docker images and a plan file that’ll be needed later, and store them in </span>the directory `/home/algo/deployment/current/satellite/SATELLITE_ID/LAUNCH_ID`. These files can be quite large, so the download process may take some time. Note that you'll need to run this and subsequent commands from a machine that has network access to the target Kubernetes cluster, so you may need to copy these files onto a machine that has such network access.
 
@@ -211,7 +211,7 @@ At this point, Kubernetes resources should be created, but you may need to confi
 
 ## Kubernetes configuration
 
-For detailed guides on how to configure Kubernetes with appropriate network access for use with Constellation Distributed Serving, please see the respective pages for [Azure Kubernetes Service (AKS)](/developers/administration/admin-config/configure-aks) and [Amazon Elastic Kubernetes Service (EKS)](/developers/administration/admin-config/configure-eks/).
+For detailed guides on how to configure Kubernetes with appropriate network access for use with Constellation Distributed Serving, please see the respective pages for [Azure Kubernetes Service (AKS)](/administration/admin-config/configure-aks) and [Amazon Elastic Kubernetes Service (EKS)](/administration/admin-config/configure-eks/).
 
 ## FAQ
 

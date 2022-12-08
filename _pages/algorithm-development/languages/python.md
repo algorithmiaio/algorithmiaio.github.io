@@ -41,7 +41,7 @@ Optionally, an algorithm can also have a `load()` function, where you can prepar
 
 Algorithms must also contain a call to the handler function with your `apply()` and optional `load()` function as inputs. This will convert the project into an executable, rather than a library, which interacts with the `langserver` service on Algorithmia while also being debuggable via `stdin`/`stdout` when executed outside of the Algorithmia platform. An `init()` function starts the algorithm and allows you to provide an input for use when the algorithm is executed locally, bypassing `stdin` parsing and simplifying debugging by alleviating the need to execute your code on the Algorithmia platform. You can also step through your algorithm in your IDE of choice by executing your `src/Algorithm.py` script.
 
-If youre a PyCharm user, you can refer to [this guide](https://algorithmia.com/developers/algorithm-development/advanced-algorithm-development/pycharm) to set up your IDE.
+If youre a PyCharm user, you can refer to [this guide](https://algorithmiaio.github.io/algorithm-development/advanced-algorithm-development/pycharm) to set up your IDE.
 {: .notice-info}
 
 Let's look at an example to clarify some of these concepts.
@@ -91,7 +91,7 @@ If a failure occurs while executing the `load()` function, the platform will rai
 
 ## Available libraries
 
-In addition to your own code in `src/Algorithm.py`, Algorithmia makes a number of libraries available to make algorithm development easier. We support multiple versions of Python and a variety of frameworks, and we continue to add new variants and broaden GPU support. A complete list of predefined environments can be found on the [Environment Matrix](/developers/algorithm-development/environments/) page, and are available through the "Environment" drop-down when creating a new algorithm.
+In addition to your own code in `src/Algorithm.py`, Algorithmia makes a number of libraries available to make algorithm development easier. We support multiple versions of Python and a variety of frameworks, and we continue to add new variants and broaden GPU support. A complete list of predefined environments can be found on the [Environment Matrix](/algorithm-development/environments/) page, and are available through the "Environment" drop-down when creating a new algorithm.
 
 <img src="{{site.cdnurl}}{{site.baseurl}}/images/post_images/algo_dev_lang/env_dropdown_python.png" alt="Algorithm creation modal, Environment drop-down" class="screenshot">
 
@@ -161,7 +161,7 @@ If we were to run this code as part of our algorithm, we should see the minimum 
 
 This next code snippet shows how to create an algorithm that works with a data file stored in a [Hosted Data Collection]({{site.baseurl}}/data/hosted) on Algorithmia.
 
-Files stored in [Hosted Data]({{site.baseurl}}/data/hosted) must be transferred into the algorithm before use, via the [getFile](https://algorithmia.com/developers/api/?python#files) method. Alternately, their contents can be transferred using [getString, getJson, or getBytes](https://algorithmia.com/developers/api/?python#files).
+Files stored in [Hosted Data]({{site.baseurl}}/data/hosted) must be transferred into the algorithm before use, via the [getFile](https://algorithmiaio.github.io/api/?python#files) method. Alternately, their contents can be transferred using [getString, getJson, or getBytes](https://algorithmiaio.github.io/api/?python#files).
 {: .notice-warning}
 
 In this example we'll provide a Data URI for the file as the input to our algorithm. We can then make use of the Algorithmia Python Client to retrieve the contents of the file, split that text into sentences, and then split the sentences into words.
@@ -223,7 +223,7 @@ client.file(file_uri).putFile(tempfile)
 
 ## Calling other algorithms
 
-To call other algorithms from your algorithm you can use the <a href="{{site.baseurl}}/clients/python">Algorithmia Python Client</a>, which is automatically available to any algorithm you create on the Algorithmia platform. For more information on calling algorithms, you can refer to the [Python Client Guide](https://algorithmia.com/developers/clients/python#calling-an-algorithm).
+To call other algorithms from your algorithm you can use the <a href="{{site.baseurl}}/clients/python">Algorithmia Python Client</a>, which is automatically available to any algorithm you create on the Algorithmia platform. For more information on calling algorithms, you can refer to the [Python Client Guide](https://algorithmiaio.github.io/clients/python#calling-an-algorithm).
 
 You may call up to {{site.data.stats.platform.max_num_parallel_algo_requests}} other algorithms, either in parallel or recursively.
 

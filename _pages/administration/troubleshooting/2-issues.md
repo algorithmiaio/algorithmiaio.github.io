@@ -12,7 +12,7 @@ As a workaround to passing in non-serializable payloads, you can upload/download
 
 ## Timeouts
 
-When you make an algorithm execution request, the timeout defaults to 5 min (300 s) if the `timeout` parameter isn’t specified. If your algorithm is timing out with this default duration, you can increase the timeout up to a maximum of 50 min (3000 s); [see the docs](/developers/clients) for the language client you're using for the exact syntax you'll use to change the timeout. For example, using cURL, you'd add `?timeout=3000` to the end of the request URL.
+When you make an algorithm execution request, the timeout defaults to 5 min (300 s) if the `timeout` parameter isn’t specified. If your algorithm is timing out with this default duration, you can increase the timeout up to a maximum of 50 min (3000 s); [see the docs](/clients) for the language client you're using for the exact syntax you'll use to change the timeout. For example, using cURL, you'd add `?timeout=3000` to the end of the request URL.
 
 If you increase the timeout and the algorithm still isn't returning within the allotted time limit, you can add some simple profiling logic to find out where the algorithm is spending most of its time. For a Python algorithm, for example, try using the snippet below to print the duration of time that the algorithm spends in a specific section of code.
 
@@ -44,7 +44,7 @@ print(f"Total execution time was {metadata.duration} seconds.")
 
 </div>
 
-If algorithm execution doesn't complete in 50 min on the Algorithmia platform but the code executes in less than 50 min locally, check the algorithm’s [errors tab](https://algorithmia.com/developers/platform/algorithm-profile#errors) to see whether the algorithm is throwing some sort of exception. You can also [view the Grafana dashboard](/developers/administration/admin-panel/dashboard) to see operational status and metrics, including execution times, queue wait times, etc.
+If algorithm execution doesn't complete in 50 min on the Algorithmia platform but the code executes in less than 50 min locally, check the algorithm’s [errors tab](https://algorithmiaio.github.io/platform/algorithm-profile#errors) to see whether the algorithm is throwing some sort of exception. You can also [view the Grafana dashboard](/administration/admin-panel/dashboard) to see operational status and metrics, including execution times, queue wait times, etc.
 
 ## Authentication, Authorization, and Resource Access
 
@@ -54,14 +54,14 @@ Listed below are some of the most common considerations that can help with troub
 
 ### API key type
 
-*   Is it a [standard API key](https://algorithmia.com/developers/glossary#standard-api-key)?
-*   Is it an [admin API key](https://algorithmia.com/developers/glossary#admin-api-key)?
+*   Is it a [standard API key](https://algorithmiaio.github.io/glossary#standard-api-key)?
+*   Is it an [admin API key](https://algorithmiaio.github.io/glossary#admin-api-key)?
 
 On Algorithmia, all API keys associated with non-admin accounts are standard API keys. These keys have access to APIs like building, publishing, and executing algorithms, and accessing data.
 
 In addition to standard API keys, cluster admin accounts can have admin API keys, which have access to user- and org-management APIs and other APIs that provide functionality only available through the [admin panel](/exploring-the-admin-panel/687271).
 
-For more information on which types of API keys can access which of Algorithmia's APIs, see our [API docs](https://algorithmia.com/developers/api).
+For more information on which types of API keys can access which of Algorithmia's APIs, see our [API docs](https://algorithmiaio.github.io/api).
 
 ### API key ownership
 

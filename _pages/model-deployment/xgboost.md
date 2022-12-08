@@ -190,7 +190,7 @@ pip install algorithmia
 ```
 For more information on using the Python Client you can go to the [Algorithmia API docs](http://docs.algorithmia.com/?python#).
 
-For this example, we will also use some utility functions defined on our [Algorithmia utility script here](https://github.com/algorithmiaio/model-deployment/blob/master/xgboost_notebook_to_algorithmia/algorithmia_utils.py) This script encapsulates the related calls to Algorithmia, through its [Python API](https://algorithmia.com/developers/clients/python). 
+For this example, we will also use some utility functions defined on our [Algorithmia utility script here](https://github.com/algorithmiaio/model-deployment/blob/master/xgboost_notebook_to_algorithmia/algorithmia_utils.py) This script encapsulates the related calls to Algorithmia, through its [Python API](https://algorithmiaio.github.io/clients/python). 
 
 You can import both of these packages as follows:
 
@@ -274,7 +274,7 @@ model_file = client.file(model_path).getFile().name
 loaded_xgb = joblib.load(model_file)
 
 # API calls will begin at the apply() method, with the request body passed as 'input'
-# For more details, see algorithmia.com/developers/algorithm-development/languages
+# For more details, see algorithmia.com/algorithm-development/languages
 def apply(input):
     series_input = pd.Series([input])
     result = loaded_xgb.predict(series_input)

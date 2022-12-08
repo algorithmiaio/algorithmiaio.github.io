@@ -56,7 +56,7 @@ Algorithmia Teams Basic tier offers a basic level of support. For any support re
 
 For documentation and guides for using the service our comprehensive online documentation repositories are an excellent source of information. These include,
 
-* The [Teams guide](/developers/teams), which is a good starting place to familiarize with the basics
+* The [Teams guide](/teams), which is a good starting place to familiarize with the basics
 * Our [Developer Center](/developers) provides a greater depth and includes information to deploy models, client guides, create algorithms, data source guides, and more
 * For interruptions in service please visit [Algorithmia’s status page](https://status.algorithmia.com/) for more information.
 

@@ -11,7 +11,7 @@ You can query Algorithmia's API to retrieve error-log stack traces for a given a
 
 Note that in the code samples below, `AUTH_TOKEN` represents either:
 
-*   A standard (non-admin) API key with [Management Access](/developers/algorithm-development/algorithm-management) turned on, associated with the account that owns the algorithm or that's a member of the organization that owns the algorithm
+*   A standard (non-admin) API key with [Management Access](/algorithm-development/algorithm-management) turned on, associated with the account that owns the algorithm or that's a member of the organization that owns the algorithm
 *   A JSON Web Token (JWT) of a user who's a member of the org that owns the algorithm
 
 ## Retrieving error logs using algorithm owner and algorithm name

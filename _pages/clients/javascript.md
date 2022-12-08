@@ -20,7 +20,7 @@ title:  "Javascript"
 
 The Algorithmia JavaScript client provides a native interface for calling algorithms using the Algorithmia API.
 
-This guide will cover setting up the client, calling an algorithm using direct user input, and calling an algorithm that uses JSON as input. For complete details about the Algorithmia API, please refer to the [API Docs](/developers/api/).
+This guide will cover setting up the client, calling an algorithm using direct user input, and calling an algorithm that uses JSON as input. For complete details about the Algorithmia API, please refer to the [API Docs](/api/).
 
 The code in this guide can be run from the JavaScript console in your browser or used in your own scripts.
 
@@ -32,7 +32,7 @@ The JavaScript client can be downloaded from [https://algorithmia.com/v1/clients
 <script src="//algorithmia.com/v1/clients/js/algorithmia-0.2.1.js" type="text/javascript"></script>
 {% endhighlight %}
 
-To use the client you'll need an API key, which Algorithmia uses for fine-grained authentication across the platform. For this example, we'll use the `default-key` that was created along with your account, which has a broad set of permissions. Log in to Algorithmia and navigate to [Home](/user) > [API Keys](/user#credentials) to find your key, or read the [API keys documentation](/developers/platform/customizing-api-keys) for more information.
+To use the client you'll need an API key, which Algorithmia uses for fine-grained authentication across the platform. For this example, we'll use the `default-key` that was created along with your account, which has a broad set of permissions. Log in to Algorithmia and navigate to [Home](/user) > [API Keys](/user#credentials) to find your key, or read the [API keys documentation](/platform/customizing-api-keys) for more information.
 
 Once the client is included, you can instantiate the client object:
 
@@ -55,7 +55,7 @@ var client = Algorithmia.client("YOUR_API_KEY", "https://mylocalendpoint/v1/web/
 
 Algorithms take three basic types of input whether they are invoked directly through the API or by using a client library: strings, JSON, and binary data. In addition, individual algorithms might have their own I/O requirements, such as using different data types for input and output, or accepting multiple types of input, so consult the input and output sections of an algorithm's documentation for specifics.
 
-The first algorithm we'll call is a demo version of the algorithm used in the Algorithm Development [Getting Started](/developers/algorithm-development/your-first-algo) guide, which is available at [demo/Hello](/algorithms/demo/Hello). Looking at the [algorithm's documentation](/algorithms/demo/Hello/docs), it takes a string as input and returns a string.
+The first algorithm we'll call is a demo version of the algorithm used in the Algorithm Development [Getting Started](/algorithm-development/your-first-algo) guide, which is available at [demo/Hello](/algorithms/demo/Hello). Looking at the [algorithm's documentation](/algorithms/demo/Hello/docs), it takes a string as input and returns a string.
 
 In order to call an Algorithm from JavaScript, we need to first create an algorithm object. With the client already instantiated, we can run the following code to create an object:
 
@@ -124,13 +124,13 @@ client.algo("util/whoopsWrongAlgo").pipe("").then(function (output)
 //[Error] error: algorithm algo://util/whoopsWrongAlgo/ not found
 {% endhighlight %}
 
-You can read more about [Error Handling](/developers/algorithm-development/algorithm-errors) in the [Algorithm Development](/developers/algorithm-development) section of the dev center.
+You can read more about [Error Handling](/algorithm-development/algorithm-errors) in the [Algorithm Development](/algorithm-development) section of the dev center.
 
 ### Limits
 
 Your account can make up to {{site.data.stats.platform.max_num_algo_requests}} Algorithmia requests at the same time (this limit <a onclick="Intercom('show')">can be raised</a> if needed).
 
-Algorithm requests have a payload size limit of 10MB for input and 15MB for output. If you need to work with larger amounts of data, you can make use of the Algorithmia [Data API](/developers/api/#data).
+Algorithm requests have a payload size limit of 10MB for input and 15MB for output. If you need to work with larger amounts of data, you can make use of the Algorithmia [Data API](/api/#data).
 
 ### Working with files
 

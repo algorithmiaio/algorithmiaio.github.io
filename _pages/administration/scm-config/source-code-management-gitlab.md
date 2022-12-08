@@ -22,21 +22,21 @@ This page contains instructions for creating a GitLab configuration so that user
     *   write_repository
 7.  Click **Save application** at the bottom.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1620851257014.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1620851257014.png)
 
 Once created, click on the name of the new application in the list that appears at the bottom.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1620852145461.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1620852145461.png)
 
 The resulting page for the new application displays the configuration information that you specified above. If you need to modify this information, click the **Edit** (pencil icon) button.
 
 You'll need the **application ID** and **secret** values <span style="font-family: inherit; font-size: 1em;">displayed here for the next step when you create the SCM configuration within Algorithmia.</span>
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1620852231460.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1620852231460.png)
 
 ## Algorithmia setup
 
-Once you've created an application in GitLab as described above, log in to Algorithmia as a cluster admin and navigate to the [Source Code Management](/developers/administration/admin-panel/source-code-management) page from the admin panel. Click **Add SCM Configuration** and select GitLab from the drop-down.
+Once you've created an application in GitLab as described above, log in to Algorithmia as a cluster admin and navigate to the [Source Code Management](/administration/admin-panel/source-code-management) page from the admin panel. Click **Add SCM Configuration** and select GitLab from the drop-down.
 
 Enter the base website, API, and SSH endpoint URLs. The pre-filled values that appear are just placeholders, so you must actually enter the paths in each field even if you just want the defaults.
 
@@ -48,6 +48,6 @@ The **SSH URL** is the URL from which we'll attempt to pull source code from you
 
 Under the **OAuth information** section, enter the **application ID** and **secret** from the GitLab application configuration above and click **Create SCM Configuration**.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1621526819361.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1621526819361.png)
 
-Once you've created the configuration, it'll show up in the list of SCM configurations on the [Source Code Management](/developers/administration/admin-panel/source-code-management) page.
+Once you've created the configuration, it'll show up in the list of SCM configurations on the [Source Code Management](/administration/admin-panel/source-code-management) page.

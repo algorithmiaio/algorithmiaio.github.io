@@ -12,13 +12,13 @@ We've embedded several pertinent Grafana charts into the Dashboard page in your 
 
 Your Grafana dashboard can be found at `https://grafana.CLUSTER_DOMAIN`. For example, as shown in the second screenshot below, you'd insert `grafana.` after the protocol (`https://`) portion of your cluster's domain name. Note that your Grafana URL may not conform to this structure exactly; please contact your Customer Success Manager or Solutions Engineer if you are unable to access Grafana. Once you have access to your Grafana dashboard, you can configure custom reports and charts.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1616017938046.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1616017938046.png)
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1616100492876.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1616100492876.png)
 
 The full list of available dashboards can be found at the `/dashboards` endpoint of your Grafana page (i.e., `https://grafana.CLUSTER_DOMAIN/dashboards`). You can also access the list of dashboards through **Dashboards** → **Manage** on the left-hand navigation bar.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1624308936510.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1624308936510.png)
 
 ## Logging in to the embedded Grafana charts
 
@@ -35,7 +35,7 @@ This section displays information about your cluster's health and activity. The 
 *   **Pyrometer**: the health status of Algorithmia's metrics aggregation and synchronization service
 *   **Web-Server**: the number of healthy web servers
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1617388987603.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1617388987603.png)
 
 ### Capacity overview
 
@@ -45,7 +45,7 @@ Algorithmia scales worker node capacity in and out depending on cluster usage, a
 
 In the case that full capacity is reached across worker nodes and no more nodes are available to create because of the current cluster configuration settings, any subsequent API requests are queued at the scheduler. This manifests as latency, and the caller must wait until a slot is available to handle the request. For example, if the platform is configured so as not to scale past 5 worker nodes, and those 5 nodes are all at capacity executing algorithms, any subsequent requests are queued until one of the current jobs completes.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1553791200938.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1553791200938.png)
 
 Grafana dashboards can be accessed through **Admin** → **Metrics** | **Queue**. To view a specific dashboard, for example the "Algorithm Status" dashboard, you can search for it using the search box on the left-hand navigation bar.
 
@@ -53,12 +53,12 @@ Grafana dashboards can be accessed through **Admin** → **Metrics** | **Queue**
 
 There are a few ways to find the runner resource associated with an algorithm execution. If you can find the specific execution under **Admin** → **Algorithm Executions** in the Algorithmia browser UI, click on the entry and copy the first hexadecimal part of the string. In the example below where the algorithm replica name is `algorithm-runner-34961ca801-6b5686fd8f-nr7v4`, the resource hash would be the `34961ca801` part.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628549934477.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628549934477.png)
 
-If you can’t find it on the **Algorithm Executions** page, [search for the resource hash in Kibana](/developers/administration/admin-panel/logs#searching-for-an-algorithm-runners-resource-hash).
+If you can’t find it on the **Algorithm Executions** page, [search for the resource hash in Kibana](/administration/admin-panel/logs#searching-for-an-algorithm-runners-resource-hash).
 
 ## Check the algorithm status dashboard
 
 Once you've identified the resource hash as described above, enter it on the Algorithm Status dashboard and check the algorithm’s operational widgets.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628550602760.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628550602760.png)

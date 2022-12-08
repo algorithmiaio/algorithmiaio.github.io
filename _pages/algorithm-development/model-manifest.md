@@ -37,12 +37,12 @@ Below are schemas for model manifest file objects.
 #### Data file object schema
 
 `name` - The unique identifier for this particular file object; this ID is the reference you'll want to use when interacting with and manipulating a data file in your algorithm
-`source_uri` - An Algorithmia [data URI]((/developers/glossary/#data-uri)) (i.e., prefixed with `data://`, `s3://`, `gcp://`, etc.) that points to your model file; first make sure your account has access to the file at this location
+`source_uri` - An Algorithmia [data URI]((/glossary/#data-uri)) (i.e., prefixed with `data://`, `s3://`, `gcp://`, etc.) that points to your model file; first make sure your account has access to the file at this location
 `fail_on_tamper` - An optional boolean field that lets you define whether or not your algorithm should fail if the model manifest system detects that this file has been adjusted since the initial build
 
 ### Frozen manifest
 
-The model manifest isn't the whole story, however. In order to truly ensure that your model files haven't been altered, a new `freeze` command has been added to the [algo CLI](/developers/clients/cli).
+The model manifest isn't the whole story, however. In order to truly ensure that your model files haven't been altered, a new `freeze` command has been added to the [algo CLI](/clients/cli).
 
 If you're in your algorithm directory after `git clone`ing locally, simply type `algo freeze` to automatically generate a frozen model manifest file. This file will include `md5_checksum` elements for each file and a `lock-checksum` element for the manifest file. These hash values can then be used to detect tampering.
 
@@ -80,7 +80,7 @@ def load(model_data):
     return model, model_data.client
 ```
 
-With our overhauled [ADK system](/developers/algorithm-development/languages/python#what-is-an-algorithm-development-kit-adk), `load` functions now allow you to directly interact with and utilize model manifest objects without even needing to import them. No boiler plate needed—it's all handled automatically for you.
+With our overhauled [ADK system](/algorithm-development/languages/python#what-is-an-algorithm-development-kit-adk), `load` functions now allow you to directly interact with and utilize model manifest objects without even needing to import them. No boiler plate needed—it's all handled automatically for you.
 
 ```python
 from Algorithmia import ADK

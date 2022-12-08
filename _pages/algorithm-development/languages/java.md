@@ -130,7 +130,7 @@ You should see the value from the key returned in the console:
 
 This next code snippet shows how to create an algorithm working with a data file that a user has stored using Algorithmia's [Hosted Data Source]({{site.baseurl}}/data/hosted).
 
-Files stored in [Hosted Data]({{site.baseurl}}/data/hosted) must be transferred into the algorithm before use, via the [getFile](https://algorithmia.com/developers/api/?java#files) method. Alternately, their contents can be transferred using [getString, getJson, or getBytes](https://algorithmia.com/developers/api/?java#files).
+Files stored in [Hosted Data]({{site.baseurl}}/data/hosted) must be transferred into the algorithm before use, via the [getFile](https://algorithmiaio.github.io/api/?java#files) method. Alternately, their contents can be transferred using [getString, getJson, or getBytes](https://algorithmiaio.github.io/api/?java#files).
 {: .notice-warning}
 
 #### Prerequisites

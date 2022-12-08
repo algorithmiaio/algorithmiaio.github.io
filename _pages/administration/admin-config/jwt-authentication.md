@@ -60,19 +60,19 @@ Q9nOA' \
 -  Email and group claims can be configured; any other claim is ignored.
 -  If permission tags are configured on a system under a given claim for JWT and that claim is not contained in your JWT payload then an error will be thrown. Please note the claim will accept a single string or an array of strings for a single or multiple permission tags, respectively. An empty array will remove all permissions.
 
-![Example payload of a JWT](/developers/images/post_images/jwt-sync/jwt_payload.png)
+![Example payload of a JWT](/images/post_images/jwt-sync/jwt_payload.png)
 
 ## Creating a non-existing user
 
 If a valid JWT token is used and properly verified, the configured `username` field will be matched to an existing user's `external_id`. If no user with such an `external_id` exists, one will be created, and the `external_id` and `username` of the created user will match the values found in the token. If an `email` field is supplied under the configured key this will be filled in for the new user as well.
 
-![Example payload of a JWT](/developers/images/post_images/jwt-sync/jwt_payload.png)
+![Example payload of a JWT](/images/post_images/jwt-sync/jwt_payload.png)
 
 ## Changing a user's platform permissions
 
 If the permission tags found in a user's token match those that have been configured for cluster admin access, the user will be automatically promoted to the given role. For instance if the below token is supplied, and the cluster is configured to create cluster admins based off of the "superAdmin" tag, then a user will be made a cluster admin.
 
-![Example payload of a JWT](/developers/images/post_images/jwt-sync/jwt_payload.png)
+![Example payload of a JWT](/images/post_images/jwt-sync/jwt_payload.png)
 
 ## Changing a user's organization roles/membership
 
@@ -80,7 +80,7 @@ If the permission tags found in a user's token match those that have been config
 
 When creating or updating an organization, you can provide a list of “tags” which are used in the configured JWT claim field to signify which organizations the user is a member or admin of. Upon usage of the JWT, the system will automatically synchronize the user with the groups that share these tags. They can be comma delimited as shown below.
 
-![Example of creating organization with permission tags](/developers/images/post_images/jwt-sync/create_org_perm_tags.png)
+![Example of creating organization with permission tags](/images/post_images/jwt-sync/create_org_perm_tags.png)
 
 If a user shares a tag that is held in **External Admin Group**, they will become an admin of this group. If they share a tag that is held in **External Member Group**, they will become a member of this group. If they share both tags, they will be marked as an admin of this group.
 
@@ -88,4 +88,4 @@ If a user shares a tag that is held in **External Admin Group**, they will becom
 
 If the permission tags found in a user's token match those that have been configured for a given organization, then the user will be automatically added to the organization with the given role. For instance if the below token is supplied and the organization is configured to add members based off of the "memberTag1" tag, then the user will be made a member.
 
-![Example payload of a JWT](/developers/images/post_images/jwt-sync/jwt_payload.png)
+![Example payload of a JWT](/images/post_images/jwt-sync/jwt_payload.png)

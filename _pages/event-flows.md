@@ -23,13 +23,13 @@ Event Flows provides an easy way to establish secure connections from your Algor
 
 The following message brokers are currently supported natively:
 
-- [Apache Kafka](/developers/event-flows/apache-kafka) (available on all Enterprise clusters)
-- [Amazon Simple Queue Service (SQS)](/developers/event-flows/amazon-sqs/) (available on AWS-hosted Enterprise clusters)
-- [Azure Service Bus (SB)](/developers/event-flows/azure-sb/) (available on Azure-hosted Enterprise clusters)
+- [Apache Kafka](/event-flows/apache-kafka) (available on all Enterprise clusters)
+- [Amazon Simple Queue Service (SQS)](/event-flows/amazon-sqs/) (available on AWS-hosted Enterprise clusters)
+- [Azure Service Bus (SB)](/event-flows/azure-sb/) (available on Azure-hosted Enterprise clusters)
 
 As an integration-first platform, we also encourage the use of other messaging services that you may be using. Such services include but are not limited to:
 
-- [Azure Event Hubs (EH)](/developers/event-flows/azure-eh/) (available on all clusters via SDK)
+- [Azure Event Hubs (EH)](/event-flows/azure-eh/) (available on all clusters via SDK)
 
 These message brokers are categorized separately because their configuration and capabilities differ in Algorithmia's current implementation.
 
@@ -61,11 +61,11 @@ These configuration differences are summarized visually below. For details on ho
 
 ### Apache Kafka
 
-Algorithmia doesn't come provisioned with its own Kafka broker, so to [use Kafka with Event Flows](/developers/event-flows/apache-kafka), you must have access to a Kafka broker managed externally to the Algorithmia platform. This can be an existing broker that you're already using with other services, or a broker that you set up specifically for use with Algorithmia. Additionally, you may choose to configure the broker within your IT environment or externally, for example using a fully managed Kafka service.
+Algorithmia doesn't come provisioned with its own Kafka broker, so to [use Kafka with Event Flows](/event-flows/apache-kafka), you must have access to a Kafka broker managed externally to the Algorithmia platform. This can be an existing broker that you're already using with other services, or a broker that you set up specifically for use with Algorithmia. Additionally, you may choose to configure the broker within your IT environment or externally, for example using a fully managed Kafka service.
 
 Regardless of your exact Kafka configuration, the following three steps are required:
 
-1. A cluster admin must [create a broker connection](/developers/administration/admin-panel/broker-manager#creating-broker-connections) to an existing external Kafka broker. Note that with Event Flows, you can establish connections to multiple Kafka brokers from the same Algorithmia cluster.
+1. A cluster admin must [create a broker connection](/administration/admin-panel/broker-manager#creating-broker-connections) to an existing external Kafka broker. Note that with Event Flows, you can establish connections to multiple Kafka brokers from the same Algorithmia cluster.
 2. A cluster admin must "add" a specific algorithm to a specific topic on a connected broker to allow that algorithm to access that topic. Existing topics on connected brokers are listed automatically in the admin panel within the Algorithmia browser UI. Specifically, to enable algorithm access, the cluster admin must:
     1. Add the algorithm of interest to the desired topic.
     2. Select whether the algorithm of interest will publish messages to, or subscribe to messages from, the topic.
@@ -73,21 +73,21 @@ Regardless of your exact Kafka configuration, the following three steps are requ
 
 ### Amazon SQS / Azure SB
 
-To use [Amazon SQS](/developers/event-flows/amazon-sqs/) or [Azure SB](/developers/event-flows/azure-sb/) as a message broker to which algorithms will subscribe, simply connect the message broker under an algorithm profile's **Events** tab, specifying the relevant resource URIs and optionally a timeout duration. On the publisher side, you can use the corresponding SDK (linked in the table above) from within your algorithm source code.
+To use [Amazon SQS](/event-flows/amazon-sqs/) or [Azure SB](/event-flows/azure-sb/) as a message broker to which algorithms will subscribe, simply connect the message broker under an algorithm profile's **Events** tab, specifying the relevant resource URIs and optionally a timeout duration. On the publisher side, you can use the corresponding SDK (linked in the table above) from within your algorithm source code.
 
 ### Azure EH
 
-To use [Azure EH](/developers/event-flows/azure-eh/) as a message broker, you can use the official Event Hubs SDK (linked in the table above) from within your algorithm source code.
+To use [Azure EH](/event-flows/azure-eh/) as a message broker, you can use the official Event Hubs SDK (linked in the table above) from within your algorithm source code.
 
 ## FAQs
 
 **Q**: <em>How are the various message broker connections scoped? At the cluster level? At the account level? At the algorithm level?</em><br/>
-**A**: [Amazon SQS](/developers/event-flows/amazon-sqs/) and [Azure SB](/developers/event-flows/azure-sb/) broker connections are scoped at the algorithm level. They're configured through the **Events** tab on each algorithm's profile, and require no additional configuration on the part of the cluster admin. In contrast, [Apache Kafka](/developers/event-flows/apache-kafka) broker connections are created at the cluster level, but algorithms must still be granted access to publish or subscribe to broker topics at the individual algorithm level. Note that Kafka-based Event Flows must still be enabled at the algorithm level in the algorithm profile's **Events** tab, but the broker connection itself is scoped to the cluster. [Azure EH](/developers/event-flows/azure-eh/) broker connections are scoped at the algorithm level; beyond internet access, these connections require no additional configuration within the Algorithmia platform.
+**A**: [Amazon SQS](/event-flows/amazon-sqs/) and [Azure SB](/event-flows/azure-sb/) broker connections are scoped at the algorithm level. They're configured through the **Events** tab on each algorithm's profile, and require no additional configuration on the part of the cluster admin. In contrast, [Apache Kafka](/event-flows/apache-kafka) broker connections are created at the cluster level, but algorithms must still be granted access to publish or subscribe to broker topics at the individual algorithm level. Note that Kafka-based Event Flows must still be enabled at the algorithm level in the algorithm profile's **Events** tab, but the broker connection itself is scoped to the cluster. [Azure EH](/event-flows/azure-eh/) broker connections are scoped at the algorithm level; beyond internet access, these connections require no additional configuration within the Algorithmia platform.
 
 ---
 
 **Q**: <em>What sort of administrative controls do I have over the SQS queues being used with Event Flows?</em><br/>
-**A**: There are no administrative controls within the Algorithmia platform itself that enable you to to explicitly prohibit algorithms from subcribing to SQS queues. However, the configuration on the AWS side will dictate which SQS queues are reachable from algorithms on your cluster. If SQS queues are created in AWS accounts other than the AWS account running the Algorithmia instance, specific AWS-side configuration steps must be completed, meaning that algorithms can't connect to SQS queues in arbitrary AWS accounts. For a deep dive into understanding the various IAM configuration scenarios you might encounter when setting up Event Flows with SQS, see the [Amazon SQS message broker docs](/developers/event-flows/amazon-sqs#scenarios).
+**A**: There are no administrative controls within the Algorithmia platform itself that enable you to to explicitly prohibit algorithms from subcribing to SQS queues. However, the configuration on the AWS side will dictate which SQS queues are reachable from algorithms on your cluster. If SQS queues are created in AWS accounts other than the AWS account running the Algorithmia instance, specific AWS-side configuration steps must be completed, meaning that algorithms can't connect to SQS queues in arbitrary AWS accounts. For a deep dive into understanding the various IAM configuration scenarios you might encounter when setting up Event Flows with SQS, see the [Amazon SQS message broker docs](/event-flows/amazon-sqs#scenarios).
 
 ---
 
@@ -101,7 +101,7 @@ To use [Azure EH](/developers/event-flows/azure-eh/) as a message broker, you ca
 
 Note that the Algorithmia platform is only aware of native Event Flow configurations, so any message broker connections that are established via external SDKs from within an algorithm's source code won't be listed.
 
-You can use the first command below to get your user ID. Note that this endpoint requires an [admin API key](/developers/glossary/#admin-api-key) `ADMIN_API_KEY` and you'll need to replace `CLUSTER_DOMAIN` and `ACCOUNT_NAME` with your [cluster domain](/developers/glossary/#cluster-domain) and your [account](/developers/glossary/#account) name, respectively.
+You can use the first command below to get your user ID. Note that this endpoint requires an [admin API key](/glossary/#admin-api-key) `ADMIN_API_KEY` and you'll need to replace `CLUSTER_DOMAIN` and `ACCOUNT_NAME` with your [cluster domain](/glossary/#cluster-domain) and your [account](/glossary/#account) name, respectively.
 
 ###### Request
 ```shell
@@ -120,7 +120,7 @@ curl -X GET https://api.CLUSTER_DOMAIN/v1/users/ACCOUNT_NAME -H 'Authorization: 
 }
 ```
 
-You can use th `id` value from the response to replace `USER_ID` in the code below. Note that the command below requires a [standard (non-admin) API key](/developers/glossary/#standard-api-key).
+You can use th `id` value from the response to replace `USER_ID` in the code below. Note that the command below requires a [standard (non-admin) API key](/glossary/#standard-api-key).
 
 ###### Request
 ```shell

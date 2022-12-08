@@ -310,7 +310,7 @@ To begin, create another Python 3.x algorithm with a generic Python 3.7 algorith
 
 #### Store the connection string in the Secret Store
 
-On the newly created algorithm's profile, click the **Settings** tab and find the **Secret Store** section. Add a new secret called `CONNECTION_STR` with the contents of the connection string from the [SB message broker connection](#connect-to-an-sb-broker) step above. For more information on how to use the secret store, see the [Secret Store](/developers/platform/secret-store/) docs.
+On the newly created algorithm's profile, click the **Settings** tab and find the **Secret Store** section. Add a new secret called `CONNECTION_STR` with the contents of the connection string from the [SB message broker connection](#connect-to-an-sb-broker) step above. For more information on how to use the secret store, see the [Secret Store](/platform/secret-store/) docs.
 
 <img src="{{site.cdnurl}}{{site.baseurl}}/images/post_images/eventlisteners/secret-service-bus-namespace-connection-string.png">
 

@@ -243,7 +243,7 @@ describe('Request for asset file', () => {
 
   it('should return Cache-Control with max age set to one year', () => {
     return axios
-      .get('http://localhost:4000/developers/js/search.min.js')
+      .get('http://localhost:4000/js/search.min.js')
       .then(function (res) {
         expect(res.headers['cache-control']).to.equal(
           'public, max-age=31536000'

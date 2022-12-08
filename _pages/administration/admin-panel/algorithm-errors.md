@@ -16,17 +16,17 @@ For each error, the following information is displayed:
 *   **Error Type**: the type of error encountered (e.g., `AlgorithmError`, `SystemError`, `UnsupportedError`, `EntityNotFoundError`, etc.)
 *   **Error**: the error message itself (displayed in red below the error details)
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1608505004488.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1608505004488.png)
 
 Click the drop-down arrow to the right of an individual row to expose additional details and expanded stack trace information, including the request ID and worker node that handled the request.
 
-## ![Admin Panel - Error stack trace]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1608505148006.png)
+## ![Admin Panel - Error stack trace]({{site.url}}/images/post_images/algo-images-admin/algo-1608505148006.png)
 
 ## Sorting and filtering errors
 
 At the bottom-right corner of the table is a drop-down list of error types that can be used as a filter on the table. At the top-right corner of the table is a search box for filtering. These filters can be used individually or in tandem to constrain the error records returned.
 
-For more information on how to interpret Algorithmia-specific error types, see the [Errors docs](/developers/algorithm-development/algorithm-errors).
+For more information on how to interpret Algorithmia-specific error types, see the [Errors docs](/algorithm-development/algorithm-errors).
 
 ## Enabling user-facing errors
 
@@ -34,7 +34,7 @@ Beginning in Algorithmia version 20.5.57, cluster admins have the ability to ena
 
 _**Note that this feature exposes stack trace information, including partial algorithm input payloads, to cluster users. This means that enabling this feature entails the possibility of leaking sensitive data from algorithm executions to users who have access to those algorithms.**_
 
-Because of the consideration above, the user-facing errors feature is disabled by default on new Algorithmia installations. The feature can be enabled through the admin API with an [admin API key](/developers/platform/customizing-api-keys#admin-api-keys), using the following cURL command. Note that you must substitute `CLUSTER_DOMAIN` with your Algorithmia cluster domain name (e.g., `algorithmia.com`) and you must substitute a valid value for `ADMIN_API_KEY`.
+Because of the consideration above, the user-facing errors feature is disabled by default on new Algorithmia installations. The feature can be enabled through the admin API with an [admin API key](/platform/customizing-api-keys#admin-api-keys), using the following cURL command. Note that you must substitute `CLUSTER_DOMAIN` with your Algorithmia cluster domain name (e.g., `algorithmia.com`) and you must substitute a valid value for `ADMIN_API_KEY`.
 
 <div class="syn-code-block">
 

@@ -133,7 +133,7 @@ When you are creating an algorithm be mindful of the data types you require from
 
 This next code snippet shows how to create an algorithm working with a data file that a user has stored using Algorithmia's [Hosted Data Source]({{site.baseurl}}/data/hosted).
 
-Files stored in [Hosted Data]({{site.baseurl}}/data/hosted) must be transferred into the algorithm before use, via the [getFile](https://algorithmia.com/developers/api/?ruby#files) method. Alternately, their contents can be transferred using [getString, getJson, or getBytes](https://algorithmia.com/developers/api/?ruby#files).
+Files stored in [Hosted Data]({{site.baseurl}}/data/hosted) must be transferred into the algorithm before use, via the [getFile](https://algorithmiaio.github.io/api/?ruby#files) method. Alternately, their contents can be transferred using [getString, getJson, or getBytes](https://algorithmiaio.github.io/api/?ruby#files).
 {: .notice-warning}
 
 #### Prerequisites

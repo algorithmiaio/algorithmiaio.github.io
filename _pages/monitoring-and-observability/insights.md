@@ -20,7 +20,7 @@ Algorithmia Insights is an algorithm metrics pipelining tool that enables you to
 
 Once Insights is configured on your cluster, you'll be able to opt in to the feature for each version of each algorithm, every time you go through the publishing step. When enabled, Insights will automatically stream select algorithm data to an external message broker, from which these data can be consumed by external platforms. Insights automatically sends algorithm operational data, such as algorithm execution time, and you can granularly specify any model inference metrics you'd like to send as well, from within your algorithm source code. These data can be prediction or accuracy values, or even intermediate values that aren't exposed in your algorithm's actual output payload.
 
-Algorithmia Insights is currently supported for [Python 3.x](/developers/algorithm-development/languages/python#publishing-algorithmia-insights), [R](/developers/algorithm-development/languages/r#publishing-algorithmia-insights), and [Java](/developers/algorithm-development/languages/java#publishing-algorithmia-insights) algorithms, and you can use [Apache Kafka](https://kafka.apache.org/) or [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) as a broker for metrics.
+Algorithmia Insights is currently supported for [Python 3.x](/algorithm-development/languages/python#publishing-algorithmia-insights), [R](/algorithm-development/languages/r#publishing-algorithmia-insights), and [Java](/algorithm-development/languages/java#publishing-algorithmia-insights) algorithms, and you can use [Apache Kafka](https://kafka.apache.org/) or [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) as a broker for metrics.
 
 ### Types of Algorithmia Insights metrics
 
@@ -31,7 +31,7 @@ Algorithmia Insights metrics fall into two categories:
 
 ## Setting up Algorithmia Insights on your cluster
 
-The external broker connection required for Insights is a global configuration on your Algorithmia cluster. If Insights isn't already available on your cluster, ask your cluster admin to [configure a broker connection](/developers/administration/admin-panel/broker-manager#creating-broker-connections).
+The external broker connection required for Insights is a global configuration on your Algorithmia cluster. If Insights isn't already available on your cluster, ask your cluster admin to [configure a broker connection](/administration/admin-panel/broker-manager#creating-broker-connections).
 
 ## Using Algorithmia Insights in an algorithm
 
@@ -39,7 +39,7 @@ Each algorithm in your Algorithmia cluster has independent settings for whether 
 
 ### Reporting inference-related metrics from your algorithm source code
 
-To learn how to add Insights reporting to your algorithm source code, see the respective guide for your algorithm development language. Insights is supported for [Python 3.x](/developers/algorithm-development/languages/python#publishing-algorithmia-insights), [R](/developers/algorithm-development/languages/r#publishing-algorithmia-insights), and [Java](/developers/algorithm-development/languages/java#publishing-algorithmia-insights) algorithms.
+To learn how to add Insights reporting to your algorithm source code, see the respective guide for your algorithm development language. Insights is supported for [Python 3.x](/algorithm-development/languages/python#publishing-algorithmia-insights), [R](/algorithm-development/languages/r#publishing-algorithmia-insights), and [Java](/algorithm-development/languages/java#publishing-algorithmia-insights) algorithms.
 
 #### Restrictions
 
@@ -55,13 +55,13 @@ To learn how to add Insights reporting to your algorithm source code, see the re
 
 ### Enabling Algorithmia Insights for an algorithm version
 
-Enabling Algorithmia Insights for an algorithm version happens during the [algorithm publishing](/developers/algorithm-development/your-first-algo/#publishing-your-algorithm) step.
+Enabling Algorithmia Insights for an algorithm version happens during the [algorithm publishing](/algorithm-development/your-first-algo/#publishing-your-algorithm) step.
 
 When using the browser UI publishing workflow, you'll have the option to enable Algorithmia Insights for the specific algorithm version that you're publishing, as shown below.
 
-![Image of algorithm publish UI with Algorithmia Insights checkbox](/developers/images/algorithmia-enterprise/algorithmia-insights/web-ui-publish.png)
+![Image of algorithm publish UI with Algorithmia Insights checkbox](/images/algorithmia-enterprise/algorithmia-insights/web-ui-publish.png)
 
-When using the HTTP API or client libraries to publish your algorithm, passing the key-value pair `"insights_enabled": true` in the algorithm's `settings` will enable Algorithmia Insights for your algorithm, as demonstrated in the following [cURL](/developers/clients/curl) command.
+When using the HTTP API or client libraries to publish your algorithm, passing the key-value pair `"insights_enabled": true` in the algorithm's `settings` will enable Algorithmia Insights for your algorithm, as demonstrated in the following [cURL](/clients/curl) command.
 
 ```shell
 $ curl https://CLUSTER_DOMAIN/v1/algorithms/ALGO_OWNER/ALGO_NAME/versions \
@@ -75,4 +75,4 @@ Once you've published your algorithm with Algorithmia Insights enabled, all exec
 
 Navigate to the **Versions** tab of an algorithm's profile page to see which published versions of that algorithm have Insights enabled.
 
-![Image of algorithm versions page with Algorithmia Insights flag highlighted](/developers/images/algorithmia-enterprise/algorithmia-insights/web-ui-versions.png)
+![Image of algorithm versions page with Algorithmia Insights flag highlighted](/images/algorithmia-enterprise/algorithmia-insights/web-ui-versions.png)

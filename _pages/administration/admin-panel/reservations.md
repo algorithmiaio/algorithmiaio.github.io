@@ -17,7 +17,7 @@ The overall purpose of reservations is to eliminate algorithm cold-starts; it mi
 
 The Reservations page contains a table listing the reservations that are currently configured on your cluster.
 
-![Admin Panel - Reservations]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1609359537322.png)
+![Admin Panel - Reservations]({{site.url}}/images/post_images/algo-images-admin/algo-1609359537322.png)
 
 For security reasons, algorithm instances are not shared across accounts, even when two users call the same algorithm at the same time. Because of this, Algorithm reservations must be configured on a per-account basis.
 
@@ -30,7 +30,7 @@ To add a reservation, click the "Add Reservation" button at the top-right corner
 *   **Version type:** the type of version specified in the "algorithm" field (see descriptions below)
 *   **Number of reservations:** a positive numeric value indicating the number of algorithm replicas to keep warm 
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1617229501770.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1617229501770.png)
 
 You may specify a semantic version or version hash to indicate a specific version of an algorithm that you'd like to keep warm. <span style="font-family: inherit; font-size: 1em;">As the screenshot below illustrates, some of the "Version Type" options are only relevant to the owner* of the algorithm in question, as only that account will have the permissions required to access private or unpublished algorithms under their account. (*Algorithms owned by an organization may have multiple accounts with access.) The available options are as follows:</span>
 
@@ -40,10 +40,10 @@ You may specify a semantic version or version hash to indicate a specific versio
 *   **Specific semantic version:** a specific numbered semantic version (e.g., `0.1.2`); if this option is selected, the version `ALGO_VERSION` should be specified in the "Algorithm" field (i.e., `ALGO_OWNER/ALGO_NAME/ALGO_VERSION`)
 *   **Specific version hash:** a specific Git hash (e.g., `cf0da600c70d0970a4de0bd9d5441c7666c4fafa`); if this option is selected, the version `ALGO_VERSION` should be specified in the "Algorithm" field (i.e., `ALGO_OWNER/ALGO_NAME/ALGO_VERSION`)
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1618942213930.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1618942213930.png)
 
 To remove a reservation, click the action menu for the reservation in question and click "Remove reservation".
 
-![Admin Panel - Remove Reservation]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1609359637045.png)
+![Admin Panel - Remove Reservation]({{site.url}}/images/post_images/algo-images-admin/algo-1609359637045.png)
 
 If you'd like to configure reservations programmatically, you can do so using an admin API key with [this Python script](https://gist.github.com/zeryx/5d4f89029c15b92b127bcb82808d412a).

@@ -4,41 +4,41 @@ layout: article
 title: Algorithm Environments
 ---
 
-Algorithm environments are the runtime foundations for algorithms, and Algorithmia comes pre-packaged with [predefined base environments](/developers/algorithm-development/environments) in several languages including Scala, R, Java, and many versions of Python. Python environments are additionally differentiated by their support for specific versions of third-party libraries and ML frameworks such as TensorFlow and PyTorch, and their access to specific hardware that provides advanced computation capabilities.
+Algorithm environments are the runtime foundations for algorithms, and Algorithmia comes pre-packaged with [predefined base environments](/algorithm-development/environments) in several languages including Scala, R, Java, and many versions of Python. Python environments are additionally differentiated by their support for specific versions of third-party libraries and ML frameworks such as TensorFlow and PyTorch, and their access to specific hardware that provides advanced computation capabilities.
 
-Environments aren't a limitation, but rather an optimization. You can always manually specify dependencies and we'll ensure that they're available in your algorithm by pulling them down from the central repository corresponding to your language of choice (for Python algorithms, for example, we use pip to pull dependencies from PyPI). Using predefined environments streamlines the development experience on the platform. It also maximizes the platform's performance, as algorithms created with predefined environments have faster build times and faster load times from a cold start. For more details on algorithm environments and how they're intended to be used, see how to create an algorithm in our [Getting Started Guide](/developers/algorithm-development/your-first-algo).
+Environments aren't a limitation, but rather an optimization. You can always manually specify dependencies and we'll ensure that they're available in your algorithm by pulling them down from the central repository corresponding to your language of choice (for Python algorithms, for example, we use pip to pull dependencies from PyPI). Using predefined environments streamlines the development experience on the platform. It also maximizes the platform's performance, as algorithms created with predefined environments have faster build times and faster load times from a cold start. For more details on algorithm environments and how they're intended to be used, see how to create an algorithm in our [Getting Started Guide](/algorithm-development/your-first-algo).
 
 ## Listing currently installed environments
 
 The Algorithm Environments page lists the environments that are currently installed on your cluster and available to users for creating algorithms. The details for each environment include its programming language and language version, the external libraries included, and the machine type (CPU vs. GPU).
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1627578674931.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1627578674931.png)
 
 ## Installing environments
 
 If there are environments available that aren't currently installed, an **Add Environment** button will be displayed in the upper-right corner of the page. Click the button and search for the environment you'd like to use. When you've found the appropriate environment, select it and click the **Add Environment** button. If you need an environment that isn't listed, click the **Request an environment** link or contact your customer success manager.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1627578704982.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1627578704982.png)
 
 Back on the landing page, the environment will now be listed and is available immediately for users to use with their algorithms.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1627578754581.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1627578754581.png)
 
 ## Using installed environments
 
 When you create a new algorithm, all available environments are displayed as options in the **Environment** dropdown for the selected language.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1627578811509.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1627578811509.png)
 
 When you create an algorithm, the dependencies associated with the selected environment are automatically listed in the algorithm's dependencies file. You can view this in the Web IDE by clicking the **Dependencies** button, or in the algorithm's requirements file if you're developing locally.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1627584273618.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1627584273618.png)
 
 ## Viewing environment details
 
 From the Algorithm Environments page on the admin panel, click on the name of an environment to display additional environment-specific metadata.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1627578902716.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1627578902716.png)
 
 ## Managing environments through the API
 

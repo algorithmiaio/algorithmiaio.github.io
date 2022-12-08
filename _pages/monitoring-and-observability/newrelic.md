@@ -15,7 +15,7 @@ title: "New Relic"
 This feature is available to [Algorithmia Enterprise](/enterprise) users only.
 {: .notice-enterprise}
 
-[Algorithmia Insights](https://algorithmia.com/blog/how-to-use-algorithmia-insights-for-machine-learning-model-performance-monitoring) is a feature of Algorithmia Enterprise that provides a metrics pipeline to instrument, measure, and monitor your machine learning models by integrating with popular observability platforms such as New Relic. If you're new to Insights, check out our [cluster admin docs](/developers/administration/admin-panel/insights) and learn how to configure this feature for your organization.
+[Algorithmia Insights](https://algorithmia.com/blog/how-to-use-algorithmia-insights-for-machine-learning-model-performance-monitoring) is a feature of Algorithmia Enterprise that provides a metrics pipeline to instrument, measure, and monitor your machine learning models by integrating with popular observability platforms such as New Relic. If you're new to Insights, check out our [cluster admin docs](/administration/admin-panel/insights) and learn how to configure this feature for your organization.
 
 [New Relic](https://newrelic.com/) is a cloud-based observability platform that helps you instrument, analyze, troubleshoot, and optimize your entire software stack. Using Insights, you can send your model performance data to New Relic as time-series data, enabling real-time model monitoring.
 
@@ -29,7 +29,7 @@ With your dashboards, monitors, and alerts on New Relic you can analyze your mod
 
 <img src="{{site.cdnurl}}{{site.baseurl}}/images/post_images/newrelic/architecture.png" alt="Architecture of NewRelic-Algorithmia integration for model performance metrics" class="screenshot">
 
-In this workflow, your algorithm’s metrics are streamed to a Kafka topic using Algorithmia Insights. You have another algorithm—the New Relic connector—that can transform and send any Insights payload to New Relic Metrics for the configured account. Using [Algorithmia Event Flows](https://algorithmia.com/developers/integrations/message-broker/), your New Relic connector algorithm is configured to get called when a new message is sent to your Kafka topic collecting Insights.
+In this workflow, your algorithm’s metrics are streamed to a Kafka topic using Algorithmia Insights. You have another algorithm—the New Relic connector—that can transform and send any Insights payload to New Relic Metrics for the configured account. Using [Algorithmia Event Flows](https://algorithmiaio.github.io/integrations/message-broker/), your New Relic connector algorithm is configured to get called when a new message is sent to your Kafka topic collecting Insights.
 
 With this event flow, when your Insights-enabled algorithms are run, the New Relic connector algorithm gets called with your algorithms’ Insights payloads. The connector algorithm then transforms your Insights metrics and sends them to your New Relic account.
 
@@ -38,9 +38,9 @@ With this event flow, when your Insights-enabled algorithms are run, the New Rel
 To set up this integration, you will need to:
 1. Create an account on New Relic and retrieve your API key. See the [Get your API key](#get-your-api-key) section below for details.
 2. [Create your default Algorithmia dashboard](#create-your-default-algorithm-dashboard) on New Relic. You can import our default dashboard and start observing your algorithm duration and throughput right away.
-3. [Configure Algorithmia to send Insights](/developers/administration/admin-panel/insights#one-time-kafka-connection-configuration) to a Kafka broker and topic.
+3. [Configure Algorithmia to send Insights](/administration/admin-panel/insights#one-time-kafka-connection-configuration) to a Kafka broker and topic.
 4. [Create the New Relic connector algorithm](#create-new-relic-connector-algorithm), and add your New Relic API key to your algorithm's secrets.
-5. [Set up Algorithmia Event Flows](/developers/integrations/message-broker) for your New Relic connector algorithm.
+5. [Set up Algorithmia Event Flows](/integrations/message-broker) for your New Relic connector algorithm.
 
 For any published algorithm on your cluster that has Insights enabled, once the algorithm's API endpoint is called, your New Relic connector algorithm will in turn be called through the Algorithmia Event Flows trigger. The connector algorithm will then push your Insights metrics to your New Relic Account.
 
@@ -151,15 +151,15 @@ Click on “Import dashboard” and get ready to observe your Algorithmia Insigh
 
 ### Configure Insights
 
-To enable Insights, your Algorithmia cluster administrator must first [connect your cluster to a Kafka broker](/developers/administration/admin-panel/insights#one-time-kafka-connection-configuration) to which metrics will be sent. Once this one-time configuration is complete, you can start [using Insights in your algorithms](/developers/algorithmia-enterprise/algorithmia-insights).
+To enable Insights, your Algorithmia cluster administrator must first [connect your cluster to a Kafka broker](/administration/admin-panel/insights#one-time-kafka-connection-configuration) to which metrics will be sent. Once this one-time configuration is complete, you can start [using Insights in your algorithms](/algorithmia-enterprise/algorithmia-insights).
 
 ### Create New Relic connector algorithm
 
-Create a new algorithm with a Python (3.7 and up) environment with the following source code and dependencies. If you’re new to creating algorithms, see our [Getting Started guide](/developers/algorithm-development/your-first-algo).
+Create a new algorithm with a Python (3.7 and up) environment with the following source code and dependencies. If you’re new to creating algorithms, see our [Getting Started guide](/algorithm-development/your-first-algo).
 
 #### Add New Relic API key to algorithm secrets
 
-Go to algorithm **Settings** and add your New Relic API key to your algorithm’s Secret Store. For detailed instructions on how to use algorithm secrets, please see [Secret Store](/developers/platform/algorithm-secrets).
+Go to algorithm **Settings** and add your New Relic API key to your algorithm’s Secret Store. For detailed instructions on how to use algorithm secrets, please see [Secret Store](/platform/algorithm-secrets).
 
 <img src="{{site.cdnurl}}{{site.baseurl}}/images/post_images/newrelic/create_secret.png" alt="Architecture of NewRelic-Algorithmia integration for model performance metrics" class="screenshot">
 
@@ -255,7 +255,7 @@ If you’re using the Web IDE to create these, click on **Save** and then **Buil
 
 ### Configure Algorithmia Event Flows
 
-Once your New Relic connector algorithm is published, configure it to get triggered whenever a Kafka topic receives a message. This Kafka topic will be the same as your Algorithmia Insights topic. This way, when an algorithm that has Insights enabled gets called and emits its metrics, the metrics payload will be used to call your New Relic connector algorithm. Detailed instructions on how to configure this event-based flow are in our [Algorithmia Event Flows documentation](/developers/event-flows/apache-kafka/).
+Once your New Relic connector algorithm is published, configure it to get triggered whenever a Kafka topic receives a message. This Kafka topic will be the same as your Algorithmia Insights topic. This way, when an algorithm that has Insights enabled gets called and emits its metrics, the metrics payload will be used to call your New Relic connector algorithm. Detailed instructions on how to configure this event-based flow are in our [Algorithmia Event Flows documentation](/event-flows/apache-kafka/).
 
 Below is an example of how the complete configuration will look once Algorithmia Insights and the New Relic connector algorithm are configured for the same Kafka topic.
 

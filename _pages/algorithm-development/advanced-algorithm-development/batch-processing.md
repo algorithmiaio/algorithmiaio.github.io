@@ -100,7 +100,7 @@ def apply(input):
         return someCalculation(input)
 ```
 
-Whether using a wrapper function or altering the original Algorithm, remember that the maximum runtime for an Algorithm is 50 minutes, and you must specify this longer timeout in the call to the Algorithm via the [timeout parameter](https://algorithmia.com/developers/api/#query-parameters). If 50 minutes will not be sufficient for the entire batch to complete, break the batch up into smaller chunks, and call each chunk serially from a loop on your external server.
+Whether using a wrapper function or altering the original Algorithm, remember that the maximum runtime for an Algorithm is 50 minutes, and you must specify this longer timeout in the call to the Algorithm via the [timeout parameter](https://algorithmiaio.github.io/api/#query-parameters). If 50 minutes will not be sufficient for the entire batch to complete, break the batch up into smaller chunks, and call each chunk serially from a loop on your external server.
 
 Similarly, there is a 10MB maximum on the total data sent in or returned on a single call, so consider breaking up batches into smaller chunks, or using sideband data loading (from files or a datastore) if this becomes a limiting factor.
 

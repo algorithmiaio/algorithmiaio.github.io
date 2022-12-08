@@ -8,17 +8,17 @@ The Users page provides functionality for managing and debugging issues that ari
 
 To access the functionalities provided on this page, search for an account by the username or email and then click the action menu for the account as indicated in the screenshot below.
 
-![Admin Panel - Users]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1609277500649.png)
+![Admin Panel - Users]({{site.url}}/images/post_images/algo-images-admin/algo-1609277500649.png)
 
 ## Sending in-platform notifications
 
 To send a notification to an account, click the "Send notification" option in the drop-down list. As shown in the screenshot below, you may specify multiple usernames separated by commas to send the same notification to multiple accounts.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1617039346851.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1617039346851.png)
 
 Users authenticated into the browser UI are alerted of notifications in the lower-left corner of the screen, where a badge on the bell icon specifies the number of unread notifications. Click on the bell to access the notifications list. If a URL is supplied as part of a notification, clicking on the notification entry in the list will navigate to that page.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1617039541964.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1617039541964.png)
 
 ## Setting work limits
 
@@ -28,7 +28,7 @@ The maximum concurrent session limit defaults to 80. There's no predefined upper
 
 To change an account's concurrent session limit, click on the action menu and select "Update Work Limits" from the drop-down list. In the modal, enter a positive integer to set a new limit and select the "Update" button to submit the changes.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1617040330708.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1617040330708.png)
 
 If an attempt is made to initialize a connection that results in the number of concurrent sessions exceeding the maximum number configured for that account (or the default limit if not set explicitly), the request will fail.
 
@@ -42,11 +42,11 @@ As a cluster admin, you have the ability to grant yourself "super powers", which
 
 To enter this mode, click the user icon at the lower-left corner of the screen and click the "Enable Super Powers" option.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1617040679403.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1617040679403.png)
 
 When super powers are enabled, a banner will show up at the top of the screen to remind you that you're in this mode of elevated privileges. To disable super powers and return to the normal mode, click "Disable" on the banner. If you've already closed the banner, click the same user icon at the lower-left corner and select "Disable Super Powers".
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1617040733749.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1617040733749.png)
 
 ### Using sudo privileges
 
@@ -66,7 +66,7 @@ To impersonate an account, click the action menu on the row of the account you w
 
 Note that, for security reasons, if you're actively impersonating a cluster admin account and you want to impersonate account, you must first "Stop" impersonating the first account before trying to impersonate the second. If you do try to impersonate a second account from within an impersonation session, you'll be logged out of the platform and may need to clear application cookies before being allowed to re-authenticate.
 
-![Admin Panel - Users - Impersonate User]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1609284497795.png)
+![Admin Panel - Users - Impersonate User]({{site.url}}/images/post_images/algo-images-admin/algo-1609284497795.png)
 
 ### Managing roles
 
@@ -78,4 +78,4 @@ To disable the "sudo user" role on the cluster, set the `process.env.IS_SUDO_USE
 
 1.  "Sudo" won't show up as a user role in the Users page.
 2.  Cluster admins won't have the menu option to "Add to Sudo Users" or "Remove from Sudo Users" on the Users action menus for each user in the Users page.
-3.  The entire "Sudo users" section and "Add sudo user" input will be hidden in the UI on the [Administrators](/developers/administration/admin-panel/administrators) page.
+3.  The entire "Sudo users" section and "Add sudo user" input will be hidden in the UI on the [Administrators](/administration/admin-panel/administrators) page.

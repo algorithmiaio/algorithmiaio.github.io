@@ -14,7 +14,7 @@ Note that in the code samples below, `AUTH_TOKEN` represents either a standard (
 Retrieving build logs from the `/builds` endpoint
 -------------------------------------------------
 
-To retrieve the logs for a specific build of an algorithm, you'll first need to know the [algorithm build UUID](/developers/glossary#algorithm-build-uuid). For a given algorithm, you can list all of the algorithm builds with the following request.
+To retrieve the logs for a specific build of an algorithm, you'll first need to know the [algorithm build UUID](/glossary#algorithm-build-uuid). For a given algorithm, you can list all of the algorithm builds with the following request.
 
 **REST request**
 
@@ -74,7 +74,7 @@ Note that the log output shown above has been shortened for this documentation. 
 
 ## Retrieving build logs from the `/versions` endpoint
 
-To retrieve the logs for a specific build of a published algorithm, you'll first need to know its [algorithm version hash](/developers/glossary#algorithm-version-hash). In Algorithmia's browser UI, the [algorithm version hash](/developers/glossary#algorithm-version-hash) information is available under an algorithm profile's **Builds** tab. You can also list all of the algorithm's published versions with the following request.
+To retrieve the logs for a specific build of a published algorithm, you'll first need to know its [algorithm version hash](/glossary#algorithm-version-hash). In Algorithmia's browser UI, the [algorithm version hash](/glossary#algorithm-version-hash) information is available under an algorithm profile's **Builds** tab. You can also list all of the algorithm's published versions with the following request.
 
 **REST request**
 

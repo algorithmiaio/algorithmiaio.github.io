@@ -4,7 +4,7 @@ layout: article
 title: Configure an Amazon Elastic Kubernetes Service (EKS) Cluster
 ---
 
-The following isn't intended to be complete documentation for provisioning a managed Amazon EKS cluster. Rather, we provide links here to appropriate documentation to get you started, and provide details for how to enable ingress on an existing cluster so as to allow the appropriate network access for [Constellation Distributed Serving](/developers/administration/admin-panel/constellation).
+The following isn't intended to be complete documentation for provisioning a managed Amazon EKS cluster. Rather, we provide links here to appropriate documentation to get you started, and provide details for how to enable ingress on an existing cluster so as to allow the appropriate network access for [Constellation Distributed Serving](/administration/admin-panel/constellation).
 
 This feature (and its associated documentation) is currently in **beta**.
 {: .notice-info}
@@ -41,11 +41,11 @@ In this guide, we'll walk through the workflow for [deploying an EKS cluster int
 
 To begin, navigate to the link above, which automatically includes the link to the appropriate CloudFormation YAML template, and click **Next**.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628784200721.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628784200721.png)
 
 Provide a **Stack name** to label this bundle of resources in your account.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628785389160.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628785389160.png)
 
 Under **Basic configuration**:
 
@@ -53,11 +53,11 @@ Under **Basic configuration**:
 *   <span style="font-family: inherit; font-size: 1em;">Optionally, provide an allowed allowed CIDR IP range in the</span> **Allowed external access CIDR** <span style="font-family: inherit; font-size: 1em;">field.</span>
 *   Specify the **SSH key name** <span style="font-family: inherit; font-size: 1em;">for the key you'll be using to connect to the cluster once it's provisioned.</span>
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628785476141.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628785476141.png)
 
 Under **Amazon EC2 configuration**, select **Disabled** to skip provisioning a **bastion host**.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628785588022.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628785588022.png)
 
 Under **Amazon EKS configuration**:
 
@@ -65,26 +65,26 @@ Under **Amazon EKS configuration**:
 *   Set **EKS public access endpoint** to **Enabled** to allow EKS API server access from outside of your VPC.
 *   Optionally, specify **Additional EKS admin ARN**s to grant EKS cluster management privileges to an additional user and/or role.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628787135717.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628787135717.png)
 
 Under **Default EKS node group configuration**:
 
 *   Specify the node **Instance type**.
 *   Optionally, change **Number of nodes** and **Maximum number of nodes** if non-default values are desired.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628787355569.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628787355569.png)
 
 Under **Calico policy**, select **Enabled** <span style="font-family: inherit; font-size: 1em;">for</span> **Calico policy integration**.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628787514014.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628787514014.png)
 
 Click **Next**. On the **Configure stack options** page, optionally select a specific **IAM role** for CloudFormation to use to take actions on stack resources. If left blank, the current user's credentials will be used.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628787725651.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628787725651.png)
 
 Click **Next**. Check the appropriate boxes to allow CloudFormation to create resources, and click **Create stack**.  
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1628787793921.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1628787793921.png)
 
 Once the stack is created, generate the `kubeconfig` file by setting AWS credential environment variables for one of the authorized admin roles (the role that created the stack or the one provided in the optional field above) and running the following:
 
@@ -95,7 +95,7 @@ Once the stack is created, generate the `kubeconfig` file by setting AWS creden
 
 </div>
 
-Create an Elastic Container Registry (ECR) with all repositories required for the satellite. You'll get the `SATELLITE_ID` value from the Algorithmia side; see the [Satellite deployment](/developers/administration/admin-panel/constellation#satellite-deployment) section of the Constellation Distributed Serving documentation.
+Create an Elastic Container Registry (ECR) with all repositories required for the satellite. You'll get the `SATELLITE_ID` value from the Algorithmia side; see the [Satellite deployment](/administration/admin-panel/constellation#satellite-deployment) section of the Constellation Distributed Serving documentation.
 
 <div class="syn-code-block">
 

@@ -105,7 +105,7 @@ You can also control whether or not an API key can manage algorithms you own on 
 
 ## Admin API Keys
 
-If you are the administrator of an Algorithmia cluster, you may create admin API keys to interface with admin-only API endpoints, such as `/users` and `/organizations`. Endpoints which specifically require admin API keys are noted in our [API documentation](/developers/api).
+If you are the administrator of an Algorithmia cluster, you may create admin API keys to interface with admin-only API endpoints, such as `/users` and `/organizations`. Endpoints which specifically require admin API keys are noted in our [API documentation](/api).
 
 To create an admin key, simply select "Admin API Key" from the "Create New" menu in the upper right-hand corner of your dashboard:
 

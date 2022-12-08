@@ -30,11 +30,11 @@ title:  "Client guides"
   </div>
 </div>
 
-After you've [made your first API call](https://algorithmia.com/developers/getting-started), you can learn more about using the Algorithmia clients in the guides below. The clients can be used in your own applications to call algorithms, [access data]({{site.baseurl}}/data), or to manage the Algorithmia platform. The clients can also be used in the algorithms you write, letting you work with the [Data API](https://algorithmia.com/developers/api/#data) or call additional algorithms from your own code, letting you use utility functions and chain algorithms together. 
+After you've [made your first API call](https://algorithmiaio.github.io/getting-started/), you can learn more about using the Algorithmia clients in the guides below. The clients can be used in your own applications to call algorithms, [access data]({{site.baseurl}}/data), or to manage the Algorithmia platform. The clients can also be used in the algorithms you write, letting you work with the [Data API](https://algorithmiaio.github.io/api/#tag/data) or call additional algorithms from your own code, letting you use utility functions and chain algorithms together. 
 
-For a complete description of the API's functionality, you can refer to the [API docs](https://algorithmia.com/developers/api).
+For a complete description of the API's functionality, you can refer to the [API docs](https://algorithmiaio.github.io/api/).
 
-In addition to the client guides, you can visit our [integrations page](https://algorithmia.com/developers/integrations) for more details about integrating with other software and frameworks, such as building apps for [R Shiny]({{site.baseurl}}/tutorials/sample-apps/shiny-app), calling the API in [Spark Streaming](integrations/spark-streaming), working with [MLFlow](https://algorithmia.com/developers/clients/mlflow), visualizing data with [Tableau](https://algorithmia.com/developers/integrations/tableau), and making use of the [Algorithmia Insights](https://algorithmia.com/developers/algorithmia-enterprise/algorithmia-insights) metrics pipeline.
+In addition to the client guides, you can visit our [integrations page](https://algorithmiaio.github.io/integrations) for more details about integrating with other software and frameworks, such as building apps for [R Shiny]({{site.baseurl}}/tutorials/sample-apps/shiny-app), calling the API in [Spark Streaming](integrations/spark-streaming), working with [MLFlow](https://algorithmiaio.github.io/clients/mlflow), visualizing data with [Tableau](https://algorithmiaio.github.io/integrations/tableau), and making use of the [Algorithmia Insights](https://algorithmiaio.github.io/algorithmia-enterprise/algorithmia-insights) metrics pipeline.
 
 The guides below will take you through setting up and using the Algorithmia client libraries for our supported languages.
 

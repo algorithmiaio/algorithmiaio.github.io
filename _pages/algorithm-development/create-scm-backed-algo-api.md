@@ -8,8 +8,8 @@ When you create an algorithm through the API, Algorithmia's internal SCM provide
 
 On the cluster admin side:
 
-1.  [Set up an external SCM configuration](/developers/administration/admin-panel/source-code-management/#creating-scm-configurations) and enable it to back algorithms (this is a one-time setup step).
-2.  [List the available SCM configurations](/developers/administration/scm-config/source-code-management-bitbucket-server-api/#listing-scm-configurations) to get the `id` of the configuration of interest.
+1.  [Set up an external SCM configuration](/administration/admin-panel/source-code-management/#creating-scm-configurations) and enable it to back algorithms (this is a one-time setup step).
+2.  [List the available SCM configurations](/administration/scm-config/source-code-management-bitbucket-server-api/#listing-scm-configurations) to get the `id` of the configuration of interest.
 
 On the user side:
 
@@ -61,7 +61,7 @@ The algorithm request payload shown below has several `UPPERCASE` placeholders t
 
 *   Replace the `SCM_CONFIG_ID` value with the one used above, which you've ensured is authorized on the cluster.
 *   Replace the `SCM_USERNAME` value (to specify `repository_owner`) with the value returned from the request above to get the SCM authorization status.
-*   For `repository_name`, you can choose whatever name makes the most sense to you. Often, it will be clearest to name the repository with the same name as the algorithm (as shown in the code below), but you have the option to name it differently if you choose. Note that you'll need to substitute `ENV_ID` with a valid `id` of an algorithm environment on your cluster. You can find an appropriate `id` value by [listing available languages and environments](/developers/algorithm-development/environments#option-b-using-rest-requests-directly).
+*   For `repository_name`, you can choose whatever name makes the most sense to you. Often, it will be clearest to name the repository with the same name as the algorithm (as shown in the code below), but you have the option to name it differently if you choose. Note that you'll need to substitute `ENV_ID` with a valid `id` of an algorithm environment on your cluster. You can find an appropriate `id` value by [listing available languages and environments](/algorithm-development/environments#option-b-using-rest-requests-directly).
 
 **REST request**
 

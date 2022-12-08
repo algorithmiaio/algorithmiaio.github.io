@@ -8,4 +8,4 @@ image:
   teaser: /icons/fa-bolt.png
 ---
 
-If you are an Algorithmia Enterprise user, you can monitor the performance of your models using [Algorithmia Insights](/developers/algorithmia-enterprise/algorithmia-insights).
+If you are an Algorithmia Enterprise user, you can monitor the performance of your models using [Algorithmia Insights](/algorithmia-enterprise/algorithmia-insights).

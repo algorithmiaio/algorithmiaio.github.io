@@ -30,7 +30,7 @@ This feature is available to [Algorithmia Enterprise](/enterprise) users who hav
 
 To enact a service provider-based authentication please click on the "sign in with SAML" button on the login page. You will either be authenticated automatically or redirected to your identity provider to confirm your credentials.
 
-![SAML login button](/developers/images/post_images/saml/saml-login-button.png)
+![SAML login button](/images/post_images/saml/saml-login-button.png)
 
 ## Creating a non-existing user
 
@@ -46,7 +46,7 @@ If the permission tags found in a user's assertion with the tag "memberTag1" are
 
 When creating or updating an organization, you can provide a list of “tags” which are used in the configured SAML assertion attribute to signify which organizations the user is a member or admin of. Upon authentication with the SAML assertion, the system will automatically synchronize the user with the groups that share these tags. They can be comma delimited as shown below.
 
-![Example of creating organization with permission tags](/developers/images/post_images/jwt-sync/create_org_perm_tags.png)
+![Example of creating organization with permission tags](/images/post_images/jwt-sync/create_org_perm_tags.png)
 
 If a user shares a tag that is held in “External Admin Group” then they will become an admin of this group. If they share a tag that is held in “External Member Group” then they will become a member of this group. If they hold both they will be marked as an admin of this group.
 

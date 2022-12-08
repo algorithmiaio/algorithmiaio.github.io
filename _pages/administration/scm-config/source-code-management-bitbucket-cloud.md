@@ -20,11 +20,11 @@ This page contains instructions for creating a Bitbucket Cloud configuration so 
     *   _Webhooks_: Read and write
 7.  Click **Save** at the bottom.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1620914763845.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1620914763845.png)
 
 Click on the name of the new consumer in the list that appears.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1620914873230.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1620914873230.png)
 
 To edit the consumer configuration, click the ellipses at the right and select **Edit**.
 
@@ -32,7 +32,7 @@ You'll need the **application ID** and **secret** values <span style="font-fami
 
 ## Algorithmia setup
 
-Once you've created an OAuth consumer in Bitbucket Cloud as described above, log in to Algorithmia as a cluster admin and navigate to the [Source Code Management](/developers/administration/admin-panel/source-code-management) page from the admin panel. Click **Add SCM Configuration** and select Bitbucket Cloud from the drop-down.
+Once you've created an OAuth consumer in Bitbucket Cloud as described above, log in to Algorithmia as a cluster admin and navigate to the [Source Code Management](/administration/admin-panel/source-code-management) page from the admin panel. Click **Add SCM Configuration** and select Bitbucket Cloud from the drop-down.
 
 Enter the base website, API, and SSH endpoint URLs. The pre-filled values that appear are just placeholders, so you must actually enter the paths in each field even if you just want the defaults.
 
@@ -44,6 +44,6 @@ The **SSH URL** is the URL from which we'll attempt to pull source code from you
 
 Under the **OAuth information** section, enter the values from the consumer configuration above for **consumer key** and **consumer secret** and click **Create SCM Configuration**.
 
-![]({{site.url}}/developers/images/post_images/algo-images-admin/algo-1621526714884.png)
+![]({{site.url}}/images/post_images/algo-images-admin/algo-1621526714884.png)
 
-Once you've created the configuration, it'll show up in the list of SCM configurations on the [Source Code Management](/developers/administration/admin-panel/source-code-management) page.
+Once you've created the configuration, it'll show up in the list of SCM configurations on the [Source Code Management](/administration/admin-panel/source-code-management) page.

@@ -21,7 +21,7 @@ redirect_from:
 
 The Algorithmia Rust client provides a native Rust interface to the Algorithmia API, letting developers manage and call algorithms, work with data in object stores using Algorithmia Data Sources, and access other features of the Algorithmia platform.
 
-This guide will cover setting up the client, calling an algorithm using direct user input, calling an algorithm that accesses data through Algorithmia Data Sources, and using Algorithmia's Hosted Data service. For complete details about the Algorithmia API, please refer to the [API Docs](/developers/api/).
+This guide will cover setting up the client, calling an algorithm using direct user input, calling an algorithm that accesses data through Algorithmia Data Sources, and using Algorithmia's Hosted Data service. For complete details about the Algorithmia API, please refer to the [API Docs](/api/).
 
 Create a new Rust project to follow along.
 
@@ -37,7 +37,7 @@ Then build the cargo file to download and install the client:
 cargo build
 {% endhighlight %}
 
-To use the client you'll need an API key, which Algorithmia uses for fine-grained authentication across the platform. For this example, we'll use the `default-key` that was created along with your account, which has a broad set of permissions. Log in to Algorithmia and navigate to Home > [API Keys](/user#credentials) to find your key, or read the [API keys](/developers/platform/customizing-api-keys) documentation for more information.
+To use the client you'll need an API key, which Algorithmia uses for fine-grained authentication across the platform. For this example, we'll use the `default-key` that was created along with your account, which has a broad set of permissions. Log in to Algorithmia and navigate to Home > [API Keys](/user#credentials) to find your key, or read the [API keys](/platform/customizing-api-keys) documentation for more information.
 
 Once the client is installed, you can import it into your code and instantiate the client object:
 
@@ -67,7 +67,7 @@ Alternately, you can ensure that each of your servers interacting with your Algo
 
 Algorithms take three basic types of input whether they are invoked directly through the API or by using a client library: strings, JSON, and binary data. In addition, individual algorithms might have their own I/O requirements, such as using different data types for input and output, or accepting multiple types of input, so consult the input and output sections of an algorithm's documentation for specifics.
 
-The first algorithm we'll call is a demo version of the algorithm used in the Algorithm Development [Getting Started](/developers/algorithm-development/your-first-algo) guide, which is available at [demo/Hello](/algorithms/demo/Hello). Looking at the [algorithm's documentation](/algorithms/demo/Hello/docs), it takes a string as input and returns a string.
+The first algorithm we'll call is a demo version of the algorithm used in the Algorithm Development [Getting Started](/algorithm-development/your-first-algo) guide, which is available at [demo/Hello](/algorithms/demo/Hello). Looking at the [algorithm's documentation](/algorithms/demo/Hello/docs), it takes a string as input and returns a string.
 
 In order to call an Algorithm from Rust, we need to first create an algorithm object. With the client already instantiated, we can run the following code to create an object:
 
@@ -120,7 +120,7 @@ let response = algo.pipe("HAL 9001").unwrap();
 println!("{}", response.as_string().unwrap());
 {% endhighlight %}
 
-You can find more details in [API Docs](/developers/api/) > [Invoke an Algorithm](/developers/api/#invoke-an-algorithm).
+You can find more details in [API Docs](/api/) > [Invoke an Algorithm](/api/#invoke-an-algorithm).
 
 ### Error Handling
 
@@ -134,25 +134,25 @@ match algo.pipe("Hello, world!") {
 }
 {% endhighlight %}
 
-You can read more about [Error Handling](/developers/algorithm-development/algorithm-errors) in the [Algorithm Development](/developers/algorithm-development) section of the dev center.
+You can read more about [Error Handling](/algorithm-development/algorithm-errors) in the [Algorithm Development](/algorithm-development) section of the dev center.
 
 ### Limits
 
 Your account can make up to {{site.data.stats.platform.max_num_algo_requests}} Algorithmia requests at the same time (this limit <a onclick="Intercom('show')">can be raised</a> if needed).
 
-Algorithm requests have a payload size limit of 10MB for input and 15MB for output. If you need to work with larger amounts of data, you can make use of the Algorithmia [Data API](/developers/api/#data).
+Algorithm requests have a payload size limit of 10MB for input and 15MB for output. If you need to work with larger amounts of data, you can make use of the Algorithmia [Data API](/api/#data).
 
 ## Working with Algorithmia Data Sources
 
-For some algorithms, passing input to the algorithm at request time is sufficient, while others might have larger data requirements or need to preserve state between calls. Application developers can use Algorithmia's [Hosted Data](/developers/data/hosted) to store data as text, JSON, or binary, and access it via the Algorithmia [Data API](/developers/api/#data).
+For some algorithms, passing input to the algorithm at request time is sufficient, while others might have larger data requirements or need to preserve state between calls. Application developers can use Algorithmia's [Hosted Data](/data/hosted) to store data as text, JSON, or binary, and access it via the Algorithmia [Data API](/api/#data).
 
-The Data API defines [connectors](/developers/api/#connectors) to a variety of storage providers, including Algorithmia [Hosted Data](/developers/data/hosted), Amazon S3, Google Cloud Storage, Azure Storage Blobs, and Dropbox. After creating a connection in Data Sources, you can use the API to create, update, and delete directories and files and manage permissions across providers by making use of [Data URIs](/developers/api/#data-uris) in your code.
+The Data API defines [connectors](/api/#connectors) to a variety of storage providers, including Algorithmia [Hosted Data](/data/hosted), Amazon S3, Google Cloud Storage, Azure Storage Blobs, and Dropbox. After creating a connection in Data Sources, you can use the API to create, update, and delete directories and files and manage permissions across providers by making use of [Data URIs](/api/#data-uris) in your code.
 
-In this example, we'll upload an image to Algorithmia's [Hosted Data](/developers/data/hosted) storage provider, and use the [dlib/FaceDetection](https://algorithmia.com/algorithms/dlib/FaceDetection) algorithm to detect any faces in the image. The algorithm will create a new copy of the image with bounding boxes drawn around the detected faces, and then return a JSON object with details about the dimensions of the bounding boxes and a URI where you can download the resulting image.
+In this example, we'll upload an image to Algorithmia's [Hosted Data](/data/hosted) storage provider, and use the [dlib/FaceDetection](https://algorithmia.com/algorithms/dlib/FaceDetection) algorithm to detect any faces in the image. The algorithm will create a new copy of the image with bounding boxes drawn around the detected faces, and then return a JSON object with details about the dimensions of the bounding boxes and a URI where you can download the resulting image.
 
 ### Create a Data Collection
 
-The documentation for "Face Detection" says that it takes a URL or a Data URI of the image to be processed, and a Data URI where the algorithm can store the result. We'll create a directory to host the input image and set its [permissions](/developers/api/#update-collection-acl) to make it publicly accessible by creating a DataAcl with `DataAcl::from(ReadAcl::Public)` and passing it to the `create` method.
+The documentation for "Face Detection" says that it takes a URL or a Data URI of the image to be processed, and a Data URI where the algorithm can store the result. We'll create a directory to host the input image and set its [permissions](/api/#update-collection-acl) to make it publicly accessible by creating a DataAcl with `DataAcl::from(ReadAcl::Public)` and passing it to the `create` method.
 
 {% highlight rust %}
 let img_directory = client.dir("data://YOUR_USERNAME/img_directory");
@@ -251,12 +251,12 @@ let mut png = Vec::new();
 png_reader.read_to_end(&mut t800_bytes);
 {% endhighlight %}
 
-If the file was text (an image, etc.), you can use `read_to_string` on the response. The [API Specification](/developers/api/#get-a-file-or-directory) has more details on how to get files from a data collection using the Data API.
+If the file was text (an image, etc.), you can use `read_to_string` on the response. The [API Specification](/api/#get-a-file-or-directory) has more details on how to get files from a data collection using the Data API.
 
 ## Additional Functionality
 
-In addition to the functionality covered in this guide, the Rust Client Library provides a complete interface to the Algorithmia platform, including [managing algorithms](/developers/algorithm-development/algorithm-management), administering [organizations](/developers/platform/organizations), and working with [source control](/developers/algorithm-development/source-code-management). You can also visit the [API Docs](/developers/api) to view the complete API specification.
+In addition to the functionality covered in this guide, the Rust Client Library provides a complete interface to the Algorithmia platform, including [managing algorithms](/algorithm-development/algorithm-management), administering [organizations](/platform/organizations), and working with [source control](/algorithm-development/source-code-management). You can also visit the [API Docs](/api) to view the complete API specification.
 
 ## Next Steps
 
-If you're a data scientist or developer who will be building and deploying new algorithms, you can move on to the [Algorithm Development > Getting Started](/developers/algorithm-development/your-first-algo) guide.
+If you're a data scientist or developer who will be building and deploying new algorithms, you can move on to the [Algorithm Development > Getting Started](/algorithm-development/your-first-algo) guide.

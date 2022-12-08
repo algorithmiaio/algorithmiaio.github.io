@@ -50,7 +50,7 @@ Select your account name as the algorithm owner, and provide a descriptive name 
 
 ### Source code
 
-In this section, you can customize the visibility, licensing, and hosting of your algorithm's source code. For your algorithm, just leave the defaults so that the source code is hosted privately on our platform under the [Algorithmia Platform License](https://algorithmia.com/api_dev_terms). You can read more about creating algorithms with GitHub or GitHub Enterprise in our [Source Code Management](/developers/algorithm-development/source-code-management/) docs.
+In this section, you can customize the visibility, licensing, and hosting of your algorithm's source code. For your algorithm, just leave the defaults so that the source code is hosted privately on our platform under the [Algorithmia Platform License](https://algorithmia.com/api_dev_terms). You can read more about creating algorithms with GitHub or GitHub Enterprise in our [Source Code Management](/algorithm-development/source-code-management/) docs.
 
 Note: if you're on the Algorithmia Teams tier, these Source Code options won't be available. Your source code will always be hosted privately on our platform—only your team will be able to view it.
 {: .notice-info}
@@ -134,7 +134,7 @@ Once you've published your algorithm, you can call it via our API in just a few 
   </div>
 </div>
 
-The algorithm you published above takes a string as input and returns a greeting addressed to that string. Try calling your algorithm from the command line using the following code, and sending in your name as input. The endpoint will be the same endpoint described above, with your algorithm-specific parameters. Make sure to replace `API_KEY` with a valid [API key](/developers/platform/customizing-api-keys) associated with your account.
+The algorithm you published above takes a string as input and returns a greeting addressed to that string. Try calling your algorithm from the command line using the following code, and sending in your name as input. The endpoint will be the same endpoint described above, with your algorithm-specific parameters. Make sure to replace `API_KEY` with a valid [API key](/platform/customizing-api-keys) associated with your account.
 
 <div ng-controller="GettingStartedControl" ng-init="setCardContent('YOUR_USERNAME')" class="gs-code-container">
   <div class="code-toolbar ph-16 pv-8 text-right">
@@ -520,4 +520,4 @@ As you saw in this guide, you can create simple algorithms that don't read or wr
 
 As an integration-first platform, we encourage you to connect to whatever data source(s) you're already using. We also enable you to host data directly on our platform for lower-latency access, and we even have several native integrations with cloud-hosted data platforms.
 
-See our [Data API docs](/developers/api/#tag/data) and our [Developer Center data docs](/developers/data) to get started connecting to data sources.
+See our [Data API docs](/api/#tag/data) and our [Developer Center data docs](/data) to get started connecting to data sources.

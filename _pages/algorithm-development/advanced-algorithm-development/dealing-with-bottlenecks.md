@@ -47,7 +47,7 @@ client = Algorithmia.client()
 graph, label_index = load_model(client)
 
 # API calls will begin at the apply() method, with the request body passed as 'input'
-# For more details, see algorithmia.com/developers/algorithm-development/languages
+# For more details, see algorithmia.com/algorithm-development/languages
     
 def get_image(url):
     """Uses the Smart Image Downloader algorithm to format and download images from the web or other places."""
@@ -161,7 +161,7 @@ In this example, we create a dedicated algorithm to process requests for potenti
 from multiprocessing import Manager, Pool
 
 # API calls will begin at the apply() method, with the request body passed as 'input'
-# For more details, see algorithmia.com/developers/algorithm-development/languages
+# For more details, see algorithmia.com/algorithm-development/languages
 
 ALGO_1 = "algorithmiahq/DeepFashion/1.3.0"
 ALGO_2 = "algorithmiahq/multistageclassifierpetsdemo/0.1.0"
